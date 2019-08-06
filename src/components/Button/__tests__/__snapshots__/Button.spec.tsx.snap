@@ -1,0 +1,120 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Button renders the primary button 1`] = `
+.emotion-0 {
+  margin: 0;
+  background-color: #196FD8;
+  color: #FFFFFF;
+  border: none;
+  cursor: pointer;
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  position: relative;
+  padding: 0 30px;
+  height: 48px;
+  min-width: 190px;
+  font-weight: 700;
+  outline: none;
+  -webkit-transition: background-color 0.2s cubic-bezier(0.8,0,0.2,1);
+  transition: background-color 0.2s cubic-bezier(0.8,0,0.2,1);
+}
+
+.emotion-0:hover {
+  background-color: #161617;
+}
+
+<body>
+  <div>
+    <button
+      class="emotion-0"
+    >
+      Test
+    </button>
+  </div>
+</body>
+`;
+
+exports[`Button renders the secondary button 1`] = `
+.emotion-0 {
+  margin: 0;
+  background-color: transparent;
+  color: #196FD8;
+  border: none;
+  cursor: pointer;
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  position: relative;
+  padding: 0 0;
+  height: 48px;
+  min-width: inherit;
+  font-weight: 700;
+  outline: none;
+  -webkit-transition: 1.8s;
+  transition: 1.8s;
+}
+
+.emotion-0:hover {
+  background-color: transparent;
+}
+
+.emotion-0::after {
+  content: '';
+  display: block;
+  position: absolute;
+  top: calc(100% + 8px);
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: #196FD8;
+  -webkit-transform: scaleX(0);
+  -ms-transform: scaleX(0);
+  transform: scaleX(0);
+  -webkit-transition: -webkit-transform 0.25s ease-in;
+  -webkit-transition: transform 0.25s ease-in;
+  transition: transform 0.25s ease-in;
+  -webkit-transform-origin: right center;
+  -ms-transform-origin: right center;
+  transform-origin: right center;
+  -webkit-text-decoration: none;
+  text-decoration: none;
+}
+
+.emotion-0:hover::after {
+  -webkit-transform: scale(1);
+  -ms-transform: scale(1);
+  transform: scale(1);
+  -webkit-transform-origin: left center;
+  -ms-transform-origin: left center;
+  transform-origin: left center;
+}
+
+<body>
+  <div>
+    <button
+      class="emotion-0"
+    >
+      Test
+    </button>
+  </div>
+</body>
+`;
