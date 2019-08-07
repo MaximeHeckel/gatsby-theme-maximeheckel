@@ -1,10 +1,14 @@
 import styled from '@emotion/styled';
-import { MDXProvider } from '@mdx-js/tag';
+import { MDXProvider } from '@mdx-js/react';
 import { graphql, StaticQuery } from 'gatsby';
 import Img, { FluidObject } from 'gatsby-image';
 import React, { ReactNode } from 'react';
-import { Footer, Header, MainWrapper, SEO, Title } from '../../';
+import Footer from '../components/Footer';
+import Header from '../components/Header';
+import SEO from '../components/Seo';
+import Title from '../components/Title';
 import { useTheme } from '../context/ThemeContext';
+import MainWrapper from './MainWrapper';
 
 const LayoutContentWrapper = styled.div`
   @media (max-width: 700px) {
