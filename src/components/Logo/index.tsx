@@ -13,6 +13,7 @@ const LogoWrapper = styled('div')`
   svg {
     height: ${props => props.size}px;
     width: ${props => props.size}px;
+    transition: ${props => props.theme.transitionTime}s;
     rect {
       fill: ${props =>
         props.inverted ? props.theme.fontColor : props.theme.backgroundColor};

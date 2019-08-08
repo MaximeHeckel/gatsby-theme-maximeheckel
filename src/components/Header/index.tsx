@@ -17,6 +17,7 @@ interface ITableOfContent {
 }
 
 interface IHeaderProps {
+  links: JSX.Element[] | JSX.Element;
   siteTitle?: string;
   postTitle?: string;
   sticky?: boolean;
@@ -76,41 +77,37 @@ const Sun = () => (
   </svg>
 );
 
-const HeaderWrapper = styled.div`
-  transition: ${props => props.theme.transitionTime}s;
-  background: ${props => props.theme.backgroundColor};
-  position: ${props => (props.sticky ? 'fixed' : 'inherit')};
-  height: 130px;
-  width: 100%;
-  z-index: 999;
-
-  > div {
-    padding: ${props => (props.sticky ? '0px 70px 0px 70px' : '0px')};
-  }
-
-  @media (max-width: 700px) {
-    > div {
-      padding: ${props => (props.sticky ? '0px 30px 0px 30px' : '0px')};
-    }
-  }
-`;
-
-const Title = styled.h1`
-  display: 'block';
+const Title = styled.h2`
+  display: block;
   margin: 0;
+  margin-left: 30px;
 
   a {
     text-decoration: none;
   }
 `;
 
+const HeaderWrapper = styled.div`
+  width: 100%;
+  max-width: 880px;
+  position: relative;
+`;
+
 const HeaderContent = styled.div`
-  height: 100%;
+  height: ${props => (props.sticky && props.slim ? '85px ' : '120px')};
+  transition: ${props => props.theme.transitionTime}s;
+  background: ${props => props.theme.backgroundColor};
+  position: ${props => (props.sticky ? 'fixed' : 'inherit')};
   margin: 0 auto;
-  max-width: 1020px;
+  width: inherit;
+  max-width: inherit;
   display: flex;
   justify-content: space-between;
   align-items: center;
+  z-index: 999;
+
+  ${props =>
+    props.sticky && props.slim ? 'border-bottom: 1px solid #f5f5f9' : null}
 `;
 
 const PortfolioLink = styled.div`
@@ -176,21 +173,22 @@ const TableOfContents = ({ tableOfContents }: ITableOfContent) =>
     </TableOfContentsWrapper>
   ) : null;
 
-const showArticleAfterScroll = (offset: number = 0) => {
-  const [showArticleTitle, setState] = React.useState(false);
+const setHeaderStateAfterScroll = (offset: number = 0) => {
+  const [headerState, setHeaderState] = React.useState(false);
   React.useEffect(() => {
-    const showTitle = () => setState(window.scrollY > offset);
+    const showTitle = () => setHeaderState(window.scrollY > offset);
     window.addEventListener('scroll', showTitle);
     return () => {
       window.removeEventListener('scroll', showTitle);
     };
   });
 
-  return showArticleTitle;
+  return headerState;
 };
 
 const Header = (props: IHeaderProps) => {
   const {
+    links,
     postTitle = '',
     themeSwitcher,
     siteTitle = '',
@@ -198,30 +196,33 @@ const Header = (props: IHeaderProps) => {
     tableOfContents,
   } = props;
 
-  const showArticleTitle = showArticleAfterScroll(200);
+  const headerState = setHeaderStateAfterScroll(150);
 
   return (
     <React.Fragment>
-      <HeaderWrapper data-testid="header" sticky={sticky || false}>
-        <HeaderContent>
-          {showArticleTitle && postTitle !== '' ? (
-            <Title data-testid="header-post-title">
-              <AnchorLink offset="150" href="#top">
-                {postTitle}
-              </AnchorLink>
-            </Title>
-          ) : (
-            <div data-testid="header-site-title">
-              <Link to="/">
-                <Logo
-                  aria-label={siteTitle}
-                  alt={`${siteTitle}'s logo`}
-                  size={65}
-                />
-              </Link>
-            </div>
-          )}
+      <HeaderWrapper data-testid="header">
+        <HeaderContent slim={headerState} sticky={sticky || false}>
+          <div
+            style={{ display: 'flex', alignItems: 'center' }}
+            data-testid="header-site-title"
+          >
+            <Link to="/">
+              <Logo
+                aria-label={siteTitle}
+                alt={`${siteTitle}'s logo`}
+                size={headerState && sticky ? 50 : 60}
+              />
+            </Link>
+            {headerState && postTitle !== '' ? (
+              <Title data-testid="header-post-title">
+                <AnchorLink offset="150" href="#top">
+                  {postTitle}
+                </AnchorLink>
+              </Title>
+            ) : null}
+          </div>
           <PortfolioLink show={siteTitle === ''}>
+            {links}
             <OutboundLink
               data-testid="blog-link"
               target="_blank"
@@ -257,7 +258,7 @@ const Header = (props: IHeaderProps) => {
           </PortfolioLink>
         </HeaderContent>
       </HeaderWrapper>
-      {showArticleTitle && postTitle !== '' ? (
+      {headerState && postTitle !== '' ? (
         <TableOfContents tableOfContents={tableOfContents} />
       ) : null}
     </React.Fragment>
