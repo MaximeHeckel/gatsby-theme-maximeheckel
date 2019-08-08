@@ -1,7 +1,7 @@
 {
   "name": "gatsby-theme-maximeheckel",
   "description": "Gatsby theme for maximeheckel.com and other consumer gatsby projects",
-  "version": "0.1.5",
+  "version": "0.1.6",
   "main": "index.js",
   "author": "Maxime Heckel <hello@maximeheckel.com>",
   "license": "MIT",
@@ -17,7 +17,7 @@
     "@mdx-js/mdx": "^1.1.6",
     "@mdx-js/react": "^1.1.6",
     "emotion-theming": "^10.0.6",
-    "gatsby": "^2.13.45",
+    "gatsby": "^2.13.52",
     "gatsby-image": "^2.0.20",
     "gatsby-plugin-emotion": "^4.0.1",
     "gatsby-plugin-google-analytics": "^2.0.9",
