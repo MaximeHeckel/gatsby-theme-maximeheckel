@@ -5,8 +5,7 @@ import Img, { FluidObject } from 'gatsby-image';
 import React, { ReactNode } from 'react';
 import Footer from '../components/Footer';
 import Header from '../components/Header';
-import SEO from '../components/Seo';
-import Title from '../components/Title';
+import Seo from '../components/Seo';
 import { useTheme } from '../context/ThemeContext';
 import MainWrapper from './MainWrapper';
 
@@ -18,6 +17,10 @@ const LayoutContentWrapper = styled.div`
   max-width: 1020px;
   padding: 0px 0px 20px 0px;
   color: ${props => props.theme.fontColor};
+  p,
+  ul {
+    font-weight: 500;
+  }
 `;
 
 const TitleSection = styled.div`
@@ -75,8 +78,8 @@ const Layout = (props: ILayoutProps) => {
         const { title, subtitle } = frontmatter;
 
         return (
-          <React.Fragment>
-            <SEO title={`${title} - ${data.site.siteMetadata.title}`} />
+          <MainWrapper>
+            <Seo title={`${title} - ${data.site.siteMetadata.title}`} />
             <Header
               postTitle={title}
               themeSwitcher={theme}
@@ -84,43 +87,41 @@ const Layout = (props: ILayoutProps) => {
               siteTitle={data.site.siteMetadata.author}
               tableOfContents={tableOfContents}
             />
-            <MainWrapper>
-              <TitleSection>
-                <div id="top">
-                  <Title data-testid={`project-title-${title}`}>{title}</Title>
-                  <h2>{subtitle}</h2>
-                </div>
-              </TitleSection>
-              <div
-                style={{
-                  margin: '0 auto',
+            <TitleSection>
+              <div id="top">
+                <h1 data-testid={`project-title-${title}`}>{title}</h1>
+                <h2>{subtitle}</h2>
+              </div>
+            </TitleSection>
+            <div
+              style={{
+                margin: '0 auto',
+                maxHeight: '600px',
+                maxWidth: '1020px',
+              }}
+            >
+              <Img
+                imgStyle={{
+                  borderRadius: '4px',
                   maxHeight: '600px',
-                  maxWidth: '1020px',
+                  minHeight: '100px',
+                }}
+                fluid={cover.childImageSharp.fluid}
+              />
+            </div>
+            <LayoutContentWrapper>
+              <MDXProvider
+                components={{
+                  a: (aProps: any) => (
+                    <a {...aProps} style={{ color: 'inherit' }} />
+                  ),
                 }}
               >
-                <Img
-                  imgStyle={{
-                    borderRadius: '4px',
-                    maxHeight: '600px',
-                    minHeight: '100px',
-                  }}
-                  fluid={cover.childImageSharp.fluid}
-                />
-              </div>
-              <LayoutContentWrapper>
-                <MDXProvider
-                  components={{
-                    a: (aProps: any) => (
-                      <a {...aProps} style={{ color: 'inherit' }} />
-                    ),
-                  }}
-                >
-                  {props.children}
-                </MDXProvider>
-              </LayoutContentWrapper>
-            </MainWrapper>
+                {props.children}
+              </MDXProvider>
+            </LayoutContentWrapper>
             <Footer />
-          </React.Fragment>
+          </MainWrapper>
         );
       }}
     />

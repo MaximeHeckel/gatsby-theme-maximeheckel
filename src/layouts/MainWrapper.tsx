@@ -8,11 +8,11 @@ const LayoutWrapper = styled.div`
 
 const Layout = styled.div`
   @media (max-width: 700px) {
-    padding: 0px 30px 20px 30px;
+    padding: 0px 30px 0px 30px;
   }
   margin: 0 auto;
   max-width: 1020px;
-  padding: 0px 70px 20px 70px;
+  padding: 0px 70px 0px 70px;
   color: ${props => props.theme.fontColor};
 `;
 
