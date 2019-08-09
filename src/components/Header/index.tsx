@@ -1,7 +1,6 @@
 import styled from '@emotion/styled';
 import { withTheme } from 'emotion-theming';
 import { Link } from 'gatsby';
-import { OutboundLink } from 'gatsby-plugin-google-analytics';
 import React from 'react';
 import AnchorLink from 'react-anchor-link-smooth-scroll';
 import Switch from 'react-switch';
@@ -17,7 +16,7 @@ interface ITableOfContent {
 }
 
 interface IHeaderProps {
-  links: JSX.Element[] | JSX.Element;
+  links?: JSX.Element[] | JSX.Element;
   siteTitle?: string;
   postTitle?: string;
   sticky?: boolean;
@@ -80,7 +79,7 @@ const Sun = () => (
 const Title = styled.h2`
   display: block;
   margin: 0;
-  margin-left: 30px;
+  margin-left: 24px;
 
   a {
     text-decoration: none;
@@ -88,18 +87,25 @@ const Title = styled.h2`
 `;
 
 const HeaderWrapper = styled.div`
-  width: 100%;
   max-width: 880px;
   position: relative;
 `;
 
 const HeaderContent = styled.div`
+  @media (max-width: 700px) {
+    ${props =>
+      props.sticky
+        ? `
+      left: 30px;
+      right: 30px;`
+        : ''}
+  }
+
   height: ${props => (props.sticky && props.slim ? '85px ' : '120px')};
   transition: ${props => props.theme.transitionTime}s;
   background: ${props => props.theme.backgroundColor};
   position: ${props => (props.sticky ? 'fixed' : 'inherit')};
   margin: 0 auto;
-  width: inherit;
   max-width: inherit;
   display: flex;
   justify-content: space-between;
@@ -107,7 +113,16 @@ const HeaderContent = styled.div`
   z-index: 999;
 
   ${props =>
-    props.sticky && props.slim ? 'border-bottom: 1px solid #f5f5f9' : null}
+    props.sticky
+      ? `
+    left: 70px;
+    right: 70px;`
+      : ''}
+
+  ${props =>
+    props.sticky && props.slim
+      ? `border-bottom: 1px solid ${props.theme.borderColor}`
+      : ''}
 `;
 
 const PortfolioLink = styled.div`
@@ -116,8 +131,8 @@ const PortfolioLink = styled.div`
   }
   display: flex;
   color: ${props => props.theme.fontColor};
-  width: 185px;
-  justify-content: space-between;
+  min-width: 185px;
+  justify-content: space-evenly;
   align-items: center;
 
   a {
@@ -210,7 +225,7 @@ const Header = (props: IHeaderProps) => {
               <Logo
                 aria-label={siteTitle}
                 alt={`${siteTitle}'s logo`}
-                size={headerState && sticky ? 50 : 60}
+                size={headerState && sticky ? 45 : 65}
               />
             </Link>
             {headerState && postTitle !== '' ? (
@@ -221,26 +236,8 @@ const Header = (props: IHeaderProps) => {
               </Title>
             ) : null}
           </div>
-          <PortfolioLink show={siteTitle === ''}>
-            {links}
-            <OutboundLink
-              data-testid="blog-link"
-              target="_blank"
-              rel="noopener noreferrer"
-              href="https://medium.com/maxime-heckel"
-              style={{ textDecoration: 'underline' }}
-            >
-              Blog
-            </OutboundLink>
-            <OutboundLink
-              data-testid="twitter-link"
-              target="_blank"
-              rel="noopener noreferrer"
-              href="https://twitter.com/MaximeHeckel"
-              style={{ textDecoration: 'underline' }}
-            >
-              Twitter
-            </OutboundLink>
+          <div style={{ display: 'flex' }}>
+            <PortfolioLink show={siteTitle === ''}>{links}</PortfolioLink>
             {themeSwitcher && Object.keys(themeSwitcher).length > 0 ? (
               <label data-testid="darkmode-switch" htmlFor="darkmode-switch">
                 <Switch
@@ -255,7 +252,7 @@ const Header = (props: IHeaderProps) => {
                 />
               </label>
             ) : null}
-          </PortfolioLink>
+          </div>
         </HeaderContent>
       </HeaderWrapper>
       {headerState && postTitle !== '' ? (

@@ -1,5 +1,8 @@
 import styled from '@emotion/styled';
 import React, { ReactNode } from 'react';
+import Footer from '../components/Footer';
+import Header from '../components/Header';
+import { useTheme } from '../context/ThemeContext';
 
 const LayoutWrapper = styled.div`
   transition: ${props => props.theme.transitionTime}s;
@@ -18,12 +21,39 @@ const Layout = styled.div`
 
 interface IMainWrapperProps {
   children: ReactNode;
+  footer?: boolean;
+  header?: boolean;
+  headerProps?: {
+    links?: JSX.Element[] | JSX.Element;
+    postTitle?: string;
+    siteTitle?: string;
+    sticky?: boolean;
+    tableOfContents?: {
+      items: Array<{ url: string; title: string }>;
+    };
+  };
 }
 
-const MainWrapper = ({ children, ...rest }: IMainWrapperProps) => (
-  <LayoutWrapper {...rest}>
-    <Layout>{children}</Layout>
-  </LayoutWrapper>
-);
+const MainWrapper = ({
+  children,
+  footer,
+  header,
+  headerProps,
+  ...rest
+}: IMainWrapperProps) => {
+  const theme = useTheme();
+  return (
+    <LayoutWrapper
+      data-testid={theme.dark ? 'darkmode' : 'lightmode'}
+      {...rest}
+    >
+      <Layout>
+        {header ? <Header themeSwitcher={theme} {...headerProps} /> : null}
+        {children}
+        {footer ? <Footer /> : null}
+      </Layout>
+    </LayoutWrapper>
+  );
+};
 
 export default MainWrapper;

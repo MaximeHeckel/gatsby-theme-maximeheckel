@@ -38,7 +38,7 @@ const Button = styled.button`
       : '1.8s'};
   &:hover {
     background-color: ${(props: IButtonProps) =>
-      props.primary ? props.theme.colors.black : 'transparent'};
+      props.primary ? '#161617' : 'transparent'};
   }
 
   ${(props: IButtonProps) =>

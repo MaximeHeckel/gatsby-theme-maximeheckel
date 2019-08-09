@@ -3,10 +3,7 @@ import { MDXProvider } from '@mdx-js/react';
 import { graphql, StaticQuery } from 'gatsby';
 import Img, { FluidObject } from 'gatsby-image';
 import React, { ReactNode } from 'react';
-import Footer from '../components/Footer';
-import Header from '../components/Header';
 import Seo from '../components/Seo';
-import { useTheme } from '../context/ThemeContext';
 import MainWrapper from './MainWrapper';
 
 const LayoutContentWrapper = styled.div`
@@ -59,8 +56,6 @@ interface ILayoutProps {
 }
 
 const Layout = (props: ILayoutProps) => {
-  const theme = useTheme();
-
   return (
     <StaticQuery
       query={graphql`
@@ -76,17 +71,15 @@ const Layout = (props: ILayoutProps) => {
       render={data => {
         const { frontmatter, cover, tableOfContents } = props.pageContext;
         const { title, subtitle } = frontmatter;
-
+        const headerProps = {
+          postTitle: title,
+          siteTitle: data.site.siteMetadata.author,
+          sticky: true,
+          tableOfContents,
+        };
         return (
-          <MainWrapper>
+          <MainWrapper footer={true} header={true} headerProps={headerProps}>
             <Seo title={`${title} - ${data.site.siteMetadata.title}`} />
-            <Header
-              postTitle={title}
-              themeSwitcher={theme}
-              sticky={true}
-              siteTitle={data.site.siteMetadata.author}
-              tableOfContents={tableOfContents}
-            />
             <TitleSection>
               <div id="top">
                 <h1 data-testid={`project-title-${title}`}>{title}</h1>
@@ -120,7 +113,6 @@ const Layout = (props: ILayoutProps) => {
                 {props.children}
               </MDXProvider>
             </LayoutContentWrapper>
-            <Footer />
           </MainWrapper>
         );
       }}

@@ -6,19 +6,30 @@ describe('Header', () => {
   beforeEach(cleanup);
 
   it('renders the header without the site title or the post title or theme switcher', () => {
-    const { queryByTestId, getByTestId } = render(<Header />);
+    const { queryByTestId } = render(<Header />);
     expect(queryByTestId('header-post-title')).toBeNull();
     expect(queryByTestId('darkmode-switch')).toBeNull();
-    expect(getByTestId('blog-link')).toBeDefined();
-    expect(getByTestId('twitter-link')).toBeDefined();
   });
 
   it('renders the header with the site title', () => {
-    const { queryByTestId, getByTestId } = render(
-      <Header siteTitle="Maxime Heckel" />
-    );
+    const { queryByTestId } = render(<Header siteTitle="Maxime Heckel" />);
     expect(queryByTestId('header-post-title')).toBeNull();
     expect(queryByTestId('darkmode-switch')).toBeNull();
+  });
+
+  it('renders the header with links', () => {
+    // tslint:disable-next-line:one-variable-per-declaration
+    const Links = () => (
+      <React.Fragment>
+        <a href="/" data-testid="blog-link">
+          Blog
+        </a>
+        <a href="/" data-testid="twitter-link">
+          Twitter
+        </a>
+      </React.Fragment>
+    );
+    const { getByTestId } = render(<Header links={<Links />} />);
     expect(getByTestId('blog-link')).toBeDefined();
     expect(getByTestId('twitter-link')).toBeDefined();
   });
@@ -29,8 +40,6 @@ describe('Header', () => {
     );
     expect(queryByTestId('header-post-title')).toBeNull();
     expect(getByTestId('darkmode-switch')).toBeDefined();
-    expect(getByTestId('blog-link')).toBeDefined();
-    expect(getByTestId('twitter-link')).toBeDefined();
   });
 
   it('clicking on the theme switcher calls the toggle dark function', () => {
