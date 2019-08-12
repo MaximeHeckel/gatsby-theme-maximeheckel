@@ -7,12 +7,9 @@ import Seo from '../components/Seo';
 import MainWrapper from './MainWrapper';
 
 const LayoutContentWrapper = styled.div`
-  @media (max-width: 700px) {
-    padding: 0 0px 20px 0px;
-  }
   margin: 0 auto;
-  max-width: 1020px;
-  padding: 0px 0px 20px 0px;
+  max-width: ${props => (props.type === 'blogPost' ? '735px' : '1020px')};
+  padding: 30px 0px 20px 0px;
   color: ${props => props.theme.fontColor};
   p,
   ul {
@@ -41,7 +38,9 @@ interface ILayoutProps {
   pageContext: {
     frontmatter: {
       title: string;
-      subtitle: string;
+      subtitle?: string;
+      description?: string;
+      type?: string;
     };
     tableOfContents?: {
       items: Array<{ url: string; title: string }>;
@@ -70,39 +69,46 @@ const Layout = (props: ILayoutProps) => {
       `}
       render={data => {
         const { frontmatter, cover, tableOfContents } = props.pageContext;
-        const { title, subtitle } = frontmatter;
+        const { title, subtitle, description, type } = frontmatter;
         const headerProps = {
           postTitle: title,
           siteTitle: data.site.siteMetadata.author,
           sticky: true,
           tableOfContents,
         };
+
         return (
           <MainWrapper footer={true} header={true} headerProps={headerProps}>
-            <Seo title={`${title} - ${data.site.siteMetadata.title}`} />
+            <Seo
+              title={`${title} - ${data.site.siteMetadata.title}`}
+              desc={subtitle || description}
+              article={type === 'blogPost'}
+            />
             <TitleSection>
               <div id="top">
                 <h1 data-testid={`project-title-${title}`}>{title}</h1>
-                <h2>{subtitle}</h2>
+                <h2>{subtitle || description}</h2>
               </div>
             </TitleSection>
-            <div
-              style={{
-                margin: '0 auto',
-                maxHeight: '600px',
-                maxWidth: '1020px',
-              }}
-            >
-              <Img
-                imgStyle={{
-                  borderRadius: '4px',
+            {cover ? (
+              <div
+                style={{
+                  margin: '0 auto',
                   maxHeight: '600px',
-                  minHeight: '100px',
+                  maxWidth: '1020px',
                 }}
-                fluid={cover.childImageSharp.fluid}
-              />
-            </div>
-            <LayoutContentWrapper>
+              >
+                <Img
+                  imgStyle={{
+                    borderRadius: '4px',
+                    maxHeight: '600px',
+                    minHeight: '100px',
+                  }}
+                  fluid={cover.childImageSharp.fluid}
+                />
+              </div>
+            ) : null}
+            <LayoutContentWrapper type={type}>
               <MDXProvider
                 components={{
                   a: (aProps: any) => (

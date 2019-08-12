@@ -1,3 +1,5 @@
+const path = require('path');
+
 module.exports = {
   plugins: [
     `gatsby-plugin-react-helmet`,
@@ -14,7 +16,7 @@ module.exports = {
             resolve: 'gatsby-remark-images',
             options: {
               maxWidth: 800,
-              sizeByPixelDensity: true,
+              // sizeByPixelDensity: true,
             },
           },
           {
@@ -24,6 +26,7 @@ module.exports = {
             },
           },
         ],
+        plugins: ['gatsby-remark-images'],
       },
     },
     `gatsby-transformer-sharp`,
@@ -32,6 +35,12 @@ module.exports = {
       resolve: 'gatsby-plugin-typography',
       options: {
         pathToConfigModule: './src/utils/typography',
+      },
+    },
+    {
+      resolve: `gatsby-plugin-page-creator`,
+      options: {
+        path: path.resolve(__dirname, `src/pages`),
       },
     },
     'gatsby-plugin-emotion',
