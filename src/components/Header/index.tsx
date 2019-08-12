@@ -77,9 +77,20 @@ const Sun = () => (
 );
 
 const Title = styled.h2`
+  @media (max-width: 900px) {
+    max-width: 400px;
+  }
+
+  @media (max-width: 800px) {
+    max-width: 300px;
+  }
+
   display: block;
   margin: 0;
   margin-left: 24px;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
 
   a {
     text-decoration: none;
