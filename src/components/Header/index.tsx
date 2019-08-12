@@ -85,6 +85,10 @@ const Title = styled.h2`
     max-width: 300px;
   }
 
+  @media (max-width: 400px) {
+    max-width: 175px;
+  }
+
   display: block;
   margin: 0;
   margin-left: 24px;
@@ -98,42 +102,29 @@ const Title = styled.h2`
 `;
 
 const HeaderWrapper = styled.div`
-  max-width: 880px;
-  position: relative;
+  background: ${props => props.theme.backgroundColor};
+  transition: ${props => props.theme.transitionTime}s;
+  width: 100%;
+  height: ${props => (props.sticky && props.slim ? '85px ' : '120px')};
+  position: ${props => (props.sticky ? 'fixed' : 'inherit')};
+  z-index: 999;
+  ${props => (props.slim ? `box-shadow: ${props.theme.boxShadow};` : '')}
 `;
 
 const HeaderContent = styled.div`
   @media (max-width: 700px) {
-    ${props =>
-      props.sticky
-        ? `
-      left: 30px;
-      right: 30px;`
-        : ''}
+    padding-left: 30px;
+    padding-right: 30px;
   }
 
-  height: ${props => (props.sticky && props.slim ? '85px ' : '120px')};
-  transition: ${props => props.theme.transitionTime}s;
-  background: ${props => props.theme.backgroundColor};
-  position: ${props => (props.sticky ? 'fixed' : 'inherit')};
+  padding-left: 70px;
+  padding-right: 70px;
   margin: 0 auto;
-  max-width: inherit;
+  height: inherit;
+  max-width: 1020px;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  z-index: 999;
-
-  ${props =>
-    props.sticky
-      ? `
-    left: 70px;
-    right: 70px;`
-      : ''}
-
-  ${props =>
-    props.sticky && props.slim
-      ? `border-bottom: 1px solid ${props.theme.borderColor}`
-      : ''}
 `;
 
 const PortfolioLink = styled.div`
@@ -226,8 +217,12 @@ const Header = (props: IHeaderProps) => {
 
   return (
     <React.Fragment>
-      <HeaderWrapper data-testid="header">
-        <HeaderContent slim={headerState} sticky={sticky || false}>
+      <HeaderWrapper
+        data-testid="header"
+        slim={headerState}
+        sticky={sticky || false}
+      >
+        <HeaderContent>
           <div
             style={{ display: 'flex', alignItems: 'center' }}
             data-testid="header-site-title"
@@ -248,7 +243,9 @@ const Header = (props: IHeaderProps) => {
             ) : null}
           </div>
           <div style={{ display: 'flex' }}>
-            <PortfolioLink show={siteTitle === ''}>{links}</PortfolioLink>
+            {links ? (
+              <PortfolioLink show={siteTitle === ''}>{links}</PortfolioLink>
+            ) : null}
             {themeSwitcher && Object.keys(themeSwitcher).length > 0 ? (
               <label data-testid="darkmode-switch" htmlFor="darkmode-switch">
                 <Switch

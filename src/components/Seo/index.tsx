@@ -23,14 +23,15 @@ const query = graphql`
 `;
 
 interface ISEOProps {
-  title?: string | undefined;
-  desc?: string | undefined;
-  banner?: string | undefined;
-  pathname?: string | undefined;
   article?: boolean;
+  banner?: string | undefined;
+  date?: string | undefined;
+  desc?: string | undefined;
+  pathname?: string | undefined;
+  title?: string | undefined;
 }
 
-const SEO = ({ title, desc, banner, pathname, article }: ISEOProps) => (
+const SEO = ({ title, desc, banner, pathname, article, date }: ISEOProps) => (
   <StaticQuery
     query={query}
     render={({
@@ -53,7 +54,7 @@ const SEO = ({ title, desc, banner, pathname, article }: ISEOProps) => (
       },
     }) => {
       const seo = {
-        description: defaultDescription || desc,
+        description: desc || defaultDescription,
         image:
           banner || defaultBanner
             ? `${siteUrl}${banner || defaultBanner}`
@@ -85,7 +86,7 @@ const SEO = ({ title, desc, banner, pathname, article }: ISEOProps) => (
               name: author,
             },
             dateModified: buildTime,
-            datePublished: buildTime,
+            datePublished: date || buildTime,
             description: seo.description,
             headline: title,
             image: {

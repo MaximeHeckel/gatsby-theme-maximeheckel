@@ -1,1 +1,1 @@
-export { wrapRootElement } from "./src/context/ThemeProvider";
+export { wrapRootElement } from './src/context/ThemeProvider';

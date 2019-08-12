@@ -43,16 +43,16 @@ const MainWrapper = ({
 }: IMainWrapperProps) => {
   const theme = useTheme();
   return (
-    <LayoutWrapper
-      data-testid={theme.dark ? 'darkmode' : 'lightmode'}
-      {...rest}
-    >
-      <Layout>
-        {header ? <Header themeSwitcher={theme} {...headerProps} /> : null}
-        {children}
-        {footer ? <Footer /> : null}
-      </Layout>
-    </LayoutWrapper>
+    <React.Fragment>
+      {header ? <Header themeSwitcher={theme} {...headerProps} /> : null}
+      <LayoutWrapper
+        data-testid={theme.dark ? 'darkmode' : 'lightmode'}
+        {...rest}
+      >
+        <Layout>{children}</Layout>
+      </LayoutWrapper>
+      {footer ? <Footer /> : null}
+    </React.Fragment>
   );
 };
 

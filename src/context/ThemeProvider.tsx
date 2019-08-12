@@ -1,3 +1,4 @@
+import 'prism-theme-night-owl';
 import React from 'react';
 import GlobalStyles from '../components/GlobalStyles';
 import { ThemeProvider } from './ThemeContext';

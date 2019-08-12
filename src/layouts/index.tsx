@@ -15,6 +15,16 @@ const LayoutContentWrapper = styled.div`
   ul {
     font-weight: 500;
   }
+
+  figcaption {
+    font-size: 14px;
+    font-style: italic;
+    text-align: center;
+  }
+
+  twitter-widget {
+    margin: 0 auto;
+  }
 `;
 
 const TitleSection = styled.div`
@@ -69,7 +79,7 @@ const Layout = (props: ILayoutProps) => {
       `}
       render={data => {
         const { frontmatter, cover, tableOfContents } = props.pageContext;
-        const { title, subtitle, description, type } = frontmatter;
+        const { title, subtitle, description, type, date } = frontmatter;
         const headerProps = {
           postTitle: title,
           siteTitle: data.site.siteMetadata.author,
@@ -82,6 +92,7 @@ const Layout = (props: ILayoutProps) => {
             <Seo
               title={`${title} - ${data.site.siteMetadata.title}`}
               desc={subtitle || description}
+              date={date}
               article={type === 'blogPost'}
             />
             <TitleSection>
@@ -94,14 +105,14 @@ const Layout = (props: ILayoutProps) => {
               <div
                 style={{
                   margin: '0 auto',
-                  maxHeight: '600px',
+                  maxHeight: '800px',
                   maxWidth: '1020px',
                 }}
               >
                 <Img
                   imgStyle={{
                     borderRadius: '4px',
-                    maxHeight: '600px',
+                    maxHeight: '800px',
                     minHeight: '100px',
                   }}
                   fluid={cover.childImageSharp.fluid}

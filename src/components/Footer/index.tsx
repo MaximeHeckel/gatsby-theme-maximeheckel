@@ -9,14 +9,22 @@ const HR = styled.hr`
 
 const FooterBlock = styled.div`
   background: ${props => props.theme.backgroundColor};
+  transition: ${props => props.theme.transitionTime}s;
+  height: 100px;
+  width: 100%;
 `;
 
 const FooterWrapper = styled.div`
-  width: 100%;
+  @media (max-width: 700px) {
+    padding-left: 30px;
+    padding-right: 30px;
+  }
+
+  padding-left: 70px;
+  padding-right: 70px;
   max-width: 1020px;
 
   color: ${props => props.theme.fontColor};
-  height: 100px;
   margin: 0 auto;
   a {
     color: inherit;
