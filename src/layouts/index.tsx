@@ -3,6 +3,7 @@ import { MDXProvider } from '@mdx-js/react';
 import { graphql, StaticQuery } from 'gatsby';
 import Img, { FluidObject } from 'gatsby-image';
 import React, { ReactNode } from 'react';
+import ProgressBar from '../components/ProgressBar';
 import Seo from '../components/Seo';
 import MainWrapper from './MainWrapper';
 
@@ -37,7 +38,7 @@ const TitleSection = styled.div`
   }
 
   margin: 0 auto;
-  max-width: 1020px;
+  max-width: ${props => (props.type === 'blogPost' ? '735px' : '1020px')};
   display: flex;
   align-items: center;
   color: ${props => props.theme.fontColor};
@@ -84,8 +85,9 @@ const Layout = (props: ILayoutProps) => {
           postTitle: title,
           siteTitle: data.site.siteMetadata.author,
           sticky: true,
-          tableOfContents,
+          // tableOfContents,
         };
+        const progressBarTarget = React.createRef();
 
         return (
           <MainWrapper footer={true} header={true} headerProps={headerProps}>
@@ -95,7 +97,7 @@ const Layout = (props: ILayoutProps) => {
               date={date}
               article={type === 'blogPost'}
             />
-            <TitleSection>
+            <TitleSection type={type}>
               <div id="top">
                 <h1 data-testid={`project-title-${title}`}>{title}</h1>
                 <h2>{subtitle || description}</h2>
@@ -119,17 +121,23 @@ const Layout = (props: ILayoutProps) => {
                 />
               </div>
             ) : null}
-            <LayoutContentWrapper type={type}>
-              <MDXProvider
-                components={{
-                  a: (aProps: any) => (
-                    <a {...aProps} style={{ color: 'inherit' }} />
-                  ),
-                }}
-              >
-                {props.children}
-              </MDXProvider>
-            </LayoutContentWrapper>
+            <ProgressBar
+              tableOfContents={tableOfContents}
+              target={progressBarTarget}
+            />
+            <div ref={progressBarTarget}>
+              <LayoutContentWrapper type={type}>
+                <MDXProvider
+                  components={{
+                    a: (aProps: any) => (
+                      <a {...aProps} style={{ color: 'inherit' }} />
+                    ),
+                  }}
+                >
+                  {props.children}
+                </MDXProvider>
+              </LayoutContentWrapper>
+            </div>
           </MainWrapper>
         );
       }}

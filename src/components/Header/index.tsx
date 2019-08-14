@@ -1,19 +1,9 @@
 import styled from '@emotion/styled';
-import { withTheme } from 'emotion-theming';
 import { Link } from 'gatsby';
 import React from 'react';
 import AnchorLink from 'react-anchor-link-smooth-scroll';
 import Switch from 'react-switch';
 import Logo from '../Logo';
-
-// tslint:disable-next-line:interface-over-type-literal
-type TableOfContents = {
-  items: Array<{ url: string; title: string }>;
-};
-
-interface ITableOfContent {
-  tableOfContents?: TableOfContents;
-}
 
 interface IHeaderProps {
   links?: JSX.Element[] | JSX.Element;
@@ -24,7 +14,6 @@ interface IHeaderProps {
     dark: boolean;
     toggleDark: () => void;
   };
-  tableOfContents?: TableOfContents;
 }
 
 // Icons from: https://feathericons.com/
@@ -95,6 +84,7 @@ const Title = styled.h2`
   overflow: hidden;
   white-space: nowrap;
   text-overflow: ellipsis;
+  color: ${props => props.theme.fontColor};
 
   a {
     text-decoration: none;
@@ -146,50 +136,6 @@ const PortfolioLink = styled.div`
   }
 `;
 
-const TableOfContentsWrapper = styled.ul`
-  @media (max-width: 1350px) {
-    display: none;
-  }
-
-  position: fixed;
-  top: 100px;
-  left: 20px;
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  justify-content: space-evenly;
-  background: ${props => props.theme.colors.blue};
-  margin: 0;
-  width: 200px;
-  height: 200px;
-  border-radius: 4px;
-  padding-left: 30px;
-
-  li {
-    list-style-type: none;
-    margin-bottom: 0;
-    a {
-      color: white;
-      text-decoration: none;
-    }
-  }
-`;
-
-const TableOfContents = ({ tableOfContents }: ITableOfContent) =>
-  tableOfContents && tableOfContents.items ? (
-    <TableOfContentsWrapper data-testid="table-of-contents">
-      {tableOfContents.items.map(item => {
-        return (
-          <li key={item.url}>
-            <AnchorLink offset="150" href={item.url}>
-              {item.title}
-            </AnchorLink>
-          </li>
-        );
-      })}
-    </TableOfContentsWrapper>
-  ) : null;
-
 const setHeaderStateAfterScroll = (offset: number = 0) => {
   const [headerState, setHeaderState] = React.useState(false);
   React.useEffect(() => {
@@ -210,64 +156,58 @@ const Header = (props: IHeaderProps) => {
     themeSwitcher,
     siteTitle = '',
     sticky = false,
-    tableOfContents,
   } = props;
 
   const headerState = setHeaderStateAfterScroll(150);
 
   return (
-    <React.Fragment>
-      <HeaderWrapper
-        data-testid="header"
-        slim={headerState}
-        sticky={sticky || false}
-      >
-        <HeaderContent>
-          <div
-            style={{ display: 'flex', alignItems: 'center' }}
-            data-testid="header-site-title"
-          >
-            <Link to="/">
-              <Logo
-                aria-label={siteTitle}
-                alt={`${siteTitle}'s logo`}
-                size={headerState && sticky ? 45 : 65}
+    <HeaderWrapper
+      data-testid="header"
+      slim={headerState}
+      sticky={sticky || false}
+    >
+      <HeaderContent>
+        <div
+          style={{ display: 'flex', alignItems: 'center' }}
+          data-testid="header-site-title"
+        >
+          <Link to="/">
+            <Logo
+              aria-label={siteTitle}
+              alt={`${siteTitle}'s logo`}
+              size={headerState && sticky ? 45 : 65}
+            />
+          </Link>
+          {headerState && postTitle !== '' ? (
+            <Title data-testid="header-post-title">
+              <AnchorLink offset="150" href="#top">
+                {postTitle}
+              </AnchorLink>
+            </Title>
+          ) : null}
+        </div>
+        <div style={{ display: 'flex' }}>
+          {links ? (
+            <PortfolioLink show={siteTitle === ''}>{links}</PortfolioLink>
+          ) : null}
+          {themeSwitcher && Object.keys(themeSwitcher).length > 0 ? (
+            <label data-testid="darkmode-switch" htmlFor="darkmode-switch">
+              <Switch
+                aria-label="Switch between dark and light mode"
+                tabIndex={0}
+                onChange={themeSwitcher.toggleDark}
+                checked={themeSwitcher.dark}
+                id="darkmode-switch"
+                onColor="#196FD8"
+                uncheckedIcon={<Sun />}
+                checkedIcon={<Moon />}
               />
-            </Link>
-            {headerState && postTitle !== '' ? (
-              <Title data-testid="header-post-title">
-                <AnchorLink offset="150" href="#top">
-                  {postTitle}
-                </AnchorLink>
-              </Title>
-            ) : null}
-          </div>
-          <div style={{ display: 'flex' }}>
-            {links ? (
-              <PortfolioLink show={siteTitle === ''}>{links}</PortfolioLink>
-            ) : null}
-            {themeSwitcher && Object.keys(themeSwitcher).length > 0 ? (
-              <label data-testid="darkmode-switch" htmlFor="darkmode-switch">
-                <Switch
-                  aria-label="Switch between dark and light mode"
-                  tabIndex={0}
-                  onChange={themeSwitcher.toggleDark}
-                  checked={themeSwitcher.dark}
-                  id="darkmode-switch"
-                  onColor="#196FD8"
-                  uncheckedIcon={<Sun />}
-                  checkedIcon={<Moon />}
-                />
-              </label>
-            ) : null}
-          </div>
-        </HeaderContent>
-      </HeaderWrapper>
-      {headerState && postTitle !== '' ? (
-        <TableOfContents tableOfContents={tableOfContents} />
-      ) : null}
-    </React.Fragment>
+            </label>
+          ) : null}
+        </div>
+      </HeaderContent>
+    </HeaderWrapper>
   );
 };
 
-export default withTheme(Header);
+export default Header;
