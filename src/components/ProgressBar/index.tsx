@@ -2,10 +2,25 @@ import styled from '@emotion/styled';
 import React from 'react';
 import AnchorLink from 'react-anchor-link-smooth-scroll';
 
-const Wrapper = styled('div')`
-  @media (max-width: 1250px) {
-    left: 100px;
+const ProgressBar = styled('div')`
+  width: 1px;
+  background-color: ${props => props.theme.fontColor};
+`;
+
+const ProgressBarWrapper = styled('div')`
+  opacity: ${props => (props.readingProgress === 100 ? '0' : '0.6')};
+  transition: ${props => props.theme.transitionTime}s;
+  height: calc(88vh - 40px);
+  max-height: 425px;
+  width: 1px;
+  background-color: rgba(8, 8, 11, 0.3);
+
+  ${ProgressBar} {
+    height: ${props => props.readingProgress}%;
   }
+`;
+
+const Wrapper = styled('div')`
   @media (max-width: 1100px) {
     left: 10px;
   }
@@ -13,13 +28,13 @@ const Wrapper = styled('div')`
   position: fixed;
   top: 200px;
   display: flex;
-  left: ${props => (props.showTableOfContents ? '30px' : '100px')};
+  left: 30px;
   ul {
     @media (max-width: 1250px) {
       display: none;
     }
     transition: ${props => props.theme.transitionTime}s;
-    opacity: ${props => (props.showTableOfContents ? '0.2' : '0')};
+    opacity: ${props => (props.showTableOfContents ? '0.3' : '0')};
     max-width: 200px;
     display: flex;
     flex-direction: column;
@@ -39,19 +54,6 @@ const Wrapper = styled('div')`
       text-decoration: none;
     }
   }
-`;
-
-const ProgressBarWrapper = styled('div')`
-  opacity: 0.6;
-  height: calc(88vh - 40px);
-  max-height: 425px;
-  width: 1px;
-  background-color: rgba(8, 8, 11, 0.3);
-`;
-
-const ProgressBar = styled('div')`
-  width: 1px;
-  background-color: ${props => props.theme.fontColor};
 `;
 
 const ReadingProgress = ({ tableOfContents, target }) => {
@@ -86,21 +88,23 @@ const ReadingProgress = ({ tableOfContents, target }) => {
   });
 
   return (
-    <Wrapper showTableOfContents={readingProgress > 7 && readingProgress < 90}>
-      <ProgressBarWrapper>
-        <ProgressBar style={{ height: `${readingProgress}%` }} />
+    <Wrapper showTableOfContents={readingProgress > 7 && readingProgress < 100}>
+      <ProgressBarWrapper readingProgress={readingProgress}>
+        <ProgressBar />
       </ProgressBarWrapper>
-      <ul>
-        {tableOfContents.items.map(item => {
-          return (
-            <li key={item.url}>
-              <AnchorLink offset="150" href={item.url}>
-                {item.title}
-              </AnchorLink>
-            </li>
-          );
-        })}
-      </ul>
+      {tableOfContents && tableOfContents.items.length > 0 ? (
+        <ul>
+          {tableOfContents.items.map(item => {
+            return (
+              <li key={item.url}>
+                <AnchorLink offset="150" href={item.url}>
+                  {item.title}
+                </AnchorLink>
+              </li>
+            );
+          })}
+        </ul>
+      ) : null}
     </Wrapper>
   );
 };

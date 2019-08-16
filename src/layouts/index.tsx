@@ -9,13 +9,9 @@ import MainWrapper from './MainWrapper';
 
 const LayoutContentWrapper = styled.div`
   margin: 0 auto;
-  max-width: ${props => (props.type === 'blogPost' ? '735px' : '1020px')};
+  max-width: ${props => (props.type === 'blogPost' ? '700px' : '1020px')};
   padding: 30px 0px 20px 0px;
   color: ${props => props.theme.fontColor};
-  p,
-  ul {
-    font-weight: 500;
-  }
 
   figcaption {
     font-size: 14px;
@@ -38,11 +34,15 @@ const TitleSection = styled.div`
   }
 
   margin: 0 auto;
-  max-width: ${props => (props.type === 'blogPost' ? '735px' : '1020px')};
+  max-width: ${props => (props.type === 'blogPost' ? '700px' : '1020px')};
   display: flex;
   align-items: center;
   color: ${props => props.theme.fontColor};
   padding: 200px 0px 50px 0px;
+
+  p {
+    color: #73737d;
+  }
 `;
 
 interface ILayoutProps {
@@ -52,10 +52,12 @@ interface ILayoutProps {
       subtitle?: string;
       description?: string;
       type?: string;
+      date?: string;
     };
     tableOfContents?: {
       items: Array<{ url: string; title: string }>;
     };
+    timeToRead: number;
     cover: {
       childImageSharp: {
         fluid: FluidObject;
@@ -64,6 +66,15 @@ interface ILayoutProps {
   };
   children: ReactNode;
 }
+
+const TwitterPopUpBox = styled('div')`
+  position: fixed;
+  height: 400px;
+  width: 400px;
+  background: ${props => props.theme.backgroundColor};
+  box-shadow: ${props => props.theme.boxShadow};
+  padding: 15px;
+`;
 
 const Layout = (props: ILayoutProps) => {
   return (
@@ -79,15 +90,20 @@ const Layout = (props: ILayoutProps) => {
         }
       `}
       render={data => {
-        const { frontmatter, cover, tableOfContents } = props.pageContext;
+        const {
+          frontmatter,
+          cover,
+          tableOfContents,
+          timeToRead,
+        } = props.pageContext;
         const { title, subtitle, description, type, date } = frontmatter;
         const headerProps = {
           postTitle: title,
           siteTitle: data.site.siteMetadata.author,
           sticky: true,
-          // tableOfContents,
         };
         const progressBarTarget = React.createRef();
+        const parsedDate = new Date(Date.parse(date));
 
         return (
           <MainWrapper footer={true} header={true} headerProps={headerProps}>
@@ -101,6 +117,12 @@ const Layout = (props: ILayoutProps) => {
               <div id="top">
                 <h1 data-testid={`project-title-${title}`}>{title}</h1>
                 <h2>{subtitle || description}</h2>
+                {date || timeToRead ? (
+                  <p>
+                    {date ? parsedDate.toDateString() : null} -{' '}
+                    {timeToRead ? `${timeToRead} min read` : null}
+                  </p>
+                ) : null}
               </div>
             </TitleSection>
             {cover ? (

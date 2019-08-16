@@ -1,7 +1,7 @@
 {
   "name": "gatsby-theme-maximeheckel",
   "description": "Gatsby theme for maximeheckel.com and other consumer gatsby projects",
-  "version": "0.1.13",
+  "version": "0.1.14",
   "main": "index.js",
   "author": "Maxime Heckel <hello@maximeheckel.com>",
   "license": "MIT",
@@ -38,7 +38,6 @@
     "prismjs-material-theme": "^1.0.0",
     "react-anchor-link-smooth-scroll": "^1.0.11",
     "react-helmet": "^5.2.0",
-    "react-switch": "^4.0.1",
     "remark-toc": "^5.1.1"
   },
   "devDependencies": {

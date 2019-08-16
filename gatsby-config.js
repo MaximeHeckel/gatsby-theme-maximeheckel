@@ -24,6 +24,12 @@ module.exports = {
           'gatsby-remark-embedder',
           'gatsby-remark-embed-gist',
           {
+            resolve: 'gatsby-remark-autolink-headers',
+            options: {
+              icon: `<svg style="width: 0px; height: 0px;"></svg>`,
+            },
+          },
+          {
             resolve: `gatsby-remark-prismjs`,
             options: {
               // Class prefix for <pre> tags containing syntax highlighting;
@@ -75,12 +81,6 @@ module.exports = {
                   },
                 },
               ],
-            },
-          },
-          {
-            resolve: 'gatsby-remark-autolink-headers',
-            options: {
-              icon: `<svg style="width: 0px; height: 0px;"></svg>`,
             },
           },
         ],
