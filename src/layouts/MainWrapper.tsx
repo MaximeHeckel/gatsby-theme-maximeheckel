@@ -4,27 +4,6 @@ import Footer from '../components/Footer';
 import Header from '../components/Header';
 import { useTheme } from '../context/ThemeContext';
 
-const LayoutWrapper = styled.div`
-  transition: ${props => props.theme.transitionTime}s;
-  background: ${props => props.theme.backgroundColor};
-`;
-
-const Layout = styled.div`
-  @media (max-width: 700px) {
-    padding: 0px 30px 0px 30px;
-  }
-  margin: 0 auto;
-  max-width: 1020px;
-  padding: 0px 70px 0px 70px;
-  color: ${props => props.theme.fontColor};
-
-  pre {
-    border-radius: 4px;
-    background-color: #0f111b;
-    color: #8e93a3;
-  }
-`;
-
 interface IMainWrapperProps {
   children: ReactNode;
   footer?: boolean;
@@ -48,6 +27,7 @@ const MainWrapper = ({
   ...rest
 }: IMainWrapperProps) => {
   const theme = useTheme();
+
   return (
     <React.Fragment>
       {header ? <Header themeSwitcher={theme} {...headerProps} /> : null}
@@ -63,3 +43,24 @@ const MainWrapper = ({
 };
 
 export default MainWrapper;
+
+const LayoutWrapper = styled.div`
+  transition: ${props => props.theme.transitionTime}s;
+  background: ${props => props.theme.backgroundColor};
+`;
+
+const Layout = styled.div`
+  @media (max-width: 700px) {
+    padding: 0px 30px 0px 30px;
+  }
+  margin: 0 auto;
+  max-width: 1020px;
+  padding: 0px 70px 0px 70px;
+  color: ${props => props.theme.fontColor};
+
+  pre {
+    border-radius: 4px;
+    background-color: #0f111b;
+    color: #8e93a3;
+  }
+`;

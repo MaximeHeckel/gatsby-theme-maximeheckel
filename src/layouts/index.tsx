@@ -1,49 +1,11 @@
 import styled from '@emotion/styled';
-import { MDXProvider } from '@mdx-js/react';
 import { graphql, StaticQuery } from 'gatsby';
 import Img, { FluidObject } from 'gatsby-image';
 import React, { ReactNode } from 'react';
+import MDX from '../components/MDX';
 import ProgressBar from '../components/ProgressBar';
 import Seo from '../components/Seo';
 import MainWrapper from './MainWrapper';
-
-const LayoutContentWrapper = styled.div`
-  margin: 0 auto;
-  max-width: ${props => (props.type === 'blogPost' ? '700px' : '1020px')};
-  padding: 30px 0px 20px 0px;
-  color: ${props => props.theme.fontColor};
-
-  figcaption {
-    font-size: 14px;
-    font-style: italic;
-    text-align: center;
-  }
-
-  twitter-widget {
-    margin: 0 auto;
-  }
-`;
-
-const TitleSection = styled.div`
-  @media (max-width: 700px) {
-    padding: 200px 0px 50px 0px;
-
-    h2 {
-      line-height: 34px;
-    }
-  }
-
-  margin: 0 auto;
-  max-width: ${props => (props.type === 'blogPost' ? '700px' : '1020px')};
-  display: flex;
-  align-items: center;
-  color: ${props => props.theme.fontColor};
-  padding: 200px 0px 50px 0px;
-
-  p {
-    color: #73737d;
-  }
-`;
 
 interface ILayoutProps {
   pageContext: {
@@ -66,15 +28,6 @@ interface ILayoutProps {
   };
   children: ReactNode;
 }
-
-const TwitterPopUpBox = styled('div')`
-  position: fixed;
-  height: 400px;
-  width: 400px;
-  background: ${props => props.theme.backgroundColor};
-  box-shadow: ${props => props.theme.boxShadow};
-  padding: 15px;
-`;
 
 const Layout = (props: ILayoutProps) => {
   return (
@@ -113,53 +66,34 @@ const Layout = (props: ILayoutProps) => {
               date={date}
               article={type === 'blogPost'}
             />
-            <TitleSection type={type}>
-              <div id="top">
-                <h1 data-testid={`project-title-${title}`}>{title}</h1>
-                <h2>{subtitle || description}</h2>
-                {date || timeToRead ? (
-                  <p>
-                    {date ? parsedDate.toDateString() : null} -{' '}
-                    {timeToRead ? `${timeToRead} min read` : null}
-                  </p>
-                ) : null}
-              </div>
+            <TitleSection type={type} id="top">
+              <h1 data-testid={`project-title-${title}`}>{title}</h1>
+              <h2>{subtitle || description}</h2>
+              {date || timeToRead ? (
+                <p>
+                  {date ? parsedDate.toDateString() : null} -{' '}
+                  {timeToRead ? `${timeToRead} min read` : null}
+                </p>
+              ) : null}
             </TitleSection>
             {cover ? (
-              <div
-                style={{
+              <Img
+                imgStyle={{
+                  borderRadius: '4px',
                   margin: '0 auto',
                   maxHeight: '800px',
-                  maxWidth: '1020px',
+                  minHeight: '100px',
                 }}
-              >
-                <Img
-                  imgStyle={{
-                    borderRadius: '4px',
-                    maxHeight: '800px',
-                    minHeight: '100px',
-                  }}
-                  fluid={cover.childImageSharp.fluid}
-                />
-              </div>
+                fluid={cover.childImageSharp.fluid}
+              />
             ) : null}
             <ProgressBar
               tableOfContents={tableOfContents}
               target={progressBarTarget}
             />
-            <div ref={progressBarTarget}>
-              <LayoutContentWrapper type={type}>
-                <MDXProvider
-                  components={{
-                    a: (aProps: any) => (
-                      <a {...aProps} style={{ color: 'inherit' }} />
-                    ),
-                  }}
-                >
-                  {props.children}
-                </MDXProvider>
-              </LayoutContentWrapper>
-            </div>
+            <MDX ref={progressBarTarget} type={type}>
+              {props.children}
+            </MDX>
           </MainWrapper>
         );
       }}
@@ -168,3 +102,23 @@ const Layout = (props: ILayoutProps) => {
 };
 
 export default Layout;
+
+const TitleSection = styled.div`
+  @media (max-width: 700px) {
+    padding: 200px 0px 50px 0px;
+
+    h2 {
+      line-height: 34px;
+    }
+  }
+
+  margin: 0 auto;
+  max-width: ${props => (props.type === 'blogPost' ? '700px' : '1020px')};
+  align-items: center;
+  color: ${props => props.theme.fontColor};
+  padding: 200px 0px 50px 0px;
+
+  p {
+    color: #73737d;
+  }
+`;

@@ -16,6 +16,83 @@ interface IHeaderProps {
   };
 }
 
+const setHeaderStateAfterScroll = (offset: number = 0) => {
+  const [headerState, setHeaderState] = React.useState(false);
+  React.useEffect(() => {
+    const showTitle = () => setHeaderState(window.scrollY > offset);
+    window.addEventListener('scroll', showTitle);
+    return () => {
+      window.removeEventListener('scroll', showTitle);
+    };
+  });
+
+  return headerState;
+};
+
+const Header = (props: IHeaderProps) => {
+  const {
+    links,
+    postTitle = '',
+    themeSwitcher,
+    siteTitle = '',
+    sticky = false,
+  } = props;
+
+  const headerState = setHeaderStateAfterScroll(150);
+
+  return (
+    <HeaderWrapper
+      data-testid="header"
+      slim={headerState}
+      sticky={sticky || false}
+    >
+      <HeaderContent>
+        <div data-testid="header-site-title">
+          <Link to="/">
+            <Logo
+              aria-label={siteTitle}
+              alt={`${siteTitle}'s logo`}
+              size={headerState && sticky ? 45 : 65}
+            />
+          </Link>
+          {headerState && postTitle !== '' ? (
+            <Title data-testid="header-post-title">
+              <AnchorLink offset="150" href="#top">
+                {postTitle}
+              </AnchorLink>
+            </Title>
+          ) : null}
+        </div>
+        <div>
+          {links ? (
+            <CustomLinks show={siteTitle === ''}>{links}</CustomLinks>
+          ) : null}
+          {themeSwitcher && Object.keys(themeSwitcher).length > 0 ? (
+            <LightDarkSwitcher
+              data-testid="darkmode-switch"
+              htmlFor="darkmode-switch"
+              onClick={themeSwitcher.toggleDark}
+              isDark={themeSwitcher.dark}
+              aria-label={
+                themeSwitcher.dark
+                  ? 'Activate light mode'
+                  : 'Activate dark mode'
+              }
+              title={
+                themeSwitcher.dark
+                  ? 'Activate light mode'
+                  : 'Activate dark mode'
+              }
+            />
+          ) : null}
+        </div>
+      </HeaderContent>
+    </HeaderWrapper>
+  );
+};
+
+export default Header;
+
 const Title = styled.h2`
   @media (max-width: 900px) {
     max-width: 400px;
@@ -23,6 +100,7 @@ const Title = styled.h2`
 
   @media (max-width: 800px) {
     max-width: 300px;
+    margin-left: 20px;
   }
 
   @media (max-width: 400px) {
@@ -66,9 +144,14 @@ const HeaderContent = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
+
+  div {
+    display: flex;
+    align-items: center;
+  }
 `;
 
-const PortfolioLink = styled.div`
+const CustomLinks = styled.div`
   @media (max-width: 700px) {
     display: ${(props: { show: boolean }) => (props.show ? 'flex' : 'none')};
   }
@@ -86,83 +169,3 @@ const PortfolioLink = styled.div`
     margin-top: 7px;
   }
 `;
-
-const setHeaderStateAfterScroll = (offset: number = 0) => {
-  const [headerState, setHeaderState] = React.useState(false);
-  React.useEffect(() => {
-    const showTitle = () => setHeaderState(window.scrollY > offset);
-    window.addEventListener('scroll', showTitle);
-    return () => {
-      window.removeEventListener('scroll', showTitle);
-    };
-  });
-
-  return headerState;
-};
-
-const Header = (props: IHeaderProps) => {
-  const {
-    links,
-    postTitle = '',
-    themeSwitcher,
-    siteTitle = '',
-    sticky = false,
-  } = props;
-
-  const headerState = setHeaderStateAfterScroll(150);
-
-  return (
-    <HeaderWrapper
-      data-testid="header"
-      slim={headerState}
-      sticky={sticky || false}
-    >
-      <HeaderContent>
-        <div
-          style={{ display: 'flex', alignItems: 'center' }}
-          data-testid="header-site-title"
-        >
-          <Link to="/">
-            <Logo
-              aria-label={siteTitle}
-              alt={`${siteTitle}'s logo`}
-              size={headerState && sticky ? 45 : 65}
-            />
-          </Link>
-          {headerState && postTitle !== '' ? (
-            <Title data-testid="header-post-title">
-              <AnchorLink offset="150" href="#top">
-                {postTitle}
-              </AnchorLink>
-            </Title>
-          ) : null}
-        </div>
-        <div style={{ display: 'flex' }}>
-          {links ? (
-            <PortfolioLink show={siteTitle === ''}>{links}</PortfolioLink>
-          ) : null}
-          {themeSwitcher && Object.keys(themeSwitcher).length > 0 ? (
-            <LightDarkSwitcher
-              data-testid="darkmode-switch"
-              htmlFor="darkmode-switch"
-              onClick={themeSwitcher.toggleDark}
-              isDark={themeSwitcher.dark}
-              aria-label={
-                themeSwitcher.dark
-                  ? 'Activate light mode'
-                  : 'Activate dark mode'
-              }
-              title={
-                themeSwitcher.dark
-                  ? 'Activate light mode'
-                  : 'Activate dark mode'
-              }
-            />
-          ) : null}
-        </div>
-      </HeaderContent>
-    </HeaderWrapper>
-  );
-};
-
-export default Header;
