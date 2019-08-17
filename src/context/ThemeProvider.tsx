@@ -1,4 +1,3 @@
-// import 'prismjs-material-theme/css/oceanic.css';
 import React from 'react';
 import GlobalStyles from '../components/GlobalStyles';
 import { ThemeProvider } from './ThemeContext';
