@@ -57,10 +57,4 @@ const Layout = styled.div`
   max-width: 1020px;
   padding: 0px 70px 0px 70px;
   color: ${props => props.theme.fontColor};
-
-  pre {
-    border-radius: 4px;
-    background-color: #0f111b;
-    color: #8e93a3;
-  }
 `;
