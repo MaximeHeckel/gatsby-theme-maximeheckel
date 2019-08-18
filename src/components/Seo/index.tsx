@@ -56,7 +56,8 @@ const SEO = ({ title, desc, banner, pathname, article, date }: ISEOProps) => (
         description: desc || defaultDescription,
         image: banner ? `${siteUrl}${banner}` : '',
         title: title || defaultTitle,
-        url: `${siteUrl}/${`${pathname}/` || ''}`,
+        url: `${siteUrl}/${article ? 'posts' : 'projects'}/${`${pathname}` ||
+          ''}`,
       };
 
       const realPrefix = pathPrefix === '/' ? '' : pathPrefix;
