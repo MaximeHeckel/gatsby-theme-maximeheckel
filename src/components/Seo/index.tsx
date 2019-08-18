@@ -12,9 +12,7 @@ const query = graphql`
         shortName
         author
         keywords
-        siteLanguage
         siteUrl: url
-        pathPrefix
         defaultDescription: description
         twitter
       }
@@ -25,28 +23,20 @@ const query = graphql`
 interface ISEOProps {
   article?: boolean;
   banner?: string | undefined;
-  date?: string | undefined;
   desc?: string | undefined;
   pathname?: string | undefined;
   title?: string | undefined;
 }
 
-const SEO = ({ title, desc, banner, pathname, article, date }: ISEOProps) => (
+const SEO = ({ title, desc, banner, pathname, article }: ISEOProps) => (
   <StaticQuery
     query={query}
     render={({
       site: {
-        buildTime,
         siteMetadata: {
           defaultTitle,
-          titleAlt,
-          shortName,
-          author,
-          siteLanguage,
-          logo,
           siteUrl,
           keywords,
-          pathPrefix,
           defaultDescription,
           twitter,
         },
@@ -56,91 +46,36 @@ const SEO = ({ title, desc, banner, pathname, article, date }: ISEOProps) => (
         description: desc || defaultDescription,
         image: banner ? `${siteUrl}${banner}` : '',
         title: title || defaultTitle,
-        url: `${siteUrl}/${article ? 'posts' : 'projects'}/${`${pathname}` ||
-          ''}`,
+        url: `${siteUrl}/${
+          pathname ? `${article ? 'posts' : 'projects'}/${pathname}` : ''
+        }`,
       };
 
-      const realPrefix = pathPrefix === '/' ? '' : pathPrefix;
-      let schemaOrgJSONLD = [
-        {
-          '@context': 'http://schema.org',
-          '@id': siteUrl,
-          '@type': 'WebSite',
-          alternateName: titleAlt || '',
-          name: defaultTitle,
-          url: siteUrl,
-        },
-      ];
-      if (article) {
-        schemaOrgJSONLD = [
-          {
-            '@context': 'http://schema.org',
-            '@id': seo.url,
-            '@type': 'ProjectCaseStudy',
-            alternateName: titleAlt || '',
-            // @ts-ignore
-            author: {
-              '@type': 'Person',
-              name: author,
-            },
-            dateModified: buildTime,
-            datePublished: date || buildTime,
-            description: seo.description,
-            headline: title,
-            image: {
-              '@type': 'ImageObject',
-              url: seo.image,
-            },
-            isPartOf: siteUrl,
-            mainEntityOfPage: {
-              '@id': siteUrl,
-              '@type': 'WebSite',
-            },
-            name: title,
-            publisher: {
-              '@type': 'Organization',
-              logo: {
-                '@type': 'ImageObject',
-                url: siteUrl + realPrefix + logo,
-              },
-              name: author,
-            },
-            url: seo.url,
-          },
-        ];
-      }
       return (
         <Helmet title={seo.title}>
-          <html lang={siteLanguage} />
           <meta name="description" content={seo.description} />
+          <meta name="image" content={seo.image} />
+          {seo.url && <meta property="og:url" content={seo.url} />}
+          {(article ? true : null) && (
+            <meta property="og:type" content="article" />
+          )}
           <meta
             name="keywords"
             content={keywords && keywords.length > 0 ? keywords.join(`, `) : ''}
           />
-          <meta name="image" content={seo.image} />
-          <meta name="apple-mobile-web-app-title" content={shortName} />
-          <meta name="application-name" content={shortName} />
-          {/* Open Graph*/}
-          <meta property="og:url" content={seo.url} data-react-helmet="true" />
-          <meta property="og:title" content={title} data-react-helmet="true" />
-          <meta
-            property="og:description"
-            content={seo.description}
-            data-react-helmet="true"
-          />
-          {/* Twitter Card */}
-          <meta
-            name="twitter:card"
-            content={seo.image === '' ? 'summary' : 'summary_large_image'}
-          />
-          <meta name="twitter:creator" content={twitter} />
-          <meta name="twitter:title" content={title} />
-          <meta name="twitter:description" content={seo.description} />
-          <meta name="twitter:image" content={seo.image} />
-          <meta name="twitter:site" content={twitter} />
-          <script type="application/ld+json">
-            {JSON.stringify(schemaOrgJSONLD)}
-          </script>
+          {seo.title && <meta property="og:title" content={seo.title} />}
+          {seo.description && (
+            <meta property="og:description" content={seo.description} />
+          )}
+          {seo.image && <meta property="og:image" content={seo.image} />}
+          <meta name="twitter:card" content="summary_large_image" />
+          {twitter && <meta name="twitter:creator" content={twitter} />}
+          {twitter && <meta name="twitter:site" content={twitter} />}
+          {seo.title && <meta name="twitter:title" content={seo.title} />}
+          {seo.description && (
+            <meta name="twitter:description" content={seo.description} />
+          )}
+          {seo.image && <meta name="twitter:image" content={seo.image} />}
         </Helmet>
       );
     }}
