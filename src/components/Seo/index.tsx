@@ -120,9 +120,6 @@ const SEO = ({ title, desc, banner, pathname, article, date }: ISEOProps) => (
           <meta name="image" content={seo.image} />
           <meta name="apple-mobile-web-app-title" content={shortName} />
           <meta name="application-name" content={shortName} />
-          <script type="application/ld+json">
-            {JSON.stringify(schemaOrgJSONLD)}
-          </script>
           {/* Open Graph*/}
           <meta property="og:url" content={seo.url} data-react-helmet="true" />
           <meta property="og:title" content={title} data-react-helmet="true" />
@@ -141,6 +138,9 @@ const SEO = ({ title, desc, banner, pathname, article, date }: ISEOProps) => (
           <meta name="twitter:description" content={seo.description} />
           <meta name="twitter:image" content={seo.image} />
           <meta name="twitter:site" content={twitter} />
+          <script type="application/ld+json">
+            {JSON.stringify(schemaOrgJSONLD)}
+          </script>
         </Helmet>
       );
     }}
