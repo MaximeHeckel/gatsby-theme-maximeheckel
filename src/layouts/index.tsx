@@ -66,6 +66,7 @@ const Layout = (props: ILayoutProps) => {
               desc={subtitle || description}
               date={date}
               article={type === 'blogPost'}
+              banner={cover ? cover.childImageSharp.fluid.src : null}
             />
             <Hero type={type} id="top">
               <h1 data-testid={`project-title-${title}`}>{title}</h1>

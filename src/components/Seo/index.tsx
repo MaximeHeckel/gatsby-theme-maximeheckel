@@ -48,17 +48,13 @@ const SEO = ({ title, desc, banner, pathname, article, date }: ISEOProps) => (
           keywords,
           pathPrefix,
           defaultDescription,
-          defaultBanner,
           twitter,
         },
       },
     }) => {
       const seo = {
         description: desc || defaultDescription,
-        image:
-          banner || defaultBanner
-            ? `${siteUrl}${banner || defaultBanner}`
-            : `${siteUrl}`,
+        image: banner ? `${siteUrl}${banner}` : '',
         title: title || defaultTitle,
         url: `${siteUrl}${pathname || '/'}`,
       };
@@ -126,11 +122,15 @@ const SEO = ({ title, desc, banner, pathname, article, date }: ISEOProps) => (
             {JSON.stringify(schemaOrgJSONLD)}
           </script>
           {/* Twitter Card */}
-          <meta name="twitter:card" content="summary_large_image" />
+          <meta
+            name="twitter:card"
+            content={seo.image === '' ? 'summary' : 'summary_large_image'}
+          />
           <meta name="twitter:creator" content={twitter} />
-          <meta name="twitter:title" content={author} />
+          <meta name="twitter:title" content={title} />
           <meta name="twitter:description" content={seo.description} />
           <meta name="twitter:image" content={seo.image} />
+          <meta name="twitter:site" content={twitter} />
         </Helmet>
       );
     }}
