@@ -65,7 +65,6 @@ const Layout = (props: ILayoutProps) => {
             <Seo
               title={`${title} - ${data.site.siteMetadata.title}`}
               desc={subtitle || description}
-              date={date}
               article={type === 'blogPost'}
               banner={cover ? cover.childImageSharp.fluid.src : null}
               pathname={slug + '/'}
