@@ -3,6 +3,7 @@ import styled from '@emotion/styled';
 import { MDXProvider } from '@mdx-js/react';
 import React from 'react';
 import { Code } from '../Code';
+import { ColoredBlockWrapper } from '../ColoredBlock';
 
 const components = {
   a: (aProps: any) => <a {...aProps} style={{ color: 'inherit' }} />,
@@ -37,7 +38,7 @@ const PrismCSS = p => css`
     margin: 0 auto;
     padding: 15px;
     font-size: 14px;
-    margin: 15px auto 50px;
+    margin: 15px auto 15px;
     border-radius: 5px;
     background: ${p.theme.colors.prism.background};
     .token-line {
@@ -86,6 +87,10 @@ const MDXBody = styled.div`
 
   twitter-widget {
     margin: 0 auto;
+  }
+
+  ${ColoredBlockWrapper} {
+    margin-bottom: 30px;
   }
 
   ${PrismCSS}

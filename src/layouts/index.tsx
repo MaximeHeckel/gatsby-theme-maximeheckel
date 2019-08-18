@@ -5,6 +5,7 @@ import React, { ReactNode } from 'react';
 import MDX from '../components/MDX';
 import ProgressBar from '../components/ProgressBar';
 import Seo from '../components/Seo';
+import Signature from '../components/Signature';
 import MainWrapper from './MainWrapper';
 
 interface ILayoutProps {
@@ -66,7 +67,7 @@ const Layout = (props: ILayoutProps) => {
               date={date}
               article={type === 'blogPost'}
             />
-            <TitleSection type={type} id="top">
+            <Hero type={type} id="top">
               <h1 data-testid={`project-title-${title}`}>{title}</h1>
               <h2>{subtitle || description}</h2>
               {date || timeToRead ? (
@@ -75,7 +76,7 @@ const Layout = (props: ILayoutProps) => {
                   {timeToRead ? `${timeToRead} min read` : null}
                 </p>
               ) : null}
-            </TitleSection>
+            </Hero>
             {cover ? (
               <Img
                 imgStyle={{
@@ -94,6 +95,7 @@ const Layout = (props: ILayoutProps) => {
             <MDX ref={progressBarTarget} type={type}>
               {props.children}
             </MDX>
+            {type === 'blogPost' ? <Signature /> : null}
           </MainWrapper>
         );
       }}
@@ -103,7 +105,7 @@ const Layout = (props: ILayoutProps) => {
 
 export default Layout;
 
-const TitleSection = styled.div`
+const Hero = styled.div`
   @media (max-width: 700px) {
     padding: 200px 0px 50px 0px;
 

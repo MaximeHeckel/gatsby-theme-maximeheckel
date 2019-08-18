@@ -12,7 +12,7 @@ const LightDarkSwitcher = styled('div')`
       : `box-shadow: inset 8px -8px 0 0 ${p.theme.fontColor}`};
 
   transform: scale(${p => (p.isDark ? 0.55 : 1)});
-  transition: box-shadow 0.5s ease 0s, transform 0.4s ease 0.1s;
+  transition: box-shadow 0.3s ease 0s, transform 0.3s ease 0.1s;
   overflow: ${p => (p.isDark ? 'visible' : 'hidden')};
   &::before {
     content: '';
@@ -25,7 +25,7 @@ const LightDarkSwitcher = styled('div')`
     border-radius: 50%;
     transform: translate(${p => (p.isDark ? '14px, -14px' : '0, 0')});
     opacity: ${p => (p.isDark ? 0 : 1)};
-    transition: transform 0.45s ease;
+    transition: transform 0.35s ease;
   }
   &::after {
     content: '';
