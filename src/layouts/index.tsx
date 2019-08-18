@@ -16,6 +16,7 @@ interface ILayoutProps {
       description?: string;
       type?: string;
       date?: string;
+      slug: string;
     };
     tableOfContents?: {
       items: Array<{ url: string; title: string }>;
@@ -50,7 +51,7 @@ const Layout = (props: ILayoutProps) => {
           tableOfContents,
           timeToRead,
         } = props.pageContext;
-        const { title, subtitle, description, type, date } = frontmatter;
+        const { date, description, slug, subtitle, type, title } = frontmatter;
         const headerProps = {
           postTitle: title,
           siteTitle: data.site.siteMetadata.author,
@@ -67,6 +68,7 @@ const Layout = (props: ILayoutProps) => {
               date={date}
               article={type === 'blogPost'}
               banner={cover ? cover.childImageSharp.fluid.src : null}
+              pathname={slug + '/'}
             />
             <Hero type={type} id="top">
               <h1 data-testid={`project-title-${title}`}>{title}</h1>

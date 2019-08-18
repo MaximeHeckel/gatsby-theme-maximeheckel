@@ -56,8 +56,9 @@ const SEO = ({ title, desc, banner, pathname, article, date }: ISEOProps) => (
         description: desc || defaultDescription,
         image: banner ? `${siteUrl}${banner}` : '',
         title: title || defaultTitle,
-        url: `${siteUrl}${pathname || '/'}`,
+        url: `${siteUrl}/${`${pathname}/` || ''}`,
       };
+
       const realPrefix = pathPrefix === '/' ? '' : pathPrefix;
       let schemaOrgJSONLD = [
         {
@@ -121,6 +122,14 @@ const SEO = ({ title, desc, banner, pathname, article, date }: ISEOProps) => (
           <script type="application/ld+json">
             {JSON.stringify(schemaOrgJSONLD)}
           </script>
+          {/* Open Graph*/}
+          <meta property="og:url" content={seo.url} data-react-helmet="true" />
+          <meta property="og:title" content={title} data-react-helmet="true" />
+          <meta
+            property="og:description"
+            content={seo.description}
+            data-react-helmet="true"
+          />
           {/* Twitter Card */}
           <meta
             name="twitter:card"
