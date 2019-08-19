@@ -2,9 +2,11 @@ import React from 'react';
 import GlobalStyles from '../components/GlobalStyles';
 import { ThemeProvider } from './ThemeContext';
 
-export const wrapRootElement = ({ element }) => (
+const RootWrapper = ({ children }) => (
   <ThemeProvider>
     <GlobalStyles />
-    {element}
+    {children}
   </ThemeProvider>
 );
+
+export default RootWrapper;

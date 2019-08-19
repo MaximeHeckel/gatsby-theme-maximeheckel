@@ -1,6 +1,6 @@
 import { graphql, StaticQuery } from 'gatsby';
 import React from 'react';
-import { Helmet } from 'react-helmet';
+import Helmet from 'react-helmet';
 
 const query = graphql`
   query SEO {
@@ -53,7 +53,6 @@ const SEO = ({ title, desc, banner, pathname, article }: ISEOProps) => (
 
       return (
         <Helmet title={seo.title}>
-          <title>{seo.title}</title>
           <meta name="description" content={seo.description} />
           <meta name="image" content={seo.image} />
           {seo.url && <meta property="og:url" content={seo.url} />}

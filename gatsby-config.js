@@ -2,7 +2,6 @@ const path = require('path');
 
 module.exports = {
   plugins: [
-    `gatsby-plugin-react-helmet`,
     {
       resolve: 'gatsby-plugin-mdx',
       options: {
@@ -48,6 +47,7 @@ module.exports = {
       },
     },
     'gatsby-plugin-emotion',
+    'gatsby-plugin-react-helmet',
     'gatsby-plugin-twitter',
   ],
 };
