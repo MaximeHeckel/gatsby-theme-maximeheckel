@@ -52,41 +52,46 @@ export const CodeBlock = props => {
   };
 
   return (
-    <Highlight {...defaultProps} code={codeString} language={language}>
-      {({ className, tokens, getLineProps, getTokenProps }) => (
-        <pre className={className}>
-          <CopyButton onClick={() => handleCopyToClipboard(codeString)}>
-            {copied ? 'Copied' : 'Copy'}
-          </CopyButton>
-          {tokens.map((line, index) => {
-            const { className: lineClassName } = getLineProps({
-              className: '',
-              key: index,
-              line,
-            });
-            return (
-              <div key={index} className={lineClassName}>
-                <span className="number-line">{index + 1}</span>
-                {line.map((token, key) => {
-                  const { className: tokenClassName, children } = getTokenProps(
-                    {
+    <CodeSnippetWrapper>
+      <div>
+        <CopyButton onClick={() => handleCopyToClipboard(codeString)}>
+          {copied ? 'Copied' : 'Copy'}
+        </CopyButton>
+      </div>
+      <Highlight {...defaultProps} code={codeString} language={language}>
+        {({ className, tokens, getLineProps, getTokenProps }) => (
+          <pre className={className}>
+            {tokens.map((line, index) => {
+              const { className: lineClassName } = getLineProps({
+                className: '',
+                key: index,
+                line,
+              });
+              return (
+                <div key={index} className={lineClassName}>
+                  <span className="number-line">{index + 1}</span>
+                  {line.map((token, key) => {
+                    const {
+                      className: tokenClassName,
+                      children,
+                    } = getTokenProps({
                       key,
                       token,
-                    }
-                  );
+                    });
 
-                  return (
-                    <span key={key} className={tokenClassName}>
-                      {children}
-                    </span>
-                  );
-                })}
-              </div>
-            );
-          })}
-        </pre>
-      )}
-    </Highlight>
+                    return (
+                      <span key={key} className={tokenClassName}>
+                        {children}
+                      </span>
+                    );
+                  })}
+                </div>
+              );
+            })}
+          </pre>
+        )}
+      </Highlight>
+    </CodeSnippetWrapper>
   );
 };
 
@@ -99,15 +104,22 @@ export const Code = preProps => {
   }
 };
 
+const CodeSnippetWrapper = styled('div')`
+  width: 100%;
+  border-radius: 5px;
+  background: ${p => p.theme.colors.prism.background};
+  > div {
+    display: flex;
+    justify-content: flex-end;
+  }
+`;
+
 const CopyButton = styled('button')`
-  position: absolute;
-  right: 15px;
-  top: 15px;
   padding: 8px 12px 7px;
   border-radius: 5px;
   color: #6f7177;
   transition: background 0.3s ease;
-  background: rgba(255, 255, 255, 0.07);
+  background: rgba(255, 255, 255, 0.05);
   border: none;
   cursor: pointer;
 `;
