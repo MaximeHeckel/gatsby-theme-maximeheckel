@@ -20,8 +20,6 @@ module.exports = {
             },
           },
           'gatsby-remark-copy-linked-files',
-          'gatsby-remark-embedder',
-          'gatsby-remark-embed-gist',
           {
             resolve: 'gatsby-remark-autolink-headers',
             options: {

@@ -38,10 +38,6 @@ const useDarkMode = (): [
 const ThemeProvider = ({ children }: { children: ReactNode }) => {
   const [themeState, setThemeState] = useDarkMode();
 
-  if (!themeState.themeHasBeenSet) {
-    return <div />;
-  }
-
   const theme = themeState.dark ? themeDark : themeLight;
 
   const toggleDark = () => {
@@ -51,16 +47,18 @@ const ThemeProvider = ({ children }: { children: ReactNode }) => {
   };
 
   return (
-    <EmotionThemeProvider theme={theme}>
-      <ThemeContext.Provider
-        value={{
-          dark: themeState.dark,
-          toggleDark,
-        }}
-      >
-        {children}
-      </ThemeContext.Provider>
-    </EmotionThemeProvider>
+    <div style={{ display: themeState.themeHasBeenSet ? 'block' : 'none' }}>
+      <EmotionThemeProvider theme={theme}>
+        <ThemeContext.Provider
+          value={{
+            dark: themeState.dark,
+            toggleDark,
+          }}
+        >
+          {children}
+        </ThemeContext.Provider>
+      </EmotionThemeProvider>
+    </div>
   );
 };
 

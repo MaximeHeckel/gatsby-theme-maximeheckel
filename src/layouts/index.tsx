@@ -40,6 +40,7 @@ const Layout = (props: ILayoutProps) => {
             siteMetadata {
               title
               author
+              url
             }
           }
         }
@@ -57,6 +58,7 @@ const Layout = (props: ILayoutProps) => {
           siteTitle: data.site.siteMetadata.author,
           sticky: true,
         };
+
         const progressBarTarget = React.createRef();
         const parsedDate = new Date(Date.parse(date));
 
@@ -97,7 +99,9 @@ const Layout = (props: ILayoutProps) => {
             <MDX ref={progressBarTarget} type={type}>
               {props.children}
             </MDX>
-            {type === 'blogPost' ? <Signature /> : null}
+            {type === 'blogPost' ? (
+              <Signature url={`${data.site.siteMetadata.url}/posts/${slug}`} />
+            ) : null}
           </MainWrapper>
         );
       }}

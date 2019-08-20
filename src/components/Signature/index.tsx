@@ -1,12 +1,12 @@
 import React from 'react';
 import ColoredBlock from '../ColoredBlock';
 
-const Signature = () => (
+const Signature = ({ url }: { url: string }) => (
   <ColoredBlock color="#FEE7DA">
     <h4>
       If you liked this article, don't forget to share it or click{' '}
       <a
-        href={`https://mobile.twitter.com/search?q=${window.location.toString()}`}
+        href={`https://mobile.twitter.com/search?q=${url}`}
         target="_blank"
         rel="noopener noreferrer"
       >
