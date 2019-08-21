@@ -48,7 +48,7 @@ const Button = styled.button`
     content: '';
     display: block;
     position: absolute;
-    top: calc(100% + 8px);
+    top: 100%;
     left: 0;
     right: 0;
     height: 2px;
