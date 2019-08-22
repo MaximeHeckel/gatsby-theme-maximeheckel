@@ -52,7 +52,7 @@ const SEO = ({ title, desc, banner, pathname, article }: ISEOProps) => (
       };
 
       return (
-        <Helmet title={seo.title}>
+        <Helmet title={seo.title} defer={false}>
           <html lang="en" />
           <meta name="description" content={seo.description} />
           <meta name="image" content={seo.image} />
