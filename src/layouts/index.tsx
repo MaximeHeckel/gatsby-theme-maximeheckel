@@ -124,7 +124,7 @@ const Hero = styled.div`
   max-width: ${props => (props.type === 'blogPost' ? '700px' : '1020px')};
   align-items: center;
   color: ${props => props.theme.fontColor};
-  padding: 200px 0px 50px 0px;
+  padding-top: 200px;
 
   p {
     color: #73737d;
