@@ -10,8 +10,9 @@ const Signature = ({ url }: { url: string }) => (
         target="_blank"
         rel="noopener noreferrer"
       >
-        here to leave a comment discuss about it on Twitter.
-      </a>{' '}
+        here to leave a comment discuss about it on Twitter
+      </a>
+      {'. '}
       Do you have any questions, comments or simply wish to contact me
       privately? I’m always reachable on{' '}
       <a
@@ -27,9 +28,8 @@ const Signature = ({ url }: { url: string }) => (
         target="_blank"
         rel="noopener noreferrer"
       >
-        website
+        website!
       </a>
-      . Do not hesitate to contact me!
     </h4>
     <br />
     Have a wonderful day. <br />
