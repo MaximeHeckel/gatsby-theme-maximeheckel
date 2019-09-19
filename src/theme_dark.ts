@@ -44,6 +44,7 @@ const theme = {
     white,
   },
   fontColor: white,
+  overlayBackground: 'rgba(0,0,0,0.80)',
   transitionTime: 0.5,
 };
 

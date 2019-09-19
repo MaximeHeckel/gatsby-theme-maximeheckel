@@ -10,6 +10,9 @@ const GlobalStyles = withTheme((props: { theme: Theme }) => (
         color: ${props.theme.fontColor};
         text-decoration: underline;
       }
+      .lock-scroll {
+        overflow: hidden !important;
+      }
     `}
   />
 ));
