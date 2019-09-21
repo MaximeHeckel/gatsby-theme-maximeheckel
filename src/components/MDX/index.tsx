@@ -59,8 +59,8 @@ const PrismCSS = p => css`
       color: #dcd9e6;
     }
     .token-line.highlight-line {
-      margin: 0 -32px;
-      padding: 0 32px;
+      margin: 0px -14px;
+      padding: 0px 14px;
       background: ${p.theme.colors.prism.highlight};
       border-left: 3px solid ${p.theme.colors.prism.highlightBorder};
     }

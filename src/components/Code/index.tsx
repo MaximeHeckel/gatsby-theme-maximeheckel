@@ -39,8 +39,29 @@ const preToCodeBlock = preProps => {
   }
 };
 
+const RE = /{([\d,-]+)}/;
+
+const calculateLinesToHighlight = meta => {
+  if (!RE.test(meta)) {
+    return () => false;
+  } else {
+    const lineNumbers = RE.exec(meta)[1]
+      .split(',')
+      .map(v => v.split('-').map(val => parseInt(val, 10)));
+    return index => {
+      const lineNumber = index + 1;
+      const inRange = lineNumbers.some(([start, end]) =>
+        end ? lineNumber >= start && lineNumber <= end : lineNumber === start
+      );
+      return inRange;
+    };
+  }
+};
+
+const hasTitle = {};
+
 export const CodeBlock = props => {
-  const { codeString, language } = props;
+  const { codeString, language, metastring } = props;
   const [copied, hasClickedCopy] = React.useState(false);
   const handleCopyToClipboard = (code: string) => {
     copyToClipboard(code);
@@ -51,9 +72,12 @@ export const CodeBlock = props => {
     }, 2000);
   };
 
+  const shouldHighlightLine = calculateLinesToHighlight(metastring);
+
   return (
     <CodeSnippetWrapper>
       <div>
+        <div />
         <CopyButton onClick={() => handleCopyToClipboard(codeString)}>
           {copied ? 'Copied' : 'Copy'}
         </CopyButton>
@@ -63,7 +87,7 @@ export const CodeBlock = props => {
           <pre className={className}>
             {tokens.map((line, index) => {
               const { className: lineClassName } = getLineProps({
-                className: '',
+                className: shouldHighlightLine(index) ? 'highlight-line' : '',
                 key: index,
                 line,
               });
@@ -110,7 +134,7 @@ const CodeSnippetWrapper = styled('div')`
   background: ${p => p.theme.colors.prism.background};
   > div {
     display: flex;
-    justify-content: flex-end;
+    justify-content: space-between;
   }
 `;
 
