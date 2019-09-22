@@ -58,7 +58,15 @@ const calculateLinesToHighlight = meta => {
   }
 };
 
-const hasTitle = {};
+const RETitle = /title=[A-Za-z](.+)/;
+
+const hasTitle = metastring => {
+  if (!RETitle.test(metastring)) {
+    return '';
+  } else {
+    return RETitle.exec(metastring)[0].split('title=')[1];
+  }
+};
 
 export const CodeBlock = props => {
   const { codeString, language, metastring } = props;
@@ -73,11 +81,11 @@ export const CodeBlock = props => {
   };
 
   const shouldHighlightLine = calculateLinesToHighlight(metastring);
-
+  const title = hasTitle(metastring);
   return (
     <CodeSnippetWrapper>
       <div>
-        <div />
+        {title ? <CodeSnippetTitle>{title}</CodeSnippetTitle> : <div />}
         <CopyButton onClick={() => handleCopyToClipboard(codeString)}>
           {copied ? 'Copied' : 'Copy'}
         </CopyButton>
@@ -127,6 +135,15 @@ export const Code = preProps => {
     return <pre {...preProps} />;
   }
 };
+
+const CodeSnippetTitle = styled('p')`
+  margin-bottom: 0px;
+  padding: 10px;
+  font-size: 14px;
+  border-top-left-radius: 5px;
+  color: ${p => p.theme.colors.white};
+  background: ${p => p.theme.colors.blue};
+`;
 
 const CodeSnippetWrapper = styled('div')`
   width: 100%;
