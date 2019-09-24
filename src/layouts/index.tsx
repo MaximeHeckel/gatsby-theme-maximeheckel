@@ -2,6 +2,7 @@ import styled from '@emotion/styled';
 import { graphql, StaticQuery } from 'gatsby';
 import Img, { FluidObject } from 'gatsby-image';
 import React, { ReactNode } from 'react';
+import Button from '../components/Button';
 import MDX from '../components/MDX';
 import ProgressBar from '../components/ProgressBar';
 import Seo from '../components/Seo';
@@ -61,6 +62,7 @@ const Layout = (props: ILayoutProps) => {
 
         const progressBarTarget = React.createRef();
         const parsedDate = new Date(Date.parse(date));
+        const text = `${title} by @MaximeHeckel ${data.site.siteMetadata.url}/posts/${slug}`;
 
         return (
           <MainWrapper footer={true} header={true} headerProps={headerProps}>
@@ -77,7 +79,19 @@ const Layout = (props: ILayoutProps) => {
               {date || timeToRead ? (
                 <p>
                   {date ? parsedDate.toDateString() : null} -{' '}
-                  {timeToRead ? `${timeToRead} min read` : null}
+                  {timeToRead ? `${timeToRead} min read` : null} -{' '}
+                  {type === 'blogPost' ? (
+                    <a
+                      href={`https://twitter.com/intent/tweet?text=${encodeURI(
+                        text
+                      )}`}
+                      style={{ textDecoration: `none` }}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      <Button secondary={true}>Share on Twitter</Button>
+                    </a>
+                  ) : null}
                 </p>
               ) : null}
             </Hero>
@@ -100,7 +114,10 @@ const Layout = (props: ILayoutProps) => {
               {props.children}
             </MDX>
             {type === 'blogPost' ? (
-              <Signature url={`${data.site.siteMetadata.url}/posts/${slug}`} />
+              <Signature
+                title={title}
+                url={`${data.site.siteMetadata.url}/posts/${slug}`}
+              />
             ) : null}
           </MainWrapper>
         );
