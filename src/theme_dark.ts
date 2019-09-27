@@ -3,9 +3,10 @@ const gray = '#F8F8F9';
 
 const theme = {
   backgroundColor: '#202326',
-  borderColor: '#000000',
+  borderColor: 'rgba(255, 255, 255, 0.1)',
   boxShadow: '0 0px 12px -6px rgba(0,0,0,0.94)',
   colors: {
+    black: '#000000',
     blue: '#3c83da',
     gray,
     pink: '#FED5D7',
