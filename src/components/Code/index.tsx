@@ -100,23 +100,25 @@ export const CodeBlock = props => {
                 line,
               });
               return (
-                <div key={index} className={lineClassName}>
-                  <span className="number-line">{index + 1}</span>
-                  {line.map((token, key) => {
-                    const {
-                      className: tokenClassName,
-                      children,
-                    } = getTokenProps({
-                      key,
-                      token,
-                    });
+                <div key={index} style={{ display: 'flex' }}>
+                  <div className={lineClassName}>
+                    <span className="number-line">{index + 1}</span>
+                    {line.map((token, key) => {
+                      const {
+                        className: tokenClassName,
+                        children,
+                      } = getTokenProps({
+                        key,
+                        token,
+                      });
 
-                    return (
-                      <span key={key} className={tokenClassName}>
-                        {children}
-                      </span>
-                    );
-                  })}
+                      return (
+                        <span key={key} className={tokenClassName}>
+                          {children}
+                        </span>
+                      );
+                    })}
+                  </div>
                 </div>
               );
             })}
@@ -137,6 +139,10 @@ export const Code = preProps => {
 };
 
 const CodeSnippetTitle = styled('p')`
+  @media (max-width: 500px) {
+    border-radius: 0px;
+  }
+
   margin-bottom: 0px;
   padding: 10px;
   font-size: 14px;
@@ -146,6 +152,13 @@ const CodeSnippetTitle = styled('p')`
 `;
 
 const CodeSnippetWrapper = styled('div')`
+  @media (max-width: 500px) {
+    position: relative;
+    width: 100vw;
+    left: calc(-50vw + 50%);
+    border-radius: 0px;
+  }
+
   width: 100%;
   border-radius: 5px;
   background: ${p => p.theme.colors.prism.background};

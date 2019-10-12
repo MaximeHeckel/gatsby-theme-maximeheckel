@@ -31,6 +31,7 @@ const toKebabCase = (str: string): string => {
 
 const PrismCSS = p => css`
   .prism-code {
+    overflow-wrap: normal;
     position: relative;
     overflow: scroll;
     width: 100%;
@@ -58,6 +59,12 @@ const PrismCSS = p => css`
       opacity: 0.3;
       color: #dcd9e6;
     }
+
+    .token-line {
+      flex: 1;
+      min-width: 500px;
+    }
+
     .token-line.highlight-line {
       margin: 0px -14px;
       padding: 0px 14px;
