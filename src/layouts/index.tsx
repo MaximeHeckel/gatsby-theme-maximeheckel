@@ -1,4 +1,5 @@
 import styled from '@emotion/styled';
+import slugify from '@sindresorhus/slugify';
 import { graphql, StaticQuery } from 'gatsby';
 import Img, { FluidObject } from 'gatsby-image';
 import React, { ReactNode } from 'react';
@@ -63,6 +64,12 @@ const Layout = (props: ILayoutProps) => {
         const progressBarTarget = React.createRef();
         const parsedDate = new Date(Date.parse(date));
         const text = `${title} by @MaximeHeckel ${data.site.siteMetadata.url}/posts/${slug}`;
+        const SeoBanner =
+          type === 'blogPost'
+            ? `/opengraph-images/${slugify(title)}.png`
+            : cover
+            ? cover.childImageSharp.fluid.src
+            : '';
 
         return (
           <MainWrapper footer={true} header={true} headerProps={headerProps}>
@@ -70,7 +77,7 @@ const Layout = (props: ILayoutProps) => {
               title={`${title} - ${data.site.siteMetadata.title}`}
               desc={subtitle || description}
               article={type === 'blogPost'}
-              banner={cover ? cover.childImageSharp.fluid.src : null}
+              banner={SeoBanner}
               pathname={slug + '/'}
             />
             <Hero type={type} id="top">
