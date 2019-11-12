@@ -1,5 +1,4 @@
 const white = '#FFFFFF';
-const gray = '#F8F8F9';
 
 const theme = {
   backgroundColor: '#202326',
@@ -8,7 +7,7 @@ const theme = {
   colors: {
     black: '#000000',
     blue: '#3c83da',
-    gray,
+    gray: '#F8F8F9',
     pink: '#FED5D7',
     prism: {
       token: `#fff`,

@@ -1,6 +1,4 @@
 const white = '#FFFFFF';
-const black = '#2B2D3E';
-const gray = '#F8F8F9';
 
 const theme = {
   backgroundColor: white,
@@ -8,7 +6,7 @@ const theme = {
   boxShadow: '0 0px 12px -6px rgba(0, 24, 40, 0.25)',
   colors: {
     blue: '#196FD8',
-    gray,
+    gray: '#F8F8F9',
     pink: '#FED5D7',
     prism: {
       token: `#fff`,
@@ -44,7 +42,7 @@ const theme = {
     },
     white,
   },
-  fontColor: black,
+  fontColor: '#2B2D3E',
   overlayBackground: 'rgba(236, 236, 236, 0.8)',
   transitionTime: 0.5,
 };
