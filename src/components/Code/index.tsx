@@ -184,6 +184,7 @@ const CodeSnippetWrapper = styled('div')`
   width: 100%;
   border-radius: 5px;
   background: ${p => p.theme.colors.prism.background};
+  margin: 40px 0px;
 `;
 
 const CopyButton = styled('button')`
