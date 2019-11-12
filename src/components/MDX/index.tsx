@@ -2,11 +2,13 @@ import { css } from '@emotion/core';
 import styled from '@emotion/styled';
 import { MDXProvider } from '@mdx-js/react';
 import React from 'react';
+import { Blockquote } from '../Blockquote';
 import { Code } from '../Code';
 import { ColoredBlockWrapper } from '../ColoredBlock';
 
 const components = {
   a: (aProps: any) => <a {...aProps} style={{ color: 'inherit' }} />,
+  blockquote: Blockquote,
   pre: Code,
 };
 
