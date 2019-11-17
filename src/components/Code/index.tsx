@@ -147,6 +147,7 @@ export const Code = preProps => {
 const InlineCodeWrapper = styled('code')`
   border-radius: 4px;
   background-color: ${p => p.theme.colors.prism.background};
+  color: ${p => p.theme.colors.white};
   padding-top: 2px;
   padding-bottom: 4px;
   padding-left: 6px;
