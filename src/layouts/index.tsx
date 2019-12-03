@@ -82,7 +82,7 @@ const Layout = (props: ILayoutProps) => {
             />
             <Hero type={type} id="top">
               <h1 data-testid={`project-title-${title}`}>{title}</h1>
-              <h2>{subtitle || description}</h2>
+              <h3>{subtitle || description}</h3>
               {date || timeToRead ? (
                 <p>
                   {date ? parsedDate.toDateString() : null} -{' '}
@@ -152,5 +152,7 @@ const Hero = styled.div`
 
   p {
     color: #73737d;
+    font-size: 16px;
+    font-weight: 500;
   }
 `;

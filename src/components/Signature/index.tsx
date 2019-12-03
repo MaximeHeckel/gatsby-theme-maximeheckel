@@ -1,50 +1,73 @@
+import styled from '@emotion/styled';
 import React from 'react';
-import ColoredBlock from '../ColoredBlock';
+
+const ColoredBlockWrapper = styled('div')`
+  background: ${props => props.theme.overlayBackground};
+  color: ${props => props.theme.fontColor};
+  position: relative;
+  width: 100vw;
+  padding-bottom: 50px;
+  padding-top: 50px;
+  left: calc(-50vw + 50%);
+
+  div {
+    @media (max-width: 800px) {
+      padding-left: 30px;
+      padding-right: 30px;
+    }
+    margin: 0 auto;
+    max-width: 700px;
+  }
+`;
 
 const Signature = ({ title, url }: { title: string; url: string }) => {
   const text = `${title} by @MaximeHeckel ${url}`;
   return (
-    <ColoredBlock color="#FEE7DA">
-      <h4>
-        If you liked this article, don't forget to{' '}
-        <a
-          href={`https://twitter.com/intent/tweet?text=${encodeURI(text)}`}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          share it
-        </a>{' '}
-        or{' '}
-        <a
-          href={`https://mobile.twitter.com/search?q=${url}`}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          click here to leave a comment discuss about it on Twitter
-        </a>
-        {'. '}
-        Do you have any questions, comments or simply wish to contact me
-        privately? I’m always reachable on{' '}
-        <a
-          href="http://twitter.com/MaximeHeckel"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Twitter
-        </a>{' '}
-        or on my{' '}
-        <a
-          href="https://maximeheckel.com"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          website!
-        </a>
-      </h4>
-      <br />
-      Have a wonderful day. <br />
-      Maxime
-    </ColoredBlock>
+    <ColoredBlockWrapper>
+      <div>
+        <p>
+          If you liked this article, don't forget to{' '}
+          <a
+            href={`https://twitter.com/intent/tweet?text=${encodeURI(text)}`}
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            share it
+          </a>{' '}
+          or{' '}
+          <a
+            href={`https://mobile.twitter.com/search?q=${url}`}
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            click here to leave a comment discuss about it on Twitter
+          </a>
+          {'. '}
+          Do you have any questions, comments or simply wish to contact me
+          privately? I’m always reachable on{' '}
+          <a
+            href="http://twitter.com/MaximeHeckel"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Twitter
+          </a>{' '}
+          or on my{' '}
+          <a
+            href="https://maximeheckel.com"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            website!
+          </a>
+        </p>
+        <br />
+        <p>
+          Have a wonderful day. <br />
+          Maxime
+        </p>
+      </div>
+    </ColoredBlockWrapper>
   );
 };
 

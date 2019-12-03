@@ -29,6 +29,7 @@ const Wrapper = styled('div')`
   top: 200px;
   display: flex;
   left: 30px;
+  z-index: 2;
   ul {
     @media (max-width: 1250px) {
       display: none;
@@ -48,10 +49,14 @@ const Wrapper = styled('div')`
     list-style: none;
     color: ${props => props.theme.fontColor};
     font-size: 14px;
+    font-weight: 500;
     line-height: 1.5;
     margin-bottom: 22px;
     a {
       text-decoration: none;
+      &:hover {
+        color: ${props => props.theme.colors.blue};
+      }
     }
   }
 `;

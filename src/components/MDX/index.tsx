@@ -4,13 +4,15 @@ import { MDXProvider } from '@mdx-js/react';
 import React from 'react';
 import { Blockquote } from '../Blockquote';
 import { Code, InlineCode } from '../Code';
-import { ColoredBlockWrapper } from '../ColoredBlock';
 
 const components = {
   a: (aProps: any) => <a {...aProps} style={{ color: 'inherit' }} />,
   blockquote: Blockquote,
+  h2: (hProps: any) => <h2 {...hProps} style={{ marginTop: '3em' }} />,
+  h3: (hProps: any) => <h2 {...hProps} style={{ marginTop: '3em' }} />,
   inlineCode: InlineCode,
   pre: Code,
+  ul: (ulProps: any) => <ul {...ulProps} style={{ marginLeft: '18px' }} />,
 };
 
 const MDX = React.forwardRef(({ children, ...props }, ref) => {
@@ -86,21 +88,27 @@ const PrismCSS = p => css`
 const MDXBody = styled.div`
   margin: 0 auto;
   max-width: ${props => (props.type === 'blogPost' ? '700px' : '1020px')};
-  padding: 30px 0px 20px 0px;
+  padding: 50px 0px 20px 0px;
   color: ${props => props.theme.fontColor};
 
   figcaption {
     font-size: 14px;
-    font-style: italic;
-    text-align: center;
+    text-align: left;
+    line-height: 1.5;
+    font-weight: 500;
+    color: #73737d;
+    padding-top: 10px;
+  }
+
+  hr {
+    height: 2px;
+    width: 20%;
+    margin: 50px auto;
+    background-color: #e8e8e8;
   }
 
   twitter-widget {
     margin: 0 auto;
-  }
-
-  ${ColoredBlockWrapper} {
-    margin-bottom: 30px;
   }
 
   ${PrismCSS}

@@ -2,10 +2,15 @@ import styled from '@emotion/styled';
 
 const Blockquote = styled.blockquote`
   transition: ${props => props.theme.transitionTime}s;
-  margin: 15px auto 50px;
+  margin: 30px 0px;
   color: ${props => props.theme.fontColor};
   font-style: italic;
-
+  position: relative;
+  width: 100vw;
+  left: calc(-50vw + 50%);
+  padding-top: 40px;
+  padding-bottom: 40px;
+  background: ${props => props.theme.overlayBackground};
   & > p {
     max-width: 880px !important;
     padding-left: 50px;
@@ -14,7 +19,7 @@ const Blockquote = styled.blockquote`
     margin: 0 auto;
     font-size: 24px;
     line-height: 1.32;
-    font-weight: bold;
+    font-weight: 400;
   }
 `;
 
