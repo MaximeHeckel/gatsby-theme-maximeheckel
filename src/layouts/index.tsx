@@ -1,13 +1,14 @@
-import styled from '@emotion/styled';
 import slugify from '@sindresorhus/slugify';
 import { graphql, StaticQuery } from 'gatsby';
 import Img, { FluidObject } from 'gatsby-image';
 import React, { ReactNode } from 'react';
+import { LayoutContentTypeEnum } from '../@types/layoutContentType';
 import Button from '../components/Button';
 import MDX from '../components/MDX';
-import ProgressBar from '../components/ProgressBar';
+import ProgressBar, { TableOfContentType } from '../components/ProgressBar';
 import Seo from '../components/Seo';
 import Signature from '../components/Signature';
+import styled from '../utils/styled';
 import MainWrapper from './MainWrapper';
 
 interface ILayoutProps {
@@ -16,13 +17,11 @@ interface ILayoutProps {
       title: string;
       subtitle?: string;
       description?: string;
-      type?: string;
-      date?: string;
+      type?: LayoutContentTypeEnum;
+      date: string;
       slug: string;
     };
-    tableOfContents?: {
-      items: Array<{ url: string; title: string }>;
-    };
+    tableOfContents?: TableOfContentType;
     timeToRead: number;
     cover: {
       childImageSharp: {
@@ -33,7 +32,7 @@ interface ILayoutProps {
   children: ReactNode;
 }
 
-const Layout = (props: ILayoutProps) => {
+const Layout: React.FC<ILayoutProps> = props => {
   return (
     <StaticQuery
       query={graphql`
@@ -61,7 +60,7 @@ const Layout = (props: ILayoutProps) => {
           sticky: true,
         };
 
-        const progressBarTarget = React.createRef();
+        const progressBarTarget = React.createRef<HTMLDivElement>();
         const parsedDate = new Date(Date.parse(date));
         const text = `${title} by @MaximeHeckel ${data.site.siteMetadata.url}/posts/${slug}`;
         const SeoBanner =
@@ -135,7 +134,11 @@ const Layout = (props: ILayoutProps) => {
 
 export default Layout;
 
-const Hero = styled.div`
+type HeroType = {
+  type?: LayoutContentTypeEnum;
+};
+
+const Hero = styled.div<HeroType>`
   @media (max-width: 700px) {
     padding: 200px 0px 50px 0px;
 

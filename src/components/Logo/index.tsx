@@ -1,5 +1,5 @@
-import styled from '@emotion/styled';
 import React from 'react';
+import styled from '../../utils/styled';
 
 interface ILogoProp {
   alt: string;
@@ -7,7 +7,12 @@ interface ILogoProp {
   size: number;
 }
 
-const LogoWrapper = styled('div')`
+type LogoWrapperProps = {
+  inverted?: boolean;
+  size: number;
+};
+
+const LogoWrapper = styled('div')<LogoWrapperProps>`
   height: ${props => props.size}px;
   width: ${props => props.size}px;
   svg {
@@ -28,7 +33,7 @@ const LogoWrapper = styled('div')`
   }
 `;
 
-const Logo = ({ alt, inverted, size }: ILogoProp) => (
+const Logo: React.FC<ILogoProp> = ({ alt, inverted, size }) => (
   <LogoWrapper inverted={inverted} size={size}>
     <svg
       aria-label={alt}

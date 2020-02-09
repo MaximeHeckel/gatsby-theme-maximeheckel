@@ -1,5 +1,3 @@
-const white = '#FFFFFF';
-
 const theme = {
   backgroundColor: '#202326',
   borderColor: 'rgba(255, 255, 255, 0.1)',
@@ -41,9 +39,9 @@ const theme = {
       dom: `#5F8DC3`,
       operator: `#5FA8AA`,
     },
-    white,
+    white: '#FFFFFF',
   },
-  fontColor: white,
+  fontColor: '#FFFFFF',
   overlayBackground: 'rgba(0,0,0,0.40)',
   transitionTime: 0.5,
 };

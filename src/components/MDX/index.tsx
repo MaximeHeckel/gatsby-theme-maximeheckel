@@ -1,9 +1,10 @@
 import { css } from '@emotion/core';
-import styled from '@emotion/styled';
 import { MDXProvider } from '@mdx-js/react';
 import React from 'react';
 import { Blockquote } from '../Blockquote';
 import { Code, InlineCode } from '../Code';
+import { LayoutContentTypeEnum } from '../../@types/layoutContentType';
+import styled, { Theme } from '../../utils/styled';
 
 const components = {
   a: (aProps: any) => <a {...aProps} style={{ color: 'inherit' }} />,
@@ -15,26 +16,34 @@ const components = {
   ul: (ulProps: any) => <ul {...ulProps} style={{ marginLeft: '18px' }} />,
 };
 
-const MDX = React.forwardRef(({ children, ...props }, ref) => {
-  return (
-    <MDXProvider components={components}>
-      <MDXBody ref={ref} {...props}>
-        {children}
-      </MDXBody>
-    </MDXProvider>
-  );
-});
+interface IMDXProps {
+  children: React.ReactNode;
+  type?: LayoutContentTypeEnum;
+}
+
+const MDX = React.forwardRef(
+  ({ children, ...props }: IMDXProps, ref: React.Ref<HTMLDivElement>) => {
+    return (
+      <MDXProvider components={components}>
+        <MDXBody ref={ref} {...props}>
+          {children}
+        </MDXBody>
+      </MDXProvider>
+    );
+  }
+);
 
 export default MDX;
 
-const toKebabCase = (str: string): string => {
-  return str
-    .match(/[A-Z]{2,}(?=[A-Z][a-z]+[0-9]*|\b)|[A-Z]?[a-z]+[0-9]*|[A-Z]|[0-9]+/g)
-    .map(x => x.toLowerCase())
-    .join('-');
+const toKebabCase = (str: string): string | null => {
+  const match = str.match(
+    /[A-Z]{2,}(?=[A-Z][a-z]+[0-9]*|\b)|[A-Z]?[a-z]+[0-9]*|[A-Z]|[0-9]+/g
+  );
+
+  return match && match.map(x => x.toLowerCase()).join('-');
 };
 
-const PrismCSS = p => css`
+const PrismCSS = (p: { theme: Theme }) => css`
   .prism-code {
     overflow-wrap: normal;
     position: relative;
@@ -85,7 +94,13 @@ const PrismCSS = p => css`
   }
 `;
 
-const MDXBody = styled.div`
+type MDXBody = {
+  children: React.ReactNode;
+  ref: React.Ref<HTMLDivElement>;
+  type?: LayoutContentTypeEnum;
+};
+
+const MDXBody = styled.div<MDXBody>`
   margin: 0 auto;
   max-width: ${props => (props.type === 'blogPost' ? '700px' : '1020px')};
   padding: 50px 0px 20px 0px;

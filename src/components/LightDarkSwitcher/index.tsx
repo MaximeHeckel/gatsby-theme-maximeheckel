@@ -1,6 +1,10 @@
-import styled from '@emotion/styled';
+import styled from '../../utils/styled';
 
-const LightDarkSwitcher = styled('div')`
+type LightDarkSwitcher = {
+  isDark: boolean;
+};
+
+const LightDarkSwitcher = styled('div')<LightDarkSwitcher>`
   cursor: pointer;
   position: relative;
   width: 21px;

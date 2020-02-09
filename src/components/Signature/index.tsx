@@ -1,5 +1,5 @@
-import styled from '@emotion/styled';
 import React from 'react';
+import styled from '../../utils/styled';
 
 const ColoredBlockWrapper = styled('div')`
   background: ${props => props.theme.overlayBackground};
@@ -20,7 +20,10 @@ const ColoredBlockWrapper = styled('div')`
   }
 `;
 
-const Signature = ({ title, url }: { title: string; url: string }) => {
+const Signature: React.FC<{ title: string; url: string }> = ({
+  title,
+  url,
+}) => {
   const text = `${title} by @MaximeHeckel ${url}`;
   return (
     <ColoredBlockWrapper>

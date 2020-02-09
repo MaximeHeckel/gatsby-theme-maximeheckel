@@ -28,7 +28,13 @@ interface ISEOProps {
   title?: string | undefined;
 }
 
-const SEO = ({ title, desc, banner, pathname, article }: ISEOProps) => (
+const SEO: React.FC<ISEOProps> = ({
+  title,
+  desc,
+  banner,
+  pathname,
+  article,
+}) => (
   <StaticQuery
     query={query}
     render={({
@@ -85,10 +91,6 @@ const SEO = ({ title, desc, banner, pathname, article }: ISEOProps) => (
 
 SEO.defaultProps = {
   article: false,
-  banner: null,
-  desc: null,
-  pathname: null,
-  title: null,
 };
 
 export default SEO;

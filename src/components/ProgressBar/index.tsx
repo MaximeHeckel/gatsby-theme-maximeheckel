@@ -75,13 +75,13 @@ type TableOfContentItemType = {
   title: string;
 };
 
-type TableOfContentType = {
+export type TableOfContentType = {
   items: TableOfContentItemType[];
 };
 
 interface IReadingProgressProps {
-  tableOfContents: TableOfContentType;
-  target: React.RefObject<HTMLInputElement>;
+  tableOfContents?: TableOfContentType;
+  target: React.RefObject<HTMLDivElement>;
 }
 
 const ReadingProgress: React.FC<IReadingProgressProps> = ({

@@ -1,10 +1,10 @@
-import styled from '@emotion/styled';
 import { Link } from 'gatsby';
 import { OutboundLink } from 'gatsby-plugin-google-analytics';
 import React from 'react';
 import AnchorLink from 'react-anchor-link-smooth-scroll';
 import LightDarkSwitcher from '../LightDarkSwitcher';
 import Logo from '../Logo';
+import styled from '../../utils/styled';
 
 interface IHeaderProps {
   links?: JSX.Element[] | JSX.Element;
@@ -41,7 +41,7 @@ const setHeaderStateAfterScroll = (offset: number = 0) => {
   return headerState;
 };
 
-const Header = (props: IHeaderProps) => {
+const Header: React.FC<IHeaderProps> = props => {
   const {
     links,
     postTitle = '',
@@ -99,7 +99,7 @@ const Header = (props: IHeaderProps) => {
           {themeSwitcher && Object.keys(themeSwitcher).length > 0 ? (
             <LightDarkSwitcher
               data-testid="darkmode-switch"
-              htmlFor="darkmode-switch"
+              html-for="darkmode-switch"
               onClick={themeSwitcher.toggleDark}
               isDark={themeSwitcher.dark}
               aria-label={
@@ -149,7 +149,12 @@ const Title = styled.h2`
   }
 `;
 
-const HeaderWrapper = styled.div`
+type HeaderWrapperProps = {
+  slim: boolean;
+  sticky: boolean;
+};
+
+const HeaderWrapper = styled.div<HeaderWrapperProps>`
   background: ${props => props.theme.backgroundColor};
   transition: ${props => props.theme.transitionTime}s;
   width: 100%;
@@ -188,7 +193,11 @@ const TwitterLinkWrapper = styled('div')`
   }
 `;
 
-const CustomLinks = styled.div`
+type CustomLinksProps = {
+  show: boolean;
+};
+
+const CustomLinks = styled.div<CustomLinksProps>`
   @media (max-width: 700px) {
     display: ${(props: { show: boolean }) => (props.show ? 'flex' : 'none')};
   }

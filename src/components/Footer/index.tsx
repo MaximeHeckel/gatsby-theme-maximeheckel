@@ -1,7 +1,7 @@
-import styled from '@emotion/styled';
 import { withTheme } from 'emotion-theming';
 import React from 'react';
 import Logo from '../Logo';
+import styled from '../../utils/styled';
 
 const HR = styled.hr`
   background: ${props => props.theme.fontColor};
@@ -38,7 +38,7 @@ const FooterContent = styled.div`
   align-items: center;
 `;
 
-const Footer = () => (
+const Footer: React.FC<{}> = () => (
   <FooterBlock data-testid="footer">
     <FooterWrapper>
       <HR />

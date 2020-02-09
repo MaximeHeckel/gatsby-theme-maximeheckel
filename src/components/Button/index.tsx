@@ -1,8 +1,6 @@
-import styled from '@emotion/styled';
 import { withTheme } from 'emotion-theming';
 import { ReactNode } from 'react';
-import { Theme } from '../../theme_light';
-
+import styled, { Theme } from '../../utils/styled';
 interface IButtonProps {
   primary?: boolean;
   secondary?: boolean;
@@ -11,11 +9,11 @@ interface IButtonProps {
   children: ReactNode;
 }
 
-const Button = styled.button`
+const Button = styled.button<IButtonProps>`
   margin: 0;
-  background-color: ${(props: IButtonProps) =>
+  background-color: ${props =>
     props.primary ? props.theme.colors.blue : 'transparent'};
-  color: ${(props: IButtonProps) =>
+  color: ${props =>
     props.primary
       ? props.theme.colors.white
       : props.white
@@ -27,21 +25,20 @@ const Button = styled.button`
   justify-content: center;
   align-items: center;
   position: relative;
-  padding: ${(props: IButtonProps) => (props.primary ? '0 30px' : '0 0')};
+  padding: ${props => (props.primary ? '0 30px' : '0 0')};
   height: 48px;
-  min-width: ${(props: IButtonProps) => (props.primary ? '190px' : 'inherit')};
+  min-width: ${props => (props.primary ? '190px' : 'inherit')};
   font-weight: 700;
   outline: none;
-  transition: ${(props: IButtonProps) =>
+  transition: ${props =>
     props.primary
       ? 'background-color 0.2s cubic-bezier(0.8, 0, 0.2, 1)'
       : '1.8s'};
   &:hover {
-    background-color: ${(props: IButtonProps) =>
-      props.primary ? '#161617' : 'transparent'};
+    background-color: ${props => (props.primary ? '#161617' : 'transparent')};
   }
 
-  ${(props: IButtonProps) =>
+  ${props =>
     props.primary
       ? ''
       : `  ::after {

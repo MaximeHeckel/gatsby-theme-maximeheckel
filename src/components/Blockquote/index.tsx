@@ -1,4 +1,4 @@
-import styled from '@emotion/styled';
+import styled from '../../utils/styled';
 
 const Blockquote = styled.blockquote`
   transition: ${props => props.theme.transitionTime}s;

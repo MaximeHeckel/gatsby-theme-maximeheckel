@@ -1,6 +1,6 @@
-import styled from '@emotion/styled';
-import Highlight, { defaultProps } from 'prism-react-renderer';
+import Highlight, { defaultProps, Language } from 'prism-react-renderer';
 import React from 'react';
+import styled from '../../utils/styled';
 
 const copyToClipboard = (content: string) => {
   const el = document.createElement(`textarea`);
@@ -14,7 +14,27 @@ const copyToClipboard = (content: string) => {
   document.body.removeChild(el);
 };
 
-const preToCodeBlock = preProps => {
+type PrePropsType = {
+  children: {
+    props: {
+      metastring: string;
+      mdxType: string;
+      className?: string;
+      children: string;
+    };
+  };
+};
+
+const preToCodeBlock = (
+  preProps: PrePropsType
+):
+  | {
+      className: string;
+      codeString: string;
+      language: Language;
+      metastring: string;
+    }
+  | undefined => {
   if (
     preProps.children &&
     preProps.children.props &&
@@ -32,8 +52,8 @@ const preToCodeBlock = preProps => {
       codeString: codeString.trim(),
       language:
         matches && matches.groups && matches.groups.lang
-          ? matches.groups.lang
-          : '',
+          ? (matches.groups.lang as Language)
+          : ('' as Language),
       ...props,
     };
   }
@@ -41,14 +61,14 @@ const preToCodeBlock = preProps => {
 
 const RE = /{([\d,-]+)}/;
 
-const calculateLinesToHighlight = meta => {
-  if (!RE.test(meta)) {
+const calculateLinesToHighlight = (meta: string | null) => {
+  if (!meta || !RE.test(meta)) {
     return () => false;
   } else {
-    const lineNumbers = RE.exec(meta)[1]
+    const lineNumbers = RE.exec(meta)![1]
       .split(',')
       .map(v => v.split('-').map(val => parseInt(val, 10)));
-    return index => {
+    return (index: number) => {
       const lineNumber = index + 1;
       const inRange = lineNumbers.some(([start, end]) =>
         end ? lineNumber >= start && lineNumber <= end : lineNumber === start
@@ -60,19 +80,29 @@ const calculateLinesToHighlight = meta => {
 
 const RETitle = /title=[A-Za-z](.+)/;
 
-const hasTitle = metastring => {
-  if (!RETitle.test(metastring)) {
+const hasTitle = (metastring: string | null) => {
+  if (!metastring || !RETitle.test(metastring)) {
     return '';
   } else {
-    return RETitle.exec(metastring)[0].split('title=')[1];
+    return RETitle.exec(metastring)![0].split('title=')[1];
   }
 };
 
-export const InlineCode = props => {
+interface IInlineCodeProps {
+  children: React.ReactNode;
+}
+
+export const InlineCode: React.FC<IInlineCodeProps> = props => {
   return <InlineCodeWrapper>{props.children}</InlineCodeWrapper>;
 };
 
-export const CodeBlock = props => {
+interface ICodeBlockProps {
+  codeString: string;
+  language: Language;
+  metastring: string | null;
+}
+
+export const CodeBlock: React.FC<ICodeBlockProps> = props => {
   const { codeString, language, metastring } = props;
   const [copied, hasClickedCopy] = React.useState(false);
   const handleCopyToClipboard = (code: string) => {
@@ -135,7 +165,7 @@ export const CodeBlock = props => {
   );
 };
 
-export const Code = preProps => {
+export const Code: React.FC<PrePropsType> = preProps => {
   const props = preToCodeBlock(preProps);
   if (props) {
     return <CodeBlock {...props} />;

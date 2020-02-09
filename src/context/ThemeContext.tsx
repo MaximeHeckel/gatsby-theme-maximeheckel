@@ -35,7 +35,7 @@ const useDarkMode = (): [
   return [themeState, setThemeState];
 };
 
-const ThemeProvider = ({ children }: { children: ReactNode }) => {
+const ThemeProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
   const [themeState, setThemeState] = useDarkMode();
 
   const theme = themeState.dark ? themeDark : themeLight;

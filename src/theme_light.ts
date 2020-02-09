@@ -1,7 +1,5 @@
-const white = '#FFFFFF';
-
 const theme = {
-  backgroundColor: white,
+  backgroundColor: '#FFFFFF',
   borderColor: '#f5f5f9',
   boxShadow: '0 0px 12px -6px rgba(0, 24, 40, 0.25)',
   colors: {
@@ -40,12 +38,11 @@ const theme = {
       dom: `#5F8DC3`,
       operator: `#5FA8AA`,
     },
-    white,
+    white: '#FFFFFF',
   },
   fontColor: '#2B2D3E',
   overlayBackground: 'rgba(236, 236, 236, 0.8)',
   transitionTime: 0.5,
 };
 
-export type Theme = typeof theme;
 export default theme;

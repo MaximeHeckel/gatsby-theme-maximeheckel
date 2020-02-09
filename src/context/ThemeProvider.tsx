@@ -2,7 +2,11 @@ import React from 'react';
 import GlobalStyles from '../components/GlobalStyles';
 import { ThemeProvider } from './ThemeContext';
 
-const RootWrapper = ({ children }) => (
+interface IRootWrapperProps {
+  children: React.ReactNode;
+}
+
+const RootWrapper: React.FC<IRootWrapperProps> = ({ children }) => (
   <ThemeProvider>
     <GlobalStyles />
     {children}
