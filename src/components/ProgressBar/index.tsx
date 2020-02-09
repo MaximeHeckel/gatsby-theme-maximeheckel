@@ -1,14 +1,19 @@
-import styled from '@emotion/styled';
 import React from 'react';
 import AnchorLink from 'react-anchor-link-smooth-scroll';
+import styled from '../../utils/styled';
 
 const ProgressBar = styled('div')`
   width: 1px;
   background-color: ${props => props.theme.fontColor};
 `;
 
-const ProgressBarWrapper = styled('div')`
-  opacity: ${props => (props.readingProgress === 100 ? '0' : '0.6')};
+type ProgressBarWrapperProps = {
+  readingProgress: number;
+};
+
+const ProgressBarWrapper = styled('div')<ProgressBarWrapperProps>`
+  opacity: ${(props: ProgressBarWrapperProps) =>
+    props.readingProgress === 100 ? '0' : '0.6'};
   transition: ${props => props.theme.transitionTime}s;
   height: calc(88vh - 40px);
   max-height: 425px;
@@ -20,7 +25,11 @@ const ProgressBarWrapper = styled('div')`
   }
 `;
 
-const Wrapper = styled('div')`
+type WrapperProps = {
+  showTableOfContents: boolean;
+};
+
+const Wrapper = styled('div')<WrapperProps>`
   @media (max-width: 1100px) {
     left: 10px;
   }
@@ -61,10 +70,27 @@ const Wrapper = styled('div')`
   }
 `;
 
-const ReadingProgress = ({ tableOfContents, target }) => {
+type TableOfContentItemType = {
+  url: string;
+  title: string;
+};
+
+type TableOfContentType = {
+  items: TableOfContentItemType[];
+};
+
+interface IReadingProgressProps {
+  tableOfContents: TableOfContentType;
+  target: React.RefObject<HTMLInputElement>;
+}
+
+const ReadingProgress: React.FC<IReadingProgressProps> = ({
+  tableOfContents,
+  target,
+}) => {
   const [readingProgress, setReadingProgress] = React.useState(0);
   const scrollListener = () => {
-    if (!target.current) {
+    if (!target || !target.current) {
       return;
     }
 
