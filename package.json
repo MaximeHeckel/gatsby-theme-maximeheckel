@@ -48,12 +48,7 @@
     "jest": "^23.0.1",
     "jest-dom": "^3.0.2",
     "jest-emotion": "^10.0.7",
-    "ts-jest": "^23.10.5",
-    "tslint": "^5.12.1",
-    "tslint-config-prettier": "^1.17.0",
-    "tslint-loader": "^3.5.4",
-    "tslint-plugin-prettier": "^2.0.1",
-    "tslint-react": "^3.6.0"
+    "ts-jest": "^23.10.5"
   },
   "peerDependencies": {
     "react": "16.8.0",
