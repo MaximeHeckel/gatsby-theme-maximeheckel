@@ -70,6 +70,8 @@ const Layout: React.FC<ILayoutProps> = props => {
             ? cover.childImageSharp.fluid.src
             : '';
 
+        console.log('hello');
+
         return (
           <MainWrapper footer={true} header={true} headerProps={headerProps}>
             <Seo
