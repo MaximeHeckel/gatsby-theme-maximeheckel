@@ -1,9 +1,9 @@
-import styled from '@emotion/styled';
 import { graphql, Link, StaticQuery } from 'gatsby';
 import React from 'react';
 import Button from '../components/Button';
 import Seo from '../components/Seo';
 import MainWrapper from '../layouts/MainWrapper';
+import styled from '../utils/styled';
 
 const Main = styled.div`
   margin: 0 auto;
