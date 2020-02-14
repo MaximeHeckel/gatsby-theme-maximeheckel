@@ -48,6 +48,7 @@ const NotFoundPage = () => (
             <div>
               <h1>Oh no! You just got lost 😱</h1>
               <h2>
+                {/* eslint-disable-next-line react/no-unescaped-entities */}
                 Don't worry I got you!{' '}
                 <Link to={`/`}>
                   <Button secondary={true}>Click here </Button>
