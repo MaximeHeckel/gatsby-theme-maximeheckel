@@ -4,7 +4,7 @@ import React from 'react';
 import { Blockquote } from '../Blockquote';
 import { Code, InlineCode } from '../Code';
 import { LayoutContentTypeEnum } from '../../@types/layoutContentType';
-import styled, { Theme } from '../../utils/styled';
+import styled from '../../utils/styled';
 
 const components = {
   a: (aProps: any) => <a {...aProps} style={{ color: 'inherit' }} />,
@@ -43,7 +43,12 @@ const toKebabCase = (str: string): string | null => {
   return match && match.map(x => x.toLowerCase()).join('-');
 };
 
-const PrismCSS = (p: { theme: Theme }) => css`
+/**
+ * Dirty workaround for the moment, we set p of type any
+ * Can't figure out whether or not there's another way to properly
+ * type props in this use case of emotion
+ */
+const PrismCSS = (p: any) => css`
   .prism-code {
     overflow-wrap: normal;
     position: relative;
