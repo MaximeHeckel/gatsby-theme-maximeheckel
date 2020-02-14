@@ -28,7 +28,7 @@ const TwitterIcon = () => (
   </svg>
 );
 
-const setHeaderStateAfterScroll = (offset: number = 0) => {
+const useHeaderStateAfterScroll = (offset: number = 0) => {
   const [headerState, setHeaderState] = React.useState(false);
   React.useEffect(() => {
     const showTitle = () => setHeaderState(window.scrollY > offset);
@@ -50,7 +50,7 @@ const Header: React.FC<IHeaderProps> = props => {
     sticky = false,
   } = props;
 
-  const headerState = setHeaderStateAfterScroll(150);
+  const headerState = useHeaderStateAfterScroll(150);
 
   return (
     <HeaderWrapper

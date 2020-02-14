@@ -8,6 +8,7 @@
   "license": "MIT",
   "scripts": {
     "format": "prettier --write \"src/**/*.{js|ts|tsx}\"",
+    "lint": "eslint --ext=jsx,ts,tsx src",
     "test": "is-ci \"test:coverage\" \"test:watch\"",
     "test:coverage": "jest --coverage",
     "test:watch": "jest --watch"
