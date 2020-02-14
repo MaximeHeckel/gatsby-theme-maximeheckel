@@ -29,6 +29,7 @@ const Signature: React.FC<{ title: string; url: string }> = ({
     <ColoredBlockWrapper>
       <div>
         <p>
+          {/* eslint-disable-next-line react/no-unescaped-entities */}
           If you liked this article, don't forget to{' '}
           <a
             href={`https://twitter.com/intent/tweet?text=${encodeURI(text)}`}
@@ -36,7 +37,7 @@ const Signature: React.FC<{ title: string; url: string }> = ({
             rel="noopener noreferrer"
           >
             share it
-          </a>{' '}
+          </a>
           or{' '}
           <a
             href={`https://mobile.twitter.com/search?q=${url}`}

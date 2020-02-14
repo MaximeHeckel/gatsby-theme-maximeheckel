@@ -1,9 +1,8 @@
 import { css, Global } from '@emotion/core';
 import { withTheme } from 'emotion-theming';
 import React from 'react';
-import { Theme } from '../../utils/styled';
 
-const GlobalStyles: React.FC<{}> = withTheme((props: { theme: Theme }) => (
+const GlobalStyles: React.FC<{}> = withTheme(props => (
   <Global
     styles={css`
       a {

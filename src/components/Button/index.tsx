@@ -1,10 +1,9 @@
 import { withTheme } from 'emotion-theming';
 import { ReactNode } from 'react';
-import styled, { Theme } from '../../utils/styled';
+import styled from '../../utils/styled';
 interface IButtonProps {
   primary?: boolean;
   secondary?: boolean;
-  theme: Theme;
   white?: boolean;
   children: ReactNode;
 }

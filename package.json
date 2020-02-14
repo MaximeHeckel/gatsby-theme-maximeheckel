@@ -1,12 +1,14 @@
 {
   "name": "gatsby-theme-maximeheckel",
   "description": "Gatsby theme for maximeheckel.com and other consumer gatsby projects",
-  "version": "0.1.44",
+  "version": "0.1.45",
   "main": "index.js",
+  "types": "dist/index.d.ts",
   "author": "Maxime Heckel <hello@maximeheckel.com>",
   "license": "MIT",
   "scripts": {
     "format": "prettier --write \"src/**/*.{js|ts|tsx}\"",
+    "lint": "eslint --ext=jsx,ts,tsx src",
     "test": "is-ci \"test:coverage\" \"test:watch\"",
     "test:coverage": "jest --coverage",
     "test:watch": "jest --watch"
@@ -42,17 +44,19 @@
   },
   "devDependencies": {
     "@testing-library/react": "^8.0.7",
+    "@typescript-eslint/eslint-plugin": "^2.19.2",
+    "@typescript-eslint/parser": "^2.19.2",
+    "eslint": "^6.8.0",
+    "eslint-config-prettier": "^6.10.0",
+    "eslint-plugin-prettier": "^3.1.2",
+    "eslint-plugin-react-hooks": "^2.3.0",
     "identity-obj-proxy": "^3.0.0",
     "is-ci-cli": "^1.1.1",
     "jest": "^23.0.1",
     "jest-dom": "^3.0.2",
     "jest-emotion": "^10.0.7",
-    "ts-jest": "^23.10.5",
-    "tslint": "^5.12.1",
-    "tslint-config-prettier": "^1.17.0",
-    "tslint-loader": "^3.5.4",
-    "tslint-plugin-prettier": "^2.0.1",
-    "tslint-react": "^3.6.0"
+    "prettier": "^1.19.1",
+    "ts-jest": "^23.10.5"
   },
   "peerDependencies": {
     "react": "16.8.0",
