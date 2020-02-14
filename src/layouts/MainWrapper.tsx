@@ -1,8 +1,8 @@
-import styled from '@emotion/styled';
 import React, { ReactNode } from 'react';
 import Footer from '../components/Footer';
 import Header from '../components/Header';
 import { useTheme } from '../context/ThemeContext';
+import styled from '../utils/styled';
 
 interface IMainWrapperProps {
   children: ReactNode;
