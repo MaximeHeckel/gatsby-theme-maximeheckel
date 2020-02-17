@@ -1,4 +1,3 @@
-import { withTheme } from 'emotion-theming';
 import { ReactNode } from 'react';
 import styled from '../../utils/styled';
 interface IButtonProps {
@@ -63,4 +62,4 @@ const Button = styled.button<IButtonProps>`
   }`}
 `;
 
-export default withTheme(Button);
+export default Button;

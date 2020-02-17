@@ -18,14 +18,14 @@ type PrePropsType = {
   children: {
     props: {
       metastring: string;
-      mdxType: string;
+      mdxType?: string;
       className?: string;
       children: string;
     };
   };
 };
 
-const preToCodeBlock = (
+export const preToCodeBlock = (
   preProps: PrePropsType
 ):
   | {
@@ -61,11 +61,11 @@ const preToCodeBlock = (
 
 const RE = /{([\d,-]+)}/;
 
-const calculateLinesToHighlight = (meta: string | null) => {
-  if (!meta || !RE.test(meta)) {
+export const calculateLinesToHighlight = (metastring: string | null) => {
+  if (!metastring || !RE.test(metastring)) {
     return () => false;
   } else {
-    const lineNumbers = RE.exec(meta)![1]
+    const lineNumbers = RE.exec(metastring)![1]
       .split(',')
       .map(v => v.split('-').map(val => parseInt(val, 10)));
     return (index: number) => {
@@ -80,7 +80,7 @@ const calculateLinesToHighlight = (meta: string | null) => {
 
 const RETitle = /title=[A-Za-z](.+)/;
 
-const hasTitle = (metastring: string | null) => {
+export const hasTitle = (metastring: string | null) => {
   if (!metastring || !RETitle.test(metastring)) {
     return '';
   } else {
@@ -120,7 +120,9 @@ export const CodeBlock: React.FC<ICodeBlockProps> = props => {
     <CodeSnippetWrapper>
       {title ? (
         <CodeSnippetHeader>
-          <CodeSnippetTitle>{title}</CodeSnippetTitle>
+          <CodeSnippetTitle data-testid="codesnippet-title">
+            {title}
+          </CodeSnippetTitle>
           <CopyButton onClick={() => handleCopyToClipboard(codeString)}>
             {copied ? 'Copied' : 'Copy'}
           </CopyButton>
@@ -167,6 +169,7 @@ export const CodeBlock: React.FC<ICodeBlockProps> = props => {
 
 export const Code: React.FC<PrePropsType> = preProps => {
   const props = preToCodeBlock(preProps);
+
   if (props) {
     return <CodeBlock {...props} />;
   } else {

@@ -34,9 +34,11 @@ const MDX = React.forwardRef(
   }
 );
 
+MDX.displayName = 'MDX';
+
 export default MDX;
 
-const toKebabCase = (str: string): string | null => {
+export const toKebabCase = (str: string): string | null => {
   const match = str.match(
     /[A-Z]{2,}(?=[A-Z][a-z]+[0-9]*|\b)|[A-Z]?[a-z]+[0-9]*|[A-Z]|[0-9]+/g
   );

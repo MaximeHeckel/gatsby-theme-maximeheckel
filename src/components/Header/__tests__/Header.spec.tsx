@@ -1,18 +1,28 @@
+import { ThemeProvider } from 'emotion-theming';
 import { cleanup, fireEvent, render } from '@testing-library/react';
 import React from 'react';
 import Header from '../';
+import theme from '../../../theme_light';
 
 describe('Header', () => {
   beforeEach(cleanup);
 
   it('renders the header without the site title or the post title or theme switcher', () => {
-    const { queryByTestId } = render(<Header />);
+    const { queryByTestId } = render(
+      <ThemeProvider theme={theme}>
+        <Header />
+      </ThemeProvider>
+    );
     expect(queryByTestId('header-post-title')).toBeNull();
     expect(queryByTestId('darkmode-switch')).toBeNull();
   });
 
   it('renders the header with the site title', () => {
-    const { queryByTestId } = render(<Header siteTitle="Maxime Heckel" />);
+    const { queryByTestId } = render(
+      <ThemeProvider theme={theme}>
+        <Header siteTitle="Maxime Heckel" />
+      </ThemeProvider>
+    );
     expect(queryByTestId('header-post-title')).toBeNull();
     expect(queryByTestId('darkmode-switch')).toBeNull();
   });
@@ -24,19 +34,25 @@ describe('Header', () => {
         <a href="/" data-testid="blog-link">
           Blog
         </a>
-        <a href="/" data-testid="twitter-link">
+        <a href="/" data-testid="twitter-link-custom">
           Twitter
         </a>
       </React.Fragment>
     );
-    const { getByTestId } = render(<Header links={<Links />} />);
+    const { getByTestId } = render(
+      <ThemeProvider theme={theme}>
+        <Header links={<Links />} />
+      </ThemeProvider>
+    );
     expect(getByTestId('blog-link')).toBeDefined();
     expect(getByTestId('twitter-link')).toBeDefined();
   });
 
   it('renders the header with the theme switcher', () => {
     const { queryByTestId, getByTestId } = render(
-      <Header themeSwitcher={{ dark: false, toggleDark: () => null }} />
+      <ThemeProvider theme={theme}>
+        <Header themeSwitcher={{ dark: false, toggleDark: () => null }} />
+      </ThemeProvider>
     );
     expect(queryByTestId('header-post-title')).toBeNull();
     expect(getByTestId('darkmode-switch')).toBeDefined();
@@ -44,8 +60,11 @@ describe('Header', () => {
 
   it('clicking on the theme switcher calls the toggle dark function', () => {
     const mockToggleDark = jest.fn();
+
     const { getByTestId } = render(
-      <Header themeSwitcher={{ dark: false, toggleDark: mockToggleDark }} />
+      <ThemeProvider theme={theme}>
+        <Header themeSwitcher={{ dark: false, toggleDark: mockToggleDark }} />
+      </ThemeProvider>
     );
     fireEvent.click(getByTestId('darkmode-switch'));
     expect(mockToggleDark).toHaveBeenCalled();

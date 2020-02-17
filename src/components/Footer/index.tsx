@@ -1,4 +1,3 @@
-import { withTheme } from 'emotion-theming';
 import React from 'react';
 import Logo from '../Logo';
 import styled from '../../utils/styled';
@@ -50,4 +49,4 @@ const Footer: React.FC<{}> = () => (
   </FooterBlock>
 );
 
-export default withTheme(Footer);
+export default Footer;

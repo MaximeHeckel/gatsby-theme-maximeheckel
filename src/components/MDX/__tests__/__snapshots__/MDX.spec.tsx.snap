@@ -1,0 +1,207 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`MDX Renders the MDX component accordingly 1`] = `
+<DocumentFragment>
+  .emotion-0 {
+  margin: 0 auto;
+  max-width: 1020px;
+  padding: 50px 0px 20px 0px;
+  color: #2B2D3E;
+}
+
+.emotion-0 figcaption {
+  font-size: 14px;
+  text-align: left;
+  line-height: 1.5;
+  font-weight: 500;
+  color: #73737d;
+  padding-top: 10px;
+}
+
+.emotion-0 hr {
+  height: 2px;
+  width: 20%;
+  margin: 50px auto;
+  background-color: #e8e8e8;
+}
+
+.emotion-0 twitter-widget {
+  margin: 0 auto;
+}
+
+.emotion-0 .prism-code {
+  overflow-wrap: normal;
+  position: relative;
+  overflow: scroll;
+  width: 100%;
+  max-width: 744px;
+  margin: 0 auto;
+  padding: 15px;
+  font-size: 14px;
+  margin: 15px auto 15px;
+  border-radius: 5px;
+  background: #292c34;
+}
+
+.emotion-0 .prism-code .token-line {
+  border-left: 3px solid transparent;
+}
+
+.emotion-0 .prism-code .token-line .token {
+  color: #fff;
+}
+
+.emotion-0 .prism-code .token-line .language-javascript {
+  color: #e8696b;
+}
+
+.emotion-0 .prism-code .token-line .javascript {
+  color: #e8696b;
+}
+
+.emotion-0 .prism-code .token-line .background {
+  color: #292c34;
+}
+
+.emotion-0 .prism-code .token-line .comment {
+  color: #5e6a76;
+}
+
+.emotion-0 .prism-code .token-line .string {
+  color: #a8e2a8;
+}
+
+.emotion-0 .prism-code .token-line .var {
+  color: #b3bac5;
+}
+
+.emotion-0 .prism-code .token-line .number {
+  color: #e4854d;
+}
+
+.emotion-0 .prism-code .token-line .constant {
+  color: #b3bac5;
+}
+
+.emotion-0 .prism-code .token-line .plain {
+  color: #fff;
+}
+
+.emotion-0 .prism-code .token-line .doctype {
+  color: #e8696b;
+}
+
+.emotion-0 .prism-code .token-line .tag {
+  color: #e8696b;
+}
+
+.emotion-0 .prism-code .token-line .keyword {
+  color: #d49fd4;
+}
+
+.emotion-0 .prism-code .token-line .boolean {
+  color: #ff5874;
+}
+
+.emotion-0 .prism-code .token-line .function {
+  color: #5F8DC3;
+}
+
+.emotion-0 .prism-code .token-line .parameter {
+  color: #F9965D;
+}
+
+.emotion-0 .prism-code .token-line .class-name {
+  color: #ffcf74;
+}
+
+.emotion-0 .prism-code .token-line .attr-name {
+  color: #bf87ba;
+}
+
+.emotion-0 .prism-code .token-line .attr-value {
+  color: #a8e2a8;
+}
+
+.emotion-0 .prism-code .token-line .interpolation {
+  color: #fff;
+}
+
+.emotion-0 .prism-code .token-line .punctuation {
+  color: #5FA8AA;
+}
+
+.emotion-0 .prism-code .token-line .maybe-class-name {
+  color: #fff;
+}
+
+.emotion-0 .prism-code .token-line .property {
+  color: #80cbc4;
+}
+
+.emotion-0 .prism-code .token-line .property-access {
+  color: #fff;
+}
+
+.emotion-0 .prism-code .token-line .namespace {
+  color: #b2ccd6;
+}
+
+.emotion-0 .prism-code .token-line .highlight {
+  color: rgba(255,255,255,0.07);
+}
+
+.emotion-0 .prism-code .token-line .highlight-border {
+  color: #196FD8;
+}
+
+.emotion-0 .prism-code .token-line .dom {
+  color: #5F8DC3;
+}
+
+.emotion-0 .prism-code .token-line .operator {
+  color: #5FA8AA;
+}
+
+.emotion-0 .prism-code .number-line {
+  display: inline-block;
+  width: 32px;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  opacity: 0.3;
+  color: #dcd9e6;
+}
+
+.emotion-0 .prism-code .token-line {
+  -webkit-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+  min-width: 500px;
+}
+
+.emotion-0 .prism-code .token-line.highlight-line {
+  margin: 0px -14px;
+  padding: 0px 14px;
+  background: rgba(255,255,255,0.07);
+  border-left: 3px solid #196FD8;
+}
+
+.emotion-0 .prism-code .operator + .maybe-class-name {
+  color: #ffcf74 !important;
+}
+
+.emotion-0 .prism-code .plain ~ .operator {
+  color: #5fa8aa !important;
+}
+
+<div
+    class="emotion-0"
+  >
+    <div>
+      Test
+    </div>
+  </div>
+</DocumentFragment>
+`;
