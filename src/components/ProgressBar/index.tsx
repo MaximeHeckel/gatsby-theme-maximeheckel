@@ -121,7 +121,10 @@ const ReadingProgress: React.FC<IReadingProgressProps> = ({
   return (
     <Wrapper showTableOfContents={readingProgress > 7 && readingProgress < 100}>
       <ProgressBarWrapper readingProgress={readingProgress}>
-        <ProgressBar />
+        <ProgressBar
+          data-testid="progress-bar"
+          data-testprogress={readingProgress}
+        />
       </ProgressBarWrapper>
       {tableOfContents && tableOfContents.items.length > 0 ? (
         <ul>

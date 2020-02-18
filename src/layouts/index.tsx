@@ -79,7 +79,7 @@ const Layout: React.FC<ILayoutProps> = props => {
               banner={SeoBanner}
               pathname={slug + '/'}
             />
-            <Hero type={type} id="top">
+            <Hero data-testid={type} type={type} id="top">
               <h1 data-testid={`project-title-${title}`}>{title}</h1>
               <h3>{subtitle || description}</h3>
               {date || timeToRead ? (

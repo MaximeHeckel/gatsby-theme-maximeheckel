@@ -26,7 +26,7 @@ const Signature: React.FC<{ title: string; url: string }> = ({
 }) => {
   const text = `${title} by @MaximeHeckel ${url}`;
   return (
-    <ColoredBlockWrapper>
+    <ColoredBlockWrapper data-testid="signature">
       <div>
         <p>
           {/* eslint-disable-next-line react/no-unescaped-entities */}
