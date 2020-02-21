@@ -7,7 +7,7 @@
   "author": "Maxime Heckel <hello@maximeheckel.com>",
   "license": "MIT",
   "scripts": {
-    "format": "prettier --write \"src/**/*.{js|ts|tsx}\"",
+    "format": "prettier --write \"./src/**/*.{js,jsx,ts,tsx}\"",
     "lint": "eslint --ext=jsx,ts,tsx src",
     "test": "is-ci \"test:coverage\" \"test:watch\"",
     "test:coverage": "jest --coverage",
@@ -57,7 +57,10 @@
     "jest": "25.1.0",
     "jest-dom": "^3.0.2",
     "jest-emotion": "^10.0.7",
-    "prettier": "^1.19.1"
+    "prettier": "^1.19.1",
+    "react": "16.12.0",
+    "react-dom": "16.12.0",
+    "typescript": "^3.8.2"
   },
   "peerDependencies": {
     "react": "16.12.0",
