@@ -44,6 +44,7 @@
     "remark-toc": "^5.1.1"
   },
   "devDependencies": {
+    "@babel/preset-typescript": "7.8.3",
     "@testing-library/react": "^8.0.7",
     "@typescript-eslint/eslint-plugin": "^2.19.2",
     "@typescript-eslint/parser": "^2.19.2",
@@ -56,8 +57,7 @@
     "jest": "25.1.0",
     "jest-dom": "^3.0.2",
     "jest-emotion": "^10.0.7",
-    "prettier": "^1.19.1",
-    "ts-jest": "^23.10.5"
+    "prettier": "^1.19.1"
   },
   "peerDependencies": {
     "react": "16.12.0",
@@ -71,15 +71,11 @@
       "./setup-jest.js"
     ],
     "globals": {
-      "__PATH_PREFIX__": "",
-      "ts-jest": {
-        "diagnostics": false,
-        "tsConfig": "tsconfig.test.json"
-      }
+      "__PATH_PREFIX__": ""
     },
     "testURL": "http://localhost",
     "transform": {
-      "^.+\\.(tsx?|jsx?)$": "ts-jest"
+      "^.+\\.[jt]sx?$": "<rootDir>/jest-preprocess.js"
     },
     "transformIgnorePatterns": [
       "node_modules/(?!(gatsby)/)"
@@ -88,11 +84,6 @@
     "testPathIgnorePatterns": [
       "node_modules",
       ".cache"
-    ],
-    "moduleFileExtensions": [
-      "ts",
-      "tsx",
-      "js"
     ],
     "moduleNameMapper": {
       "typeface-*": "identity-obj-proxy",
