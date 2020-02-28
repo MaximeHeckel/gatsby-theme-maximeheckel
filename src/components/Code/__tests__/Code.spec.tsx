@@ -1,3 +1,4 @@
+/* eslint-disable react/no-unescaped-entities */
 import { ThemeProvider } from 'emotion-theming';
 import { cleanup, render } from '@testing-library/react';
 import React from 'react';
