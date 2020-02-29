@@ -1,7 +1,7 @@
 {
   "name": "gatsby-theme-maximeheckel",
   "description": "Gatsby theme for maximeheckel.com and other consumer gatsby projects",
-  "version": "0.1.52",
+  "version": "0.1.53",
   "main": "index.js",
   "types": "dist/index.d.ts",
   "author": "Maxime Heckel <hello@maximeheckel.com>",
