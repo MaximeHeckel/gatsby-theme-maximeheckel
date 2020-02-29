@@ -31,7 +31,7 @@ const Main = styled.div`
 const NotFoundPage = () => (
   <StaticQuery
     query={graphql`
-      query NotFoundSiteTitle {
+      query NotFoundSite {
         site {
           siteMetadata {
             title
