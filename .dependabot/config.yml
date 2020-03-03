@@ -1,0 +1,19 @@
+version: 1
+update_configs:
+  - package_manager: 'javascript'
+    directory: '/'
+    update_schedule: 'weekly'
+    default_labels:
+      - 'dependencies'
+    target_branch: 'master'
+    version_requirement_updates: 'increase_versions'
+    automerged_updates:
+      - match:
+          dependency_type: 'development'
+          update_type: 'semver:patch'
+      - match:
+          dependency_type: 'development'
+          update_type: 'security:patch'
+    commit_message:
+      prefix: 'chore'
+      include_scope: true
