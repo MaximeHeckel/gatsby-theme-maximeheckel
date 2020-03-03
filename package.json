@@ -21,7 +21,7 @@
     "@mdx-js/react": "^1.1.6",
     "@sindresorhus/slugify": "^0.11.0",
     "emotion-theming": "^10.0.6",
-    "gatsby": "2.19.23",
+    "gatsby": "2.19.25",
     "gatsby-image": "2.2.42",
     "gatsby-plugin-emotion": "4.1.22",
     "gatsby-plugin-google-analytics": "^2.0.9",
