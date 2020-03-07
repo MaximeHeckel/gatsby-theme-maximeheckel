@@ -60,6 +60,7 @@
     "prettier": "^1.19.1",
     "react": "16.13.0",
     "react-dom": "16.13.0",
+    "semantic-release": "^17.0.4",
     "typescript": "^3.8.2"
   },
   "peerDependencies": {
