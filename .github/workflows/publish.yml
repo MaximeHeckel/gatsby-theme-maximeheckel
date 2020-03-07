@@ -1,19 +1,24 @@
-name: Publish
-
+name: Release
 on:
-  release:
-    types: [published]
-
+  push:
+    branches:
+      - master
+      - release
 jobs:
-  build:
-    runs-on: ubuntu-16.04
+  release:
+    name: Release
+    runs-on: ubuntu-18.04
     steps:
-      - uses: actions/checkout@v1
-      - uses: actions/setup-node@v1
+      - name: Checkout
+        uses: actions/checkout@v1
+      - name: Setup Node.js
+        uses: actions/setup-node@v1
         with:
           node-version: 12
-          registry-url: https://registry.npmjs.org/
-      - run: yarn install
-      - run: npm publish --access public
+      - name: Install dependencies
+        run: yarn
+      - name: Release
         env:
-          NODE_AUTH_TOKEN: ${{secrets.NPM_TOKEN}}
+          GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
+          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+        run: npx semantic-release
