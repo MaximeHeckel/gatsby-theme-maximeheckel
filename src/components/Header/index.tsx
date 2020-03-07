@@ -50,7 +50,7 @@ const Header: React.FC<IHeaderProps> = props => {
     sticky = false,
   } = props;
 
-  const headerState = useHeaderStateAfterScroll(150);
+  const headerState = useHeaderStateAfterScroll(120);
 
   return (
     <HeaderWrapper
@@ -122,7 +122,7 @@ const Header: React.FC<IHeaderProps> = props => {
 
 export default Header;
 
-const Title = styled.h2`
+const Title = styled.h3`
   @media (max-width: 900px) {
     max-width: 400px;
   }
@@ -158,7 +158,8 @@ const HeaderWrapper = styled.div<HeaderWrapperProps>`
   background: ${props => props.theme.backgroundColor};
   transition: ${props => props.theme.transitionTime}s;
   width: 100%;
-  height: ${props => (props.sticky && props.slim ? '85px ' : '120px')};
+  border-top: 6px solid ${props => props.theme.colors.blue};
+  height: ${props => (props.sticky && props.slim ? '75px ' : '120px')};
   position: ${props => (props.sticky ? 'fixed' : 'inherit')};
   z-index: 999;
   ${props => (props.slim ? `box-shadow: ${props.theme.boxShadow};` : '')}

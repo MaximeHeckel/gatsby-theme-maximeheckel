@@ -3,7 +3,7 @@
 exports[`Button renders the primary button 1`] = `
 .emotion-0 {
   margin: 0;
-  background-color: #196FD8;
+  background-color: #2a6bff;
   color: #FFFFFF;
   border: none;
   cursor: pointer;
@@ -48,7 +48,7 @@ exports[`Button renders the secondary button 1`] = `
 .emotion-0 {
   margin: 0;
   background-color: transparent;
-  color: #196FD8;
+  color: #2a6bff;
   border: none;
   cursor: pointer;
   display: -webkit-inline-box;
@@ -85,7 +85,7 @@ exports[`Button renders the secondary button 1`] = `
   left: 0;
   right: 0;
   height: 2px;
-  background: #196FD8;
+  background: #2a6bff;
   -webkit-transform: scaleX(0);
   -ms-transform: scaleX(0);
   transform: scaleX(0);

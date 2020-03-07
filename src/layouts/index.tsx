@@ -102,15 +102,17 @@ const Layout: React.FC<ILayoutProps> = props => {
               ) : null}
             </Hero>
             {cover ? (
-              <Img
-                imgStyle={{
-                  borderRadius: '4px',
-                  margin: '0 auto',
-                  maxHeight: '800px',
-                  minHeight: '100px',
-                }}
-                fluid={cover.childImageSharp.fluid}
-              />
+              <ImgWrapper>
+                <Img
+                  imgStyle={{
+                    borderRadius: '4px',
+                    margin: '0 auto',
+                    maxHeight: '800px',
+                    minHeight: '100px',
+                  }}
+                  fluid={cover.childImageSharp.fluid}
+                />
+              </ImgWrapper>
             ) : null}
             <ProgressBar
               tableOfContents={tableOfContents}
@@ -140,7 +142,7 @@ type HeroType = {
 
 const Hero = styled.div<HeroType>`
   @media (max-width: 700px) {
-    padding: 200px 0px 50px 0px;
+    padding: 200px 0px 30px 0px;
 
     h2 {
       line-height: 34px;
@@ -158,4 +160,14 @@ const Hero = styled.div<HeroType>`
     font-size: 16px;
     font-weight: 500;
   }
+`;
+
+const ImgWrapper = styled.div`
+  @media (max-width: 700px) {
+    position: relative;
+    left: calc(-50vw + 50%);
+    position: a;
+    width: 100vw;
+  }
+  margin-bottom: 30px;
 `;

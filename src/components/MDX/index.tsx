@@ -111,7 +111,7 @@ type MDXBody = {
 const MDXBody = styled.div<MDXBody>`
   margin: 0 auto;
   max-width: ${props => (props.type === 'blogPost' ? '700px' : '1020px')};
-  padding: 50px 0px 20px 0px;
+  padding: 20px 0px 20px 0px;
   color: ${props => props.theme.fontColor};
 
   figcaption {
