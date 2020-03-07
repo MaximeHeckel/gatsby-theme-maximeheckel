@@ -17,8 +17,6 @@ jobs:
           node-version: 12
       - name: Install dependencies
         run: yarn
-      - name: Tests
-        run: yarn ci
       - name: Release
         env:
           GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
