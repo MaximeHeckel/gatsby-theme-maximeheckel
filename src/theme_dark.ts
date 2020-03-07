@@ -4,7 +4,7 @@ const theme = {
   boxShadow: '0 0px 12px -6px rgba(0,0,0,0.94)',
   colors: {
     black: '#000000',
-    blue: '#3c83da',
+    blue: '#5184f9',
     gray: '#F8F8F9',
     pink: '#FED5D7',
     prism: {
