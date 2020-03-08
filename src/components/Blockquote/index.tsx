@@ -10,7 +10,7 @@ const Blockquote = styled.blockquote`
   left: calc(-50vw + 50%);
   padding-top: 40px;
   padding-bottom: 40px;
-  background: ${props => props.theme.overlayBackground};
+  background: ${props => props.theme.foregroundColor};
   & > p {
     max-width: 880px !important;
     padding-left: 50px;

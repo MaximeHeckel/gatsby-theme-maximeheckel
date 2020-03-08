@@ -2,7 +2,7 @@ import React from 'react';
 import styled from '../../utils/styled';
 
 const ColoredBlockWrapper = styled('div')`
-  background: ${props => props.theme.overlayBackground};
+  background: ${props => props.theme.foregroundColor};
   color: ${props => props.theme.fontColor};
   position: relative;
   width: 100vw;
@@ -37,7 +37,7 @@ const Signature: React.FC<{ title: string; url: string }> = ({
             rel="noopener noreferrer"
           >
             share it
-          </a>
+          </a>{' '}
           or{' '}
           <a
             href={`https://mobile.twitter.com/search?q=${url}`}

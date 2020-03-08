@@ -8,7 +8,7 @@ import { LayoutContentTypeEnum } from '../../@types/layoutContentType';
 import styled from '../../utils/styled';
 
 const components = {
-  a: (aProps: any) => <a {...aProps} style={{ color: 'inherit' }} />,
+  // a: (aProps: any) => <a {...aProps} style={{ color: 'inherit' }} />,
   blockquote: Blockquote,
   h2: (hProps: any) => <h2 {...hProps} style={{ marginTop: '3em' }} />,
   h3: (hProps: any) => <h2 {...hProps} style={{ marginTop: '3em' }} />,
@@ -128,6 +128,10 @@ const MDXBody = styled.div<MDXBody>`
     width: 20%;
     margin: 50px auto;
     background-color: #e8e8e8;
+  }
+
+  a {
+    color: ${props => props.theme.colors.blue};
   }
 
   twitter-widget {
