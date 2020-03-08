@@ -145,6 +145,7 @@ const Title = styled.h3`
   color: ${props => props.theme.fontColor};
 
   a {
+    color: ${props => props.theme.fontColor};
     text-decoration: none;
   }
 `;
