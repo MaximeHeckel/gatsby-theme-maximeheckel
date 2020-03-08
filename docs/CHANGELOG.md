@@ -1,5 +1,12 @@
 # Gatsby-theme-maximeheckel
 
+## [0.2.1](https://github.com/MaximeHeckel/gatsby-theme-maximeheckel/compare/v0.2.0...v0.2.1) (2020-03-08)
+
+
+### Bug Fixes
+
+* Fix default color of ToC links in ProgressBar ([6661d84](https://github.com/MaximeHeckel/gatsby-theme-maximeheckel/commit/6661d84cd7daf27570bd46f14fafd2f62eb4da8b))
+
 # [0.2.0](https://github.com/MaximeHeckel/gatsby-theme-maximeheckel/compare/v0.1.55...v0.2.0) (2020-03-08)
 
 
