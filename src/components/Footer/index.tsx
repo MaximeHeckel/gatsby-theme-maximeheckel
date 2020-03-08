@@ -42,7 +42,10 @@ const Footer: React.FC<{}> = () => (
     <FooterWrapper>
       <HR />
       <FooterContent>
-        <div>© {new Date().getFullYear()} Maxime Heckel. Made in SF.</div>
+        <div>
+          © {new Date().getFullYear()} Maxime Heckel —— Made in SF. Polished in
+          NY.
+        </div>
         <Logo alt="Maxime Heckel's logo" inverted={true} size={50} />
       </FooterContent>
     </FooterWrapper>
