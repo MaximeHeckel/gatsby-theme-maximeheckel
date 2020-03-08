@@ -56,12 +56,12 @@ const Wrapper = styled('div')<WrapperProps>`
 
   li {
     list-style: none;
-    color: ${props => props.theme.fontColor};
     font-size: 14px;
     font-weight: 500;
     line-height: 1.5;
     margin-bottom: 22px;
     a {
+      color: ${props => props.theme.fontColor};
       text-decoration: none;
       &:hover {
         color: ${props => props.theme.colors.blue};
