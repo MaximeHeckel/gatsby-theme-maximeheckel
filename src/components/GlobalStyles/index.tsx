@@ -6,7 +6,7 @@ const GlobalStyles: React.FC<{}> = withTheme(props => (
   <Global
     styles={css`
       a {
-        color: ${props.theme.fontColor};
+        color: ${props.theme.colors.blue};
         text-decoration: underline;
       }
       .lock-scroll {
