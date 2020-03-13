@@ -1,0 +1,21 @@
+name: Test
+on:
+  push:
+    branches:
+      - test
+jobs:
+  test:
+    name: Test Merge
+    runs-on: ubuntu-18.04
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+      - name: Merge to master
+        uses: MaximeHeckel/github-action-merge-fast-forward@v1.1.0
+        with:
+          branchtomerge: 'test'
+          branch: 'master'
+        env:
+          GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
