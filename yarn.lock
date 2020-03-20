@@ -7057,15 +7057,15 @@ gatsby-react-router-scroll@^2.1.22:
     scroll-behavior "^0.9.10"
     warning "^3.0.0"
 
-gatsby-remark-autolink-headers@^2.0.12:
-  version "2.1.24"
-  resolved "https://registry.yarnpkg.com/gatsby-remark-autolink-headers/-/gatsby-remark-autolink-headers-2.1.24.tgz#7edea9a49dd02de6a20a83c40aa51aac6de9fe47"
-  integrity sha512-8cVIE0UEYPo9BcTdVNwDF3phYvRJ2jfFNK0VXt2y1uJelfczjPwBDl7sL6GaHEA7WPPok5Ac7ZRI4jgYI84tPw==
+gatsby-remark-autolink-headers@^2.2.0:
+  version "2.2.0"
+  resolved "https://registry.yarnpkg.com/gatsby-remark-autolink-headers/-/gatsby-remark-autolink-headers-2.2.0.tgz#e716f9c24534b81d8463dbad96569e09129a9da7"
+  integrity sha512-JAb878rNBvQHB41z8Susu/jO0wWzy2orSlUn3tCrdqQBNBo7xsFpGuDxjfzY5S3U71GHALmeV7AiPMJYc61heg==
   dependencies:
-    "@babel/runtime" "^7.7.6"
-    github-slugger "^1.2.1"
+    "@babel/runtime" "^7.8.7"
+    github-slugger "^1.3.0"
     lodash "^4.17.15"
-    mdast-util-to-string "^1.0.7"
+    mdast-util-to-string "^1.1.0"
     unist-util-visit "^1.4.1"
 
 gatsby-remark-copy-linked-files@^2.1.5:
@@ -7432,7 +7432,7 @@ github-from-package@0.0.0:
   resolved "https://registry.yarnpkg.com/github-from-package/-/github-from-package-0.0.0.tgz#97fb5d96bfde8973313f20e8288ef9a167fa64ce"
   integrity sha1-l/tdlr/eiXMxPyDoKI75oWf6ZM4=
 
-github-slugger@^1.2.1:
+github-slugger@^1.2.1, github-slugger@^1.3.0:
   version "1.3.0"
   resolved "https://registry.yarnpkg.com/github-slugger/-/github-slugger-1.3.0.tgz#9bd0a95c5efdfc46005e82a906ef8e2a059124c9"
   integrity sha512-gwJScWVNhFYSRDvURk/8yhcFBee6aFjye2a7Lhb2bUyRulpIoek9p0I9Kt7PT67d/nUlZbFu8L9RLiA0woQN8Q==
@@ -10682,10 +10682,10 @@ mdast-util-to-nlcst@^3.2.0:
     unist-util-position "^3.0.0"
     vfile-location "^2.0.0"
 
-mdast-util-to-string@^1.0.5, mdast-util-to-string@^1.0.7:
-  version "1.0.8"
-  resolved "https://registry.yarnpkg.com/mdast-util-to-string/-/mdast-util-to-string-1.0.8.tgz#a414cee45ad4bef93a60f32f48266d43e263d88f"
-  integrity sha512-GBracya0dOzckEEizUBzfrkWRLCHMsppuU97LPUriY9kWnYyGFWTx4VDW+sUcj2LneBz/Tp1aYp3aUCibzjtWg==
+mdast-util-to-string@^1.0.5, mdast-util-to-string@^1.0.7, mdast-util-to-string@^1.1.0:
+  version "1.1.0"
+  resolved "https://registry.yarnpkg.com/mdast-util-to-string/-/mdast-util-to-string-1.1.0.tgz#27055500103f51637bd07d01da01eb1967a43527"
+  integrity sha512-jVU0Nr2B9X3MU4tSK7JP1CMkSvOj7X5l/GboG1tKRw52lLF1x2Ju92Ms9tNetCcbfX3hzlM73zYo2NKkWSfF/A==
 
 mdast-util-toc@^3.1.0:
   version "3.1.0"
