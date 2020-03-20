@@ -36,7 +36,7 @@
     "gatsby-remark-copy-linked-files": "^2.1.5",
     "gatsby-remark-embed-gist": "^1.1.9",
     "gatsby-remark-embedder": "^1.1.2",
-    "gatsby-remark-images": "^3.0.1",
+    "gatsby-remark-images": "^3.1.50",
     "gatsby-transformer-sharp": "2.3.16",
     "prism-react-renderer": "^1.0.2",
     "prismjs": "^1.17.1",
