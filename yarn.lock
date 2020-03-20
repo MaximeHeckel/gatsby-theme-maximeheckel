@@ -6901,12 +6901,12 @@ gatsby-graphiql-explorer@^0.2.34:
   dependencies:
     "@babel/runtime" "^7.7.6"
 
-gatsby-image@2.2.42:
-  version "2.2.42"
-  resolved "https://registry.yarnpkg.com/gatsby-image/-/gatsby-image-2.2.42.tgz#6b88bba52e2a479ae6a94cac13a93505164ec55d"
-  integrity sha512-0TvzQAVXt8LKX1164jox5zTWWr6XWkfTAmGVYmi2YEP9i4UmK40vfF9GVuEwxo4mgtYbspPcJMafqyZa6fsRHw==
+gatsby-image@2.2.45:
+  version "2.2.45"
+  resolved "https://registry.yarnpkg.com/gatsby-image/-/gatsby-image-2.2.45.tgz#4cd178c7d3697b6a87ee33d1c088cba31a226384"
+  integrity sha512-bJP7ozqginTbNjakPc8tfnJZnCXpGzUvfhhXQgri/+uO61ZEU32++C9OO1z7sTjmkLOeiGDJQljFL0Kw7SXQbA==
   dependencies:
-    "@babel/runtime" "^7.7.6"
+    "@babel/runtime" "^7.8.7"
     object-fit-images "^3.2.4"
     prop-types "^15.7.2"
 
