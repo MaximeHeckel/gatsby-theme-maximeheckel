@@ -45,7 +45,7 @@
     "remark-toc": "^7.0.0"
   },
   "devDependencies": {
-    "@babel/preset-typescript": "7.8.3",
+    "@babel/preset-typescript": "7.9.0",
     "@semantic-release/changelog": "^5.0.0",
     "@semantic-release/git": "^9.0.0",
     "@semantic-release/npm": "^7.0.5",
