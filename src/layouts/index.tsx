@@ -84,7 +84,7 @@ const Layout: React.FC<ILayoutProps> = props => {
               <h3>{subtitle || description}</h3>
               {date || timeToRead ? (
                 <p>
-                  {date ? parsedDate.toDateString() : null} -{' '}
+                  {date ? parsedDate.toLocaleDateString() : null} -{' '}
                   {timeToRead ? `${timeToRead} min read` : null} -{' '}
                   {type === 'blogPost' ? (
                     <a

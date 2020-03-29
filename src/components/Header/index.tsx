@@ -98,8 +98,12 @@ const Header: React.FC<IHeaderProps> = props => {
           </TwitterLinkWrapper>
           {themeSwitcher && Object.keys(themeSwitcher).length > 0 ? (
             <LightDarkSwitcher
+              tabIndex={0}
+              aria-pressed="false"
+              role="button"
               data-testid="darkmode-switch"
               html-for="darkmode-switch"
+              onKeyDown={themeSwitcher.toggleDark}
               onClick={themeSwitcher.toggleDark}
               isDark={themeSwitcher.dark}
               aria-label={
