@@ -1,5 +1,13 @@
 # Gatsby-theme-maximeheckel
 
+## [0.2.2](https://github.com/MaximeHeckel/gatsby-theme-maximeheckel/compare/v0.2.1...v0.2.2) (2020-03-29)
+
+
+### Bug Fixes
+
+* **layout:** Change date format to MM/DD/YYYY in main layout ([5137de6](https://github.com/MaximeHeckel/gatsby-theme-maximeheckel/commit/5137de62af55da043e2108100290e262fef8014b))
+* **a11y:** Make light/dark switcher accessible via tab ([bac9e4f](https://github.com/MaximeHeckel/gatsby-theme-maximeheckel/commit/bac9e4f1397ec5d4391f2720571340d9f9c9cbfa))
+
 ## [0.2.1](https://github.com/MaximeHeckel/gatsby-theme-maximeheckel/compare/v0.2.0...v0.2.1) (2020-03-08)
 
 
