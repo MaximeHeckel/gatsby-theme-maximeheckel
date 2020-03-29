@@ -1,5 +1,12 @@
 # Gatsby-theme-maximeheckel
 
+## [0.2.3](https://github.com/MaximeHeckel/gatsby-theme-maximeheckel/compare/v0.2.2...v0.2.3) (2020-03-29)
+
+
+### Bug Fixes
+
+* **deps:** Fix sharp dependency conflict ([c81cffd](https://github.com/MaximeHeckel/gatsby-theme-maximeheckel/commit/c81cffdb5aaec7218bb5a24115abd97b8baeae26))
+
 ## [0.2.2](https://github.com/MaximeHeckel/gatsby-theme-maximeheckel/compare/v0.2.1...v0.2.2) (2020-03-29)
 
 
