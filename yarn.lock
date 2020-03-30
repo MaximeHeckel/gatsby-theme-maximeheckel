@@ -4071,6 +4071,21 @@ chokidar@3.3.0:
   optionalDependencies:
     fsevents "~2.1.1"
 
+chokidar@3.3.1:
+  version "3.3.1"
+  resolved "https://registry.yarnpkg.com/chokidar/-/chokidar-3.3.1.tgz#c84e5b3d18d9a4d77558fef466b1bf16bbeb3450"
+  integrity sha512-4QYCEWOcK3OJrxwvyyAOxFuhpvOVCYkr33LPfFNBjAD/w3sEzWsp2BUOkI4l9bHvWioAd0rc6NlHUOEaWkTeqg==
+  dependencies:
+    anymatch "~3.1.1"
+    braces "~3.0.2"
+    glob-parent "~5.1.0"
+    is-binary-path "~2.1.0"
+    is-glob "~4.0.1"
+    normalize-path "~3.0.0"
+    readdirp "~3.3.0"
+  optionalDependencies:
+    fsevents "~2.1.2"
+
 chokidar@^2.0.2, chokidar@^2.0.4, chokidar@^2.1.8:
   version "2.1.8"
   resolved "https://registry.yarnpkg.com/chokidar/-/chokidar-2.1.8.tgz#804b3a7b6a99358c3c5c61e71d8728f041cff917"
@@ -6991,7 +7006,7 @@ fsevents@^1.2.7:
     bindings "^1.5.0"
     nan "^2.12.1"
 
-fsevents@^2.1.2, fsevents@~2.1.1:
+fsevents@^2.1.2, fsevents@~2.1.1, fsevents@~2.1.2:
   version "2.1.2"
   resolved "https://registry.yarnpkg.com/fsevents/-/fsevents-2.1.2.tgz#4c0a1fb34bc68e543b4b82a9ec392bfbda840805"
   integrity sha512-R4wDiBwZ0KzpgOWetKDug1FZcYhqYnUYKtfZYt4mD5SBz76q0KR4Q9o7GIPamsVPGmW3EYPPJ0dOOjvx32ldZA==
@@ -7088,16 +7103,16 @@ gatsby-link@^2.2.29:
     "@types/reach__router" "^1.2.6"
     prop-types "^15.7.2"
 
-gatsby-page-utils@^0.0.39:
-  version "0.0.39"
-  resolved "https://registry.yarnpkg.com/gatsby-page-utils/-/gatsby-page-utils-0.0.39.tgz#5d331b40488b984b95ded9a36470e77c46a9400e"
-  integrity sha512-lDrrenBnh5HR/9mgfhePPvCt2KueccbQu/KPYkBKlwz0hcZ/xl28cgit0Bj9Ijqx7XTMxBd2gtgvgB2QNd8jmA==
+gatsby-page-utils@^0.1.1:
+  version "0.1.1"
+  resolved "https://registry.yarnpkg.com/gatsby-page-utils/-/gatsby-page-utils-0.1.1.tgz#f93ed3fd11c96944f888e9d85abdb7b83af927d6"
+  integrity sha512-g4ETSZM7wlMycHPKwQ7QqxkqnwbXCgwg2Sqh2DyCsd5qwtPm6RrQht3cnbsKAeuo7gWsbqzv088YGa3krrIREw==
   dependencies:
-    "@babel/runtime" "^7.7.6"
+    "@babel/runtime" "^7.8.7"
     bluebird "^3.7.2"
-    chokidar "3.3.0"
+    chokidar "3.3.1"
     fs-exists-cached "^1.0.0"
-    gatsby-core-utils "^1.0.28"
+    gatsby-core-utils "^1.1.1"
     glob "^7.1.6"
     lodash "^4.17.15"
     micromatch "^3.1.10"
@@ -7158,15 +7173,15 @@ gatsby-plugin-mdx@^1.1.2:
     unist-util-remove "^1.0.3"
     unist-util-visit "^1.4.1"
 
-gatsby-plugin-page-creator@^2.1.40, gatsby-plugin-page-creator@^2.1.5:
-  version "2.1.40"
-  resolved "https://registry.yarnpkg.com/gatsby-plugin-page-creator/-/gatsby-plugin-page-creator-2.1.40.tgz#96c817781dfb1f191570c69d2e9af114a3cd23df"
-  integrity sha512-jwY8LTOOobrKUr1ph+/IHAHDuzjSrXsAu2YBqZg7wc/J6gre0YAgOU2yAxY34CadE34jieISO3FDIyHMii3vPg==
+gatsby-plugin-page-creator@^2.1.40, gatsby-plugin-page-creator@^2.2.1:
+  version "2.2.1"
+  resolved "https://registry.yarnpkg.com/gatsby-plugin-page-creator/-/gatsby-plugin-page-creator-2.2.1.tgz#d0da8cdf1ea0d71eb5bb3fb0241e35fb7a5742df"
+  integrity sha512-RRlk7FUScyEj1S6PlGpdj/lrJmps+rl7sQNauOBCIGt3Sod5alin0l8aQJa/ldpI6DIPbp4PWIpqkPsWxED/LA==
   dependencies:
-    "@babel/runtime" "^7.7.6"
+    "@babel/runtime" "^7.8.7"
     bluebird "^3.7.2"
     fs-exists-cached "^1.0.0"
-    gatsby-page-utils "^0.0.39"
+    gatsby-page-utils "^0.1.1"
     glob "^7.1.6"
     lodash "^4.17.15"
     micromatch "^3.1.10"
@@ -12718,6 +12733,11 @@ picomatch@^2.0.4, picomatch@^2.0.5, picomatch@^2.2.1:
   resolved "https://registry.yarnpkg.com/picomatch/-/picomatch-2.2.1.tgz#21bac888b6ed8601f831ce7816e335bc779f0a4a"
   integrity sha512-ISBaA8xQNmwELC7eOjqFKMESB2VIqt4PPDD0nsS95b/9dZXvVKOlz9keMSnoGGKcOHXfTvDD6WMaRoSc9UuhRA==
 
+picomatch@^2.0.7:
+  version "2.2.2"
+  resolved "https://registry.yarnpkg.com/picomatch/-/picomatch-2.2.2.tgz#21f333e9b6b8eaff02468f5146ea406d345f4dad"
+  integrity sha512-q0M/9eZHzmr0AulXyPwNfZjtwZ/RBZlbN3K3CErVrk50T2ASYI7Bye0EvekFY3IP1Nt2DHu0re+V2ZHIpMkuWg==
+
 pify@^2.0.0, pify@^2.2.0, pify@^2.3.0:
   version "2.3.0"
   resolved "https://registry.yarnpkg.com/pify/-/pify-2.3.0.tgz#ed141a6ac043a849ea588498e7dca8b15330e90c"
@@ -13886,6 +13906,13 @@ readdirp@~3.2.0:
   integrity sha512-crk4Qu3pmXwgxdSgGhgA/eXiJAPQiX4GMOZZMXnqKxHX7TaoL+3gQVo/WeuAiogr07DpnfjIMpXXa+PAIvwPGQ==
   dependencies:
     picomatch "^2.0.4"
+
+readdirp@~3.3.0:
+  version "3.3.0"
+  resolved "https://registry.yarnpkg.com/readdirp/-/readdirp-3.3.0.tgz#984458d13a1e42e2e9f5841b129e162f369aff17"
+  integrity sha512-zz0pAkSPOXXm1viEwygWIPSPkcBYjW1xU5j/JBh5t9bGCJwa6f9+BJa6VaB2g+b55yVrmXzqkyLf4xaWYM0IkQ==
+  dependencies:
+    picomatch "^2.0.7"
 
 realpath-native@^1.1.0:
   version "1.1.0"
