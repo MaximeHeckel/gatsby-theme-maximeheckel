@@ -35,7 +35,7 @@
     "gatsby-remark-autolink-headers": "^2.2.1",
     "gatsby-remark-copy-linked-files": "^2.2.1",
     "gatsby-remark-embed-gist": "^1.1.9",
-    "gatsby-remark-embedder": "^1.1.2",
+    "gatsby-remark-embedder": "^1.16.0",
     "gatsby-remark-images": "^3.2.1",
     "gatsby-transformer-sharp": "2.4.3",
     "prism-react-renderer": "^1.0.2",
