@@ -1,3 +1,5 @@
+import 'typeface-fira-code';
+
 import React from 'react';
 import RootWrapper from './src/context/ThemeProvider';
 
