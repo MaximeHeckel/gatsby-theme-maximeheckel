@@ -1,5 +1,12 @@
 # Gatsby-theme-maximeheckel
 
+# [0.3.0](https://github.com/MaximeHeckel/gatsby-theme-maximeheckel/compare/v0.2.4...v0.3.0) (2020-04-04)
+
+
+### Features
+
+* Add Fira Code font for MDX component ([2b22170](https://github.com/MaximeHeckel/gatsby-theme-maximeheckel/commit/2b2217012a3581562aab19d84804d647a30b3d4e))
+
 ## [0.2.4](https://github.com/MaximeHeckel/gatsby-theme-maximeheckel/compare/v0.2.3...v0.2.4) (2020-04-04)
 
 
