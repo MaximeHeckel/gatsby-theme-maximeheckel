@@ -1,9 +1,9 @@
 const theme = {
-  backgroundColor: '#FFFFFF',
+  backgroundColor: '#F6F7F8',
   borderColor: '#f5f5f9',
   boxShadow: '0 0px 12px -6px rgba(0, 24, 40, 0.25)',
   colors: {
-    blue: '#2a6bff',
+    blue: '#5184f9',
     gray: '#F8F8F9',
     pink: '#FED5D7',
     prism: {
