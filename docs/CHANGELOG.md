@@ -1,5 +1,13 @@
 # Gatsby-theme-maximeheckel
 
+## [0.2.4](https://github.com/MaximeHeckel/gatsby-theme-maximeheckel/compare/v0.2.3...v0.2.4) (2020-04-04)
+
+
+### Bug Fixes
+
+* **a11y:** Fix keydown handler on light/dark switch ([9d225a7](https://github.com/MaximeHeckel/gatsby-theme-maximeheckel/commit/9d225a78bb1d8f1e7b807c641a108f60df021bcd))
+* **theme:** Tweak theme colors and ensure style consistency ([8e465a9](https://github.com/MaximeHeckel/gatsby-theme-maximeheckel/commit/8e465a920bb5a33516fce690dc04943e68d1520a))
+
 ## [0.2.3](https://github.com/MaximeHeckel/gatsby-theme-maximeheckel/compare/v0.2.2...v0.2.3) (2020-03-29)
 
 
