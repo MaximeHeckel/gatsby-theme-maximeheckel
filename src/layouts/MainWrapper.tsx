@@ -45,8 +45,8 @@ const MainWrapper = ({
 export default MainWrapper;
 
 const LayoutWrapper = styled.div`
-  transition: ${props => props.theme.transitionTime}s;
-  background: ${props => props.theme.backgroundColor};
+  transition: ${(props) => props.theme.transitionTime}s;
+  background: ${(props) => props.theme.backgroundColor};
 `;
 
 const Layout = styled.div`
@@ -56,5 +56,5 @@ const Layout = styled.div`
   margin: 0 auto;
   max-width: 1020px;
   padding: 0px 70px 0px 70px;
-  color: ${props => props.theme.fontColor};
+  color: ${(props) => props.theme.fontColor};
 `;

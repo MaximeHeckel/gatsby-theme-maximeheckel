@@ -32,7 +32,22 @@ interface ILayoutProps {
   children: ReactNode;
 }
 
-const Layout: React.FC<ILayoutProps> = props => {
+const MONTHS = [
+  'Jan',
+  'Feb',
+  'Mar',
+  'Apr',
+  'May',
+  'Jun',
+  'Jul',
+  'Aug',
+  'Sep',
+  'Oct',
+  'Nov',
+  'Dec',
+];
+
+const Layout: React.FC<ILayoutProps> = (props) => {
   return (
     <StaticQuery
       query={graphql`
@@ -46,7 +61,7 @@ const Layout: React.FC<ILayoutProps> = props => {
           }
         }
       `}
-      render={data => {
+      render={(data) => {
         const {
           frontmatter,
           cover,
@@ -84,8 +99,12 @@ const Layout: React.FC<ILayoutProps> = props => {
               <h3>{subtitle || description}</h3>
               {date || timeToRead ? (
                 <p>
-                  {date ? parsedDate.toLocaleDateString() : null} -{' '}
-                  {timeToRead ? `${timeToRead} min read` : null} -{' '}
+                  {date
+                    ? `${
+                        MONTHS[parsedDate.getMonth()]
+                      } ${parsedDate.getDate()} ${parsedDate.getFullYear()}`
+                    : null}{' '}
+                  - {timeToRead ? `${timeToRead} min read` : null} -{' '}
                   {type === 'blogPost' ? (
                     <a
                       href={`https://twitter.com/intent/tweet?text=${encodeURI(
@@ -150,13 +169,13 @@ const Hero = styled.div<HeroType>`
   }
 
   margin: 0 auto;
-  max-width: ${props => (props.type === 'blogPost' ? '700px' : '1020px')};
+  max-width: ${(props) => (props.type === 'blogPost' ? '700px' : '1020px')};
   align-items: center;
-  color: ${props => props.theme.fontColor};
+  color: ${(props) => props.theme.fontColor};
   padding-top: 200px;
 
   p {
-    color: #73737d;
+    color: #8a8a90;
     font-size: 16px;
     font-weight: 500;
   }

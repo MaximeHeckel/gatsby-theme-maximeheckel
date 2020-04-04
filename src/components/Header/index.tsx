@@ -28,6 +28,8 @@ const TwitterIcon = () => (
   </svg>
 );
 
+const noop = () => {};
+
 const useHeaderStateAfterScroll = (offset: number = 0) => {
   const [headerState, setHeaderState] = React.useState(false);
   React.useEffect(() => {
@@ -41,7 +43,7 @@ const useHeaderStateAfterScroll = (offset: number = 0) => {
   return headerState;
 };
 
-const Header: React.FC<IHeaderProps> = props => {
+const Header: React.FC<IHeaderProps> = (props) => {
   const {
     links,
     postTitle = '',
@@ -68,7 +70,7 @@ const Header: React.FC<IHeaderProps> = props => {
             <Logo
               aria-label={siteTitle}
               alt={`${siteTitle}'s logo`}
-              size={headerState && sticky ? 45 : 65}
+              size={headerState && sticky ? 45 : 60}
             />
           </Link>
           {headerState && postTitle !== '' ? (
@@ -103,7 +105,9 @@ const Header: React.FC<IHeaderProps> = props => {
               role="button"
               data-testid="darkmode-switch"
               html-for="darkmode-switch"
-              onKeyDown={themeSwitcher.toggleDark}
+              onKeyDown={(e) =>
+                e.keyCode === 13 ? themeSwitcher.toggleDark() : noop
+              }
               onClick={themeSwitcher.toggleDark}
               isDark={themeSwitcher.dark}
               aria-label={
@@ -146,10 +150,10 @@ const Title = styled.h3`
   overflow: hidden;
   white-space: nowrap;
   text-overflow: ellipsis;
-  color: ${props => props.theme.fontColor};
+  color: ${(props) => props.theme.fontColor};
 
   a {
-    color: ${props => props.theme.fontColor};
+    color: ${(props) => props.theme.fontColor};
     text-decoration: none;
   }
 `;
@@ -160,14 +164,14 @@ type HeaderWrapperProps = {
 };
 
 const HeaderWrapper = styled.div<HeaderWrapperProps>`
-  background: ${props => props.theme.backgroundColor};
-  transition: ${props => props.theme.transitionTime}s;
+  background: ${(props) => props.theme.backgroundColor};
+  transition: ${(props) => props.theme.transitionTime}s;
   width: 100%;
-  border-top: 6px solid ${props => props.theme.colors.blue};
-  height: ${props => (props.sticky && props.slim ? '75px ' : '120px')};
-  position: ${props => (props.sticky ? 'fixed' : 'inherit')};
+  border-top: 6px solid ${(props) => props.theme.colors.blue};
+  height: ${(props) => (props.sticky && props.slim ? '75px ' : '120px')};
+  position: ${(props) => (props.sticky ? 'fixed' : 'inherit')};
   z-index: 999;
-  ${props => (props.slim ? `box-shadow: ${props.theme.boxShadow};` : '')}
+  ${(props) => (props.slim ? `box-shadow: ${props.theme.boxShadow};` : '')}
 `;
 
 const HeaderContent = styled.div`
@@ -195,7 +199,7 @@ const TwitterLinkWrapper = styled('div')`
   width: 50px;
   margin-top: 10px;
   svg {
-    fill: ${p => p.theme.colors.blue};
+    fill: ${(p) => p.theme.colors.blue};
   }
 `;
 
@@ -208,7 +212,7 @@ const CustomLinks = styled.div<CustomLinksProps>`
     display: ${(props: { show: boolean }) => (props.show ? 'flex' : 'none')};
   }
   display: flex;
-  color: ${props => props.theme.fontColor};
+  color: ${(props) => props.theme.fontColor};
   min-width: 185px;
   justify-content: space-evenly;
   align-items: center;

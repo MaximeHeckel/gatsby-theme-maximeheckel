@@ -43,7 +43,7 @@ export const toKebabCase = (str: string): string | null => {
     /[A-Z]{2,}(?=[A-Z][a-z]+[0-9]*|\b)|[A-Z]?[a-z]+[0-9]*|[A-Z]|[0-9]+/g
   );
 
-  return match && match.map(x => x.toLowerCase()).join('-');
+  return match && match.map((x) => x.toLowerCase()).join('-');
 };
 
 /**
@@ -67,7 +67,7 @@ const PrismCSS = (p: any) => css`
     .token-line {
       border-left: 3px solid transparent;
       ${Object.keys(p.theme.colors.prism)
-        .map(key => {
+        .map((key) => {
           return `.${toKebabCase(key)}{color:${p.theme.colors.prism[key]};}`;
         })
         .reduce((curr, next) => curr + next, ``)};
@@ -110,16 +110,16 @@ type MDXBody = {
 
 const MDXBody = styled.div<MDXBody>`
   margin: 0 auto;
-  max-width: ${props => (props.type === 'blogPost' ? '700px' : '1020px')};
+  max-width: ${(props) => (props.type === 'blogPost' ? '700px' : '1020px')};
   padding: 20px 0px 20px 0px;
-  color: ${props => props.theme.fontColor};
+  color: ${(props) => props.theme.fontColor};
 
   figcaption {
     font-size: 14px;
     text-align: left;
     line-height: 1.5;
     font-weight: 500;
-    color: #73737d;
+    color: #8a8a90;
     padding-top: 10px;
   }
 
@@ -131,7 +131,7 @@ const MDXBody = styled.div<MDXBody>`
   }
 
   a {
-    color: ${props => props.theme.colors.blue};
+    color: ${(props) => props.theme.colors.blue};
   }
 
   twitter-widget {
