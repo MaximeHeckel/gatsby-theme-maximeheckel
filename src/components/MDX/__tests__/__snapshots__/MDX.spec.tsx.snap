@@ -26,7 +26,7 @@ exports[`MDX Renders the MDX component accordingly 1`] = `
 }
 
 .emotion-0 a {
-  color: #2a6bff;
+  color: #5184f9;
 }
 
 .emotion-0 twitter-widget {
