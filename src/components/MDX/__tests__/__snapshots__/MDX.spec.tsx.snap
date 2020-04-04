@@ -34,6 +34,7 @@ exports[`MDX Renders the MDX component accordingly 1`] = `
 }
 
 .emotion-0 .prism-code {
+  font-family: Fira Code;
   overflow-wrap: normal;
   position: relative;
   overflow: scroll;

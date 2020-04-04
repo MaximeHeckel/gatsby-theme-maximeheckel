@@ -67,7 +67,7 @@ export const calculateLinesToHighlight = (metastring: string | null) => {
   } else {
     const lineNumbers = RE.exec(metastring)![1]
       .split(',')
-      .map(v => v.split('-').map(val => parseInt(val, 10)));
+      .map((v) => v.split('-').map((val) => parseInt(val, 10)));
     return (index: number) => {
       const lineNumber = index + 1;
       const inRange = lineNumbers.some(([start, end]) =>
@@ -92,7 +92,7 @@ interface IInlineCodeProps {
   children: React.ReactNode;
 }
 
-export const InlineCode: React.FC<IInlineCodeProps> = props => {
+export const InlineCode: React.FC<IInlineCodeProps> = (props) => {
   return <InlineCodeWrapper>{props.children}</InlineCodeWrapper>;
 };
 
@@ -102,7 +102,7 @@ interface ICodeBlockProps {
   metastring: string | null;
 }
 
-export const CodeBlock: React.FC<ICodeBlockProps> = props => {
+export const CodeBlock: React.FC<ICodeBlockProps> = (props) => {
   const { codeString, language, metastring } = props;
   const [copied, hasClickedCopy] = React.useState(false);
   const handleCopyToClipboard = (code: string) => {
@@ -167,7 +167,7 @@ export const CodeBlock: React.FC<ICodeBlockProps> = props => {
   );
 };
 
-export const Code: React.FC<PrePropsType> = preProps => {
+export const Code: React.FC<PrePropsType> = (preProps) => {
   const props = preToCodeBlock(preProps);
 
   if (props) {
@@ -179,8 +179,8 @@ export const Code: React.FC<PrePropsType> = preProps => {
 
 const InlineCodeWrapper = styled('code')`
   border-radius: 4px;
-  background-color: ${p => p.theme.colors.prism.background};
-  color: ${p => p.theme.colors.white};
+  background-color: ${(p) => p.theme.colors.prism.background};
+  color: ${(p) => p.theme.colors.white};
   padding-top: 2px;
   padding-bottom: 4px;
   padding-left: 6px;
@@ -202,8 +202,8 @@ const CodeSnippetHeader = styled('div')`
   justify-content: space-between;
   border-top-left-radius: 5px;
   border-top-right-radius: 5px;
-  color: ${p => p.theme.colors.white};
-  background: ${p => p.theme.colors.blue};
+  color: ${(p) => p.theme.colors.white};
+  background: ${(p) => p.theme.colors.blue};
   min-height: 45px;
 `;
 
@@ -217,12 +217,12 @@ const CodeSnippetWrapper = styled('div')`
 
   width: 100%;
   border-radius: 5px;
-  background: ${p => p.theme.colors.prism.background};
+  background: ${(p) => p.theme.colors.prism.background};
   margin: 40px 0px;
 `;
 
 const CopyButton = styled('button')`
-  color: ${p => p.theme.colors.white};
+  color: ${(p) => p.theme.colors.white};
   transition: background 0.3s ease;
   background: rgba(255, 255, 255, 0.05);
   border: none;

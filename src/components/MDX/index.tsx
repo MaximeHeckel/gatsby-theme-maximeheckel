@@ -53,6 +53,7 @@ export const toKebabCase = (str: string): string | null => {
  */
 const PrismCSS = (p: any) => css`
   .prism-code {
+    font-family: Fira Code;
     overflow-wrap: normal;
     position: relative;
     overflow: scroll;
