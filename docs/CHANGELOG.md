@@ -1,5 +1,12 @@
 # Gatsby-theme-maximeheckel
 
+# [0.4.0](https://github.com/MaximeHeckel/gatsby-theme-maximeheckel/compare/v0.3.0...v0.4.0) (2020-04-05)
+
+
+### Features
+
+* **seo:** Improve SEO component with schema.org script ([67af9f7](https://github.com/MaximeHeckel/gatsby-theme-maximeheckel/commit/67af9f7940d9fb59377562e6f4415a55dee00b0e))
+
 # [0.3.0](https://github.com/MaximeHeckel/gatsby-theme-maximeheckel/compare/v0.2.4...v0.3.0) (2020-04-04)
 
 
