@@ -37,11 +37,13 @@
     "gatsby-remark-embed-gist": "^1.1.9",
     "gatsby-remark-embedder": "^1.1.2",
     "gatsby-remark-images": "^3.2.1",
+    "gatsby-remark-sectionize": "^1.0.0",
     "gatsby-transformer-sharp": "2.4.3",
     "prism-react-renderer": "^1.0.2",
     "prismjs": "^1.17.1",
     "react-anchor-link-smooth-scroll": "^1.0.11",
     "react-helmet": "5.2.1",
+    "react-scrollspy": "^3.4.2",
     "remark-toc": "^7.0.0",
     "typeface-fira-code": "^1.1.4"
   },

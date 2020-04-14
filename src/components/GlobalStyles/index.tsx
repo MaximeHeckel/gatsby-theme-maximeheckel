@@ -14,8 +14,15 @@ const GlobalStyles: React.FC<{}> = withTheme((props) => (
         color: ${props.theme.colors.blue};
         text-decoration: underline;
       }
+
       .lock-scroll {
         overflow: hidden !important;
+      }
+
+      .isCurrent {
+        a {
+          color: ${props.theme.colors.blue} !important;
+        }
       }
     `}
   />
