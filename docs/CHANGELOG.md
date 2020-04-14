@@ -1,5 +1,12 @@
 # Gatsby-theme-maximeheckel
 
+## [0.5.1](https://github.com/MaximeHeckel/gatsby-theme-maximeheckel/compare/v0.5.0...v0.5.1) (2020-04-14)
+
+
+### Bug Fixes
+
+* **layout:** Fix missing body background color from theme ([5e50786](https://github.com/MaximeHeckel/gatsby-theme-maximeheckel/commit/5e5078697f163e43d16be7989d7b14ea1a1e875f))
+
 # [0.5.0](https://github.com/MaximeHeckel/gatsby-theme-maximeheckel/compare/v0.4.0...v0.5.0) (2020-04-14)
 
 
