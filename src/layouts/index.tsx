@@ -1,7 +1,7 @@
 import slugify from '@sindresorhus/slugify';
 import { graphql, StaticQuery } from 'gatsby';
 import Img, { FluidObject } from 'gatsby-image';
-import React, { ReactNode } from 'react';
+import React from 'react';
 import { LayoutContentTypeEnum } from '../@types/layoutContentType';
 import Button from '../components/Button';
 import MDX from '../components/MDX';
@@ -29,7 +29,6 @@ interface ILayoutProps {
       };
     };
   };
-  children: ReactNode;
 }
 
 const MONTHS = [
@@ -85,6 +84,17 @@ const Layout: React.FC<ILayoutProps> = (props) => {
             ? cover.childImageSharp.fluid.src
             : '';
 
+        const childrenWithProps = React.Children.map(
+          props.children,
+          (child) => {
+            return child && child.props.mdxType === 'section'
+              ? React.cloneElement(child, {
+                  id: child.props.children[0].props.id,
+                })
+              : child;
+          }
+        );
+
         return (
           <MainWrapper footer={true} header={true} headerProps={headerProps}>
             <Seo
@@ -139,7 +149,7 @@ const Layout: React.FC<ILayoutProps> = (props) => {
               target={progressBarTarget}
             />
             <MDX ref={progressBarTarget} type={type}>
-              {props.children}
+              {childrenWithProps}
             </MDX>
             {type === 'blogPost' ? (
               <Signature
@@ -169,7 +179,7 @@ const Hero = styled.div<HeroType>`
     }
   }
 
-  margin: 0 auto;
+  margin: 0 auto 50px auto;
   max-width: ${(props) => (props.type === 'blogPost' ? '700px' : '1020px')};
   align-items: center;
   color: ${(props) => props.theme.fontColor};

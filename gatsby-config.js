@@ -20,6 +20,7 @@ module.exports = {
             },
           },
           'gatsby-remark-copy-linked-files',
+          'gatsby-remark-sectionize',
           {
             resolve: 'gatsby-remark-autolink-headers',
             options: {
@@ -27,7 +28,6 @@ module.exports = {
             },
           },
         ],
-        plugins: ['gatsby-remark-images'],
       },
     },
     'gatsby-transformer-sharp',
