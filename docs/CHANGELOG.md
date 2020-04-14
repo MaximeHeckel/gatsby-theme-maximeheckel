@@ -1,5 +1,12 @@
 # Gatsby-theme-maximeheckel
 
+# [0.5.0](https://github.com/MaximeHeckel/gatsby-theme-maximeheckel/compare/v0.4.0...v0.5.0) (2020-04-14)
+
+
+### Features
+
+* **layout:** Add spy scroll to table of content ([0998923](https://github.com/MaximeHeckel/gatsby-theme-maximeheckel/commit/0998923c94e4935e302da3cffe673eced99de1b7))
+
 # [0.4.0](https://github.com/MaximeHeckel/gatsby-theme-maximeheckel/compare/v0.3.0...v0.4.0) (2020-04-05)
 
 
