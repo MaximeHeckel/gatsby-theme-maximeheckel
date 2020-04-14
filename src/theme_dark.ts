@@ -1,7 +1,7 @@
 const theme = {
-  backgroundColor: '#202326',
+  backgroundColor: '#1b1e21',
   borderColor: 'rgba(255, 255, 255, 0.1)',
-  boxShadow: '0 10px 30px -6px rgba(0,0,0,0.94)',
+  boxShadow: 'rgba(0,0,0,0.2) 0px 20px 40px',
   colors: {
     black: '#000000',
     blue: '#5184f9',
@@ -42,7 +42,8 @@ const theme = {
     white: '#FFFFFF',
   },
   fontColor: '#FFFFFF',
-  foregroundColor: 'rgba(0,0,0,0.40)',
+  // secondaryFontColor: '#d5d4dc',
+  foregroundColor: '#0e141b',
   overlayBackground: 'rgba(0,0,0,0.40)',
   transitionTime: 0.5,
 };
