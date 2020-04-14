@@ -22,7 +22,7 @@
     "@mdx-js/react": "^1.1.6",
     "@sindresorhus/slugify": "^0.11.0",
     "emotion-theming": "^10.0.6",
-    "gatsby": "2.19.27",
+    "gatsby": "2.20.12",
     "gatsby-image": "2.3.1",
     "gatsby-plugin-emotion": "4.1.22",
     "gatsby-plugin-google-analytics": "^2.1.38",
@@ -37,11 +37,13 @@
     "gatsby-remark-embed-gist": "^1.1.9",
     "gatsby-remark-embedder": "^1.1.2",
     "gatsby-remark-images": "^3.2.1",
+    "gatsby-remark-sectionize": "^1.0.0",
     "gatsby-transformer-sharp": "2.4.3",
     "prism-react-renderer": "^1.0.2",
     "prismjs": "^1.17.1",
     "react-anchor-link-smooth-scroll": "^1.0.11",
     "react-helmet": "5.2.1",
+    "react-scrollspy": "^3.4.2",
     "remark-toc": "^7.0.0",
     "typeface-fira-code": "^1.1.4"
   },
@@ -64,13 +66,13 @@
     "jest-dom": "^3.0.2",
     "jest-emotion": "^10.0.7",
     "prettier": "^2.0.2",
-    "react": "16.13.0",
+    "react": "16.13.1",
     "react-dom": "16.13.0",
     "semantic-release": "^17.0.4",
     "typescript": "^3.8.2"
   },
   "peerDependencies": {
-    "react": "16.13.0",
+    "react": "16.13.1",
     "react-dom": "16.13.0"
   },
   "jest": {
