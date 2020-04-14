@@ -10,6 +10,10 @@ const GlobalStyles: React.FC<{}> = withTheme((props) => (
         color: ${props.theme.backgroundColor};
       }
 
+      body {
+        background: ${props.theme.backgroundColor};
+      }
+
       a {
         color: ${props.theme.colors.blue};
         text-decoration: underline;
