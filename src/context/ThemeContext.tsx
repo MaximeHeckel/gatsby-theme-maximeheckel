@@ -1,7 +1,13 @@
 import { ThemeProvider as EmotionThemeProvider } from 'emotion-theming';
 import React, { Dispatch, ReactNode, SetStateAction } from 'react';
-import themeDark from '../theme_dark';
-import themeLight from '../theme_light';
+import theme from '../theme';
+
+enum Theme {
+  LIGHT = 'light',
+  DARK = 'dark',
+}
+
+const KEY = 'mode';
 
 const defaultContextData = {
   dark: false,
@@ -12,53 +18,64 @@ const ThemeContext = React.createContext(defaultContextData);
 
 const useTheme = () => React.useContext(ThemeContext);
 
-const useDarkMode = (): [
-  { dark: boolean; themeHasBeenSet: boolean },
-  Dispatch<SetStateAction<{ dark: boolean; themeHasBeenSet: boolean }>>
-] => {
-  const supportsDarkMode = () =>
-    window.matchMedia('(prefers-color-scheme: dark)').matches === true;
+const storage = {
+  get: (init?: Theme) => window.localStorage.getItem(KEY) || init,
+  set: (value: Theme) => window.localStorage.setItem(KEY, value),
+};
 
-  const [themeState, setThemeState] = React.useState({
-    dark: false,
-    themeHasBeenSet: false,
-  });
+const supportsDarkMode = () =>
+  window.matchMedia('(prefers-color-scheme: dark)').matches === true;
+
+const useDarkMode = (): [Theme, Dispatch<SetStateAction<Theme>>] => {
+  const [themeState, setThemeState] = React.useState(Theme.LIGHT);
+
+  const setThemeStateEnhanced = () => {
+    setThemeState((prevState) => {
+      const nextState = prevState === Theme.LIGHT ? Theme.DARK : Theme.LIGHT;
+      document.body.classList.remove('maximeheckel-' + prevState);
+
+      document.body.classList.add('maximeheckel-' + nextState);
+      storage.set(nextState);
+
+      return nextState;
+    });
+  };
+
   React.useEffect(() => {
-    const lsDark = localStorage.getItem('dark') === 'true';
-    if (lsDark || supportsDarkMode()) {
-      setThemeState({ dark: true, themeHasBeenSet: true });
-    } else {
-      setThemeState({ dark: false, themeHasBeenSet: true });
+    const storedMode = storage.get();
+    if (!storedMode && supportsDarkMode()) {
+      return setThemeStateEnhanced();
     }
-  }, []);
 
-  return [themeState, setThemeState];
+    if (!storedMode || storedMode === themeState) {
+      return;
+    }
+    setThemeStateEnhanced();
+  }, [themeState]);
+
+  return [themeState, setThemeStateEnhanced];
 };
 
 const ThemeProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
-  const [themeState, setThemeState] = useDarkMode();
-
-  const theme = themeState.dark ? themeDark : themeLight;
-
+  const [themeState, setThemeStateEnhanced] = useDarkMode();
+  const themeLoaded = themeState === Theme.DARK ? theme.dark : theme.light;
   const toggleDark = () => {
-    const dark = !themeState.dark;
-    localStorage.setItem('dark', JSON.stringify(dark));
-    setThemeState({ ...themeState, dark });
+    setThemeStateEnhanced(
+      themeState === Theme.LIGHT ? Theme.DARK : Theme.LIGHT
+    );
   };
 
   return (
-    <div style={{ display: themeState.themeHasBeenSet ? 'block' : 'none' }}>
-      <EmotionThemeProvider theme={theme}>
-        <ThemeContext.Provider
-          value={{
-            dark: themeState.dark,
-            toggleDark,
-          }}
-        >
-          {children}
-        </ThemeContext.Provider>
-      </EmotionThemeProvider>
-    </div>
+    <EmotionThemeProvider theme={themeLoaded}>
+      <ThemeContext.Provider
+        value={{
+          dark: themeState === Theme.DARK,
+          toggleDark,
+        }}
+      >
+        {children}
+      </ThemeContext.Provider>
+    </EmotionThemeProvider>
   );
 };
 

@@ -1,6 +1,6 @@
 import styled, { CreateStyled } from '@emotion/styled';
-import theme from '../theme_light';
+import theme from '../theme';
 
-type Theme = typeof theme;
+type Theme = typeof theme.light;
 
 export default styled as CreateStyled<Theme>;

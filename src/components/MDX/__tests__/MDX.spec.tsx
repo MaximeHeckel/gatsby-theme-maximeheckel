@@ -2,7 +2,7 @@ import { ThemeProvider } from 'emotion-theming';
 import { cleanup, render } from '@testing-library/react';
 import React from 'react';
 import MDX, { toKebabCase } from '../';
-import theme from '../../../theme_light';
+import theme from '../../../theme';
 
 afterEach(() => {
   cleanup();
@@ -17,7 +17,7 @@ describe('MDX', () => {
 
   it('Renders the MDX component accordingly', () => {
     const { asFragment } = render(
-      <ThemeProvider theme={theme}>
+      <ThemeProvider theme={theme.light}>
         <MDX>
           <div>Test</div>
         </MDX>
