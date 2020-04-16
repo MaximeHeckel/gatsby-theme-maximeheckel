@@ -2,14 +2,14 @@ import { ThemeProvider } from 'emotion-theming';
 import { cleanup, fireEvent, render } from '@testing-library/react';
 import React from 'react';
 import Header from '../';
-import theme from '../../../theme_light';
+import theme from '../../../theme';
 
 describe('Header', () => {
   beforeEach(cleanup);
 
   it('renders the header without the site title or the post title or theme switcher', () => {
     const { queryByTestId } = render(
-      <ThemeProvider theme={theme}>
+      <ThemeProvider theme={theme.light}>
         <Header />
       </ThemeProvider>
     );
@@ -19,7 +19,7 @@ describe('Header', () => {
 
   it('renders the header with the site title', () => {
     const { queryByTestId } = render(
-      <ThemeProvider theme={theme}>
+      <ThemeProvider theme={theme.light}>
         <Header siteTitle="Maxime Heckel" />
       </ThemeProvider>
     );
@@ -40,7 +40,7 @@ describe('Header', () => {
       </React.Fragment>
     );
     const { getByTestId } = render(
-      <ThemeProvider theme={theme}>
+      <ThemeProvider theme={theme.light}>
         <Header links={<Links />} />
       </ThemeProvider>
     );
@@ -50,7 +50,7 @@ describe('Header', () => {
 
   it('renders the header with the theme switcher', () => {
     const { queryByTestId, getByTestId } = render(
-      <ThemeProvider theme={theme}>
+      <ThemeProvider theme={theme.light}>
         <Header themeSwitcher={{ dark: false, toggleDark: () => null }} />
       </ThemeProvider>
     );
@@ -62,7 +62,7 @@ describe('Header', () => {
     const mockToggleDark = jest.fn();
 
     const { getByTestId } = render(
-      <ThemeProvider theme={theme}>
+      <ThemeProvider theme={theme.light}>
         <Header themeSwitcher={{ dark: false, toggleDark: mockToggleDark }} />
       </ThemeProvider>
     );

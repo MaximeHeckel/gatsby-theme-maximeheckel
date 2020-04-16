@@ -6,7 +6,7 @@ exports[`MDX Renders the MDX component accordingly 1`] = `
   margin: 0 auto;
   max-width: 1020px;
   padding: 20px 0px 20px 0px;
-  color: #2B2D3E;
+  color: var(--maximeheckel-colors-typeface-0,#2B2D3E);
 }
 
 .emotion-0 figcaption {
@@ -52,12 +52,12 @@ exports[`MDX Renders the MDX component accordingly 1`] = `
 
 .emotion-0 ol li:before {
   content: counters(li,'.') '. ';
-  color: #5184f9;
+  color: var(--maximeheckel-colors-brand,#5184f9);
   padding-right: 12px;
 }
 
 .emotion-0 a {
-  color: #5184f9;
+  color: var(--maximeheckel-colors-brand,#5184f9);
 }
 
 .emotion-0 twitter-widget {

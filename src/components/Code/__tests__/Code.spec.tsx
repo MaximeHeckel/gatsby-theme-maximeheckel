@@ -3,7 +3,7 @@ import { ThemeProvider } from 'emotion-theming';
 import { cleanup, render } from '@testing-library/react';
 import React from 'react';
 import { Code, calculateLinesToHighlight, hasTitle, preToCodeBlock } from '../';
-import theme from '../../../theme_light';
+import theme from '../../../theme';
 
 afterEach(() => {
   cleanup();
@@ -58,7 +58,7 @@ describe('Code', () => {
 
   it('Renders a Codeblock component when the proper preProps are passed', () => {
     const { container } = render(
-      <ThemeProvider theme={theme}>
+      <ThemeProvider theme={theme.light}>
         <Code>
           <div metastring="javascript" mdxType="code">
             var hello="world"
@@ -76,7 +76,7 @@ describe('Code', () => {
 
   it('Renders a Codeblock with title when the proper preProps are passed', () => {
     const { container } = render(
-      <ThemeProvider theme={theme}>
+      <ThemeProvider theme={theme.light}>
         <Code>
           <div metastring="javascript title=test" mdxType="code">
             some code to render
@@ -98,7 +98,7 @@ describe('Code', () => {
 
   it('Renders a Codeblock with title and line highlight when the proper preProps are passed', () => {
     const { container } = render(
-      <ThemeProvider theme={theme}>
+      <ThemeProvider theme={theme.light}>
         <Code>
           <div metastring="javascript {1-3}title=test" mdxType="code">
             {`some code to render
@@ -129,7 +129,7 @@ describe('Code', () => {
 
   it('Renders a <pre> when there are no proper preProps passed', () => {
     const { container } = render(
-      <ThemeProvider theme={theme}>
+      <ThemeProvider theme={theme.light}>
         <Code>
           <div metastring="javascript">var hello="world"</div>
         </Code>
