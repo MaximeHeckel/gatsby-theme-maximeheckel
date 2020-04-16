@@ -1,5 +1,12 @@
 # Gatsby-theme-maximeheckel
 
+## [0.5.2](https://github.com/MaximeHeckel/gatsby-theme-maximeheckel/compare/v0.5.1...v0.5.2) (2020-04-16)
+
+
+### Bug Fixes
+
+* **dark mode:** Use css variables for main theme color to avoid dark mode flash (removes previous css hack) ([323cf51](https://github.com/MaximeHeckel/gatsby-theme-maximeheckel/commit/323cf51611969027a38c8ef5d85ff80ddd2a3d56))
+
 ## [0.5.1](https://github.com/MaximeHeckel/gatsby-theme-maximeheckel/compare/v0.5.0...v0.5.1) (2020-04-14)
 
 
