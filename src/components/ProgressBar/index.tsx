@@ -21,7 +21,7 @@ const ProgressBarWrapper = styled('div')<ProgressBarWrapperProps>`
   width: 1px;
   background-color: rgba(8, 8, 11, 0.3);
 
-  div:first-child {
+  div:first-of-type {
     height: ${(props) => props.readingProgress}%;
   }
 `;
