@@ -1,5 +1,12 @@
 # Gatsby-theme-maximeheckel
 
+## [0.5.3](https://github.com/MaximeHeckel/gatsby-theme-maximeheckel/compare/v0.5.2...v0.5.3) (2020-04-18)
+
+
+### Bug Fixes
+
+* Replace unsafe first-child with first-of-type ([419692e](https://github.com/MaximeHeckel/gatsby-theme-maximeheckel/commit/419692eff8e60d11e26e62525601f256f90fd33c))
+
 ## [0.5.2](https://github.com/MaximeHeckel/gatsby-theme-maximeheckel/compare/v0.5.1...v0.5.2) (2020-04-16)
 
 
