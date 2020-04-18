@@ -1,16 +1,17 @@
 import styled from '../../utils/styled';
 
 const Blockquote = styled.blockquote`
-  transition: ${props => props.theme.transitionTime}s;
+  transition: ${(props) => props.theme.transitionTime}s;
   margin: 30px 0px;
-  color: ${props => props.theme.fontColor};
+  color: ${(props) => props.theme.fontColor};
   font-style: italic;
   position: relative;
   width: 100vw;
   left: calc(-50vw + 50%);
   padding-top: 40px;
   padding-bottom: 40px;
-  background: ${props => props.theme.foregroundColor};
+  background: ${(props) => props.theme.foregroundColor};
+  backdrop-filter: blur(6px);
   & > p {
     max-width: 880px !important;
     padding-left: 50px;

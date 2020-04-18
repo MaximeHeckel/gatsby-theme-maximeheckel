@@ -42,7 +42,8 @@ const theme = {
       white: '#FFFFFF',
     },
     fontColor: 'var(--maximeheckel-colors-typeface-0, #2B2D3E)',
-    foregroundColor: 'var(--maximeheckel-colors-body-1, #d9e6f7)',
+    foregroundColor:
+      'var(--maximeheckel-colors-body-1, rgba(217, 230, 247, 0.55))',
     overlayBackground:
       'var(--maximeheckel-colors-body-2, rgba(236, 236, 236, 0.8))',
     transitionTime: 0.5,
@@ -92,7 +93,8 @@ const theme = {
       white: '#FFFFFF',
     },
     fontColor: 'var(--maximeheckel-colors-typeface-0, #FFFFFF)',
-    foregroundColor: 'var(--maximeheckel-colors-body-1, #0e141b)',
+    foregroundColor:
+      'var(--maximeheckel-colors-body-1, rgba(14, 20, 27, 0.55))',
     overlayBackground: 'var(--maximeheckel-colors-body-2, rgba(0,0,0,0.40))',
     transitionTime: 0.5,
   },
