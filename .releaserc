@@ -5,7 +5,13 @@
       "preset": "angular",
       "parserOpts": {
         "noteKeywords": ["BREAKING CHANGE", "BREAKING CHANGES", "BREAKING"]
-      }
+      },
+      "releaseRules": [
+        {
+					"type": "style",
+					"release": "patch"
+				}
+      ]
     }],
     ["@semantic-release/release-notes-generator", {
       "preset": "angular",
