@@ -39,7 +39,6 @@ const Wrapper = styled('div')<WrapperProps>`
   top: 200px;
   display: flex;
   left: 30px;
-  z-index: 2;
   ul {
     @media (max-width: 1250px) {
       display: none;
