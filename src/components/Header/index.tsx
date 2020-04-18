@@ -171,7 +171,10 @@ const HeaderWrapper = styled.div<HeaderWrapperProps>`
   height: ${(props) => (props.sticky && props.slim ? '75px ' : '120px')};
   position: ${(props) => (props.sticky ? 'fixed' : 'inherit')};
   z-index: 999;
-  ${(props) => (props.slim ? `box-shadow: ${props.theme.boxShadow};` : '')}
+  ${(props) =>
+    props.slim
+      ? `box-shadow: ${props.theme.boxShadow}; backdrop-filter: blur(6px); opacity: 0.88;`
+      : ''}
 `;
 
 const HeaderContent = styled.div`
