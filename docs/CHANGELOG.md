@@ -1,5 +1,12 @@
 # Gatsby-theme-maximeheckel
 
+# [0.6.0](https://github.com/MaximeHeckel/gatsby-theme-maximeheckel/compare/v0.5.6...v0.6.0) (2020-04-21)
+
+
+### Features
+
+* **layout:** Add microformats2 support ([0ba2e4f](https://github.com/MaximeHeckel/gatsby-theme-maximeheckel/commit/0ba2e4ff13307816e1d75a0d04119cf0fd7c2447))
+
 ## [0.5.6](https://github.com/MaximeHeckel/gatsby-theme-maximeheckel/compare/v0.5.5...v0.5.6) (2020-04-21)
 
 
