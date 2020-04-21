@@ -90,8 +90,7 @@ const Header: React.FC<IHeaderProps> = (props) => {
               data-testid="twitter-link"
               aria-label="Follow me on Twitter"
               title="Follow me on Twitter"
-              target="_blank"
-              rel="noopener noreferrer"
+              rel="me"
               href="https://twitter.com/MaximeHeckel"
               style={{ textDecoration: 'underline' }}
             >
