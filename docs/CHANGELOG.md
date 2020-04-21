@@ -1,5 +1,13 @@
 # Gatsby-theme-maximeheckel
 
+## [0.5.6](https://github.com/MaximeHeckel/gatsby-theme-maximeheckel/compare/v0.5.5...v0.5.6) (2020-04-21)
+
+
+### Bug Fixes
+
+* **release:** Fix release pipeline not including style commits in changelog ([dde34d8](https://github.com/MaximeHeckel/gatsby-theme-maximeheckel/commit/dde34d83932d5c961881542b0209442abe6715b2))
+* **webmentions:** Fix twitter link for webmentions login ([3ff7680](https://github.com/MaximeHeckel/gatsby-theme-maximeheckel/commit/3ff7680f488696fb2122a60071dca4decd5d43c7))
+
 ## [0.5.5](https://github.com/MaximeHeckel/gatsby-theme-maximeheckel/compare/v0.5.4...v0.5.5) (2020-04-18)
 
 ## [0.5.4](https://github.com/MaximeHeckel/gatsby-theme-maximeheckel/compare/v0.5.3...v0.5.4) (2020-04-18)
