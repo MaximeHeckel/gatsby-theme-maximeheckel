@@ -19,6 +19,10 @@ const GlobalStyles: React.FC<{}> = withTheme((props) => (
         text-decoration: underline;
       }
 
+      .hidden {
+        display: none;
+      }
+
       .maximeheckel-light {
         --maximeheckel-colors-brand: #5184f9;
         --maximeheckel-colors-body-0: #f6f7f8;

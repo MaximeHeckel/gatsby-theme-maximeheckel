@@ -97,66 +97,90 @@ const Layout: React.FC<ILayoutProps> = (props) => {
 
         return (
           <MainWrapper footer={true} header={true} headerProps={headerProps}>
-            <Seo
-              title={`${title} - ${data.site.siteMetadata.title}`}
-              desc={subtitle || description}
-              article={type === 'blogPost'}
-              banner={SeoBanner}
-              pathname={slug + '/'}
-              date={date}
-            />
-            <Hero data-testid={type} type={type} id="top">
-              <h1 data-testid={`project-title-${title}`}>{title}</h1>
-              <h3>{subtitle || description}</h3>
-              {date || timeToRead ? (
-                <p>
-                  {date
-                    ? `${
-                        MONTHS[parsedDate.getMonth()]
-                      } ${parsedDate.getDate()} ${parsedDate.getFullYear()}`
-                    : null}{' '}
-                  - {timeToRead ? `${timeToRead} min read` : null} -{' '}
-                  {type === 'blogPost' ? (
-                    <a
-                      href={`https://twitter.com/intent/tweet?text=${encodeURI(
-                        text
-                      )}`}
-                      style={{ textDecoration: `none` }}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                    >
-                      <Button secondary={true}>Share on Twitter</Button>
-                    </a>
-                  ) : null}
-                </p>
-              ) : null}
-            </Hero>
-            {cover ? (
-              <ImgWrapper>
-                <Img
-                  imgStyle={{
-                    borderRadius: '4px',
-                    margin: '0 auto',
-                    maxHeight: '800px',
-                    minHeight: '100px',
-                  }}
-                  fluid={cover.childImageSharp.fluid}
-                />
-              </ImgWrapper>
-            ) : null}
-            <ProgressBar
-              tableOfContents={tableOfContents}
-              target={progressBarTarget}
-            />
-            <MDX ref={progressBarTarget} type={type}>
-              {childrenWithProps}
-            </MDX>
-            {type === 'blogPost' ? (
-              <Signature
-                title={title}
-                url={`${data.site.siteMetadata.url}/posts/${slug}`}
+            <article className="h-entry">
+              <Seo
+                title={`${title} - ${data.site.siteMetadata.title}`}
+                desc={subtitle || description}
+                article={type === 'blogPost'}
+                banner={SeoBanner}
+                pathname={slug + '/'}
+                date={date}
               />
-            ) : null}
+              <Hero data-testid={type} type={type} id="top">
+                <h1 className="p-name" data-testid={`project-title-${title}`}>
+                  {title}
+                </h1>
+                <h3>{subtitle || description}</h3>
+                {date || timeToRead ? (
+                  <p>
+                    {date
+                      ? `${
+                          MONTHS[parsedDate.getMonth()]
+                        } ${parsedDate.getDate()} ${parsedDate.getFullYear()}`
+                      : null}{' '}
+                    - {timeToRead ? `${timeToRead} min read` : null} -{' '}
+                    {type === 'blogPost' ? (
+                      <>
+                        <a
+                          href={`https://twitter.com/intent/tweet?text=${encodeURI(
+                            text
+                          )}`}
+                          style={{ textDecoration: `none` }}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                        >
+                          <Button secondary={true}>Share on Twitter</Button>
+                        </a>
+                        <time
+                          className="hidden dt-published"
+                          itemProp="datepublished"
+                          dateTime={date}
+                        >
+                          {new Date(date).toISOString().replace('Z', '') +
+                            '+01:00'}
+                        </time>
+                        <a
+                          className="hidden u-url"
+                          href={`${data.site.siteMetadata.url}/posts/${slug}`}
+                        />
+                        {description && (
+                          <p className="hidden p-summary e-content">
+                            {description}
+                          </p>
+                        )}
+                      </>
+                    ) : null}
+                  </p>
+                ) : null}
+              </Hero>
+              {cover ? (
+                <ImgWrapper>
+                  <Img
+                    className="u-photo"
+                    imgStyle={{
+                      borderRadius: '4px',
+                      margin: '0 auto',
+                      maxHeight: '800px',
+                      minHeight: '100px',
+                    }}
+                    fluid={cover.childImageSharp.fluid}
+                  />
+                </ImgWrapper>
+              ) : null}
+              <ProgressBar
+                tableOfContents={tableOfContents}
+                target={progressBarTarget}
+              />
+              <MDX ref={progressBarTarget} type={type}>
+                {childrenWithProps}
+              </MDX>
+              {type === 'blogPost' ? (
+                <Signature
+                  title={title}
+                  url={`${data.site.siteMetadata.url}/posts/${slug}`}
+                />
+              ) : null}
+            </article>
           </MainWrapper>
         );
       }}

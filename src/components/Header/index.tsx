@@ -87,6 +87,7 @@ const Header: React.FC<IHeaderProps> = (props) => {
           ) : null}
           <TwitterLinkWrapper>
             <OutboundLink
+              className="h-card"
               data-testid="twitter-link"
               aria-label="Follow me on Twitter"
               title="Follow me on Twitter"
