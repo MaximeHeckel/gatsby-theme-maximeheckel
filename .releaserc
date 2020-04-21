@@ -18,6 +18,12 @@
       "parserOpts": {
         "noteKeywords": ["BREAKING CHANGE", "BREAKING CHANGES", "BREAKING"]
       },
+      "releaseRules": [
+        {
+					"type": "style",
+					"release": "patch"
+				}
+      ],
       "writerOpts": {
         "commitsSort": ["subject", "scope"]
       }
