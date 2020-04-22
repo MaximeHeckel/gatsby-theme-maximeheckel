@@ -1,5 +1,12 @@
 # Gatsby-theme-maximeheckel
 
+## [0.7.1](https://github.com/MaximeHeckel/gatsby-theme-maximeheckel/compare/v0.7.0...v0.7.1) (2020-04-22)
+
+
+### Bug Fixes
+
+* **webmentions:** Fix InfoRow responsiveness ([0a3f41a](https://github.com/MaximeHeckel/gatsby-theme-maximeheckel/commit/0a3f41ad5d5fa554f687b85c899e86bd94293f41))
+
 # [0.7.0](https://github.com/MaximeHeckel/gatsby-theme-maximeheckel/compare/v0.6.0...v0.7.0) (2020-04-22)
 
 
