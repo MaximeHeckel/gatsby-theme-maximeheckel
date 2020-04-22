@@ -1,5 +1,12 @@
 # Gatsby-theme-maximeheckel
 
+# [0.7.0](https://github.com/MaximeHeckel/gatsby-theme-maximeheckel/compare/v0.6.0...v0.7.0) (2020-04-22)
+
+
+### Features
+
+* **webmentions:** Add webmention counter in blog layout ([6d44e58](https://github.com/MaximeHeckel/gatsby-theme-maximeheckel/commit/6d44e585e2d1daac65512ffcdc757b0ecd8dfbab))
+
 # [0.6.0](https://github.com/MaximeHeckel/gatsby-theme-maximeheckel/compare/v0.5.6...v0.6.0) (2020-04-21)
 
 
