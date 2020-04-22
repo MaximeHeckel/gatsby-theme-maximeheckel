@@ -156,11 +156,11 @@ const Layout: React.FC<ILayoutProps> = (props) => {
                         </>
                       ) : null}
                     </Flex>
-                    <div>
+                    <>
                       {type === 'blogPost' ? (
                         <WebmentionCount target={target} />
                       ) : null}
-                    </div>
+                    </>
                   </Flex>
                 ) : null}
               </Hero>
@@ -232,6 +232,7 @@ const Hero = styled.div<HeroType>`
 
 const Flex = styled.div<{ justifyContent?: string }>`
   display: flex;
+  flex-wrap: wrap;
   align-items: center;
   justify-content: ${(p) => p.justifyContent || 'flex-start'};
 

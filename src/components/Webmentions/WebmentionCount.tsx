@@ -62,7 +62,6 @@ const CountWrapper = styled('div')`
   align-items: center;
   justify-content: center;
   padding: 4px 8px 5px 8px;
-  margin-left: 8px;
 `;
 
 export { WebmentionCount };
