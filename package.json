@@ -42,6 +42,7 @@
     "prism-react-renderer": "^1.0.2",
     "prismjs": "^1.17.1",
     "react-anchor-link-smooth-scroll": "^1.0.11",
+    "react-error-boundary": "^1.2.5",
     "react-helmet": "5.2.1",
     "react-scrollspy": "^3.4.2",
     "remark-toc": "^7.0.0",
