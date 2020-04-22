@@ -8,6 +8,7 @@ import MDX from '../components/MDX';
 import ProgressBar, { TableOfContentType } from '../components/ProgressBar';
 import Seo from '../components/Seo';
 import Signature from '../components/Signature';
+import Webmentions, { WebmentionCount } from '../components/Webmentions';
 import styled from '../utils/styled';
 import MainWrapper from './MainWrapper';
 
@@ -95,6 +96,8 @@ const Layout: React.FC<ILayoutProps> = (props) => {
           }
         );
 
+        const target = `${data.site.siteMetadata.url}/posts/${slug}/`;
+
         return (
           <MainWrapper footer={true} header={true} headerProps={headerProps}>
             <article className="h-entry">
@@ -112,45 +115,53 @@ const Layout: React.FC<ILayoutProps> = (props) => {
                 </h1>
                 <h3>{subtitle || description}</h3>
                 {date || timeToRead ? (
-                  <p>
-                    {date
-                      ? `${
-                          MONTHS[parsedDate.getMonth()]
-                        } ${parsedDate.getDate()} ${parsedDate.getFullYear()}`
-                      : null}{' '}
-                    - {timeToRead ? `${timeToRead} min read` : null} -{' '}
-                    {type === 'blogPost' ? (
-                      <>
-                        <a
-                          href={`https://twitter.com/intent/tweet?text=${encodeURI(
-                            text
-                          )}`}
-                          style={{ textDecoration: `none` }}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                        >
-                          <Button secondary={true}>Share on Twitter</Button>
-                        </a>
-                        <time
-                          className="hidden dt-published"
-                          itemProp="datepublished"
-                          dateTime={date}
-                        >
-                          {new Date(date).toISOString().replace('Z', '') +
-                            '+01:00'}
-                        </time>
-                        <a
-                          className="hidden u-url"
-                          href={`${data.site.siteMetadata.url}/posts/${slug}`}
-                        />
-                        {description && (
-                          <p className="hidden p-summary e-content">
-                            {description}
-                          </p>
-                        )}
-                      </>
-                    ) : null}
-                  </p>
+                  <Flex justifyContent="space-between">
+                    <Flex>
+                      {date ? (
+                        <p>
+                          {MONTHS[parsedDate.getMonth()]} {parsedDate.getDate()}{' '}
+                          {parsedDate.getFullYear()}
+                        </p>
+                      ) : null}
+                      {timeToRead ? <p> - {timeToRead} min read - </p> : null}
+                      {type === 'blogPost' ? (
+                        <>
+                          <a
+                            href={`https://twitter.com/intent/tweet?text=${encodeURI(
+                              text
+                            )}`}
+                            style={{ textDecoration: `none` }}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                          >
+                            <Button secondary={true}>Share on Twitter</Button>
+                          </a>
+                          <time
+                            className="hidden dt-published"
+                            itemProp="datepublished"
+                            dateTime={date}
+                          >
+                            {new Date(date).toISOString().replace('Z', '') +
+                              '+01:00'}
+                          </time>
+                          <a
+                            className="hidden u-url"
+                            href={`${data.site.siteMetadata.url}/posts/${slug}`}
+                          />
+                          {description && (
+                            <p className="hidden p-summary e-content">
+                              {description}
+                            </p>
+                          )}
+                        </>
+                      ) : null}
+                    </Flex>
+                    <div>
+                      {type === 'blogPost' ? (
+                        <WebmentionCount target={target} />
+                      ) : null}
+                    </div>
+                  </Flex>
                 ) : null}
               </Hero>
               {cover ? (
@@ -174,6 +185,9 @@ const Layout: React.FC<ILayoutProps> = (props) => {
               <MDX ref={progressBarTarget} type={type}>
                 {childrenWithProps}
               </MDX>
+              {/* <Webmentions
+                target={`${data.site.siteMetadata.url}/posts/${slug}/`}
+              /> */}
               {type === 'blogPost' ? (
                 <Signature
                   title={title}
@@ -213,6 +227,17 @@ const Hero = styled.div<HeroType>`
     color: #8a8a90;
     font-size: 16px;
     font-weight: 500;
+  }
+`;
+
+const Flex = styled.div<{ justifyContent?: string }>`
+  display: flex;
+  align-items: center;
+  justify-content: ${(p) => p.justifyContent || 'flex-start'};
+
+  p {
+    margin-bottom: 0px;
+    margin-right: 5px;
   }
 `;
 

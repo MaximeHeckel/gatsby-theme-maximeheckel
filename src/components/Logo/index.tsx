@@ -13,22 +13,23 @@ type LogoWrapperProps = {
 };
 
 const LogoWrapper = styled('div')<LogoWrapperProps>`
-  height: ${props => props.size}px;
-  width: ${props => props.size}px;
+  height: ${(props) => props.size}px;
+  width: ${(props) => props.size}px;
+  transition: ${(props) => props.theme.transitionTime}s;
+  & > * {
+    transition: ${(props) => props.theme.transitionTime}s;
+  }
   svg {
-    height: ${props => props.size}px;
-    width: ${props => props.size}px;
-    transition: ${props => props.theme.transitionTime}s;
+    height: ${(props) => props.size}px;
+    width: ${(props) => props.size}px;
     rect {
-      fill: ${props =>
+      fill: ${(props) =>
         props.inverted ? props.theme.fontColor : props.theme.backgroundColor};
-      transition: ${props => props.theme.transitionTime}s;
     }
 
     circle {
-      fill: ${props =>
+      fill: ${(props) =>
         props.inverted ? props.theme.backgroundColor : props.theme.fontColor};
-      transition: ${props => props.theme.transitionTime}s;
     }
   }
 `;

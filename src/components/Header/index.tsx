@@ -38,7 +38,7 @@ const useHeaderStateAfterScroll = (offset: number = 0) => {
     return () => {
       window.removeEventListener('scroll', showTitle);
     };
-  });
+  }, [offset]);
 
   return headerState;
 };
@@ -52,7 +52,7 @@ const Header: React.FC<IHeaderProps> = (props) => {
     sticky = false,
   } = props;
 
-  const headerState = useHeaderStateAfterScroll(120);
+  const headerState = useHeaderStateAfterScroll(150);
 
   return (
     <HeaderWrapper
