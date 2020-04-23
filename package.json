@@ -45,6 +45,7 @@
     "react-error-boundary": "^1.2.5",
     "react-helmet": "5.2.1",
     "react-scrollspy": "^3.4.2",
+    "react-tooltip": "^4.2.5",
     "remark-toc": "^7.0.0",
     "typeface-fira-code": "^1.1.4"
   },

@@ -1,4 +1,5 @@
 import React from 'react';
+import Flex from '../Flex';
 import styled from '../../utils/styled';
 
 const initialCounts = {
@@ -11,7 +12,7 @@ const initialCounts = {
   },
 };
 
-const WebmentionCount = ({ target }) => {
+const WebmentionCount = ({ target }: { target: string }) => {
   const [counts, setCounts] = React.useState(initialCounts);
 
   // Get counts on `target` change.
@@ -41,27 +42,33 @@ const WebmentionCount = ({ target }) => {
     <CountWrapper>
       {counts === undefined && <p>Failed to load counts 😞</p>}
       {counts && (
-        <div>
-          {counts.type.like + counts.type.repost || 0}
-          {' Likes '}&bull; {counts.type.mention + counts.type.reply || 0}
-          {' Replies '}&bull; {counts.type.repost + counts.type.repost || 0}
-          {' Repost'}
-        </div>
+        <>
+          <p>
+            {counts.type.like || 0}
+            {' Likes '}&bull;
+          </p>
+          <p>
+            {' '}
+            {counts.type.reply || 0}
+            {' Replies '}&bull;
+          </p>
+          <p>
+            {' '}
+            {counts.type.repost || 0}
+            {' Reposts'}
+          </p>
+        </>
       )}
     </CountWrapper>
   );
 };
 
-const CountWrapper = styled('div')`
-  font-size: 14px;
-  background: #e2086a;
-  color: #ffffff;
-  border-radius: 10px;
-  height: 22px;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  padding: 4px 8px 5px 8px;
+const CountWrapper = styled(Flex)`
+  p {
+    color: ${(p) => p.theme.colors.blue} !important;
+    font-size: 16px;
+    font-weight: 500;
+  }
 `;
 
 export { WebmentionCount };

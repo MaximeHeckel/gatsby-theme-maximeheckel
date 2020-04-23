@@ -1,9 +1,10 @@
 import React from 'react';
 import styled from '../../utils/styled';
+import { WebmentionReplies } from '../Webmentions';
 
 const ColoredBlockWrapper = styled('div')`
-  background: ${props => props.theme.foregroundColor};
-  color: ${props => props.theme.fontColor};
+  background: ${(props) => props.theme.foregroundColor};
+  color: ${(props) => props.theme.fontColor};
   position: relative;
   width: 100vw;
   padding-bottom: 50px;
@@ -24,29 +25,11 @@ const Signature: React.FC<{ title: string; url: string }> = ({
   title,
   url,
 }) => {
-  const text = `${title} by @MaximeHeckel ${url}`;
   return (
     <ColoredBlockWrapper data-testid="signature">
       <div>
+        <WebmentionReplies title={title} url={url} />
         <p>
-          {/* eslint-disable-next-line react/no-unescaped-entities */}
-          If you liked this article, don't forget to{' '}
-          <a
-            href={`https://twitter.com/intent/tweet?text=${encodeURI(text)}`}
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            share it
-          </a>{' '}
-          or{' '}
-          <a
-            href={`https://mobile.twitter.com/search?q=${url}`}
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            click here to leave a comment discuss about it on Twitter
-          </a>
-          {'. '}
           Do you have any questions, comments or simply wish to contact me
           privately? I’m always reachable on{' '}
           <a
@@ -62,7 +45,7 @@ const Signature: React.FC<{ title: string; url: string }> = ({
             target="_blank"
             rel="noopener noreferrer"
           >
-            website!
+            website.
           </a>
         </p>
         <br />
@@ -76,5 +59,3 @@ const Signature: React.FC<{ title: string; url: string }> = ({
 };
 
 export default Signature;
-
-// https://twitter.com/intent/tweet?text=Automated%20UI%20accessibility%20testing%20with%20Cypress%20by%20%40MaximeHeckel%20https%3A%2F%2Flink.medium.com%2FhfXhgdqoe0
