@@ -1,5 +1,12 @@
 # Gatsby-theme-maximeheckel
 
+## [0.7.2](https://github.com/MaximeHeckel/gatsby-theme-maximeheckel/compare/v0.7.1...v0.7.2) (2020-04-23)
+
+
+### Bug Fixes
+
+* **webmentions:** Add missing replies ([836c3dd](https://github.com/MaximeHeckel/gatsby-theme-maximeheckel/commit/836c3dd52c086eaed9121db344e0bcd119ab93e2))
+
 ## [0.7.1](https://github.com/MaximeHeckel/gatsby-theme-maximeheckel/compare/v0.7.0...v0.7.1) (2020-04-22)
 
 
