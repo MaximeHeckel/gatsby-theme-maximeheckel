@@ -4,11 +4,12 @@ import Img, { FluidObject } from 'gatsby-image';
 import React from 'react';
 import { LayoutContentTypeEnum } from '../@types/layoutContentType';
 import Button from '../components/Button';
+import Flex from '../components/Flex';
 import MDX from '../components/MDX';
 import ProgressBar, { TableOfContentType } from '../components/ProgressBar';
 import Seo from '../components/Seo';
 import Signature from '../components/Signature';
-import Webmentions, { WebmentionCount } from '../components/Webmentions';
+import { WebmentionCount } from '../components/Webmentions';
 import styled from '../utils/styled';
 import MainWrapper from './MainWrapper';
 
@@ -115,52 +116,36 @@ const Layout: React.FC<ILayoutProps> = (props) => {
                 </h1>
                 <h3>{subtitle || description}</h3>
                 {date || timeToRead ? (
-                  <Flex justifyContent="space-between">
-                    <Flex>
-                      {date ? (
-                        <p>
-                          {MONTHS[parsedDate.getMonth()]} {parsedDate.getDate()}{' '}
-                          {parsedDate.getFullYear()}
-                        </p>
-                      ) : null}
-                      {timeToRead ? <p> - {timeToRead} min read - </p> : null}
-                      {type === 'blogPost' ? (
-                        <>
-                          <a
-                            href={`https://twitter.com/intent/tweet?text=${encodeURI(
-                              text
-                            )}`}
-                            style={{ textDecoration: `none` }}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                          >
-                            <Button secondary={true}>Share on Twitter</Button>
-                          </a>
-                          <time
-                            className="hidden dt-published"
-                            itemProp="datepublished"
-                            dateTime={date}
-                          >
-                            {new Date(date).toISOString().replace('Z', '') +
-                              '+01:00'}
-                          </time>
-                          <a
-                            className="hidden u-url"
-                            href={`${data.site.siteMetadata.url}/posts/${slug}`}
-                          />
-                          {description && (
-                            <p className="hidden p-summary e-content">
-                              {description}
-                            </p>
-                          )}
-                        </>
-                      ) : null}
-                    </Flex>
-                    <>
-                      {type === 'blogPost' ? (
+                  <Flex>
+                    {date ? (
+                      <p>
+                        {MONTHS[parsedDate.getMonth()]} {parsedDate.getDate()}{' '}
+                        {parsedDate.getFullYear()}
+                      </p>
+                    ) : null}
+                    {timeToRead ? <p> / {timeToRead} min read / </p> : null}
+                    {type === 'blogPost' ? (
+                      <>
                         <WebmentionCount target={target} />
-                      ) : null}
-                    </>
+                        <time
+                          className="hidden dt-published"
+                          itemProp="datepublished"
+                          dateTime={date}
+                        >
+                          {new Date(date).toISOString().replace('Z', '') +
+                            '+01:00'}
+                        </time>
+                        <a
+                          className="hidden u-url"
+                          href={`${data.site.siteMetadata.url}/posts/${slug}`}
+                        />
+                        {description && (
+                          <p className="hidden p-summary e-content">
+                            {description}
+                          </p>
+                        )}
+                      </>
+                    ) : null}
                   </Flex>
                 ) : null}
               </Hero>
@@ -185,13 +170,11 @@ const Layout: React.FC<ILayoutProps> = (props) => {
               <MDX ref={progressBarTarget} type={type}>
                 {childrenWithProps}
               </MDX>
-              {/* <Webmentions
-                target={`${data.site.siteMetadata.url}/posts/${slug}/`}
-              /> */}
+
               {type === 'blogPost' ? (
                 <Signature
                   title={title}
-                  url={`${data.site.siteMetadata.url}/posts/${slug}`}
+                  url={`${data.site.siteMetadata.url}/posts/${slug}/`}
                 />
               ) : null}
             </article>
@@ -227,18 +210,6 @@ const Hero = styled.div<HeroType>`
     color: #8a8a90;
     font-size: 16px;
     font-weight: 500;
-  }
-`;
-
-const Flex = styled.div<{ justifyContent?: string }>`
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  justify-content: ${(p) => p.justifyContent || 'flex-start'};
-
-  p {
-    margin-bottom: 0px;
-    margin-right: 5px;
   }
 `;
 
