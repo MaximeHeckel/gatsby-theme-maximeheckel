@@ -1,17 +1,46 @@
-import { graphql, Link, StaticQuery } from 'gatsby';
+import { Link } from 'gatsby';
 import React from 'react';
 import Button from '../components/Button';
 import Seo from '../components/Seo';
-import MainWrapper from '../layouts/MainWrapper';
+import Layout, { LayoutChildrenProps } from '../layouts';
 import styled from '../utils/styled';
 
-const Main = styled.div`
+const NotFoundPage = () => (
+  <Layout>
+    {(layoutProps: LayoutChildrenProps) => {
+      return (
+        <>
+          <Seo
+            title={`404: Not found - ${layoutProps.site.siteMetadata.title}`}
+          />
+          <Wrapper>
+            <div>
+              <h1>Oh no! You just got lost 😱</h1>
+              <h2>
+                {/* eslint-disable-next-line react/no-unescaped-entities */}
+                Don't worry I got you!{' '}
+                <Link to={`/`}>
+                  <Button secondary={true}>Click here </Button>
+                </Link>{' '}
+                to go back home.
+              </h2>
+            </div>
+          </Wrapper>
+        </>
+      );
+    }}
+  </Layout>
+);
+
+export default NotFoundPage;
+
+const Wrapper = styled.div`
   margin: 0 auto;
   max-width: 1430px;
   display: flex;
   height: calc(100vh);
   align-items: center;
-  color: ${props => props.theme.fontColor};
+  color: ${(props) => props.theme.fontColor};
   padding: 0px 70px;
 
   @media (max-width: 700px) {
@@ -27,40 +56,3 @@ const Main = styled.div`
     text-decoration: none;
   }
 `;
-
-const NotFoundPage = () => (
-  <StaticQuery
-    query={graphql`
-      query NotFoundSite {
-        site {
-          siteMetadata {
-            title
-            author
-          }
-        }
-      }
-    `}
-    render={data => {
-      return (
-        <MainWrapper>
-          <Seo title={`404: Not found - ${data.site.siteMetadata.title}`} />
-          <Main>
-            <div>
-              <h1>Oh no! You just got lost 😱</h1>
-              <h2>
-                {/* eslint-disable-next-line react/no-unescaped-entities */}
-                Don't worry I got you!{' '}
-                <Link to={`/`}>
-                  <Button secondary={true}>Click here </Button>
-                </Link>{' '}
-                to go back home.
-              </h2>
-            </div>
-          </Main>
-        </MainWrapper>
-      );
-    }}
-  />
-);
-
-export default NotFoundPage;

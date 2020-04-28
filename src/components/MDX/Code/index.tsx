@@ -1,6 +1,6 @@
 import Highlight, { defaultProps, Language } from 'prism-react-renderer';
 import React from 'react';
-import styled from '../../utils/styled';
+import styled from '../../../utils/styled';
 
 const copyToClipboard = (content: string) => {
   const el = document.createElement(`textarea`);
@@ -188,7 +188,7 @@ const InlineCodeWrapper = styled('code')`
 `;
 
 const CodeSnippetTitle = styled('p')`
-  padding: 10px;
+  padding: 4px 10px;
   font-size: 14px;
   margin-bottom: 0px;
 `;
@@ -204,7 +204,7 @@ const CodeSnippetHeader = styled('div')`
   border-top-right-radius: 5px;
   color: ${(p) => p.theme.colors.white};
   background: ${(p) => p.theme.colors.blue};
-  min-height: 45px;
+  min-height: 30px;
 `;
 
 const CodeSnippetWrapper = styled('div')`

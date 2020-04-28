@@ -28,6 +28,7 @@ const ProgressBarWrapper = styled('div')<ProgressBarWrapperProps>`
 
 type WrapperProps = {
   showTableOfContents: boolean;
+  slim?: boolean;
 };
 
 const Wrapper = styled('div')<WrapperProps>`
@@ -44,7 +45,7 @@ const Wrapper = styled('div')<WrapperProps>`
       display: none;
     }
 
-    max-width: 200px;
+    max-width: ${(p) => (p.slim ? '150px' : '200px')};
     display: flex;
     flex-direction: column;
 
@@ -82,14 +83,16 @@ export type TableOfContentType = {
   items: TableOfContentItemType[];
 };
 
-interface IReadingProgressProps {
+interface ReadingProgressProps {
   tableOfContents?: TableOfContentType;
   target: React.RefObject<HTMLDivElement>;
+  slim?: boolean;
 }
 
-const ReadingProgress: React.FC<IReadingProgressProps> = ({
+const ReadingProgress: React.FC<ReadingProgressProps> = ({
   tableOfContents,
   target,
+  slim,
 }) => {
   const [readingProgress, setReadingProgress] = React.useState(0);
   const scrollListener = () => {
@@ -122,7 +125,10 @@ const ReadingProgress: React.FC<IReadingProgressProps> = ({
   });
 
   return (
-    <Wrapper showTableOfContents={readingProgress > 7 && readingProgress < 100}>
+    <Wrapper
+      slim={slim}
+      showTableOfContents={readingProgress > 7 && readingProgress < 100}
+    >
       <ProgressBarWrapper readingProgress={readingProgress}>
         <ProgressBar
           data-testid="progress-bar"
@@ -131,7 +137,9 @@ const ReadingProgress: React.FC<IReadingProgressProps> = ({
       </ProgressBarWrapper>
       {tableOfContents && tableOfContents.items.length > 0 ? (
         <Scrollspy
-          items={tableOfContents.items.map((item) => item.url.replace('#', ''))}
+          items={tableOfContents.items.map(
+            (item) => `${item.url.replace('#', '')}-section`
+          )}
           currentClassName="isCurrent"
           offset={-175}
         >

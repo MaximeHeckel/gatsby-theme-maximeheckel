@@ -4,7 +4,7 @@ exports[`MDX Renders the MDX component accordingly 1`] = `
 <DocumentFragment>
   .emotion-0 {
   margin: 0 auto;
-  max-width: 1020px;
+  max-width: 700px;
   padding: 20px 0px 20px 0px;
   color: var(--maximeheckel-colors-typeface-0,#2B2D3E);
 }
@@ -71,15 +71,30 @@ exports[`MDX Renders the MDX component accordingly 1`] = `
   overflow: scroll;
   width: 100%;
   max-width: 744px;
-  margin: 0 auto;
-  padding: 15px;
+  padding: 15px 0px 15px 0px;
   font-size: 14px;
   margin: 15px auto 15px;
-  border-radius: 5px;
+  border-radius: 4px;
   background: #292c34;
 }
 
+.emotion-0 .prism-code .number-line {
+  display: inline-block;
+  width: 32px;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  opacity: 0.3;
+  color: #dcd9e6;
+}
+
 .emotion-0 .prism-code .token-line {
+  -webkit-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+  padding: 0px 15px 0px 15px;
+  min-width: 500px;
   border-left: 3px solid transparent;
 }
 
@@ -199,29 +214,19 @@ exports[`MDX Renders the MDX component accordingly 1`] = `
   color: #5FA8AA;
 }
 
-.emotion-0 .prism-code .number-line {
-  display: inline-block;
-  width: 32px;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
-  opacity: 0.3;
-  color: #dcd9e6;
-}
-
-.emotion-0 .prism-code .token-line {
-  -webkit-flex: 1;
-  -ms-flex: 1;
-  flex: 1;
-  min-width: 500px;
-}
-
 .emotion-0 .prism-code .token-line.highlight-line {
-  margin: 0px -14px;
   padding: 0px 14px;
   background: rgba(255,255,255,0.07);
   border-left: 3px solid #196FD8;
+}
+
+.emotion-0 .prism-code .token-line:hover {
+  background-color: rgba(255,255,255,0.05);
+}
+
+.emotion-0 .prism-code .token-line:hover .number-line {
+  color: var(--maximeheckel-colors-brand,#5184f9);
+  opacity: 1;
 }
 
 .emotion-0 .prism-code .operator + .maybe-class-name {

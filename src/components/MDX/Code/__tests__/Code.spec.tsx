@@ -3,7 +3,7 @@ import { ThemeProvider } from 'emotion-theming';
 import { cleanup, render } from '@testing-library/react';
 import React from 'react';
 import { Code, calculateLinesToHighlight, hasTitle, preToCodeBlock } from '../';
-import theme from '../../../theme';
+import theme from '../../../../theme';
 
 afterEach(() => {
   cleanup();

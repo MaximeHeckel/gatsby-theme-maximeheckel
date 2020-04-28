@@ -5,6 +5,7 @@ const theme = {
     boxShadow: '0 0px 12px -6px rgba(0, 24, 40, 0.25)',
     colors: {
       blue: 'var(--maximeheckel-colors-brand, #5184f9)',
+      red: '#FF515A',
       gray: '#F8F8F9',
       pink: '#FED5D7',
       prism: {
@@ -56,6 +57,7 @@ const theme = {
     colors: {
       black: '#000000',
       blue: 'var(--maximeheckel-colors-brand, #5184f9)',
+      red: '#FF515A',
       gray: '#F8F8F9',
       pink: '#FED5D7',
       prism: {

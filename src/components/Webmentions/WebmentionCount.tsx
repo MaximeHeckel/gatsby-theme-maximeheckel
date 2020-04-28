@@ -12,17 +12,18 @@ const initialCounts = {
   },
 };
 
+const fetchCounts = async (target: string) =>
+  fetch(
+    `https://webmention.io/api/count.json?target=${target}`
+  ).then((response) => (response.json ? response.json() : response));
+
 const WebmentionCount = ({ target }: { target: string }) => {
   const [counts, setCounts] = React.useState(initialCounts);
 
   // Get counts on `target` change.
   React.useEffect(() => {
     async function getCounts() {
-      const url = `https://webmention.io/api/count.json?target=${target}`;
-      const responseCounts = await fetch(url).then((response) =>
-        response.json()
-      );
-
+      const responseCounts = await fetchCounts(target);
       setCounts((previousCounts) => {
         return {
           ...previousCounts,
@@ -40,19 +41,21 @@ const WebmentionCount = ({ target }: { target: string }) => {
 
   return (
     <CountWrapper>
-      {counts === undefined && <p>Failed to load counts 😞</p>}
+      {counts === undefined && (
+        <p data-testid="failed">Failed to load counts 😞</p>
+      )}
       {counts && (
         <>
-          <p>
+          <p data-testid="likes">
             {counts.type.like || 0}
             {' Likes '}&bull;
           </p>
-          <p>
+          <p data-testid="replies">
             {' '}
             {counts.type.reply || 0}
             {' Replies '}&bull;
           </p>
-          <p>
+          <p data-testid="reposts">
             {' '}
             {counts.type.repost || 0}
             {' Reposts'}
