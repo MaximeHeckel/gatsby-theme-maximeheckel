@@ -2,15 +2,17 @@ import { css } from '@emotion/core';
 import { MDXProvider } from '@mdx-js/react';
 import React from 'react';
 import styled from '../../utils/styled';
+import Callout from '../Callout';
 import Pill from '../Pill';
 import { Blockquote } from './Blockquote';
 import { Code, InlineCode } from './Code';
 
 const components = {
   blockquote: Blockquote,
+  Callout,
   inlineCode: InlineCode,
-  pre: Code,
   Pill,
+  pre: Code,
 };
 
 interface IMDXProps {

@@ -1,0 +1,53 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Callout can render a Callout with variant danger 1`] = `
+.emotion-0 {
+  border-radius: 4px;
+  border-left: 3px solid;
+  padding: 30px 30px;
+  margin-bottom: 25px;
+  background-color: #FFEFEE;
+  border-color: #FF515A;
+  color: #2B2D3E;
+}
+
+.emotion-0 *:last-child {
+  margin-bottom: 0px;
+}
+
+<body>
+  <div>
+    <div
+      class="emotion-0"
+    >
+      Test
+    </div>
+  </div>
+</body>
+`;
+
+exports[`Callout can render a Callout with variant info 1`] = `
+.emotion-0 {
+  border-radius: 4px;
+  border-left: 3px solid;
+  padding: 30px 30px;
+  margin-bottom: 25px;
+  background-color: #E6EDF8;
+  border-color: var(--maximeheckel-colors-brand,#5184f9);
+  color: #2B2D3E;
+}
+
+.emotion-0 *:last-child {
+  margin-bottom: 0px;
+}
+
+<body>
+  <div>
+    <div
+      class="emotion-0"
+    >
+      Test
+    </div>
+  </div>
+</body>
+`;
