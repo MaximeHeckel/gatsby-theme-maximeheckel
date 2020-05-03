@@ -1,5 +1,12 @@
 # Gatsby-theme-maximeheckel
 
+## [0.7.3](https://github.com/MaximeHeckel/gatsby-theme-maximeheckel/compare/v0.7.2...v0.7.3) (2020-05-03)
+
+
+### Performance Improvements
+
+* Refactor templates and components ([e44a72b](https://github.com/MaximeHeckel/gatsby-theme-maximeheckel/commit/e44a72b8bcea70cb52a7b291e17afa0bb9aff43d))
+
 ## [0.7.2](https://github.com/MaximeHeckel/gatsby-theme-maximeheckel/compare/v0.7.1...v0.7.2) (2020-04-23)
 
 
