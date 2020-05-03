@@ -1,21 +1,15 @@
-import { Link } from 'gatsby';
 import { OutboundLink } from 'gatsby-plugin-google-analytics';
 import React from 'react';
-import AnchorLink from 'react-anchor-link-smooth-scroll';
 import LightDarkSwitcher from '../LightDarkSwitcher';
-import Logo from '../Logo';
+import Flex from '../Flex';
 import styled from '../../utils/styled';
-
-interface IHeaderProps {
-  links?: JSX.Element[] | JSX.Element;
-  siteTitle?: string;
-  postTitle?: string;
-  sticky?: boolean;
-  themeSwitcher?: {
-    dark: boolean;
-    toggleDark: () => void;
-  };
-}
+import { useTheme } from '../../context/ThemeContext';
+import MHLogo from '../Logo';
+import { Logo } from './Logo';
+import { Navigation } from './Navigation';
+import { Title } from './Title';
+import { Wrapper } from './Wrapper';
+import { LinkButton } from '../Button/LinkButton';
 
 const TwitterIcon = () => (
   <svg
@@ -28,203 +22,100 @@ const TwitterIcon = () => (
   </svg>
 );
 
-const noop = () => {};
-
-const useHeaderStateAfterScroll = (offset: number = 0) => {
-  const [headerState, setHeaderState] = React.useState(false);
-  React.useEffect(() => {
-    const showTitle = () => setHeaderState(window.scrollY > offset);
-    window.addEventListener('scroll', showTitle);
-    return () => {
-      window.removeEventListener('scroll', showTitle);
-    };
-  }, [offset]);
-
-  return headerState;
-};
-
-const Header: React.FC<IHeaderProps> = (props) => {
-  const {
-    links,
-    postTitle = '',
-    themeSwitcher,
-    siteTitle = '',
-    sticky = false,
-  } = props;
-
-  const headerState = useHeaderStateAfterScroll(150);
-
-  return (
-    <HeaderWrapper
-      data-testid="header"
-      slim={headerState}
-      sticky={sticky || false}
-    >
-      <HeaderContent>
-        <div data-testid="header-site-title">
-          <Link
-            to="/"
-            aria-label="Go back to article list"
-            title="Go back to article list"
-          >
-            <Logo
-              aria-label={siteTitle}
-              alt={`${siteTitle}'s logo`}
-              size={headerState && sticky ? 45 : 60}
-            />
-          </Link>
-          {headerState && postTitle !== '' ? (
-            <Title data-testid="header-post-title">
-              <AnchorLink offset="150" href="#top">
-                {postTitle}
-              </AnchorLink>
-            </Title>
-          ) : null}
-        </div>
-        <div>
-          {links ? (
-            <CustomLinks show={siteTitle === ''}>{links}</CustomLinks>
-          ) : null}
-          <TwitterLinkWrapper>
-            <OutboundLink
-              className="h-card"
-              data-testid="twitter-link"
-              aria-label="Follow me on Twitter"
-              title="Follow me on Twitter"
-              rel="me"
-              href="https://twitter.com/MaximeHeckel"
-              style={{ textDecoration: 'underline' }}
-            >
-              <TwitterIcon />
-            </OutboundLink>
-          </TwitterLinkWrapper>
-          {themeSwitcher && Object.keys(themeSwitcher).length > 0 ? (
-            <LightDarkSwitcher
-              tabIndex={0}
-              aria-pressed="false"
-              role="button"
-              data-testid="darkmode-switch"
-              html-for="darkmode-switch"
-              onKeyDown={(e) =>
-                e.keyCode === 13 ? themeSwitcher.toggleDark() : noop
-              }
-              onClick={themeSwitcher.toggleDark}
-              isDark={themeSwitcher.dark}
-              aria-label={
-                themeSwitcher.dark
-                  ? 'Activate light mode'
-                  : 'Activate dark mode'
-              }
-              title={
-                themeSwitcher.dark
-                  ? 'Activate light mode'
-                  : 'Activate dark mode'
-              }
-            />
-          ) : null}
-        </div>
-      </HeaderContent>
-    </HeaderWrapper>
-  );
-};
-
-export default Header;
-
-const Title = styled.h3`
-  @media (max-width: 900px) {
-    max-width: 400px;
-  }
-
-  @media (max-width: 800px) {
-    max-width: 300px;
-    margin-left: 20px;
-  }
-
-  @media (max-width: 400px) {
-    max-width: 175px;
-  }
-
-  display: block;
-  margin: 0;
-  margin-left: 40px;
-  overflow: hidden;
-  white-space: nowrap;
-  text-overflow: ellipsis;
-  color: ${(props) => props.theme.fontColor};
-
-  a {
-    color: ${(props) => props.theme.fontColor};
-    text-decoration: none;
-  }
-`;
-
-type HeaderWrapperProps = {
-  slim: boolean;
-  sticky: boolean;
-};
-
-const HeaderWrapper = styled.div<HeaderWrapperProps>`
-  background: ${(props) => props.theme.backgroundColor};
-  transition: ${(props) => props.theme.transitionTime}s;
-  width: 100%;
-  border-top: 6px solid ${(props) => props.theme.colors.blue};
-  height: ${(props) => (props.sticky && props.slim ? '75px ' : '120px')};
-  position: ${(props) => (props.sticky ? 'fixed' : 'inherit')};
-  z-index: 999;
-  ${(props) =>
-    props.slim
-      ? `box-shadow: ${props.theme.boxShadow}; backdrop-filter: blur(6px); opacity: 0.88;`
-      : ''}
-`;
-
-const HeaderContent = styled.div`
-  @media (max-width: 700px) {
-    padding-left: 30px;
-    padding-right: 30px;
-  }
-
-  padding-left: 70px;
-  padding-right: 70px;
-  margin: 0 auto;
-  height: inherit;
-  max-width: 1020px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-
-  div {
-    display: flex;
-    align-items: center;
-  }
-`;
-
 const TwitterLinkWrapper = styled('div')`
-  width: 50px;
-  margin-top: 10px;
   svg {
+    margin-top: 4px;
     fill: ${(p) => p.theme.colors.blue};
   }
 `;
 
-type CustomLinksProps = {
-  show: boolean;
+const noop = () => {};
+
+interface HeaderProps {
+  sticky?: boolean;
+  collapsableOnScroll?: boolean;
+}
+class Header extends React.Component<HeaderProps> {
+  public static Wrapper = Wrapper;
+  public static Logo = Logo;
+  public static Title = Title;
+  public static Navigation = Navigation;
+
+  render() {
+    const { children, collapsableOnScroll, sticky } = this.props;
+    return (
+      <Wrapper collapsableOnScroll={collapsableOnScroll} sticky={sticky}>
+        {children}
+      </Wrapper>
+    );
+  }
+}
+
+interface DefaultHeaderProps {
+  sticky?: boolean;
+  collapsableOnScroll?: boolean;
+  title?: string;
+  themeSwitcher?: boolean;
+}
+
+const DefaultHeader: React.FC<DefaultHeaderProps> = (props) => {
+  const theme = useTheme();
+
+  return (
+    <Header
+      sticky={props.sticky}
+      collapsableOnScroll={props.collapsableOnScroll}
+    >
+      <Flex>
+        <Header.Logo
+          alt="Maxime Heckel's Blog logo"
+          aria-label="Maxime Heckel's Blog"
+        >
+          <MHLogo />
+        </Header.Logo>
+        <Header.Title>{props.title}</Header.Title>
+      </Flex>
+      <Flex>
+        <TwitterLinkWrapper>
+          <OutboundLink
+            className="h-card"
+            data-testid="twitter-link"
+            aria-label="Follow me on Twitter"
+            title="Follow me on Twitter"
+            rel="me"
+            href="https://twitter.com/MaximeHeckel"
+            style={{ textDecoration: 'underline' }}
+          >
+            <LinkButton
+              aria-label="Follow me on Twitter"
+              title="Follow me on Twitter"
+            >
+              <TwitterIcon />
+            </LinkButton>
+          </OutboundLink>
+        </TwitterLinkWrapper>
+
+        {props.themeSwitcher && Object.keys(theme).length > 0 ? (
+          <LinkButton
+            tabIndex={0}
+            onKeyDown={(e) => (e.keyCode === 13 ? theme.toggleDark() : noop)}
+            onClick={theme.toggleDark}
+            aria-label={
+              theme.dark ? 'Activate light mode' : 'Activate dark mode'
+            }
+            title={theme.dark ? 'Activate light mode' : 'Activate dark mode'}
+          >
+            <LightDarkSwitcher
+              aria-pressed="false"
+              data-testid="darkmode-switch"
+              html-for="darkmode-switch"
+              isDark={theme.dark}
+            />
+          </LinkButton>
+        ) : null}
+      </Flex>
+    </Header>
+  );
 };
-
-const CustomLinks = styled.div<CustomLinksProps>`
-  @media (max-width: 700px) {
-    display: ${(props: { show: boolean }) => (props.show ? 'flex' : 'none')};
-  }
-  display: flex;
-  color: ${(props) => props.theme.fontColor};
-  min-width: 185px;
-  justify-content: space-evenly;
-  align-items: center;
-
-  a {
-    text-decoration: none;
-  }
-
-  label {
-    margin-top: 7px;
-  }
-`;
+export default Header;
+export { DefaultHeader, Logo, Navigation, Title, Wrapper };

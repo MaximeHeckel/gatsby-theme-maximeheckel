@@ -14,7 +14,7 @@ const defaultContextData = {
   toggleDark: () => {},
 };
 
-const ThemeContext = React.createContext(defaultContextData);
+export const ThemeContext = React.createContext(defaultContextData);
 
 const useTheme = () => React.useContext(ThemeContext);
 
