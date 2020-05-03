@@ -34,7 +34,11 @@ const Replies = ({ replies }: RepliesProps) => {
       {replies && replies.length ? (
         <RepliesList>
           {replies.map((link) => (
-            <Head key={link.id} data-tip={link.activity.sentence}>
+            <Head
+              key={link.id}
+              data-testid={link.id}
+              data-tip={link.activity.sentence}
+            >
               <OutboundLink
                 href={link.data.author.url}
                 style={{ flexShrink: 0, cursor: 'pointer' }}
@@ -84,7 +88,7 @@ const Head = styled('li')`
 
 interface Props {
   title: string;
-  url: URL;
+  url: string;
 }
 
 const WebmentionReplies = ({ title, url }: Props) => {
@@ -103,9 +107,7 @@ const WebmentionReplies = ({ title, url }: Props) => {
     () =>
       fetch(
         `https://webmention.io/api/mentions?page=${page}&per-page=${perPage}&target=${url}`
-      )
-        .then((response) => response.json())
-        .then((json) => [...json.links]),
+      ).then((response) => (response.json ? response.json() : response)),
     [page, url]
   );
   const incrementPage = () => setPage((previousPage) => previousPage + 1);
@@ -123,14 +125,15 @@ const WebmentionReplies = ({ title, url }: Props) => {
   React.useEffect(() => {
     getMentions()
       .then((newReplies) => {
-        setReplies(newReplies);
+        setReplies(newReplies.links);
         setFetchState('done');
       })
       .then(incrementPage);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   if (fetchState === 'fetching') {
-    return <p>Fetching Replies...</p>;
+    return <p data-testid="fetching">Fetching Replies...</p>;
   }
 
   const distinctFans = [
@@ -139,35 +142,39 @@ const WebmentionReplies = ({ title, url }: Props) => {
   ];
 
   return (
-    <p>
+    <div>
       <strong>
-        {replies.length > 0
-          ? `Already ${
-              distinctFans.length > 1
-                ? `${distinctFans.length} awesome people`
-                : 'one awesome person'
-            } liked, shared or talked about this article:`
-          : 'Be the first one to share this article!'}
-        <br />
+        <p data-testid="main-text">
+          {replies.length > 0
+            ? `Already ${
+                distinctFans.length > 1
+                  ? `${distinctFans.length} awesome people`
+                  : 'one awesome person'
+              } liked, shared or talked about this article:`
+            : 'Be the first one to share this article!'}
+          <br />
+        </p>
       </strong>
       <Replies replies={replies} />
-      <OutboundLink
-        href={`https://twitter.com/intent/tweet?text=${encodeURI(text)}`}
-        target="_blank"
-        rel="noopener noreferrer"
-      >
-        Tweet about this post
-      </OutboundLink>{' '}
-      and it will show up here! Or,{' '}
-      <OutboundLink
-        href={`https://mobile.twitter.com/search?q=${url}`}
-        target="_blank"
-        rel="noopener noreferrer"
-      >
-        click here
-      </OutboundLink>{' '}
-      to leave a comment and discuss about it on Twitter.
-    </p>
+      <p data-testid="share-text">
+        <OutboundLink
+          href={`https://twitter.com/intent/tweet?text=${encodeURI(text)}`}
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Tweet about this post
+        </OutboundLink>{' '}
+        and it will show up here! Or,{' '}
+        <OutboundLink
+          href={`https://mobile.twitter.com/search?q=${url}`}
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          click here
+        </OutboundLink>{' '}
+        to leave a comment and discuss about it on Twitter.
+      </p>
+    </div>
   );
 };
 

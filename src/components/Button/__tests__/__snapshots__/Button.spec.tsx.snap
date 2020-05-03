@@ -2,9 +2,8 @@
 
 exports[`Button renders the primary button 1`] = `
 .emotion-0 {
+  height: 48px;
   margin: 0;
-  background-color: var(--maximeheckel-colors-brand,#5184f9);
-  color: #FFFFFF;
   border: none;
   cursor: pointer;
   display: -webkit-inline-box;
@@ -20,17 +19,16 @@ exports[`Button renders the primary button 1`] = `
   -ms-flex-align: center;
   align-items: center;
   position: relative;
-  padding: 0 30px;
-  height: 48px;
-  min-width: 190px;
-  font-weight: 700;
+  font-weight: 600;
   outline: none;
-  -webkit-transition: background-color 0.2s cubic-bezier(0.8,0,0.2,1);
-  transition: background-color 0.2s cubic-bezier(0.8,0,0.2,1);
-}
-
-.emotion-0:hover {
-  background-color: #161617;
+  padding: 0 30px;
+  border-radius: 4px;
+  background-color: var(--maximeheckel-colors-brand,#5184f9);
+  color: #FFFFFF;
+  min-width: 150px;
+  -webkit-transition: -webkit-transform 0.3s;
+  -webkit-transition: transform 0.3s;
+  transition: transform 0.3s;
 }
 
 <body>
@@ -46,9 +44,8 @@ exports[`Button renders the primary button 1`] = `
 
 exports[`Button renders the secondary button 1`] = `
 .emotion-0 {
+  height: 48px;
   margin: 0;
-  background-color: transparent;
-  color: var(--maximeheckel-colors-brand,#5184f9);
   border: none;
   cursor: pointer;
   display: -webkit-inline-box;
@@ -64,28 +61,68 @@ exports[`Button renders the secondary button 1`] = `
   -ms-flex-align: center;
   align-items: center;
   position: relative;
-  padding: 0 0;
-  height: 48px;
-  min-width: inherit;
-  font-weight: 700;
+  font-weight: 600;
   outline: none;
-  -webkit-transition: 1.8s;
-  transition: 1.8s;
+  padding: 0 30px;
+  border-radius: 4px;
+  background-color: transparent;
+  color: var(--maximeheckel-colors-brand,#5184f9);
+  border: 2px solid var(--maximeheckel-colors-brand,#5184f9);
+  min-width: 150px;
+  -webkit-transition: -webkit-transform 0.3s;
+  -webkit-transition: transform 0.3s;
+  transition: transform 0.3s;
 }
 
-.emotion-0:hover {
+<body>
+  <div>
+    <button
+      class="emotion-0"
+    >
+      Test
+    </button>
+  </div>
+</body>
+`;
+
+exports[`Button renders the tertiary button 1`] = `
+.emotion-0 {
+  height: 48px;
+  margin: 0;
+  border: none;
+  cursor: pointer;
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  position: relative;
+  font-weight: 600;
+  outline: none;
+  padding: 0 30px;
+  border-radius: 4px;
   background-color: transparent;
+  color: var(--maximeheckel-colors-brand,#5184f9);
+  min-width: inherited;
+  padding: 0px;
 }
 
 .emotion-0::after {
   content: '';
   display: block;
   position: absolute;
-  top: 100%;
+  top: 96%;
   left: 0;
   right: 0;
   height: 2px;
-  background: var(--maximeheckel-colors-brand,#5184f9);
+  background-color: var(--maximeheckel-colors-brand,#5184f9);
   -webkit-transform: scaleX(0);
   -ms-transform: scaleX(0);
   transform: scaleX(0);

@@ -2,9 +2,9 @@ import React from 'react';
 import styled from '../../utils/styled';
 
 interface ILogoProp {
-  alt: string;
+  alt?: string;
   inverted?: boolean;
-  size: number;
+  size?: number;
 }
 
 type LogoWrapperProps = {
@@ -15,9 +15,9 @@ type LogoWrapperProps = {
 const LogoWrapper = styled('div')<LogoWrapperProps>`
   height: ${(props) => props.size}px;
   width: ${(props) => props.size}px;
-  transition: ${(props) => props.theme.transitionTime}s;
+  transition: 0.7s;
   & > * {
-    transition: ${(props) => props.theme.transitionTime}s;
+    transition: 0.7s;
   }
   svg {
     height: ${(props) => props.size}px;
@@ -35,7 +35,7 @@ const LogoWrapper = styled('div')<LogoWrapperProps>`
 `;
 
 const Logo: React.FC<ILogoProp> = ({ alt, inverted, size }) => (
-  <LogoWrapper inverted={inverted} size={size}>
+  <LogoWrapper inverted={inverted} size={size || 60}>
     <svg
       aria-label={alt}
       width="401"

@@ -25,4 +25,13 @@ describe('Button', () => {
     );
     expect(component.baseElement).toMatchSnapshot();
   });
+
+  it('renders the tertiary button', () => {
+    const component = render(
+      <ThemeProvider theme={theme.light}>
+        <Button tertiary={true}>Test</Button>
+      </ThemeProvider>
+    );
+    expect(component.baseElement).toMatchSnapshot();
+  });
 });
