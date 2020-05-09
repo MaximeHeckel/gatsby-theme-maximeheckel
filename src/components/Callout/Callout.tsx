@@ -28,6 +28,13 @@ const variantColors = (theme: Theme): Record<string, string> => ({
 });
 
 const StyledCallout = styled('div')<{ variant: VARIANT }>`
+  @media (max-width: 600px) {
+    position: relative;
+    width: 100vw;
+    left: calc(-50vw + 50%);
+    border-radius: 0px;
+  }
+
   border-radius: 4px;
   border-left: 3px solid;
   padding: 30px 30px;

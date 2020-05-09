@@ -67,7 +67,7 @@ const PrismCSS = (p: any) => css`
       display: inline-block;
       width: 32px;
       user-select: none;
-      opacity: 0.3;
+      opacity: 0.6;
       color: #dcd9e6;
     }
 
