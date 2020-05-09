@@ -13,7 +13,7 @@ interface ButtonProps {
   onClick?: () => any;
 }
 
-const StyledButton = motion.custom(styled('button')<ButtonProps>`
+const StyledButton = styled(motion.button)<ButtonProps>`
   height: 48px;
   margin: 0;
   border: none;
@@ -33,7 +33,6 @@ const StyledButton = motion.custom(styled('button')<ButtonProps>`
       background-color: ${p.theme.colors.blue};
       color: ${p.theme.colors.white};
       min-width: 150px;
-      transition: transform 0.3s;
 
   ${
     p.danger
@@ -67,7 +66,6 @@ const StyledButton = motion.custom(styled('button')<ButtonProps>`
       color: ${p.theme.colors.blue};
       border: 2px solid ${p.theme.colors.blue};
       min-width: 150px;
-      transition: transform 0.3s;
 
   ${
     p.danger
@@ -148,7 +146,7 @@ const StyledButton = motion.custom(styled('button')<ButtonProps>`
       }
           `
       : ''};
-`);
+`;
 
 const Button = React.forwardRef(
   ({ children, ...props }: ButtonProps, ref: React.Ref<HTMLButtonElement>) => {

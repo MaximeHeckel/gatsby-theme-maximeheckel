@@ -5,9 +5,11 @@ import styled from '../../utils/styled';
 import Callout from '../Callout';
 import Pill from '../Pill';
 import { Blockquote } from './Blockquote';
+import Button from '../Button';
 import { Code, InlineCode } from './Code';
 
 const components = {
+  Button,
   blockquote: Blockquote,
   Callout,
   inlineCode: InlineCode,

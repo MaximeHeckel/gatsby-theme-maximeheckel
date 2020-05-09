@@ -329,7 +329,7 @@ const Item = styled('li')<{}>`
   }
 `;
 
-const SearchResults = motion.custom(styled('ul')<{}>`
+const SearchResults = styled(motion.ul)<{}>`
   @media (max-width: 700px) {
     max-height: 300px;
   }
@@ -337,7 +337,7 @@ const SearchResults = motion.custom(styled('ul')<{}>`
   max-height: 500px;
   overflow: scroll;
   margin: 0px;
-`);
+`;
 
 const SearchBoxWrapper = styled('div')<{}>`
   @media (max-width: 700px) {
@@ -386,11 +386,11 @@ const SearchBoxWrapper = styled('div')<{}>`
   }
 `;
 
-const SearchBoxOverlay = motion.custom(styled('div')<{}>`
+const SearchBoxOverlay = styled(motion.div)<{}>`
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
   z-index: 50;
-`);
+`;
