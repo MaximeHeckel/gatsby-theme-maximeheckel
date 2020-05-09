@@ -4,6 +4,7 @@ const theme = {
     borderColor: '#f5f5f9',
     boxShadow: '0 0px 12px -6px rgba(0, 24, 40, 0.25)',
     colors: {
+      black: '#000000',
       blue: 'var(--maximeheckel-colors-brand, #5184f9)',
       red: '#FF515A',
       gray: '#F8F8F9',
@@ -13,8 +14,8 @@ const theme = {
         // tslint:disable-next-line:object-literal-sort-keys
         languageJavascript: `#e8696b`,
         javascript: `#e8696b`,
-        background: `#292c34`,
-        comment: `#5e6a76`,
+        background: `rgba(41, 44, 52, 1)`,
+        comment: `#93a4b5`,
         string: `#a8e2a8`,
         var: `#b3bac5`,
         number: `#e4854d`,
@@ -65,8 +66,8 @@ const theme = {
         // tslint:disable-next-line:object-literal-sort-keys
         languageJavascript: `#e8696b`,
         javascript: `#e8696b`,
-        background: `#0F111B`,
-        comment: `#5e6a76`,
+        background: `rgba(15, 17, 27, 1)`,
+        comment: `#93a4b5`,
         string: `#a8e2a8`,
         var: `#b3bac5`,
         number: `#e4854d`,
@@ -95,8 +96,7 @@ const theme = {
       white: '#FFFFFF',
     },
     fontColor: 'var(--maximeheckel-colors-typeface-0, #FFFFFF)',
-    foregroundColor:
-      'var(--maximeheckel-colors-body-1, rgba(14, 20, 27, 0.55))',
+    foregroundColor: 'var(--maximeheckel-colors-body-1, rgba(9, 14, 21, 0.6))',
     overlayBackground: 'var(--maximeheckel-colors-body-2, rgba(0,0,0,0.40))',
     transitionTime: 0.5,
   },

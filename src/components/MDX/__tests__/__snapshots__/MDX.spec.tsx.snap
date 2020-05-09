@@ -75,7 +75,7 @@ exports[`MDX Renders the MDX component accordingly 1`] = `
   font-size: 14px;
   margin: 15px auto 15px;
   border-radius: 4px;
-  background: #292c34;
+  background: rgba(41,44,52,1);
 }
 
 .emotion-0 .prism-code .number-line {
@@ -85,7 +85,7 @@ exports[`MDX Renders the MDX component accordingly 1`] = `
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
-  opacity: 0.3;
+  opacity: 0.6;
   color: #dcd9e6;
 }
 
@@ -111,11 +111,11 @@ exports[`MDX Renders the MDX component accordingly 1`] = `
 }
 
 .emotion-0 .prism-code .token-line .background {
-  color: #292c34;
+  color: rgba(41,44,52,1);
 }
 
 .emotion-0 .prism-code .token-line .comment {
-  color: #5e6a76;
+  color: #93a4b5;
 }
 
 .emotion-0 .prism-code .token-line .string {

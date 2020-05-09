@@ -11,6 +11,15 @@ exports[`Callout can render a Callout with variant danger 1`] = `
   color: #2B2D3E;
 }
 
+@media (max-width:600px) {
+  .emotion-0 {
+    position: relative;
+    width: 100vw;
+    left: calc(-50vw + 50%);
+    border-radius: 0px;
+  }
+}
+
 .emotion-0 *:last-child {
   margin-bottom: 0px;
 }
@@ -35,6 +44,15 @@ exports[`Callout can render a Callout with variant info 1`] = `
   background-color: #E6EDF8;
   border-color: var(--maximeheckel-colors-brand,#5184f9);
   color: #2B2D3E;
+}
+
+@media (max-width:600px) {
+  .emotion-0 {
+    position: relative;
+    width: 100vw;
+    left: calc(-50vw + 50%);
+    border-radius: 0px;
+  }
 }
 
 .emotion-0 *:last-child {

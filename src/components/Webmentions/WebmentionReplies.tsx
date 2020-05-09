@@ -44,7 +44,7 @@ const Replies = ({ replies }: RepliesProps) => {
                 style={{ flexShrink: 0, cursor: 'pointer' }}
               >
                 <img
-                  width={40}
+                  width={50}
                   src={link.data.author.photo}
                   alt={`avatar of ${link.data.author.name}`}
                 />
@@ -170,9 +170,9 @@ const WebmentionReplies = ({ title, url }: Props) => {
           target="_blank"
           rel="noopener noreferrer"
         >
-          click here
+          click here to leave a comment
         </OutboundLink>{' '}
-        to leave a comment and discuss about it on Twitter.
+        and discuss about it on Twitter.
       </p>
     </div>
   );
