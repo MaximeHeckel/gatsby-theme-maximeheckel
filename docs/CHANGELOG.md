@@ -1,5 +1,12 @@
 # Gatsby-theme-maximeheckel
 
+# [0.8.0](https://github.com/MaximeHeckel/gatsby-theme-maximeheckel/compare/v0.7.3...v0.8.0) (2020-05-09)
+
+
+### Features
+
+* **component:** Add live code editor ([#141](https://github.com/MaximeHeckel/gatsby-theme-maximeheckel/issues/141)) ([6a2486f](https://github.com/MaximeHeckel/gatsby-theme-maximeheckel/commit/6a2486f8b34a8827ba8641c7a631f7c3a639c2ea))
+
 ## [0.7.3](https://github.com/MaximeHeckel/gatsby-theme-maximeheckel/compare/v0.7.2...v0.7.3) (2020-05-03)
 
 
