@@ -1,6 +1,13 @@
+import { css } from '@emotion/core';
 import Highlight, { defaultProps, Language } from 'prism-react-renderer';
 import React from 'react';
+import { LiveProvider, LiveEditor, LiveError, LivePreview } from 'react-live';
 import styled from '../../../utils/styled';
+import EmotionStyled from '@emotion/styled';
+import { motion } from 'framer-motion';
+import themePrism from 'prism-react-renderer/themes/oceanicNext';
+import { withTheme } from 'emotion-theming';
+import Flex from '../../Flex';
 
 const copyToClipboard = (content: string) => {
   const el = document.createElement(`textarea`);
@@ -17,6 +24,8 @@ const copyToClipboard = (content: string) => {
 type PrePropsType = {
   children: {
     props: {
+      live: boolean;
+      render: boolean;
       metastring: string;
       mdxType?: string;
       className?: string;
@@ -96,6 +105,61 @@ export const InlineCode: React.FC<IInlineCodeProps> = (props) => {
   return <InlineCodeWrapper>{props.children}</InlineCodeWrapper>;
 };
 
+export const LiveCodeBlock: React.FC<ICodeBlockProps> = withTheme((props) => {
+  const { codeString, live, render, theme } = props;
+
+  const scope = { motion, styled: EmotionStyled };
+  const customTheme = {
+    ...themePrism,
+    plain: {
+      fontFamily: 'Fira Code',
+      fontSize: '14px',
+      color: '#ffffff',
+      overflowWrap: 'normal',
+      position: 'relative',
+      overflow: 'scroll',
+      borderRadius: '4px',
+    },
+  };
+
+  if (live) {
+    return (
+      <LiveProvider
+        theme={customTheme}
+        code={codeString}
+        scope={scope}
+        noInline={true}
+      >
+        <StyledLiveCodeWrapper fullWidth>
+          <StyledPreviewWrapper>
+            <LivePreview />
+          </StyledPreviewWrapper>
+          <StyledEditorWrapper>
+            <LiveEditor />
+          </StyledEditorWrapper>
+        </StyledLiveCodeWrapper>
+        <StyledErrorWrapper>
+          <LiveError />
+        </StyledErrorWrapper>
+      </LiveProvider>
+    );
+  }
+
+  if (render) {
+    return (
+      <LiveProvider code={codeString} scope={scope} noInline={true}>
+        <StyledLiveCodeWrapper>
+          <StyledPreviewWrapper>
+            <LivePreview />
+          </StyledPreviewWrapper>
+        </StyledLiveCodeWrapper>
+      </LiveProvider>
+    );
+  }
+
+  return null;
+});
+
 interface ICodeBlockProps {
   codeString: string;
   language: Language;
@@ -103,7 +167,7 @@ interface ICodeBlockProps {
 }
 
 export const CodeBlock: React.FC<ICodeBlockProps> = (props) => {
-  const { codeString, language, metastring } = props;
+  const { codeString, language, metastring, live, render } = props;
   const [copied, hasClickedCopy] = React.useState(false);
   const handleCopyToClipboard = (code: string) => {
     copyToClipboard(code);
@@ -171,7 +235,11 @@ export const Code: React.FC<PrePropsType> = (preProps) => {
   const props = preToCodeBlock(preProps);
 
   if (props) {
-    return <CodeBlock {...props} />;
+    return props.live || props.render ? (
+      <LiveCodeBlock {...props} />
+    ) : (
+      <CodeBlock {...props} />
+    );
   } else {
     return <pre {...preProps} />;
   }
@@ -191,6 +259,7 @@ const CodeSnippetTitle = styled('p')`
   padding: 4px 10px;
   font-size: 14px;
   margin-bottom: 0px;
+  color: ${(p) => p.theme.colors.black};
 `;
 
 const CodeSnippetHeader = styled('div')`
@@ -207,22 +276,92 @@ const CodeSnippetHeader = styled('div')`
   min-height: 30px;
 `;
 
+const fullWidthSnipperStyle = (p: any) => css`
+  position: relative;
+  width: 100vw;
+  left: calc(-50vw + 50%);
+  border-radius: 0px;
+  max-width: 1100px;
+`;
+
 const CodeSnippetWrapper = styled('div')`
-  @media (max-width: 500px) {
-    position: relative;
-    width: 100vw;
-    left: calc(-50vw + 50%);
-    border-radius: 0px;
+  @media (max-width: 600px) {
+    ${fullWidthSnipperStyle}
   }
 
   width: 100%;
   border-radius: 5px;
-  background: ${(p) => p.theme.colors.prism.background};
   margin: 40px 0px;
 `;
 
+interface CodeSnippetWrapperProps {
+  fullWidth?: boolean;
+}
+
+const StyledLiveCodeWrapper = styled('div')<CodeSnippetWrapperProps>`
+  @media (max-width: 750px) {
+    display: block;
+  }
+
+  @media (max-width: 1100px) {
+    ${(p) => (p.fullWidth ? fullWidthSnipperStyle : '')}
+  }
+
+  @media (min-width: 1101px) {
+    ${(p) =>
+      p.fullWidth
+        ? `
+        width: 1100px;
+        transform: translateX(-200px);
+`
+        : ''}
+  }
+
+  background-color: ${(p) => p.theme.foregroundColor};
+  backdrop-filter: blur(6px);
+  border-radius: 5px;
+  display: flex;
+  align-items: center;
+  margin: 40px 0px;
+`;
+
+const StyledEditorWrapper = styled('div')`
+  flex: 60 1 0%;
+  background-color: ${(p) => p.theme.colors.prism.background};
+  height: 100%;
+  max-height: 600px;
+  overflow: auto;
+  margin: 0;
+  border-top-right-radius: 5px;
+  border-bottom-right-radius: 5px;
+
+  * > textarea:focus {
+    outline: none;
+  }
+`;
+
+const StyledPreviewWrapper = styled('div')`
+  height: 100%;
+  max-height: 600px;
+  min-height: 300px;
+  flex: 40 1 0%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+`;
+
+const StyledErrorWrapper = styled('div')`
+  color: white;
+  width: 100%;
+
+  pre {
+    padding: 15px;
+    margin-bottom: 0px;
+  }
+`;
+
 const CopyButton = styled('button')`
-  color: ${(p) => p.theme.colors.white};
+  color: ${(p) => p.theme.colors.black};
   transition: background 0.3s ease;
   background: rgba(255, 255, 255, 0.05);
   border: none;
