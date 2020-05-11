@@ -77,13 +77,13 @@
     "jest-fetch-mock": "^3.0.3",
     "prettier": "^2.0.2",
     "react": "16.13.1",
-    "react-dom": "16.13.0",
+    "react-dom": "16.13.1",
     "semantic-release": "^17.0.4",
     "typescript": "^3.8.2"
   },
   "peerDependencies": {
     "react": "16.13.1",
-    "react-dom": "16.13.0"
+    "react-dom": "16.13.1"
   },
   "jest": {
     "snapshotSerializers": [
