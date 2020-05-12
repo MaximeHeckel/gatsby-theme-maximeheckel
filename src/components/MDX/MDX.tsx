@@ -59,9 +59,9 @@ const PrismCSS = (p: any) => css`
     overflow: scroll;
     width: 100%;
     max-width: 744px;
-    padding: 15px 0px 15px 0px;
+    padding: 15px 0px;
     font-size: 14px;
-    margin: 15px auto 15px;
+    margin: 0px auto;
     border-radius: 4px;
     background: ${p.theme.colors.prism.background};
 
