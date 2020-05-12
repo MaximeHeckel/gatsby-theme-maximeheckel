@@ -73,7 +73,7 @@
     "is-ci-cli": "^2.0.0",
     "jest": "26.0.0",
     "jest-dom": "^3.0.2",
-    "jest-emotion": "^10.0.7",
+    "jest-emotion": "^10.0.32",
     "jest-fetch-mock": "^3.0.3",
     "prettier": "^2.0.2",
     "react": "16.13.1",
