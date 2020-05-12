@@ -1,5 +1,13 @@
 # Gatsby-theme-maximeheckel
 
+## [0.8.1](https://github.com/MaximeHeckel/gatsby-theme-maximeheckel/compare/v0.8.0...v0.8.1) (2020-05-12)
+
+
+### Bug Fixes
+
+* **component:** Fix floating title bar in Code component ([2df8c94](https://github.com/MaximeHeckel/gatsby-theme-maximeheckel/commit/2df8c94fd981a3d7ed525abc3699d991b4fc079f))
+* **components:** Use motion.[component] in emotion styled function ([207faac](https://github.com/MaximeHeckel/gatsby-theme-maximeheckel/commit/207faacf437e72b768ceb8629f4c969863aedf75))
+
 # [0.8.0](https://github.com/MaximeHeckel/gatsby-theme-maximeheckel/compare/v0.7.3...v0.8.0) (2020-05-09)
 
 
