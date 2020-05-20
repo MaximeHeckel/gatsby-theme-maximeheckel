@@ -16,6 +16,7 @@ const PillWrapper = styled('span')<PillWrapperProps>`
   padding: 4px 8px 5px 8px;
   margin-left: 8px;
   color: #2b2d3e;
+  min-width: 40px;
 `;
 
 interface Props extends PillWrapperProps {

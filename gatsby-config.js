@@ -11,6 +11,7 @@ module.exports = () => {
             default: require.resolve('./src/templates/BlogPost.tsx'),
             posts: require.resolve('./src/templates/BlogPost.tsx'),
             projects: require.resolve('./src/templates/PortfolioProject.tsx'),
+            snippets: require.resolve('./src/templates/Snippet.tsx'),
           },
           remarkPlugins: [require('remark-toc')],
           gatsbyRemarkPlugins: [

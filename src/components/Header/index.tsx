@@ -33,6 +33,7 @@ const noop = () => {};
 
 interface HeaderProps {
   sticky?: boolean;
+  slim?: boolean;
   collapsableOnScroll?: boolean;
 }
 class Header extends React.Component<HeaderProps> {
@@ -42,7 +43,8 @@ class Header extends React.Component<HeaderProps> {
   public static Navigation = Navigation;
 
   render() {
-    const { children, collapsableOnScroll, sticky } = this.props;
+    const { children, collapsableOnScroll, sticky, slim = false } = this.props;
+
     return (
       <Wrapper collapsableOnScroll={collapsableOnScroll} sticky={sticky}>
         {children}
@@ -51,18 +53,20 @@ class Header extends React.Component<HeaderProps> {
   }
 }
 
-interface DefaultHeaderProps {
+export interface MainHeaderProps {
   sticky?: boolean;
+  slim?: boolean;
   collapsableOnScroll?: boolean;
   title?: string;
   themeSwitcher?: boolean;
 }
 
-const DefaultHeader: React.FC<DefaultHeaderProps> = (props) => {
+const DefaultHeader: React.FC<MainHeaderProps> = (props) => {
   const theme = useTheme();
 
   return (
     <Header
+      slim={props.slim}
       sticky={props.sticky}
       collapsableOnScroll={props.collapsableOnScroll}
     >
@@ -71,7 +75,7 @@ const DefaultHeader: React.FC<DefaultHeaderProps> = (props) => {
           alt="Maxime Heckel's Blog logo"
           aria-label="Maxime Heckel's Blog"
         >
-          <MHLogo />
+          <MHLogo inverted />
         </Header.Logo>
         <Header.Title>{props.title}</Header.Title>
       </Flex>
