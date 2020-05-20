@@ -167,7 +167,7 @@ interface ICodeBlockProps {
 }
 
 export const CodeBlock: React.FC<ICodeBlockProps> = (props) => {
-  const { codeString, language, metastring, live, render } = props;
+  const { codeString, language, metastring } = props;
   const [copied, hasClickedCopy] = React.useState(false);
   const handleCopyToClipboard = (code: string) => {
     copyToClipboard(code);
@@ -187,9 +187,12 @@ export const CodeBlock: React.FC<ICodeBlockProps> = (props) => {
           <CodeSnippetTitle data-testid="codesnippet-title">
             {title}
           </CodeSnippetTitle>
-          <CopyButton onClick={() => handleCopyToClipboard(codeString)}>
-            {copied ? 'Copied' : 'Copy'}
-          </CopyButton>
+          <Flex>
+            <CodeLanguage>{language}</CodeLanguage>
+            <CopyButton onClick={() => handleCopyToClipboard(codeString)}>
+              {copied ? 'Done' : 'Copy'}
+            </CopyButton>
+          </Flex>
         </CodeSnippetHeader>
       ) : null}
       <Highlight {...defaultProps} code={codeString} language={language}>
@@ -260,6 +263,12 @@ const CodeSnippetTitle = styled('p')`
   font-size: 14px;
   margin-bottom: 0px;
   color: ${(p) => p.theme.colors.black};
+`;
+
+const CodeLanguage = styled('div')`
+  color: ${(p) => p.theme.colors.black};
+  text-transform: uppercase;
+  font-size: 14px;
 `;
 
 const CodeSnippetHeader = styled('div')`
@@ -366,4 +375,15 @@ const CopyButton = styled('button')`
   background: rgba(255, 255, 255, 0.05);
   border: none;
   cursor: pointer;
+  height: 100%;
+  margin-right: 0px;
+  padding: 0px 10px;
+  max-width: 60px;
+  width: 60px;
+  outline: none;
+
+  &:hover,
+  &:focus {
+    background: rgba(255, 255, 255, 0.2);
+  }
 `;

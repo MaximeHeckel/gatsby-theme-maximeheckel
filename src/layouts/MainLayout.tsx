@@ -1,18 +1,14 @@
 import { graphql, useStaticQuery } from 'gatsby';
 import React from 'react';
 import Footer from '../components/Footer';
-import { DefaultHeader } from '../components/Header';
+import { DefaultHeader, MainHeaderProps } from '../components/Header';
 import { useTheme } from '../context/ThemeContext';
 import styled from '../utils/styled';
 
 interface LayoutProps {
   footer?: boolean;
   header?: boolean;
-  headerProps?: {
-    title?: string;
-    sticky?: boolean;
-    collapsableOnScroll?: boolean;
-  };
+  headerProps?: MainHeaderProps;
 }
 
 const Layout: React.FC<LayoutProps> = (props) => {

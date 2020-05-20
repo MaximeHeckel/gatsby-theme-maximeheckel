@@ -35,7 +35,7 @@ const LogoWrapper = styled('div')<LogoWrapperProps>`
 `;
 
 const Logo: React.FC<ILogoProp> = ({ alt, inverted, size }) => (
-  <LogoWrapper inverted={inverted} size={size || 60}>
+  <LogoWrapper inverted={inverted} size={size || 50}>
     <svg
       aria-label={alt}
       width="401"
