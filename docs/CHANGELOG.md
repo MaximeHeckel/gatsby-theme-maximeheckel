@@ -1,5 +1,12 @@
 # Gatsby-theme-maximeheckel
 
+# [0.9.0](https://github.com/MaximeHeckel/gatsby-theme-maximeheckel/compare/v0.8.1...v0.9.0) (2020-05-20)
+
+
+### Features
+
+* **layout:** Add snippet layout ([835afc1](https://github.com/MaximeHeckel/gatsby-theme-maximeheckel/commit/835afc1a0acd37fbbcbb2382132e365c6dbcf7a5))
+
 ## [0.8.1](https://github.com/MaximeHeckel/gatsby-theme-maximeheckel/compare/v0.8.0...v0.8.1) (2020-05-12)
 
 
