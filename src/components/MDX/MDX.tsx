@@ -61,7 +61,6 @@ const PrismCSS = (p: any) => css`
     padding: 15px 0px;
     font-size: 14px;
     margin: 0px auto;
-    //border-radius: 4px;
     background: ${p.theme.colors.prism.background};
 
     .number-line {

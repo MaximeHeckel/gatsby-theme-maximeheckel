@@ -33,18 +33,22 @@ const HeroInfo = styled.div`
   margin-bottom: 30px;
   p {
     color: #8a8a90;
-    font-size: 16px;
+    font-size: 14px;
     font-weight: 500;
   }
 `;
 
 const HeroSubtitle = styled.h3``;
 
-const HeroTitle = styled.h1``;
+const HeroTitle = styled.h1`
+  @media (max-width: 700px) {
+    font-size: 36px;
+  }
+`;
 
 const HeroWrapper = styled.div`
   @media (max-width: 700px) {
-    padding: 200px 0px 30px 0px;
+    padding: 150px 0px 30px 0px;
   }
 
   margin: 0 auto;
