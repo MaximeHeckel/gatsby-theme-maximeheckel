@@ -1,5 +1,13 @@
 # Gatsby-theme-maximeheckel
 
+## [0.9.1](https://github.com/MaximeHeckel/gatsby-theme-maximeheckel/compare/v0.9.0...v0.9.1) (2020-05-21)
+
+
+### Bug Fixes
+
+* **components:** Improve framer motion animation ([53c34a7](https://github.com/MaximeHeckel/gatsby-theme-maximeheckel/commit/53c34a7295d0734733bd38399aedbb02770858a6))
+* **layout:** Make layout for blog posts wider and remove description in post view ([5b26fa8](https://github.com/MaximeHeckel/gatsby-theme-maximeheckel/commit/5b26fa84055b3d768798c0ea7ffa97dc9737e842))
+
 # [0.9.0](https://github.com/MaximeHeckel/gatsby-theme-maximeheckel/compare/v0.8.1...v0.9.0) (2020-05-20)
 
 
