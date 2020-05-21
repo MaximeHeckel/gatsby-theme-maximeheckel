@@ -12,9 +12,9 @@ const ColoredBlockWrapper = styled('div')`
   left: calc(-50vw + 50%);
 
   > div {
-    @media (max-width: 800px) {
-      padding-left: 30px;
-      padding-right: 30px;
+    @media (max-width: 700px) {
+      padding-left: 20px;
+      padding-right: 20px;
     }
     margin: 0 auto;
     max-width: 700px;

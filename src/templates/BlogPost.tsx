@@ -72,7 +72,6 @@ const BlogPost: React.FC<BlogPostProps> = (props) => {
               >
                 {title}
               </Hero.Title>
-              {subtitle ? <Hero.Subtitle>{subtitle}</Hero.Subtitle> : null}
               <Hero.Info>
                 <Flex wrap="wrap">
                   {date ? (

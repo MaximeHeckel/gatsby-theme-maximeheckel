@@ -13,6 +13,14 @@ type LogoWrapperProps = {
 };
 
 const LogoWrapper = styled('div')<LogoWrapperProps>`
+  @media (max-width: 650px) {
+    transition: none !important;
+
+    & > * {
+      transition: none !important;
+    }
+  }
+
   height: ${(props) => props.size}px;
   width: ${(props) => props.size}px;
   transition: 0.7s;

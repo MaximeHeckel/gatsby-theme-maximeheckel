@@ -14,7 +14,7 @@ export const TitleWrapper = styled.h3`
     margin-left: 20px;
   }
 
-  @media (max-width: 400px) {
+  @media (max-width: 700px) {
     display: none;
   }
 
@@ -32,51 +32,35 @@ export const TitleWrapper = styled.h3`
   }
 `;
 
-export const SlideUp: React.FC<{}> = (props) => (
-  <motion.div
-    initial={{ y: 40 }}
-    animate={{ y: 0 }}
-    transition={{ duration: 0.5 }}
-  >
-    {props.children}
-  </motion.div>
-);
-
-export const SlideDown: React.FC<{}> = (props) => (
-  <motion.div
-    initial={{ y: 0 }}
-    animate={{ y: 150 }}
-    transition={{ duration: 1 }}
-  >
-    {props.children}
-  </motion.div>
-);
+const variants = {
+  hide: {
+    y: 150,
+  },
+  show: {
+    y: 0,
+  },
+};
 
 export interface HeaderTitleProps {}
 
 export const Title: React.FC<HeaderTitleProps> = (props) => {
   const { collapsed, sticky } = React.useContext(HeaderContext);
 
-  const [wasMounted, setWasMounted] = React.useState<boolean>(false);
-
-  React.useEffect(() => {
-    if (collapsed) {
-      setWasMounted(true);
-    }
-  }, [collapsed]);
-
   return (
     <TitleWrapper>
       {props.children ? (
         <div data-testid="header-title">
-          {sticky && collapsed ? (
-            <SlideUp>
+          {sticky ? (
+            <motion.div
+              initial="hide"
+              variants={variants}
+              animate={collapsed ? 'show' : 'hide'}
+              transition={{ type: 'spring', stiffness: 35 }}
+            >
               <AnchorLink offset="150" href="#top">
                 {props.children}
               </AnchorLink>
-            </SlideUp>
-          ) : wasMounted ? (
-            <SlideDown>{props.children}</SlideDown>
+            </motion.div>
           ) : null}
         </div>
       ) : null}
