@@ -13,8 +13,8 @@ const FooterBlock = styled.div`
 
 const FooterWrapper = styled.div`
   @media (max-width: 700px) {
-    padding-left: 30px;
-    padding-right: 30px;
+    padding-left: 20px;
+    padding-right: 20px;
   }
 
   padding-top: 30px;
