@@ -1,5 +1,5 @@
 import React from 'react';
-import { motion } from 'framer-motion';
+import { motion, useReducedMotion } from 'framer-motion';
 import useScrollCounter from '../../hooks/useScrollCounter';
 import styled from '../../utils/styled';
 import { HeaderContext } from './Context';
@@ -11,6 +11,7 @@ export interface HeaderWrapperProps extends StyledHeaderWrapperProps {
 
 export const Wrapper: React.FC<HeaderWrapperProps> = (props) => {
   const collapsed = useScrollCounter(props.collapseOffset || 150);
+  const shouldReduceMotion = useReducedMotion();
   const shouldCollapse = props.collapsableOnScroll ? collapsed : false;
 
   const memoizedContextValue = React.useMemo(
@@ -21,16 +22,24 @@ export const Wrapper: React.FC<HeaderWrapperProps> = (props) => {
     [props.sticky, shouldCollapse]
   );
 
+  const variants = {
+    open: {
+      height: shouldReduceMotion ? 60 : 120,
+    },
+    collapsed: { height: 60 },
+  };
+
   return (
     <HeaderContext.Provider value={memoizedContextValue}>
-      <HeaderWrapper slim={shouldCollapse} sticky={props.sticky}>
-        <motion.div
-          initial={{ height: 120 }}
-          animate={shouldCollapse ? { height: 60 } : { height: 120 }}
-          transition={{ duration: 0.4 }}
-        >
-          <HeaderContent>{props.children}</HeaderContent>
-        </motion.div>
+      <HeaderWrapper
+        sticky={props.sticky}
+        slim={shouldCollapse}
+        initial={'open'}
+        animate={shouldCollapse ? 'collapsed' : 'open'}
+        variants={variants}
+        transition={{ type: 'spring', stiffness: 80 }}
+      >
+        <HeaderContent>{props.children}</HeaderContent>
       </HeaderWrapper>
     </HeaderContext.Provider>
   );
@@ -41,9 +50,14 @@ interface StyledHeaderWrapperProps {
   sticky?: boolean;
 }
 
-const HeaderWrapper = styled.div<StyledHeaderWrapperProps>`
+const HeaderWrapper = styled(motion.div)<StyledHeaderWrapperProps>`
+  @media (max-width: 700px) {
+    height: 80px !important;
+    box-shadow: ${(props) => (props.sticky ? props.theme.boxShadow : 'none')};
+  }
+
+  transition: background ${(props) => props.theme.transitionTime}s;
   background: ${(props) => props.theme.backgroundColor};
-  transition: ${(props) => props.theme.transitionTime}s;
   width: 100%;
   border-top: 6px solid ${(props) => props.theme.colors.blue};
   position: ${(props) => (props.sticky ? 'fixed' : 'inherit')};
@@ -54,10 +68,14 @@ const HeaderWrapper = styled.div<StyledHeaderWrapperProps>`
       : ''}
 `;
 
+/**
+ *  backdrop-filter: blur(6px); opacity: 0.88;
+ */
+
 const HeaderContent = styled.div`
   @media (max-width: 700px) {
-    padding-left: 30px;
-    padding-right: 30px;
+    padding-left: 20px;
+    padding-right: 20px;
   }
 
   padding-left: 70px;

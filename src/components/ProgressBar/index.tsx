@@ -2,28 +2,19 @@ import React from 'react';
 import AnchorLink from 'react-anchor-link-smooth-scroll';
 import Scrollspy from 'react-scrollspy';
 import styled from '../../utils/styled';
+import { useReducedMotion, motion, useViewportScroll } from 'framer-motion';
 
-const ProgressBar = styled('div')`
+const ProgressBar = styled(motion.div)`
   width: 1px;
   background-color: ${(props) => props.theme.fontColor};
+  height: 100%;
 `;
 
-type ProgressBarWrapperProps = {
-  readingProgress: number;
-};
-
-const ProgressBarWrapper = styled('div')<ProgressBarWrapperProps>`
-  opacity: ${(props: ProgressBarWrapperProps) =>
-    props.readingProgress === 100 ? '0' : '0.6'};
-  transition: ${(props) => props.theme.transitionTime}s;
+const ProgressBarWrapper = styled(motion.div)`
   height: calc(88vh - 40px);
   max-height: 425px;
   width: 1px;
   background-color: rgba(8, 8, 11, 0.3);
-
-  div:first-of-type {
-    height: ${(props) => props.readingProgress}%;
-  }
 `;
 
 type WrapperProps = {
@@ -35,7 +26,6 @@ const Wrapper = styled('div')<WrapperProps>`
   @media (max-width: 1100px) {
     left: 10px;
   }
-  transition: ${(props) => props.theme.transitionTime}s;
   position: fixed;
   top: 200px;
   display: flex;
@@ -49,15 +39,7 @@ const Wrapper = styled('div')<WrapperProps>`
     display: flex;
     flex-direction: column;
 
-    &:hover {
-      li {
-        opacity: ${(props) => (props.showTableOfContents ? '1.0' : '0')};
-      }
-    }
-
     li {
-      transition: ${(props) => props.theme.transitionTime}s;
-      opacity: ${(props) => (props.showTableOfContents ? '0.7' : '0')};
       list-style: none;
       font-size: 14px;
       font-weight: 500;
@@ -94,7 +76,12 @@ const ReadingProgress: React.FC<ReadingProgressProps> = ({
   target,
   slim,
 }) => {
+  const shouldReduceMotion = useReducedMotion();
   const [readingProgress, setReadingProgress] = React.useState(0);
+
+  const shouldShowTableOfContent = readingProgress > 7 && readingProgress < 100;
+  const shouldHideProgressBar = readingProgress >= 99;
+
   const scrollListener = () => {
     if (!target || !target.current) {
       return;
@@ -124,13 +111,26 @@ const ReadingProgress: React.FC<ReadingProgressProps> = ({
     return () => window.removeEventListener('scroll', scrollListener);
   });
 
+  const variants = {
+    hide: {
+      opacity: shouldReduceMotion ? 1 : 0,
+    },
+    show: { opacity: 0.7 },
+    emphasis: { opacity: 1 },
+  };
+
+  const { scrollYProgress } = useViewportScroll();
+
   return (
-    <Wrapper
-      slim={slim}
-      showTableOfContents={readingProgress > 7 && readingProgress < 100}
-    >
-      <ProgressBarWrapper readingProgress={readingProgress}>
+    <Wrapper slim={slim} showTableOfContents={shouldShowTableOfContent}>
+      <ProgressBarWrapper
+        initial="show"
+        variants={variants}
+        animate={shouldHideProgressBar ? 'hide' : 'show'}
+        transition={{ type: 'spring' }}
+      >
         <ProgressBar
+          style={{ transformOrigin: 'top', scaleY: scrollYProgress }}
           data-testid="progress-bar"
           data-testprogress={readingProgress}
         />
@@ -145,11 +145,18 @@ const ReadingProgress: React.FC<ReadingProgressProps> = ({
         >
           {tableOfContents.items.map((item) => {
             return (
-              <li key={item.url}>
+              <motion.li
+                initial="hide"
+                variants={variants}
+                animate={shouldShowTableOfContent ? 'show' : 'hide'}
+                transition={{ type: 'spring' }}
+                key={item.url}
+                whileHover="emphasis"
+              >
                 <AnchorLink offset="150" href={item.url}>
                   {item.title}
                 </AnchorLink>
-              </li>
+              </motion.li>
             );
           })}
         </Scrollspy>
