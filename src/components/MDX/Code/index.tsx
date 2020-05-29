@@ -7,6 +7,7 @@ import EmotionStyled from '@emotion/styled';
 import { motion } from 'framer-motion';
 import themePrism from 'prism-react-renderer/themes/oceanicNext';
 import { withTheme } from 'emotion-theming';
+import Button from '../../Button';
 import Flex from '../../Flex';
 
 const copyToClipboard = (content: string) => {
@@ -108,7 +109,7 @@ export const InlineCode: React.FC<IInlineCodeProps> = (props) => {
 export const LiveCodeBlock: React.FC<ICodeBlockProps> = withTheme((props) => {
   const { codeString, live, render, theme } = props;
 
-  const scope = { motion, styled: EmotionStyled };
+  const scope = { motion, styled: EmotionStyled, Button, React };
   const customTheme = {
     ...themePrism,
     plain: {
