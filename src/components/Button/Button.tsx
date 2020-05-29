@@ -8,6 +8,7 @@ interface ButtonProps {
   tertiary?: boolean;
   white?: boolean;
   danger?: boolean;
+  vercel?: boolean;
   disabled?: boolean;
   children: ReactNode;
   onClick?: () => any;
@@ -39,6 +40,17 @@ const StyledButton = styled(motion.button)<ButtonProps>`
       ? `
         background-color: ${p.theme.colors.red};
             `
+      : ''
+  }
+  
+  ${
+    p.vercel
+      ? `
+          display: flex;
+          align-item: center;
+          color: ${p.theme.backgroundColor};
+          background-color: ${p.theme.fontColor};
+        `
       : ''
   }
 
@@ -153,10 +165,21 @@ const Button = React.forwardRef(
     return (
       <StyledButton
         whileHover={props.tertiary ? {} : { scale: 0.85 }}
-        transition={{ duration: 0.1 }}
+        transition={{ type: 'spring', duration: 0.3 }}
         ref={ref}
         {...props}
       >
+        {props.vercel ? (
+          <img
+            style={{
+              marginBottom: '0px',
+              marginRight: '8px',
+            }}
+            alt="Vercel logo"
+            src="https://assets.vercel.com/image/upload/v1588805858/repositories/vercel/logo.png"
+            height="30"
+          />
+        ) : null}
         {children}
       </StyledButton>
     );
