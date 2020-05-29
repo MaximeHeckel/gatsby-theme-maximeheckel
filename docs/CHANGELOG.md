@@ -1,5 +1,12 @@
 # Gatsby-theme-maximeheckel
 
+## [0.9.2](https://github.com/MaximeHeckel/gatsby-theme-maximeheckel/compare/v0.9.1...v0.9.2) (2020-05-29)
+
+
+### Bug Fixes
+
+* **button:** Fix animation time and type for button + add Vercel deploy style button ([93c4d0b](https://github.com/MaximeHeckel/gatsby-theme-maximeheckel/commit/93c4d0b40cdeb34d143637456cd6e26762cf4674))
+
 ## [0.9.1](https://github.com/MaximeHeckel/gatsby-theme-maximeheckel/compare/v0.9.0...v0.9.1) (2020-05-21)
 
 
