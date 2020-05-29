@@ -1,5 +1,12 @@
 # Gatsby-theme-maximeheckel
 
+## [0.9.3](https://github.com/MaximeHeckel/gatsby-theme-maximeheckel/compare/v0.9.2...v0.9.3) (2020-05-29)
+
+
+### Bug Fixes
+
+* **theme:** Update light background color to #FFFFFF ([8f5cead](https://github.com/MaximeHeckel/gatsby-theme-maximeheckel/commit/8f5cead9b2af4a884a671b816c55d0aeba08bf36))
+
 ## [0.9.2](https://github.com/MaximeHeckel/gatsby-theme-maximeheckel/compare/v0.9.1...v0.9.2) (2020-05-29)
 
 
