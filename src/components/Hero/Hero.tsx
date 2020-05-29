@@ -55,7 +55,7 @@ const HeroWrapper = styled.div`
   max-width: 700px;
   align-items: center;
   color: ${(props) => props.theme.fontColor};
-  padding-top: 200px;
+  padding-top: 248px;
 `;
 
 class Hero extends React.Component<{ id?: string }> {

@@ -27,7 +27,7 @@ const Wrapper = styled('div')<WrapperProps>`
     left: 10px;
   }
   position: fixed;
-  top: 200px;
+  top: 266px;
   display: flex;
   left: 30px;
 
