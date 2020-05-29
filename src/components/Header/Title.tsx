@@ -4,37 +4,46 @@ import AnchorLink from 'react-anchor-link-smooth-scroll';
 import styled from '../../utils/styled';
 import { HeaderContext } from './Context';
 
-export const TitleWrapper = styled.h3`
-  @media (max-width: 900px) {
-    max-width: 400px;
+export const TitleWrapper = styled.div`
+  @media (max-width: 1000px) {
+    a {
+      max-width: 500px;
+    }
   }
 
   @media (max-width: 800px) {
-    max-width: 300px;
-    margin-left: 20px;
+    a {
+      max-width: 300px;
+      margin-left: 20px;
+    }
   }
 
   @media (max-width: 700px) {
-    display: none;
+    h3 {
+      display: none;
+    }
   }
 
-  display: block;
-  margin: 0;
-  margin-left: 33px;
   overflow: hidden;
-  white-space: nowrap;
-  text-overflow: ellipsis;
-  color: ${(props) => props.theme.fontColor};
+  margin-left: 33px;
+
+  h3 {
+    margin-bottom: 0px;
+  }
 
   a {
     color: ${(props) => props.theme.fontColor};
+    display: block;
     text-decoration: none;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
   }
 `;
 
 const variants = {
   hide: {
-    y: 150,
+    y: 80,
   },
   show: {
     y: 0,
@@ -57,9 +66,11 @@ export const Title: React.FC<HeaderTitleProps> = (props) => {
               animate={collapsed ? 'show' : 'hide'}
               transition={{ type: 'spring', stiffness: 35 }}
             >
-              <AnchorLink offset="150" href="#top">
-                {props.children}
-              </AnchorLink>
+              <h3>
+                <AnchorLink offset="150" href="#top">
+                  {props.children}
+                </AnchorLink>
+              </h3>
             </motion.div>
           ) : null}
         </div>
