@@ -27,9 +27,19 @@ const Wrapper = styled('div')<WrapperProps>`
     left: 10px;
   }
   position: fixed;
-  top: 200px;
+  top: 266px;
   display: flex;
   left: 30px;
+
+  ${(p) =>
+    !p.showTableOfContents
+      ? `
+   ul {
+     display: none;
+   }
+  `
+      : ''}
+
   ul {
     @media (max-width: 1250px) {
       display: none;
@@ -40,17 +50,17 @@ const Wrapper = styled('div')<WrapperProps>`
     flex-direction: column;
 
     li {
+     
       list-style: none;
       font-size: 14px;
       font-weight: 500;
       line-height: 1.5;
       margin-bottom: 22px;
       a {
+        ${(p) =>
+          !p.showTableOfContents ? `cursor: none;  pointer-events: none;` : ''}
         color: ${(props) => props.theme.fontColor};
         text-decoration: none;
-        &:hover {
-          color: ${(props) => props.theme.colors.blue};
-        }
       }
     }
   }
@@ -151,7 +161,7 @@ const ReadingProgress: React.FC<ReadingProgressProps> = ({
                 animate={shouldShowTableOfContent ? 'show' : 'hide'}
                 transition={{ type: 'spring' }}
                 key={item.url}
-                whileHover="emphasis"
+                whileHover={shouldShowTableOfContent ? 'emphasis' : ''}
               >
                 <AnchorLink offset="150" href={item.url}>
                   {item.title}

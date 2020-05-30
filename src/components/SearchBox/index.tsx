@@ -47,7 +47,8 @@ const SearchBox: React.FC<Props> = (props) => {
   // Local state to track the input value
   const [searchQuery, setSearchQuery] = React.useState(
     // defaults to whatever search query param is present in the URL
-    new URLSearchParams(location.search).get('search') || ''
+    // new URLSearchParams(location.search).get('search') || ''
+    ''
   );
   const debouncedSearchQuery = useDebouncedValue(searchQuery, 200);
 
@@ -61,7 +62,7 @@ const SearchBox: React.FC<Props> = (props) => {
 
   const close = React.useCallback(() => {
     toggleLockScroll();
-    navigate('');
+    // navigate('');
     onClose();
     return setShow(false);
   }, [onClose]);
@@ -188,7 +189,7 @@ const SearchBox: React.FC<Props> = (props) => {
                 name="search"
                 onChange={(e) => {
                   setSearchQuery(e.target.value);
-                  navigate(`?search=${encodeURIComponent(e.target.value)}`);
+                  // navigate(`?search=${encodeURIComponent(e.target.value)}`);
                 }}
                 value={searchQuery}
               />
