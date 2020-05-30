@@ -1,5 +1,15 @@
 # Gatsby-theme-maximeheckel
 
+## [0.9.4](https://github.com/MaximeHeckel/gatsby-theme-maximeheckel/compare/v0.9.3...v0.9.4) (2020-05-30)
+
+
+### Bug Fixes
+
+* **layout:** Ensure consistent initial visual paddingbetween h1 progressbar and header ([64d2df9](https://github.com/MaximeHeckel/gatsby-theme-maximeheckel/commit/64d2df90a642a047a7fc1f5c6bc46baa52734a3e))
+* **header:** Fix header title ellipsis not rendering ([6eccec8](https://github.com/MaximeHeckel/gatsby-theme-maximeheckel/commit/6eccec8859bd68b9a24ebd4ce29043e5c2c5230e))
+* **progress-bar:** Fix table of content item showing up on hover when progress bar was completely hidden ([803afc0](https://github.com/MaximeHeckel/gatsby-theme-maximeheckel/commit/803afc02326bfcabeade05ffa06040eb4c5cb7cf))
+* **search:** Make sure to not call navigate on change to keep current scroll position ([7545e5d](https://github.com/MaximeHeckel/gatsby-theme-maximeheckel/commit/7545e5d074bcb74d7fdc629a68e5c29539db99b8))
+
 ## [0.9.3](https://github.com/MaximeHeckel/gatsby-theme-maximeheckel/compare/v0.9.2...v0.9.3) (2020-05-29)
 
 
