@@ -1,5 +1,12 @@
 # Gatsby-theme-maximeheckel
 
+## [0.9.5](https://github.com/MaximeHeckel/gatsby-theme-maximeheckel/compare/v0.9.4...v0.9.5) (2020-06-15)
+
+
+### Bug Fixes
+
+* **live-scope:** Add missing Recharts dependency to allow drawing charts in react-live ([e756187](https://github.com/MaximeHeckel/gatsby-theme-maximeheckel/commit/e75618765bd23cc5e70f9238065d2cf66a389b7e))
+
 ## [0.9.4](https://github.com/MaximeHeckel/gatsby-theme-maximeheckel/compare/v0.9.3...v0.9.4) (2020-05-30)
 
 
