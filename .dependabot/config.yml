@@ -5,7 +5,7 @@ update_configs:
     update_schedule: 'weekly'
     default_labels:
       - 'dependencies'
-    target_branch: 'master'
+    target_branch: 'main'
     version_requirement_updates: 'increase_versions'
     automerged_updates:
       - match:

@@ -3,7 +3,7 @@ name: Run Formatting and Unit Tests
 on:
   pull_request:
     branches:
-      - master
+      - main
       - publish
 
 jobs:
