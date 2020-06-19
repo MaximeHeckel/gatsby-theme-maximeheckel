@@ -1,14 +1,14 @@
-name: Run Formatting and Unit Tests
+name: CI
 
 on:
   pull_request:
     branches:
-      - master
+      - main
       - publish
 
 jobs:
-  install-and-test:
-    runs-on: ubuntu-16.04
+  lint-format-test-type-check:
+    runs-on: ubuntu-20.04
     strategy:
       matrix:
         node: [12.x]
@@ -32,3 +32,6 @@ jobs:
       - name: Run Unit Tests
         run: |
           yarn test:coverage
+      - name: Run Type Checking
+        run: |
+          yarn type-check

@@ -165,7 +165,7 @@ const Button = React.forwardRef(
     return (
       <StyledButton
         whileHover={props.tertiary ? {} : { scale: 0.85 }}
-        transition={{ type: 'spring', duration: 0.3 }}
+        transition={{ type: 'spring' }}
         ref={ref}
         {...props}
       >
