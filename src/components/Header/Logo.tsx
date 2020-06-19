@@ -1,6 +1,5 @@
 import { Link } from 'gatsby';
 import React from 'react';
-import { HeaderContext } from './Context';
 
 export interface HeaderLogoProps {
   ['aria-label']: string;
@@ -9,8 +8,6 @@ export interface HeaderLogoProps {
 }
 
 export const Logo: React.FC<HeaderLogoProps> = (props) => {
-  const { collapsed, sticky } = React.useContext(HeaderContext);
-
   const child = props.children
     ? React.cloneElement(props.children as React.ReactElement<any>, {
         ...props,

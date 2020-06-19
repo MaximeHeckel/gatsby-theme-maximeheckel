@@ -24,10 +24,12 @@ const copyToClipboard = (content: string) => {
 };
 
 type PrePropsType = {
+  props: {
+    live?: boolean;
+    render?: boolean;
+  };
   children: {
     props: {
-      live: boolean;
-      render: boolean;
       metastring: string;
       mdxType?: string;
       className?: string;
@@ -40,6 +42,8 @@ export const preToCodeBlock = (
   preProps: PrePropsType
 ):
   | {
+      live?: boolean;
+      render?: boolean;
       className: string;
       codeString: string;
       language: Language;
@@ -295,7 +299,7 @@ const CodeSnippetHeader = styled('div')`
   min-height: 30px;
 `;
 
-const fullWidthSnipperStyle = (p: any) => css`
+const fullWidthSnipperStyle = () => css`
   position: relative;
   width: 100vw;
   left: calc(-50vw + 50%);

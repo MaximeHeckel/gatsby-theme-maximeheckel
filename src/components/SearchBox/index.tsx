@@ -1,7 +1,7 @@
 import { withTheme } from 'emotion-theming';
 import FocusTrap from 'focus-trap-react';
 import { motion } from 'framer-motion';
-import { Link, navigate } from 'gatsby';
+import { Link } from 'gatsby';
 import Mousetrap from 'mousetrap';
 import React from 'react';
 import ReactDOM from 'react-dom';
