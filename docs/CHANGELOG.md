@@ -1,5 +1,12 @@
 # Gatsby-theme-maximeheckel
 
+## [0.9.6](https://github.com/MaximeHeckel/gatsby-theme-maximeheckel/compare/v0.9.5...v0.9.6) (2020-06-19)
+
+
+### Bug Fixes
+
+* **types:** Fix new type checking issues ([43f63cd](https://github.com/MaximeHeckel/gatsby-theme-maximeheckel/commit/43f63cdaaa3398ba5e1054b93ee97ca49cbaf498))
+
 ## [0.9.5](https://github.com/MaximeHeckel/gatsby-theme-maximeheckel/compare/v0.9.4...v0.9.5) (2020-06-15)
 
 
