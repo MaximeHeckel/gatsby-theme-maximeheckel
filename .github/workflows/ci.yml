@@ -1,12 +1,13 @@
-name: type-check
+name: CI
 
 on:
-  push:
+  pull_request:
     branches:
       - main
+      - publish
 
 jobs:
-  install-and-test:
+  lint-format-test-type-check:
     runs-on: ubuntu-20.04
     strategy:
       matrix:
@@ -22,6 +23,15 @@ jobs:
         if: steps.cache-dependencies.outputs.cache-hit != 'true'
         run: |
           yarn install --force --non-interactive
+      - name: Run Prettier
+        run: |
+          yarn format
+      - name: Run Lint
+        run: |
+          yarn lint
+      - name: Run Unit Tests
+        run: |
+          yarn test:coverage
       - name: Run Type Checking
         run: |
           yarn type-check
