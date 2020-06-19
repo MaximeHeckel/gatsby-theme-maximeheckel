@@ -6,7 +6,7 @@ import theme from '../../../theme';
 
 beforeEach(() => {
   global.fetch = jest.fn().mockImplementation(() => {
-    var p = new Promise((resolve, reject) => {
+    const p = new Promise((resolve, reject) => {
       resolve({
         count: 100,
         type: {
