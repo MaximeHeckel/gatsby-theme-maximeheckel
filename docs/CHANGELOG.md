@@ -1,5 +1,12 @@
 # Gatsby-theme-maximeheckel
 
+## [0.9.7](https://github.com/MaximeHeckel/gatsby-theme-maximeheckel/compare/v0.9.6...v0.9.7) (2020-06-23)
+
+
+### Bug Fixes
+
+* **webmentions:** Restrict height of reply avatar to avoid oval pictures ([f959378](https://github.com/MaximeHeckel/gatsby-theme-maximeheckel/commit/f9593787633ae656ee5767a8160cd2dfe9b58887))
+
 ## [0.9.6](https://github.com/MaximeHeckel/gatsby-theme-maximeheckel/compare/v0.9.5...v0.9.6) (2020-06-19)
 
 
