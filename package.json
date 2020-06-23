@@ -63,7 +63,7 @@
     "@testing-library/react": "^10.0.1",
     "@types/mousetrap": "^1.6.3",
     "@types/reach__router": "^1.3.5",
-    "@types/react-helmet": "^5.0.15",
+    "@types/react-helmet": "^6.0.0",
     "@types/react-scrollspy": "^3.3.2",
     "@types/recharts": "^1.8.12",
     "@typescript-eslint/eslint-plugin": "^3.3.0",
