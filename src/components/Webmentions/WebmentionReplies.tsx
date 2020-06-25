@@ -44,6 +44,7 @@ const Replies = ({ replies }: RepliesProps) => {
                 style={{ flexShrink: 0, cursor: 'pointer' }}
               >
                 <img
+                  height={50}
                   width={50}
                   src={link.data.author.photo}
                   alt={`avatar of ${link.data.author.name}`}
