@@ -14,7 +14,7 @@ exports[`MDX Renders the MDX component accordingly 1`] = `
   text-align: left;
   line-height: 1.5;
   font-weight: 500;
-  color: #8a8a90;
+  color: #767679;
   padding-top: 10px;
 }
 
@@ -52,12 +52,12 @@ exports[`MDX Renders the MDX component accordingly 1`] = `
 
 .emotion-0 ol li:before {
   content: counters(li,'.') '. ';
-  color: var(--maximeheckel-colors-brand,#5184f9);
+  color: var(--maximeheckel-colors-brand,#336ef5);
   padding-right: 12px;
 }
 
 .emotion-0 a {
-  color: var(--maximeheckel-colors-brand,#5184f9);
+  color: var(--maximeheckel-colors-brand,#336ef5);
 }
 
 .emotion-0 twitter-widget {
@@ -223,7 +223,7 @@ exports[`MDX Renders the MDX component accordingly 1`] = `
 }
 
 .emotion-0 .prism-code .token-line:hover .number-line {
-  color: var(--maximeheckel-colors-brand,#5184f9);
+  color: var(--maximeheckel-colors-brand,#336ef5);
   opacity: 1;
 }
 

@@ -42,7 +42,7 @@ exports[`Callout can render a Callout with variant info 1`] = `
   padding: 30px 30px;
   margin-bottom: 25px;
   background-color: #E6EDF8;
-  border-color: var(--maximeheckel-colors-brand,#5184f9);
+  border-color: var(--maximeheckel-colors-brand,#336ef5);
   color: #2B2D3E;
 }
 
