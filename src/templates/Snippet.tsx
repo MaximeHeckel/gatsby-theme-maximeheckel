@@ -3,7 +3,7 @@ import Layout, { LayoutChildrenProps } from '../layouts';
 import MDX from '../components/MDX';
 import Seo from '../components/Seo';
 import { FluidObject } from 'gatsby-image';
-import styled from '@emotion/styled';
+import styled from '../utils/styled';
 import { MONTHS } from '../constants';
 import Flex from '../components/Flex';
 import Pill from '../components/Pill';
@@ -79,7 +79,7 @@ const FixPadding = styled('div')`
   padding-top: 35px;
 
   p {
-    color: #8a8a90;
+    color: ${(p) => p.theme.colors.gray};
     font-size: 14px;
     font-weight: 500;
   }

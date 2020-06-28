@@ -32,7 +32,7 @@ const HeroImg: React.FC<HeroImgProps> = (props) => (
 const HeroInfo = styled.div`
   margin-bottom: 30px;
   p {
-    color: #8a8a90;
+    color: ${(p) => p.theme.colors.gray};
     font-size: 14px;
     font-weight: 500;
   }

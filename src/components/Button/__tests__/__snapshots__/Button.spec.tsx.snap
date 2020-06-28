@@ -23,7 +23,7 @@ exports[`Button renders the primary button 1`] = `
   outline: none;
   padding: 0 30px;
   border-radius: 4px;
-  background-color: var(--maximeheckel-colors-brand,#5184f9);
+  background-color: var(--maximeheckel-colors-brand,#336ef5);
   color: #FFFFFF;
   min-width: 150px;
 }
@@ -63,8 +63,8 @@ exports[`Button renders the secondary button 1`] = `
   padding: 0 30px;
   border-radius: 4px;
   background-color: transparent;
-  color: var(--maximeheckel-colors-brand,#5184f9);
-  border: 2px solid var(--maximeheckel-colors-brand,#5184f9);
+  color: var(--maximeheckel-colors-brand,#336ef5);
+  border: 2px solid var(--maximeheckel-colors-brand,#336ef5);
   min-width: 150px;
 }
 
@@ -103,7 +103,7 @@ exports[`Button renders the tertiary button 1`] = `
   padding: 0 30px;
   border-radius: 4px;
   background-color: transparent;
-  color: var(--maximeheckel-colors-brand,#5184f9);
+  color: var(--maximeheckel-colors-brand,#336ef5);
   min-width: inherited;
   padding: 0px;
 }
@@ -116,7 +116,7 @@ exports[`Button renders the tertiary button 1`] = `
   left: 0;
   right: 0;
   height: 2px;
-  background-color: var(--maximeheckel-colors-brand,#5184f9);
+  background-color: var(--maximeheckel-colors-brand,#336ef5);
   -webkit-transform: scaleX(0);
   -ms-transform: scaleX(0);
   transform: scaleX(0);

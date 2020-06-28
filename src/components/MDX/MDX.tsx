@@ -124,7 +124,7 @@ const MDXBody = styled.div<MDXBody>`
     text-align: left;
     line-height: 1.5;
     font-weight: 500;
-    color: #8a8a90;
+    color: ${(p) => p.theme.colors.gray};
     padding-top: 10px;
   }
 
