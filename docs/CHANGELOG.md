@@ -1,5 +1,12 @@
 # Gatsby-theme-maximeheckel
 
+## [0.9.8](https://github.com/MaximeHeckel/gatsby-theme-maximeheckel/compare/v0.9.7...v0.9.8) (2020-06-28)
+
+
+### Bug Fixes
+
+* **a11y:** Fix blue and gray color in light mode to bring accessibility score to a 100% ([a5244fb](https://github.com/MaximeHeckel/gatsby-theme-maximeheckel/commit/a5244fbe1bcc22c5d616e1a498b7e845de1521bd))
+
 ## [0.9.7](https://github.com/MaximeHeckel/gatsby-theme-maximeheckel/compare/v0.9.6...v0.9.7) (2020-06-23)
 
 
