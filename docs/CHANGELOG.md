@@ -1,5 +1,12 @@
 # Gatsby-theme-maximeheckel
 
+## [0.9.9](https://github.com/MaximeHeckel/gatsby-theme-maximeheckel/compare/v0.9.8...v0.9.9) (2020-06-29)
+
+
+### Bug Fixes
+
+* Gatsby Plugin Feed wants names export  wrapRootElement in ThemeProvider ([4f5ff7f](https://github.com/MaximeHeckel/gatsby-theme-maximeheckel/commit/4f5ff7fc06640b700dc06e336ce89d08a674f00d))
+
 ## [0.9.8](https://github.com/MaximeHeckel/gatsby-theme-maximeheckel/compare/v0.9.7...v0.9.8) (2020-06-28)
 
 
