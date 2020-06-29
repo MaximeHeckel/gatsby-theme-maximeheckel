@@ -6,11 +6,11 @@ interface IRootWrapperProps {
   children: React.ReactNode;
 }
 
-const RootWrapper: React.FC<IRootWrapperProps> = ({ children }) => (
+const wrapRootElement: React.FC<IRootWrapperProps> = ({ children }) => (
   <ThemeProvider>
     <GlobalStyles />
     {children}
   </ThemeProvider>
 );
 
-export default RootWrapper;
+export { wrapRootElement };
