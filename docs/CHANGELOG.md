@@ -1,5 +1,12 @@
 # Gatsby-theme-maximeheckel
 
+# [0.10.0](https://github.com/MaximeHeckel/gatsby-theme-maximeheckel/compare/v0.9.9...v0.10.0) (2020-08-02)
+
+
+### Features
+
+* Consistent code snippet theme and dark mode readability improvements ([414c9a3](https://github.com/MaximeHeckel/gatsby-theme-maximeheckel/commit/414c9a328f9d859f7b2b59b0a3620d2601272301))
+
 ## [0.9.9](https://github.com/MaximeHeckel/gatsby-theme-maximeheckel/compare/v0.9.8...v0.9.9) (2020-06-29)
 
 
