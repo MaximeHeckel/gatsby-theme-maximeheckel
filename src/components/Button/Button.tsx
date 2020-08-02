@@ -59,7 +59,7 @@ const StyledButton = styled(motion.button)<ButtonProps>`
       ? `
       cursor: not-allowed;
       opacity: 0.5;
-      background-color: ${p.theme.colors.gray};
+      background-color: ${p.theme.bodyColor};
       color: #000000;
       &:hover {
         transform: none;
@@ -93,8 +93,8 @@ const StyledButton = styled(motion.button)<ButtonProps>`
       ? `
       cursor: not-allowed;
       opacity: 0.5;
-      color: ${p.theme.colors.gray};
-      border-color: ${p.theme.colors.gray};
+      color: ${p.theme.bodyColor};
+      border-color: ${p.theme.bodyColor};
       &:hover {
         transform: none;
       }
@@ -149,9 +149,9 @@ const StyledButton = styled(motion.button)<ButtonProps>`
           ? `
               opacity: 0.5;
               cursor: not-allowed;
-              color: ${p.theme.colors.gray};
+              color: ${p.theme.bodyColor};
               ::after { 
-                background-color: ${p.theme.colors.gray};
+                background-color: ${p.theme.bodyColor};
               }
             `
           : ''

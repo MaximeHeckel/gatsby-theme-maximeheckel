@@ -1,6 +1,6 @@
 /* eslint-disable react/no-unescaped-entities */
 import { ThemeProvider } from 'emotion-theming';
-import { cleanup, render } from '@testing-library/react';
+import { cleanup, render, getAllByTestId } from '@testing-library/react';
 import React from 'react';
 import { Code, calculateLinesToHighlight, hasTitle, preToCodeBlock } from '../';
 import theme from '../../../../theme';
@@ -57,7 +57,7 @@ describe('Code', () => {
   });
 
   it('Renders a Codeblock component when the proper preProps are passed', () => {
-    const { container } = render(
+    const { container, getByTestId } = render(
       <ThemeProvider theme={theme.light}>
         <Code>
           <div metastring="javascript" mdxType="code">
@@ -68,14 +68,13 @@ describe('Code', () => {
     );
 
     expect(container.querySelector('pre[class="prism-code"]')).toBeDefined();
-    expect(container.querySelector('span[class="number-line"]')).toBeDefined();
-    expect(
-      container.querySelector('span[class="number-line"]')
-    ).toHaveTextContent(1);
+    expect(getByTestId('number-line')).toBeDefined();
+
+    expect(getByTestId('number-line')).toHaveTextContent(1);
   });
 
   it('Renders a Codeblock with title when the proper preProps are passed', () => {
-    const { container } = render(
+    const { container, getByTestId } = render(
       <ThemeProvider theme={theme.light}>
         <Code>
           <div metastring="javascript title=test" mdxType="code">
@@ -89,15 +88,13 @@ describe('Code', () => {
       container.querySelector('p[data-testid="codesnippet-title"]')
     ).toHaveTextContent('test');
     expect(container.querySelector('pre[class="prism-code"]')).toBeDefined();
-    expect(container.querySelector('span[class="number-line"]')).toBeDefined();
-    expect(
-      container.querySelector('span[class="number-line"]')
-    ).toHaveTextContent(1);
+    expect(getByTestId('number-line')).toBeDefined();
+    expect(getByTestId('number-line')).toHaveTextContent(1);
     expect(container.querySelector('button')).toHaveTextContent('Copy');
   });
 
   it('Renders a Codeblock with title and line highlight when the proper preProps are passed', () => {
-    const { container } = render(
+    const { container, getAllByTestId, debug } = render(
       <ThemeProvider theme={theme.light}>
         <Code>
           <div metastring="javascript {1-3}title=test" mdxType="code">
@@ -114,16 +111,10 @@ describe('Code', () => {
       container.querySelector('p[data-testid="codesnippet-title"]')
     ).toHaveTextContent('test');
     expect(container.querySelector('pre[class="prism-code"]')).toBeDefined();
-    expect(container.querySelector('span[class="number-line"]')).toBeDefined();
-    expect(
-      container.querySelectorAll('span[class="number-line"]')
-    ).toHaveLength(4);
-    expect(
-      container.querySelectorAll('div[class="token-line highlight-line"]')
-    ).toHaveLength(3);
-    expect(container.querySelectorAll('div[class="token-line"]')).toHaveLength(
-      1
-    );
+    expect(getAllByTestId('number-line')).toBeDefined();
+    expect(getAllByTestId('number-line')).toHaveLength(4);
+    expect(getAllByTestId('highlight-line')).toHaveLength(3);
+    expect(getAllByTestId('line')).toHaveLength(1);
     expect(container.querySelector('button')).toHaveTextContent('Copy');
   });
 

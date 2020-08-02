@@ -313,7 +313,7 @@ const Item = styled('li')<{}>`
     font-size: 12px;
     font-weight: 600;
     margin-bottom: 0px;
-    color: ${(p) => p.theme.colors.gray};
+    color: ${(p) => p.theme.bodyColor};
   }
 
   div {
@@ -373,10 +373,10 @@ const SearchBoxWrapper = styled('div')<{}>`
     color: ${(p) => p.theme.fontColor};
     ::placeholder,
     ::-webkit-input-placeholder {
-      color: ${(p) => p.theme.colors.gray};
+      color: ${(p) => p.theme.bodyColor};
     }
     :-ms-input-placeholder {
-      color: ${(p) => p.theme.colors.gray};
+      color: ${(p) => p.theme.bodyColor};
     }
 
     ::-webkit-autofill {

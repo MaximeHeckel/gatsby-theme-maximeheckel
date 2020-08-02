@@ -69,7 +69,7 @@ const WebmentionCount = ({ target }: { target: string }) => {
 const CountWrapper = styled(Flex)`
   p {
     color: ${(p) => p.theme.colors.blue} !important;
-    font-size: 16px;
+    font-size: 14px;
     font-weight: 500;
   }
 `;

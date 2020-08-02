@@ -20,6 +20,10 @@ exports[`Callout can render a Callout with variant danger 1`] = `
   }
 }
 
+.emotion-0 strong {
+  color: #000000!important;
+}
+
 .emotion-0 *:last-child {
   margin-bottom: 0px;
 }
@@ -53,6 +57,10 @@ exports[`Callout can render a Callout with variant info 1`] = `
     left: calc(-50vw + 50%);
     border-radius: 0px;
   }
+}
+
+.emotion-0 strong {
+  color: #000000!important;
 }
 
 .emotion-0 *:last-child {

@@ -40,6 +40,10 @@ const StyledCallout = styled('div')<{ variant: VARIANT }>`
   padding: 30px 30px;
   margin-bottom: 25px;
 
+  strong {
+    color: ${(p) => p.theme.colors.black}!important;
+  }
+
   *:last-child {
     margin-bottom: 0px;
   }

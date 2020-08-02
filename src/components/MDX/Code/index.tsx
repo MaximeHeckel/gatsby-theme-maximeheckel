@@ -1,12 +1,13 @@
 import { css } from '@emotion/core';
 import Highlight, { defaultProps, Language } from 'prism-react-renderer';
+import themePrism from 'prism-react-renderer/themes/oceanicNext';
+// import themePrism from 'prism-react-renderer/themes/oceanicNext';
 import React from 'react';
 import { LiveProvider, LiveEditor, LiveError, LivePreview } from 'react-live';
 import * as Recharts from 'recharts';
 import styled from '../../../utils/styled';
 import EmotionStyled from '@emotion/styled';
 import { motion, useAnimation } from 'framer-motion';
-import themePrism from 'prism-react-renderer/themes/oceanicNext';
 import { withTheme } from 'emotion-theming';
 import Button from '../../Button';
 import Flex from '../../Flex';
@@ -180,6 +181,50 @@ interface ICodeBlockProps {
   metastring: string | null;
 }
 
+const Pre = styled.pre`
+  text-align: left;
+  padding: 8px 0px;
+  overflow: scroll;
+  border-bottom-left-radius: 5px;
+  border-bottom-right-radius: 5px;
+
+  ${(p) =>
+    p.title
+      ? ''
+      : `
+      border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+    `}
+`;
+
+const Line = styled.div`
+  display: table;
+  border-collapse: collapse;
+  padding: 0px 14px;
+  border-left: 3px solid transparent;
+  &.highlight-line {
+    background: ${(p) => p.theme.colors.prism.highlight};
+    border-color: ${(p) => p.theme.colors.prism.highlightBorder};
+  }
+
+  &:hover {
+    background-color: rgba(255, 255, 255, 0.05);
+  }
+`;
+
+const LineNo = styled.div`
+  // display: table-cell;
+  width: 45px;
+  padding: 0 12px;
+  user-select: none;
+  opacity: 0.5;
+`;
+
+const LineContent = styled.span`
+  display: table-cell;
+  width: 100%;
+`;
+
 export const CodeBlock: React.FC<ICodeBlockProps> = (props) => {
   const { codeString, language, metastring } = props;
   const [copied, hasClickedCopy] = React.useState(false);
@@ -190,6 +235,15 @@ export const CodeBlock: React.FC<ICodeBlockProps> = (props) => {
     setTimeout(() => {
       hasClickedCopy(false);
     }, 2000);
+  };
+
+  const customTheme = {
+    ...themePrism,
+    plain: {
+      ...themePrism.plain,
+      fontFamily: 'Fira Code',
+      fontSize: '14px',
+    },
   };
 
   const shouldHighlightLine = calculateLinesToHighlight(metastring);
@@ -209,39 +263,48 @@ export const CodeBlock: React.FC<ICodeBlockProps> = (props) => {
           </Flex>
         </CodeSnippetHeader>
       ) : null}
-      <Highlight {...defaultProps} code={codeString} language={language}>
-        {({ className, tokens, getLineProps, getTokenProps }) => (
-          <pre className={className}>
+      <Highlight
+        {...defaultProps}
+        theme={customTheme}
+        code={codeString}
+        language={language}
+      >
+        {({ className, style, tokens, getLineProps, getTokenProps }) => (
+          <Pre title={title} className={className} style={style}>
             {tokens.map((line, index) => {
               const { className: lineClassName } = getLineProps({
                 className: shouldHighlightLine(index) ? 'highlight-line' : '',
                 key: index,
                 line,
               });
-              return (
-                <div key={index} style={{ display: 'flex' }}>
-                  <div className={lineClassName}>
-                    <span className="number-line">{index + 1}</span>
-                    {line.map((token, key) => {
-                      const {
-                        className: tokenClassName,
-                        children,
-                      } = getTokenProps({
-                        key,
-                        token,
-                      });
 
+              return (
+                <Line
+                  data-testid={
+                    shouldHighlightLine(index) ? 'highlight-line' : 'line'
+                  }
+                  key={index}
+                  className={lineClassName}
+                >
+                  <LineNo data-testid="number-line">{index + 1}</LineNo>
+                  <LineContent>
+                    {line.map((token, key) => {
                       return (
-                        <span key={key} className={tokenClassName}>
-                          {children}
-                        </span>
+                        <span
+                          data-testid="content-line"
+                          key={key}
+                          {...getTokenProps({
+                            key,
+                            token,
+                          })}
+                        />
                       );
                     })}
-                  </div>
-                </div>
+                  </LineContent>
+                </Line>
               );
             })}
-          </pre>
+          </Pre>
         )}
       </Highlight>
     </CodeSnippetWrapper>
@@ -276,11 +339,11 @@ const CodeSnippetTitle = styled('p')`
   padding: 4px 10px;
   font-size: 14px;
   margin-bottom: 0px;
-  color: ${(p) => p.theme.colors.black};
+  color: ${(p) => p.theme.backgroundColor};
 `;
 
 const CodeLanguage = styled('div')`
-  color: ${(p) => p.theme.colors.black};
+  color: ${(p) => p.theme.backgroundColor};
   text-transform: uppercase;
   font-size: 14px;
 `;
@@ -384,7 +447,7 @@ const StyledErrorWrapper = styled('div')`
 `;
 
 const CopyButton = styled('button')`
-  color: ${(p) => p.theme.colors.black};
+  color: ${(p) => p.theme.backgroundColor};
   transition: background 0.3s ease;
   background: rgba(255, 255, 255, 0.05);
   border: none;

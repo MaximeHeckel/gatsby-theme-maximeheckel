@@ -37,7 +37,7 @@ export const Wrapper: React.FC<HeaderWrapperProps> = (props) => {
         initial={'open'}
         animate={shouldCollapse ? 'collapsed' : 'open'}
         variants={variants}
-        transition={{ type: 'spring', stiffness: 80 }}
+        transition={{ type: 'spring', stiffness: 80, damping: 50 }}
       >
         <HeaderContent>{props.children}</HeaderContent>
       </HeaderWrapper>

@@ -1,4 +1,3 @@
-import { css } from '@emotion/core';
 import { MDXProvider } from '@mdx-js/react';
 import React from 'react';
 import styled from '../../utils/styled';
@@ -46,67 +45,6 @@ export const toKebabCase = (str: string): string | null => {
   return match && match.map((x) => x.toLowerCase()).join('-');
 };
 
-/**
- * Dirty workaround for the moment, we set p of type any
- * Can't figure out whether or not there's another way to properly
- * type props in this use case of emotion
- */
-const PrismCSS = (p: any) => css`
-  .prism-code {
-    font-family: Fira Code;
-    overflow-wrap: normal;
-    position: relative;
-    overflow: scroll;
-    width: 100%;
-    padding: 15px 0px;
-    font-size: 14px;
-    margin: 0px auto;
-    background: ${p.theme.colors.prism.background};
-
-    .number-line {
-      display: inline-block;
-      width: 32px;
-      user-select: none;
-      opacity: 0.6;
-      color: #dcd9e6;
-    }
-
-    .token-line {
-      flex: 1;
-      padding: 0px 15px 0px 15px;
-      min-width: 500px;
-      border-left: 3px solid transparent;
-      ${Object.keys(p.theme.colors.prism)
-        .map((key) => {
-          return `.${toKebabCase(key)}{color:${p.theme.colors.prism[key]};}`;
-        })
-        .reduce((curr, next) => curr + next, ``)};
-
-      &.highlight-line {
-        padding: 0px 14px;
-        background: ${p.theme.colors.prism.highlight};
-        border-left: 3px solid ${p.theme.colors.prism.highlightBorder};
-      }
-
-      &:hover {
-        .number-line {
-          color: ${p.theme.colors.blue};
-          opacity: 1;
-        }
-
-        background-color: rgba(255, 255, 255, 0.05);
-      }
-    }
-
-    .operator + .maybe-class-name {
-      color: #ffcf74 !important;
-    }
-    .plain ~ .operator {
-      color: #5fa8aa !important;
-    }
-  }
-`;
-
 type MDXBody = {
   children: React.ReactNode;
   ref: React.Ref<HTMLDivElement>;
@@ -117,7 +55,7 @@ const MDXBody = styled.div<MDXBody>`
   margin: 0 auto;
   max-width: ${(p) => `${p.maxWidth || 700}px`};
   padding: 20px 0px 20px 0px;
-  color: ${(props) => props.theme.fontColor};
+  color: ${(props) => props.theme.bodyColor};
 
   figcaption {
     font-size: 14px;
@@ -128,12 +66,22 @@ const MDXBody = styled.div<MDXBody>`
     padding-top: 10px;
   }
 
+  h1 {
+    color: ${(props) => props.theme.fontColor};
+  }
+
   h2 {
+    color: ${(props) => props.theme.fontColor};
     margin-top: 3em;
   }
 
   h3 {
+    color: ${(props) => props.theme.fontColor};
     margin-top: 3em;
+  }
+
+  strong {
+    color: ${(props) => props.theme.fontColor};
   }
 
   hr {
@@ -171,6 +119,4 @@ const MDXBody = styled.div<MDXBody>`
   twitter-widget {
     margin: 0 auto;
   }
-
-  ${PrismCSS}
 `;

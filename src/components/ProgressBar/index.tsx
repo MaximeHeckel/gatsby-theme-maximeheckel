@@ -161,7 +161,7 @@ const ReadingProgress: React.FC<ReadingProgressProps> = ({
                 animate={shouldShowTableOfContent ? 'show' : 'hide'}
                 transition={{ type: 'spring' }}
                 key={item.url}
-                whileHover={shouldShowTableOfContent ? 'emphasis' : ''}
+                whileHover={shouldShowTableOfContent ? 'emphasis' : 'hide'}
               >
                 <AnchorLink offset="150" href={item.url}>
                   {item.title}
