@@ -1,5 +1,12 @@
 # Gatsby-theme-maximeheckel
 
+## [0.10.1](https://github.com/MaximeHeckel/gatsby-theme-maximeheckel/compare/v0.10.0...v0.10.1) (2020-08-03)
+
+
+### Bug Fixes
+
+* **ssr:** Revert changes made in ssr and browser files in 0.9.9 ([a790eb2](https://github.com/MaximeHeckel/gatsby-theme-maximeheckel/commit/a790eb259999ca32cbb6ef1cc23f0799e1e55d5e))
+
 # [0.10.0](https://github.com/MaximeHeckel/gatsby-theme-maximeheckel/compare/v0.9.9...v0.10.0) (2020-08-02)
 
 
