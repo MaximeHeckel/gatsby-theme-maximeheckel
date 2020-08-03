@@ -68,6 +68,7 @@ const SEO: React.FC<ISEOProps> = ({
             <html lang="en" />
             <meta name="description" content={seo.description} />
             <meta name="image" content={seo.image} />
+            {seo.url && <link rel="canonical" href={seo.url} />}
             {seo.url && <meta property="og:url" content={seo.url} />}
             {(article ? true : null) && (
               <meta property="og:type" content="article" />
