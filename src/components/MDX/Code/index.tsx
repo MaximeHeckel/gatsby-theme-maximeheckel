@@ -1,7 +1,6 @@
 import { css } from '@emotion/core';
-import Highlight, { defaultProps, Language } from 'prism-react-renderer';
+import Highlight, { Prism, defaultProps, Language } from 'prism-react-renderer';
 import themePrism from 'prism-react-renderer/themes/oceanicNext';
-// import themePrism from 'prism-react-renderer/themes/oceanicNext';
 import React from 'react';
 import { LiveProvider, LiveEditor, LiveError, LivePreview } from 'react-live';
 import * as Recharts from 'recharts';
@@ -11,6 +10,14 @@ import { motion, useAnimation } from 'framer-motion';
 import { withTheme } from 'emotion-theming';
 import Button from '../../Button';
 import Flex from '../../Flex';
+
+// @ts-ignore
+(typeof global !== 'undefined' ? global : window).Prism = Prism;
+
+/**
+ * This imports the syntax highlighting style for the Swift language
+ */
+require('prismjs/components/prism-swift');
 
 const copyToClipboard = (content: string) => {
   const el = document.createElement(`textarea`);
