@@ -1,5 +1,12 @@
 # Gatsby-theme-maximeheckel
 
+## [0.11.1](https://github.com/MaximeHeckel/gatsby-theme-maximeheckel/compare/v0.11.0...v0.11.1) (2020-08-23)
+
+
+### Bug Fixes
+
+* **component:** Add support for Swift language for Code component ([c203f0d](https://github.com/MaximeHeckel/gatsby-theme-maximeheckel/commit/c203f0db57c4e23211ec4a15cdd350f9216146af))
+
 # [0.11.0](https://github.com/MaximeHeckel/gatsby-theme-maximeheckel/compare/v0.10.1...v0.11.0) (2020-08-03)
 
 
