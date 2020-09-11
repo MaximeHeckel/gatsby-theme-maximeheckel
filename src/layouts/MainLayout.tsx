@@ -4,6 +4,7 @@ import Footer from '../components/Footer';
 import { DefaultHeader, MainHeaderProps } from '../components/Header';
 import { useTheme } from '../context/ThemeContext';
 import styled from '../utils/styled';
+import 'plyr/dist/plyr.css';
 
 interface LayoutProps {
   footer?: boolean;
@@ -28,6 +29,15 @@ const Layout: React.FC<LayoutProps> = (props) => {
   const { site } = data;
 
   const theme = useTheme();
+
+  React.useEffect(() => {
+    if (typeof window !== 'undefined' && typeof document !== 'undefined') {
+      const Plyr = require('plyr');
+      Array.from(document.querySelectorAll('#videoplayer-maximeheckel')).map(
+        (p) => new Plyr(p)
+      );
+    }
+  }, []);
 
   return (
     <Wrapper data-testid={theme.dark ? 'darkmode' : 'lightmode'} {...rest}>

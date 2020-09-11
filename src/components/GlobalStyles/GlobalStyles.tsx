@@ -31,6 +31,7 @@ const GlobalStyles: React.FC<{}> = withTheme((props) => (
         --maximeheckel-colors-typeface-0: #2b2d3e;
         --maximeheckel-colors-typeface-1: #4a4a4c;
         --maximeheckel-colors-typeface-2: #767679;
+        --plyr-color-main: #336ef5;
       }
 
       .maximeheckel-dark {
@@ -41,6 +42,7 @@ const GlobalStyles: React.FC<{}> = withTheme((props) => (
         --maximeheckel-colors-typeface-0: #ffffff;
         --maximeheckel-colors-typeface-1: #c4c5c9;
         --maximeheckel-colors-typeface-2: #8a8a90;
+        --plyr-color-main: #5184f9;
       }
 
       .lock-scroll {
