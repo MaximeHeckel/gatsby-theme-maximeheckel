@@ -1,5 +1,12 @@
 # Gatsby-theme-maximeheckel
 
+# [0.12.0](https://github.com/MaximeHeckel/gatsby-theme-maximeheckel/compare/v0.11.1...v0.12.0) (2020-09-11)
+
+
+### Features
+
+* **layout:** Add suport for Plyr ([dbc7c2f](https://github.com/MaximeHeckel/gatsby-theme-maximeheckel/commit/dbc7c2ff21e19f7dd05dec208142233da802ede7))
+
 ## [0.11.1](https://github.com/MaximeHeckel/gatsby-theme-maximeheckel/compare/v0.11.0...v0.11.1) (2020-08-23)
 
 
