@@ -33,25 +33,27 @@ const Replies = ({ replies }: RepliesProps) => {
     <>
       {replies && replies.length ? (
         <RepliesList>
-          {replies.map((link) => (
-            <Head
-              key={link.id}
-              data-testid={link.id}
-              data-tip={link.activity.sentence}
-            >
-              <OutboundLink
-                href={link.data.author.url}
-                style={{ flexShrink: 0, cursor: 'pointer' }}
+          {replies
+            .filter((link) => link.data.author)
+            .map((link) => (
+              <Head
+                key={link.id}
+                data-testid={link.id}
+                data-tip={link.activity.sentence}
               >
-                <img
-                  height={50}
-                  width={50}
-                  src={link.data.author.photo}
-                  alt={`avatar of ${link.data.author.name}`}
-                />
-              </OutboundLink>
-            </Head>
-          ))}
+                <OutboundLink
+                  href={link.data.author.url}
+                  style={{ flexShrink: 0, cursor: 'pointer' }}
+                >
+                  <img
+                    height={50}
+                    width={50}
+                    src={link.data.author.photo}
+                    alt={`avatar of ${link.data.author.name}`}
+                  />
+                </OutboundLink>
+              </Head>
+            ))}
           <ReactTooltip place="top" effect="solid" />
         </RepliesList>
       ) : null}
@@ -139,7 +141,11 @@ const WebmentionReplies = ({ title, url }: Props) => {
 
   const distinctFans = [
     // @ts-ignore
-    ...new Set(replies.map((reply) => reply.data.author.name)),
+    ...new Set(
+      replies
+        .filter((reply) => reply.data.author)
+        .map((reply) => reply.data.author.name)
+    ),
   ];
 
   return (
