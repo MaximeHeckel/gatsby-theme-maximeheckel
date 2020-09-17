@@ -1,5 +1,12 @@
 # Gatsby-theme-maximeheckel
 
+## [0.12.1](https://github.com/MaximeHeckel/gatsby-theme-maximeheckel/compare/v0.12.0...v0.12.1) (2020-09-17)
+
+
+### Bug Fixes
+
+* **webmention:** Fix invalid webmention ([ac2f0e9](https://github.com/MaximeHeckel/gatsby-theme-maximeheckel/commit/ac2f0e96931886be265d5bb64a624bc9ba7a2b77))
+
 # [0.12.0](https://github.com/MaximeHeckel/gatsby-theme-maximeheckel/compare/v0.11.1...v0.12.0) (2020-09-11)
 
 
