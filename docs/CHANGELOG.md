@@ -1,5 +1,13 @@
 # Gatsby-theme-maximeheckel
 
+# [0.13.0](https://github.com/MaximeHeckel/gatsby-theme-maximeheckel/compare/v0.12.1...v0.13.0) (2020-09-26)
+
+
+### Features
+
+* **theme:** Add dark/light mode code snippet colors ([8ce53b3](https://github.com/MaximeHeckel/gatsby-theme-maximeheckel/commit/8ce53b33c9bf5d4c89860af94077a2b2db7361ab))
+* **components:** Update code snippet component, copy to clipboard button and theme ([3123cec](https://github.com/MaximeHeckel/gatsby-theme-maximeheckel/commit/3123cec124e0d91998c39a2d878b74fc610a1611))
+
 ## [0.12.1](https://github.com/MaximeHeckel/gatsby-theme-maximeheckel/compare/v0.12.0...v0.12.1) (2020-09-17)
 
 
