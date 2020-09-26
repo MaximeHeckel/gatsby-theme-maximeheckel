@@ -1,5 +1,12 @@
 # Gatsby-theme-maximeheckel
 
+## [0.13.1](https://github.com/MaximeHeckel/gatsby-theme-maximeheckel/compare/v0.13.0...v0.13.1) (2020-09-26)
+
+
+### Bug Fixes
+
+* **component:** Fix undefined theme issue ([ec71590](https://github.com/MaximeHeckel/gatsby-theme-maximeheckel/commit/ec71590a7069b9e6a23a4faca846b5d692e1e15a))
+
 # [0.13.0](https://github.com/MaximeHeckel/gatsby-theme-maximeheckel/compare/v0.12.1...v0.13.0) (2020-09-26)
 
 
