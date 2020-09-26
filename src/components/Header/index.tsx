@@ -10,7 +10,7 @@ import { Navigation } from './Navigation';
 import { Title } from './Title';
 import { Wrapper } from './Wrapper';
 import { LinkButton } from '../Button/LinkButton';
-import { CopyToClipboardButton } from '../Button';
+// import { CopyToClipboardButton } from '../Button';
 
 const TwitterIcon = () => (
   <svg

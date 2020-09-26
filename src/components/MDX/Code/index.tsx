@@ -337,11 +337,11 @@ const CodeSnippetTitle = styled('p')`
   font-weight: 500;
 `;
 
-const CodeLanguage = styled('div')`
-  color: ${(p) => p.theme.backgroundColor};
-  text-transform: uppercase;
-  font-size: 14px;
-`;
+// const CodeLanguage = styled('div')`
+//   color: ${(p) => p.theme.backgroundColor};
+//   text-transform: uppercase;
+//   font-size: 14px;
+// `;
 
 const CodeSnippetHeader = styled('div')`
   @media (max-width: 500px) {
