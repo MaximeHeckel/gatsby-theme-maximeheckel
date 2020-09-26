@@ -1,4 +1,5 @@
 /* eslint-disable react/no-unescaped-entities */
+import 'jest-dom/extend-expect';
 import { ThemeProvider } from 'emotion-theming';
 import { cleanup, render, getAllByTestId } from '@testing-library/react';
 import React from 'react';
@@ -90,14 +91,14 @@ describe('Code', () => {
     expect(container.querySelector('pre[class="prism-code"]')).toBeDefined();
     expect(getByTestId('number-line')).toBeDefined();
     expect(getByTestId('number-line')).toHaveTextContent(1);
-    expect(container.querySelector('button')).toHaveTextContent('Copy');
+    expect(container.querySelector('button')).toBeInTheDocument();
   });
 
   it('Renders a Codeblock with title and line highlight when the proper preProps are passed', () => {
     const { container, getAllByTestId, debug } = render(
       <ThemeProvider theme={theme.light}>
         <Code>
-          <div metastring="javascript {1-3}title=test" mdxType="code">
+          <div metastring="javascript {1-3} title=test" mdxType="code">
             {`some code to render
             some code to render 2
             some code to render 3
@@ -110,12 +111,9 @@ describe('Code', () => {
     expect(
       container.querySelector('p[data-testid="codesnippet-title"]')
     ).toHaveTextContent('test');
-    expect(container.querySelector('pre[class="prism-code"]')).toBeDefined();
-    expect(getAllByTestId('number-line')).toBeDefined();
     expect(getAllByTestId('number-line')).toHaveLength(4);
     expect(getAllByTestId('highlight-line')).toHaveLength(3);
-    expect(getAllByTestId('line')).toHaveLength(1);
-    expect(container.querySelector('button')).toHaveTextContent('Copy');
+    expect(container.querySelector('button')).toBeInTheDocument();
   });
 
   it('Renders a <pre> when there are no proper preProps passed', () => {

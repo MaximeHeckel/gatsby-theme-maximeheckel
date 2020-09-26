@@ -10,6 +10,7 @@ import { Navigation } from './Navigation';
 import { Title } from './Title';
 import { Wrapper } from './Wrapper';
 import { LinkButton } from '../Button/LinkButton';
+// import { CopyToClipboardButton } from '../Button';
 
 const TwitterIcon = () => (
   <svg
@@ -95,7 +96,7 @@ const DefaultHeader: React.FC<MainHeaderProps> = (props) => {
             </LinkButton>
           </OutboundLink>
         </TwitterLinkWrapper>
-
+        {/* <CopyToClipboardButton text={window.location.href} /> */}
         {props.themeSwitcher && Object.keys(theme).length > 0 ? (
           <LinkButton
             tabIndex={0}

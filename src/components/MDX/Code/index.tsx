@@ -1,15 +1,15 @@
 import { css } from '@emotion/core';
+import EmotionStyled from '@emotion/styled';
+import { withTheme } from 'emotion-theming';
+import { motion, useAnimation } from 'framer-motion';
 import Highlight, { Prism, defaultProps, Language } from 'prism-react-renderer';
-import themePrism from 'prism-react-renderer/themes/oceanicNext';
 import React from 'react';
 import { LiveProvider, LiveEditor, LiveError, LivePreview } from 'react-live';
 import * as Recharts from 'recharts';
 import styled from '../../../utils/styled';
-import EmotionStyled from '@emotion/styled';
-import { motion, useAnimation } from 'framer-motion';
-import { withTheme } from 'emotion-theming';
-import Button from '../../Button';
+import Button, { CopyToClipboardButton } from '../../Button';
 import Flex from '../../Flex';
+import { useTheme } from '../../../context/ThemeContext';
 
 // @ts-ignore
 (typeof global !== 'undefined' ? global : window).Prism = Prism;
@@ -18,18 +18,6 @@ import Flex from '../../Flex';
  * This imports the syntax highlighting style for the Swift language
  */
 require('prismjs/components/prism-swift');
-
-const copyToClipboard = (content: string) => {
-  const el = document.createElement(`textarea`);
-  el.value = content;
-  el.setAttribute(`readonly`, ``);
-  el.style.position = `absolute`;
-  el.style.left = `-9999px`;
-  document.body.appendChild(el);
-  el.select();
-  document.execCommand(`copy`);
-  document.body.removeChild(el);
-};
 
 type PrePropsType = {
   props: {
@@ -120,7 +108,7 @@ export const InlineCode: React.FC<IInlineCodeProps> = (props) => {
 };
 
 export const LiveCodeBlock: React.FC<ICodeBlockProps> = withTheme((props) => {
-  const { codeString, live, render } = props;
+  const { codeString, live, render, theme } = props;
 
   const scope = {
     motion,
@@ -131,12 +119,14 @@ export const LiveCodeBlock: React.FC<ICodeBlockProps> = withTheme((props) => {
     Recharts: { ...Recharts },
   };
 
+  const baseTheme = theme.colors.prism;
+
   const customTheme = {
-    ...themePrism,
+    ...baseTheme,
     plain: {
+      ...baseTheme.plain,
       fontFamily: 'Fira Code',
       fontSize: '14px',
-      color: '#ffffff',
       overflowWrap: 'normal',
       position: 'relative',
       overflow: 'scroll',
@@ -188,66 +178,16 @@ interface ICodeBlockProps {
   metastring: string | null;
 }
 
-const Pre = styled.pre`
-  text-align: left;
-  padding: 8px 0px;
-  overflow: scroll;
-  border-bottom-left-radius: 5px;
-  border-bottom-right-radius: 5px;
+export const CodeBlock: React.FC<ICodeBlockProps> = withTheme((props) => {
+  const { codeString, language, metastring, theme } = props;
 
-  ${(p) =>
-    p.title
-      ? ''
-      : `
-      border-top-left-radius: 5px;
-    border-top-right-radius: 5px;
-    `}
-`;
-
-const Line = styled.div`
-  display: table;
-  border-collapse: collapse;
-  padding: 0px 14px;
-  border-left: 3px solid transparent;
-  &.highlight-line {
-    background: ${(p) => p.theme.colors.prism.highlight};
-    border-color: ${(p) => p.theme.colors.prism.highlightBorder};
-  }
-
-  &:hover {
-    background-color: rgba(255, 255, 255, 0.05);
-  }
-`;
-
-const LineNo = styled.div`
-  // display: table-cell;
-  width: 45px;
-  padding: 0 12px;
-  user-select: none;
-  opacity: 0.5;
-`;
-
-const LineContent = styled.span`
-  display: table-cell;
-  width: 100%;
-`;
-
-export const CodeBlock: React.FC<ICodeBlockProps> = (props) => {
-  const { codeString, language, metastring } = props;
-  const [copied, hasClickedCopy] = React.useState(false);
-  const handleCopyToClipboard = (code: string) => {
-    copyToClipboard(code);
-
-    hasClickedCopy(true);
-    setTimeout(() => {
-      hasClickedCopy(false);
-    }, 2000);
-  };
+  const { dark } = useTheme();
+  const baseTheme = theme.colors.prism;
 
   const customTheme = {
-    ...themePrism,
+    ...baseTheme,
     plain: {
-      ...themePrism.plain,
+      ...baseTheme.plain,
       fontFamily: 'Fira Code',
       fontSize: '14px',
     },
@@ -258,15 +198,18 @@ export const CodeBlock: React.FC<ICodeBlockProps> = (props) => {
   return (
     <CodeSnippetWrapper>
       {title ? (
-        <CodeSnippetHeader>
+        <CodeSnippetHeader
+          css={{
+            backgroundColor: customTheme.plain.backgroundColor,
+            borderBottom: `1px solid ${dark ? '#151617' : '#d8dfe8'}`,
+          }}
+        >
           <CodeSnippetTitle data-testid="codesnippet-title">
             {title}
           </CodeSnippetTitle>
           <Flex>
-            <CodeLanguage>{language}</CodeLanguage>
-            <CopyButton onClick={() => handleCopyToClipboard(codeString)}>
-              {copied ? 'Done' : 'Copy'}
-            </CopyButton>
+            {/* <CodeLanguage>{language}</CodeLanguage> */}
+            <CopyToClipboardButton text={codeString} />
           </Flex>
         </CodeSnippetHeader>
       ) : null}
@@ -316,7 +259,7 @@ export const CodeBlock: React.FC<ICodeBlockProps> = (props) => {
       </Highlight>
     </CodeSnippetWrapper>
   );
-};
+});
 
 export const Code: React.FC<PrePropsType> = (preProps) => {
   const props = preToCodeBlock(preProps);
@@ -332,28 +275,73 @@ export const Code: React.FC<PrePropsType> = (preProps) => {
   }
 };
 
+const Pre = styled.pre`
+  text-align: left;
+  padding: 8px 0px;
+  overflow: scroll;
+  border-bottom-left-radius: 4px;
+  border-bottom-right-radius: 4px;
+
+  ${(p) =>
+    p.title
+      ? ''
+      : `
+      border-top-left-radius: 4px;
+    border-top-right-radius: 4px;
+    `}
+`;
+
+const Line = styled.div`
+  display: table;
+  border-collapse: collapse;
+  padding: 0px 14px;
+  border-left: 3px solid transparent;
+  &.highlight-line {
+    background: ${(p) => p.theme.colors.prism.highlight};
+    border-color: ${(p) => p.theme.colors.prism.highlightBorder};
+  }
+
+  &:hover {
+    background-color: ${(p) => p.theme.colors.prism.highlight};
+  }
+`;
+
+const LineNo = styled.div`
+  width: 45px;
+  padding: 0 12px;
+  user-select: none;
+  opacity: 0.5;
+`;
+
+const LineContent = styled.span`
+  display: table-cell;
+  width: 100%;
+`;
+
 const InlineCodeWrapper = styled('code')`
   border-radius: 4px;
-  background-color: ${(p) => p.theme.colors.prism.background};
-  color: ${(p) => p.theme.colors.white};
+  background-color: rgba(81, 132, 249, 0.15);
+  color: ${(p) => p.theme.colors.blue};
   padding-top: 2px;
-  padding-bottom: 4px;
+  padding-bottom: 2px;
   padding-left: 6px;
   padding-right: 6px;
+  font-size: 1rem;
+  font-weight: 400 !important;
 `;
 
 const CodeSnippetTitle = styled('p')`
-  padding: 4px 10px;
   font-size: 14px;
   margin-bottom: 0px;
-  color: ${(p) => p.theme.backgroundColor};
+  color: #949699;
+  font-weight: 500;
 `;
 
-const CodeLanguage = styled('div')`
-  color: ${(p) => p.theme.backgroundColor};
-  text-transform: uppercase;
-  font-size: 14px;
-`;
+// const CodeLanguage = styled('div')`
+//   color: ${(p) => p.theme.backgroundColor};
+//   text-transform: uppercase;
+//   font-size: 14px;
+// `;
 
 const CodeSnippetHeader = styled('div')`
   @media (max-width: 500px) {
@@ -362,11 +350,12 @@ const CodeSnippetHeader = styled('div')`
 
   display: flex;
   justify-content: space-between;
-  border-top-left-radius: 5px;
-  border-top-right-radius: 5px;
+  align-items: center;
+  border-top-left-radius: 4px;
+  border-top-right-radius: 4px;
   color: ${(p) => p.theme.colors.white};
-  background: ${(p) => p.theme.colors.blue};
-  min-height: 30px;
+  min-height: 45px;
+  padding: 0px 14px;
 `;
 
 const fullWidthSnipperStyle = () => css`
@@ -381,9 +370,8 @@ const CodeSnippetWrapper = styled('div')`
   @media (max-width: 600px) {
     ${fullWidthSnipperStyle}
   }
-
   width: 100%;
-  border-radius: 5px;
+  border-radius: 4px;
   margin: 40px 0px;
 `;
 
@@ -420,7 +408,6 @@ const StyledLiveCodeWrapper = styled('div')<CodeSnippetWrapperProps>`
 
 const StyledEditorWrapper = styled('div')`
   flex: 60 1 0%;
-  background-color: ${(p) => p.theme.colors.prism.background};
   height: 100%;
   max-height: 600px;
   overflow: auto;
@@ -450,24 +437,5 @@ const StyledErrorWrapper = styled('div')`
   pre {
     padding: 15px;
     margin-bottom: 0px;
-  }
-`;
-
-const CopyButton = styled('button')`
-  color: ${(p) => p.theme.backgroundColor};
-  transition: background 0.3s ease;
-  background: rgba(255, 255, 255, 0.05);
-  border: none;
-  cursor: pointer;
-  height: 100%;
-  margin-right: 0px;
-  padding: 0px 10px;
-  max-width: 60px;
-  width: 60px;
-  outline: none;
-
-  &:hover,
-  &:focus {
-    background: rgba(255, 255, 255, 0.2);
   }
 `;
