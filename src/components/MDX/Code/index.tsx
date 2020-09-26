@@ -2,7 +2,12 @@ import { css } from '@emotion/core';
 import EmotionStyled from '@emotion/styled';
 import { withTheme } from 'emotion-theming';
 import { motion, useAnimation } from 'framer-motion';
-import Highlight, { Prism, defaultProps, Language } from 'prism-react-renderer';
+import Highlight, {
+  Prism,
+  defaultProps,
+  Language,
+  PrismTheme,
+} from 'prism-react-renderer';
 import React from 'react';
 import { LiveProvider, LiveEditor, LiveError, LivePreview } from 'react-live';
 import * as Recharts from 'recharts';
@@ -10,6 +15,7 @@ import styled from '../../../utils/styled';
 import Button, { CopyToClipboardButton } from '../../Button';
 import Flex from '../../Flex';
 import { useTheme } from '../../../context/ThemeContext';
+import theme from '../../../theme';
 
 // @ts-ignore
 (typeof global !== 'undefined' ? global : window).Prism = Prism;
@@ -108,7 +114,9 @@ export const InlineCode: React.FC<IInlineCodeProps> = (props) => {
 };
 
 export const LiveCodeBlock: React.FC<ICodeBlockProps> = withTheme((props) => {
-  const { codeString, live, render, theme } = props;
+  const { codeString, live, render } = props;
+
+  const { dark } = useTheme();
 
   const scope = {
     motion,
@@ -119,7 +127,7 @@ export const LiveCodeBlock: React.FC<ICodeBlockProps> = withTheme((props) => {
     Recharts: { ...Recharts },
   };
 
-  const baseTheme = theme.colors.prism;
+  const baseTheme = dark ? theme.dark.colors.prism : theme.light.colors.prism;
 
   const customTheme = {
     ...baseTheme,
@@ -132,7 +140,7 @@ export const LiveCodeBlock: React.FC<ICodeBlockProps> = withTheme((props) => {
       overflow: 'scroll',
       borderRadius: '4px',
     },
-  };
+  } as PrismTheme;
 
   if (live) {
     return (
@@ -178,11 +186,12 @@ interface ICodeBlockProps {
   metastring: string | null;
 }
 
-export const CodeBlock: React.FC<ICodeBlockProps> = withTheme((props) => {
-  const { codeString, language, metastring, theme } = props;
+export const CodeBlock: React.FC<ICodeBlockProps> = (props) => {
+  const { codeString, language, metastring } = props;
 
   const { dark } = useTheme();
-  const baseTheme = theme.colors.prism;
+
+  const baseTheme = dark ? theme.dark.colors.prism : theme.light.colors.prism;
 
   const customTheme = {
     ...baseTheme,
@@ -191,7 +200,7 @@ export const CodeBlock: React.FC<ICodeBlockProps> = withTheme((props) => {
       fontFamily: 'Fira Code',
       fontSize: '14px',
     },
-  };
+  } as PrismTheme;
 
   const shouldHighlightLine = calculateLinesToHighlight(metastring);
   const title = hasTitle(metastring);
@@ -259,7 +268,7 @@ export const CodeBlock: React.FC<ICodeBlockProps> = withTheme((props) => {
       </Highlight>
     </CodeSnippetWrapper>
   );
-});
+};
 
 export const Code: React.FC<PrePropsType> = (preProps) => {
   const props = preToCodeBlock(preProps);
