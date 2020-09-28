@@ -10,7 +10,6 @@ import { Navigation } from './Navigation';
 import { Title } from './Title';
 import { Wrapper } from './Wrapper';
 import { LinkButton } from '../Button/LinkButton';
-// import { CopyToClipboardButton } from '../Button';
 
 const TwitterIcon = () => (
   <svg
@@ -29,8 +28,6 @@ const TwitterLinkWrapper = styled('div')`
     fill: ${(p) => p.theme.colors.blue};
   }
 `;
-
-const noop = () => {};
 
 interface HeaderProps {
   sticky?: boolean;
@@ -57,6 +54,7 @@ export interface MainHeaderProps {
   sticky?: boolean;
   collapsableOnScroll?: boolean;
   title?: string;
+  LightDarkSwitcher?: boolean;
   themeSwitcher?: boolean;
 }
 
@@ -96,24 +94,8 @@ const DefaultHeader: React.FC<MainHeaderProps> = (props) => {
             </LinkButton>
           </OutboundLink>
         </TwitterLinkWrapper>
-        {/* <CopyToClipboardButton text={window.location.href} /> */}
         {props.themeSwitcher && Object.keys(theme).length > 0 ? (
-          <LinkButton
-            tabIndex={0}
-            onKeyDown={(e) => (e.keyCode === 13 ? theme.toggleDark() : noop)}
-            onClick={theme.toggleDark}
-            aria-label={
-              theme.dark ? 'Activate light mode' : 'Activate dark mode'
-            }
-            title={theme.dark ? 'Activate light mode' : 'Activate dark mode'}
-          >
-            <LightDarkSwitcher
-              aria-pressed="false"
-              data-testid="darkmode-switch"
-              html-for="darkmode-switch"
-              isDark={theme.dark}
-            />
-          </LinkButton>
+          <LightDarkSwitcher theme={theme} />
         ) : null}
       </Flex>
     </Header>
