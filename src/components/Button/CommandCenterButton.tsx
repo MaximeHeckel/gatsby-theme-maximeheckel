@@ -10,11 +10,11 @@ interface Props {
   theme: { dark: boolean; toggleDark: () => void };
 }
 
-export const SearchButton = (props: Props) => {
+export const CommandCenterButton = (props: Props) => {
   const { theme, isSearchShown, onClick } = props;
   const duration = 0.7;
 
-  const searchVariants = {
+  const commandCenterVariants = {
     pressed: { pathLength: 0.05 },
     checked: { pathLength: 0 },
     unchecked: { pathLength: 1 },
@@ -27,9 +27,11 @@ export const SearchButton = (props: Props) => {
 
   return (
     <LinkButton
-      data-testid="search"
+      data-testid="command-center"
       tabIndex={0}
       onKeyDown={(e) => (e.keyCode === 13 ? onClick() : noop)}
+      aria-label="Show command center"
+      title="Show command center"
       onClick={(e) => {
         props.onClick();
         e.stopPropagation();
@@ -53,7 +55,7 @@ export const SearchButton = (props: Props) => {
           strokeWidth="2"
           strokeLinecap="round"
           strokeLinejoin="round"
-          variants={searchVariants}
+          variants={commandCenterVariants}
           transition={{ duration }}
           style={{ pathLength }}
         />

@@ -10,7 +10,7 @@ import { useTheme } from '../../context/ThemeContext';
 import MHLogo from '../Logo';
 import { LinkButton } from '../Button/LinkButton';
 import SearchBox from '../SearchBox';
-import { SearchButton, LightDarkSwitcher } from '../Button';
+import { CommandCenterButton, LightDarkSwitcher } from '../Button';
 
 const TwitterIcon = () => (
   <svg
@@ -110,7 +110,7 @@ const DefaultHeader: React.FC<MainHeaderProps> = (props) => {
             </OutboundLink>
           </TwitterLinkWrapper>
           {props.search ? (
-            <SearchButton
+            <CommandCenterButton
               theme={theme}
               isSearchShown={showSearch}
               onClick={() => setShowSearch(true)}

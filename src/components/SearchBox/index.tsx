@@ -273,7 +273,7 @@ const SearchBox: React.FC<Props> = (props) => {
                       </div>
                     </div>
                   </Item>
-                  <Item data-testid="shortcut" key="maximeheckelcom-link">
+                  <Item data-testid="shortcut" key="theme-shortcut">
                     <div>
                       <span>Switch Theme</span>
                       <div>
