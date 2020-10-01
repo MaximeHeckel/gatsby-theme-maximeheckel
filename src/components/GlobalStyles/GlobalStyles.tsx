@@ -38,7 +38,7 @@ const GlobalStyles: React.FC<{}> = withTheme((props) => (
         --maximeheckel-colors-brand: #5184f9;
         --maximeheckel-colors-body-0: #141516;
         --maximeheckel-colors-body-1: rgba(9, 14, 21, 0.6);
-        --maximeheckel-colors-body-2: rgba(0, 0, 0, 0.4);
+        --maximeheckel-colors-body-2: rgba(0, 0, 0, 0.7);
         --maximeheckel-colors-typeface-0: #fefefe;
         --maximeheckel-colors-typeface-1: #c4c5c9;
         --maximeheckel-colors-typeface-2: #8a8a90;

@@ -1,31 +1,38 @@
 import { OutboundLink } from 'gatsby-plugin-google-analytics';
 import React from 'react';
-import LightDarkSwitcher from '../LightDarkSwitcher';
-import Flex from '../Flex';
-import styled from '../../utils/styled';
-import { useTheme } from '../../context/ThemeContext';
-import MHLogo from '../Logo';
 import { Logo } from './Logo';
 import { Navigation } from './Navigation';
 import { Title } from './Title';
 import { Wrapper } from './Wrapper';
+import Flex from '../Flex';
+import styled from '../../utils/styled';
+import { useTheme } from '../../context/ThemeContext';
+import MHLogo from '../Logo';
 import { LinkButton } from '../Button/LinkButton';
+import SearchBox from '../SearchBox';
+import { SearchButton, LightDarkSwitcher } from '../Button';
 
 const TwitterIcon = () => (
   <svg
-    xmlns="http://www.w3.org/2000/svg"
-    width="24"
+    width="25"
     height="24"
-    viewBox="0 0 24 24"
+    viewBox="0 0 25 24"
+    fill="none"
+    xmlns="http://www.w3.org/2000/svg"
   >
-    <path d="M24 4.557c-.883.392-1.832.656-2.828.775 1.017-.609 1.798-1.574 2.165-2.724-.951.564-2.005.974-3.127 1.195-.897-.957-2.178-1.555-3.594-1.555-3.179 0-5.515 2.966-4.797 6.045-4.091-.205-7.719-2.165-10.148-5.144-1.29 2.213-.669 5.108 1.523 6.574-.806-.026-1.566-.247-2.229-.616-.054 2.281 1.581 4.415 3.949 4.89-.693.188-1.452.232-2.224.084.626 1.956 2.444 3.379 4.6 3.419-2.07 1.623-4.678 2.348-7.29 2.04 2.179 1.397 4.768 2.212 7.548 2.212 9.142 0 14.307-7.721 13.995-14.646.962-.695 1.797-1.562 2.457-2.549z" />
+    <path
+      d="M23.8618 2.9995C22.9042 3.67497 21.8439 4.19161 20.7218 4.5295C20.1196 3.83701 19.3192 3.34619 18.4289 3.12342C17.5386 2.90066 16.6013 2.95669 15.7439 3.28395C14.8865 3.61121 14.1503 4.1939 13.6348 4.95321C13.1193 5.71253 12.8495 6.61183 12.8618 7.5295V8.5295C11.1044 8.57506 9.36309 8.18531 7.79283 7.39494C6.22256 6.60458 4.87213 5.43813 3.86182 3.9995C3.86182 3.9995 -0.138184 12.9995 8.86182 16.9995C6.80234 18.3975 4.34897 19.0984 1.86182 18.9995C10.8618 23.9995 21.7818 18.8949 21.7818 7.39494C21.7809 7.1164 21.8341 6.94309 21.7818 6.6695C22.8024 5.66299 23.5226 4.39221 23.8618 2.9995Z"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    />
   </svg>
 );
 
 const TwitterLinkWrapper = styled('div')`
   svg {
-    margin-top: 4px;
-    fill: ${(p) => p.theme.colors.blue};
+    stroke: ${(p) => p.theme.colors.blue};
+    fill: none;
   }
 `;
 
@@ -54,51 +61,67 @@ export interface MainHeaderProps {
   sticky?: boolean;
   collapsableOnScroll?: boolean;
   title?: string;
-  LightDarkSwitcher?: boolean;
+  search?: boolean;
   themeSwitcher?: boolean;
 }
 
 const DefaultHeader: React.FC<MainHeaderProps> = (props) => {
+  const [showSearch, setShowSearch] = React.useState(false);
   const theme = useTheme();
 
   return (
-    <Header
-      sticky={props.sticky}
-      collapsableOnScroll={props.collapsableOnScroll}
-    >
-      <Flex>
-        <Header.Logo
-          alt="Maxime Heckel's Blog logo"
-          aria-label="Maxime Heckel's Blog"
-        >
-          <MHLogo inverted />
-        </Header.Logo>
-        <Header.Title>{props.title}</Header.Title>
-      </Flex>
-      <Flex>
-        <TwitterLinkWrapper>
-          <OutboundLink
-            className="h-card"
-            data-testid="twitter-link"
-            aria-label="Follow me on Twitter"
-            title="Follow me on Twitter"
-            rel="me"
-            href="https://twitter.com/MaximeHeckel"
-            style={{ textDecoration: 'underline' }}
+    <>
+      {props.search ? (
+        <SearchBox
+          showOverride={showSearch}
+          onClose={() => setShowSearch(false)}
+        />
+      ) : null}
+      <Header
+        sticky={props.sticky}
+        collapsableOnScroll={props.collapsableOnScroll}
+      >
+        <Flex>
+          <Header.Logo
+            alt="Maxime Heckel's Blog logo"
+            aria-label="Maxime Heckel's Blog"
           >
-            <LinkButton
+            <MHLogo inverted />
+          </Header.Logo>
+          <Header.Title>{props.title}</Header.Title>
+        </Flex>
+        <Flex>
+          <TwitterLinkWrapper>
+            <OutboundLink
+              className="h-card"
+              data-testid="twitter-link"
               aria-label="Follow me on Twitter"
               title="Follow me on Twitter"
+              rel="me"
+              href="https://twitter.com/MaximeHeckel"
+              style={{ textDecoration: 'underline' }}
             >
-              <TwitterIcon />
-            </LinkButton>
-          </OutboundLink>
-        </TwitterLinkWrapper>
-        {props.themeSwitcher && Object.keys(theme).length > 0 ? (
-          <LightDarkSwitcher theme={theme} />
-        ) : null}
-      </Flex>
-    </Header>
+              <LinkButton
+                aria-label="Follow me on Twitter"
+                title="Follow me on Twitter"
+              >
+                <TwitterIcon />
+              </LinkButton>
+            </OutboundLink>
+          </TwitterLinkWrapper>
+          {props.search ? (
+            <SearchButton
+              theme={theme}
+              isSearchShown={showSearch}
+              onClick={() => setShowSearch(true)}
+            />
+          ) : null}
+          {props.themeSwitcher && Object.keys(theme).length > 0 ? (
+            <LightDarkSwitcher theme={theme} />
+          ) : null}
+        </Flex>
+      </Header>
+    </>
   );
 };
 export default Header;

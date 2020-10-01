@@ -1,13 +1,8 @@
-import { css } from '@emotion/core';
 import { motion, useMotionValue, useTransform } from 'framer-motion';
 import React from 'react';
-import { LinkButton } from '../Button/LinkButton';
+import { LinkButton } from './LinkButton';
 
 const noop = () => {};
-
-type LightDarkSwitcher = {
-  isDark: boolean;
-};
 
 const LightDarkSwitcher = (props: {
   theme: { dark: boolean; toggleDark: () => void };
@@ -49,17 +44,6 @@ const LightDarkSwitcher = (props: {
   return (
     <LinkButton
       data-testid="darkmode-switch"
-      css={css`
-        background: transparent;
-        padding: 0px;
-        border: none;
-        width: 44px;
-        cursor: pointer;
-        outline: none;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-      `}
       tabIndex={0}
       onKeyDown={(e) => (e.keyCode === 13 ? theme.toggleDark() : noop)}
       onClick={(e) => {
@@ -68,12 +52,12 @@ const LightDarkSwitcher = (props: {
       }}
       aria-label={theme.dark ? 'Activate light mode' : 'Activate dark mode'}
       title={theme.dark ? 'Activate light mode' : 'Activate dark mode'}
+      initial={false}
+      animate={isChecked ? 'checked' : 'unchecked'}
+      whileHover="hover"
+      transition={{ duration }}
     >
       <motion.svg
-        initial={false}
-        animate={isChecked ? 'checked' : 'unchecked'}
-        whileHover="hover"
-        transition={{ duration }}
         width="30"
         height="30"
         viewBox="0 0 25 25"

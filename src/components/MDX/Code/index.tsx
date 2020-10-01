@@ -226,7 +226,6 @@ export const CodeBlock: React.FC<ICodeBlockProps> = (props) => {
       >
         {({ className, style, tokens, getLineProps, getTokenProps }) => (
           <>
-            {language ? <CodeLanguage>{language}</CodeLanguage> : null}
             <Pre title={title} className={className} style={style}>
               {tokens.map((line, index) => {
                 const { className: lineClassName } = getLineProps({
@@ -343,19 +342,6 @@ const CodeSnippetTitle = styled('p')`
   margin-bottom: 0px;
   color: #949699;
   font-weight: 500;
-`;
-
-const CodeLanguage = styled('div')`
-  position: absolute;
-  color: ${(p) => p.theme.colors.blue};
-  border: 1px solid ${(p) => p.theme.colors.blue};
-  text-transform: uppercase;
-  font-size: 12px;
-  top: 60px;
-  border-radius: 10px;
-  padding: 5px 8px;
-  right: 20px;
-  background: rgba(81, 132, 249, 0.15);
 `;
 
 const CodeSnippetHeader = styled('div')`
