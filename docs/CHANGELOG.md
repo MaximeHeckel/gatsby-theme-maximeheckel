@@ -1,5 +1,12 @@
 # Gatsby-theme-maximeheckel
 
+## [0.13.4](https://github.com/MaximeHeckel/gatsby-theme-maximeheckel/compare/v0.13.3...v0.13.4) (2020-10-02)
+
+
+### Bug Fixes
+
+* **hero:** Let gatsby pages override hero style ([19f79d4](https://github.com/MaximeHeckel/gatsby-theme-maximeheckel/commit/19f79d4b91d45dc0f26911945b89b185ab1513d6))
+
 ## [0.13.3](https://github.com/MaximeHeckel/gatsby-theme-maximeheckel/compare/v0.13.2...v0.13.3) (2020-10-02)
 
 
