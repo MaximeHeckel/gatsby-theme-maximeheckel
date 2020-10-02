@@ -1,5 +1,12 @@
 # Gatsby-theme-maximeheckel
 
+## [0.13.3](https://github.com/MaximeHeckel/gatsby-theme-maximeheckel/compare/v0.13.2...v0.13.3) (2020-10-02)
+
+
+### Bug Fixes
+
+* **button:** Fix padding shrinking icons on safari mobile ([9bcc899](https://github.com/MaximeHeckel/gatsby-theme-maximeheckel/commit/9bcc899665003e2bbb8530e82c747e3f580f5909))
+
 ## [0.13.2](https://github.com/MaximeHeckel/gatsby-theme-maximeheckel/compare/v0.13.1...v0.13.2) (2020-10-02)
 
 ## [0.13.1](https://github.com/MaximeHeckel/gatsby-theme-maximeheckel/compare/v0.13.0...v0.13.1) (2020-09-26)
