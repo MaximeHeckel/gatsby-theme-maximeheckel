@@ -36,6 +36,7 @@ export const TitleWrapper = styled.div`
     display: block;
     text-decoration: none;
     overflow: hidden;
+    max-width: 600px;
     white-space: nowrap;
     text-overflow: ellipsis;
   }

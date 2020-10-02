@@ -1,15 +1,18 @@
+import { motion } from 'framer-motion';
 import styled from '../../utils/styled';
 
-const LinkButton = styled('button')`
+const LinkButton = styled(motion.button)`
   border-radius: 4px;
-  padding: 4px 10px;
-  width: 100%;
+  width: 44px;
   height: 40px;
   cursor: pointer;
   border: none;
   background-color: transparent;
   outline: none;
   transition: 0.4s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 
   > * {
     margin-left: auto;

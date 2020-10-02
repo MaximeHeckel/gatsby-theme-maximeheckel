@@ -245,7 +245,7 @@ const theme = {
     fontColor: 'var(--maximeheckel-colors-typeface-0, #FEFEFE)',
     bodyColor: 'var(--maximeheckel-colors-typeface-1, #c4c5c9)',
     foregroundColor: 'var(--maximeheckel-colors-body-1, rgba(9, 14, 21, 0.6))',
-    overlayBackground: 'var(--maximeheckel-colors-body-2, rgba(0,0,0,0.40))',
+    overlayBackground: 'var(--maximeheckel-colors-body-2, rgba(0,0,0,0.7))',
     transitionTime: 0.5,
   },
 };

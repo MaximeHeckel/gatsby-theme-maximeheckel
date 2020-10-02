@@ -5,20 +5,67 @@ import { Link } from 'gatsby';
 import Mousetrap from 'mousetrap';
 import React from 'react';
 import ReactDOM from 'react-dom';
-import Logo from '../Logo';
 import styled, { Theme } from '../../utils/styled';
 import useDebouncedValue from '../../hooks/useDebouncedValue';
-import { MONTHS } from '../../constants';
 import { useTheme } from '../../context/ThemeContext';
 
 const TwitterIcon = () => (
   <svg
-    xmlns="http://www.w3.org/2000/svg"
-    width="24"
+    width="25"
     height="24"
-    viewBox="0 0 24 24"
+    viewBox="0 0 25 24"
+    fill="none"
+    xmlns="http://www.w3.org/2000/svg"
+    stroke="#949699"
   >
-    <path d="M24 4.557c-.883.392-1.832.656-2.828.775 1.017-.609 1.798-1.574 2.165-2.724-.951.564-2.005.974-3.127 1.195-.897-.957-2.178-1.555-3.594-1.555-3.179 0-5.515 2.966-4.797 6.045-4.091-.205-7.719-2.165-10.148-5.144-1.29 2.213-.669 5.108 1.523 6.574-.806-.026-1.566-.247-2.229-.616-.054 2.281 1.581 4.415 3.949 4.89-.693.188-1.452.232-2.224.084.626 1.956 2.444 3.379 4.6 3.419-2.07 1.623-4.678 2.348-7.29 2.04 2.179 1.397 4.768 2.212 7.548 2.212 9.142 0 14.307-7.721 13.995-14.646.962-.695 1.797-1.562 2.457-2.549z" />
+    <path
+      d="M23.8618 2.9995C22.9042 3.67497 21.8439 4.19161 20.7218 4.5295C20.1196 3.83701 19.3192 3.34619 18.4289 3.12342C17.5386 2.90066 16.6013 2.95669 15.7439 3.28395C14.8865 3.61121 14.1503 4.1939 13.6348 4.95321C13.1193 5.71253 12.8495 6.61183 12.8618 7.5295V8.5295C11.1044 8.57506 9.36309 8.18531 7.79283 7.39494C6.22256 6.60458 4.87213 5.43813 3.86182 3.9995C3.86182 3.9995 -0.138184 12.9995 8.86182 16.9995C6.80234 18.3975 4.34897 19.0984 1.86182 18.9995C10.8618 23.9995 21.7818 18.8949 21.7818 7.39494C21.7809 7.1164 21.8341 6.94309 21.7818 6.6695C22.8024 5.66299 23.5226 4.39221 23.8618 2.9995Z"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    />
+  </svg>
+);
+
+const Portfolio = () => (
+  <svg
+    width="25"
+    height="24"
+    viewBox="0 0 25 24"
+    xmlns="http://www.w3.org/2000/svg"
+    stroke="#949699"
+    fill="none"
+  >
+    <path
+      d="M22.4355 18.9995C22.4355 19.5299 22.2248 20.0387 21.8498 20.4137C21.4747 20.7888 20.966 20.9995 20.4355 20.9995H4.43555C3.90511 20.9995 3.39641 20.7888 3.02133 20.4137C2.64626 20.0387 2.43555 19.5299 2.43555 18.9995V4.99951C2.43555 4.46908 2.64626 3.96037 3.02133 3.5853C3.39641 3.21023 3.90511 2.99951 4.43555 2.99951H9.43555L11.4355 5.99951H20.4355C20.966 5.99951 21.4747 6.21023 21.8498 6.5853C22.2248 6.96037 22.4355 7.46908 22.4355 7.99951V18.9995Z"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    />
+  </svg>
+);
+
+const Contact = () => (
+  <svg
+    width="25"
+    height="25"
+    viewBox="0 0 25 25"
+    xmlns="http://www.w3.org/2000/svg"
+    stroke="#949699"
+    fill="none"
+  >
+    <path
+      d="M22.4355 2.73096L11.4355 13.731"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    />
+    <path
+      d="M22.4355 2.73096L15.4355 22.731L11.4355 13.731L2.43555 9.73096L22.4355 2.73096Z"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    />
   </svg>
 );
 
@@ -35,25 +82,20 @@ type Result = {
 };
 
 interface Props {
-  location: { search?: string };
-  onClose: () => void;
+  onClose?: () => void;
   showOverride?: boolean;
   theme: Theme;
 }
 
+const toggleLockScroll = () =>
+  document.documentElement.classList.toggle('lock-scroll');
+
 const SearchBox: React.FC<Props> = (props) => {
-  const { location, onClose, showOverride } = props;
+  const { onClose, showOverride } = props;
 
   // Local state to track the input value
-  const [searchQuery, setSearchQuery] = React.useState(
-    // defaults to whatever search query param is present in the URL
-    // new URLSearchParams(location.search).get('search') || ''
-    ''
-  );
-  const debouncedSearchQuery = useDebouncedValue(searchQuery, 200);
-
-  const toggleLockScroll = () =>
-    document.documentElement.classList.toggle('lock-scroll');
+  const [searchQuery, setSearchQuery] = React.useState('');
+  const debouncedSearchQuery = useDebouncedValue(searchQuery, 50);
 
   const inputRef = React.useRef<HTMLInputElement>(null);
   const searchBoxRef = React.useRef<HTMLDivElement>(null);
@@ -62,10 +104,10 @@ const SearchBox: React.FC<Props> = (props) => {
 
   const close = React.useCallback(() => {
     toggleLockScroll();
-    // navigate('');
-    onClose();
+    onClose && onClose();
     return setShow(false);
-  }, [onClose]);
+    // eslint-disable-next-line
+  }, []);
 
   const clickAway = (e: React.BaseSyntheticEvent) => {
     if (
@@ -78,10 +120,16 @@ const SearchBox: React.FC<Props> = (props) => {
     return close();
   };
 
+  const onEnterKey = (event: KeyboardEvent) => {
+    if (event.keyCode === 13) {
+      toggleLockScroll();
+    }
+  };
+
   React.useEffect(() => {
-    Mousetrap.bind(['command+k', 'ctrl+k'], () => setShow(true));
+    Mousetrap.bind(['ctrl+k'], () => setShow((prevState) => !prevState));
     return () => {
-      Mousetrap.unbind(['command+k', 'ctrl+k']);
+      Mousetrap.unbind(['ctrl+k']);
     };
   }, []);
 
@@ -111,7 +159,8 @@ const SearchBox: React.FC<Props> = (props) => {
     return () => {
       document.removeEventListener('keydown', keyPressHandler);
     };
-  }, [close]);
+    // eslint-disable-next-line
+  }, []);
 
   React.useEffect(() => {
     if (
@@ -138,7 +187,7 @@ const SearchBox: React.FC<Props> = (props) => {
     if (debouncedSearchQuery === '') {
       setResults([]);
     }
-  }, [location.search, show, debouncedSearchQuery]);
+  }, [debouncedSearchQuery]);
 
   const { dark } = useTheme();
 
@@ -146,28 +195,19 @@ const SearchBox: React.FC<Props> = (props) => {
     return null;
   }
 
-  const animationDuration =
-    results.length >= 7 ? 1 : results.length > 0 ? results.length * 0.05 : 0.4;
-  const animationHeight =
-    (results.length >= 7
-      ? 600
-      : results.length > 0
-      ? results.length * 75
-      : 75) + 175;
-
   return ReactDOM.createPortal(
     <FocusTrap>
       <aside>
         <SearchBoxOverlay
           initial={{
-            backdropFilter: 'blur(0px)',
+            //backdropFilter: 'blur(0px)',
             backgroundColor: dark ? 'rgba(0,0,0,0)' : 'rgba(236, 236, 236, 0)',
           }}
           animate={{
-            backdropFilter: 'blur(6px)',
+            //backdropFilter: 'blur(6px)',
             backgroundColor: props.theme.overlayBackground,
           }}
-          transition={{ duration: 0.6, when: 'beforeChildren' }}
+          transition={{ duration: 0.8, when: 'beforeChildren' }}
           onClick={clickAway}
           data-testid="searchbox-overlay"
           aria-label="search"
@@ -177,83 +217,110 @@ const SearchBox: React.FC<Props> = (props) => {
           // All elements required to operate the dialog are descendants of the element that has role dialog.
           role="dialog"
         >
-          <SearchBoxWrapper data-testid="searchbox" ref={searchBoxRef}>
+          <SearchBoxWrapper
+            initial={{ scale: 0, x: '-50%' }}
+            animate={{ scale: 1, x: '-50%' }}
+            transition={{
+              ease: 'easeOut',
+            }}
+            data-testid="searchbox"
+            ref={searchBoxRef}
+          >
             <form onSubmit={(e) => e.preventDefault()}>
               <input
                 ref={inputRef}
                 autoComplete="off"
                 type="search"
-                placeholder="Type keywords to search..."
+                placeholder="Type keywords to search blog posts..."
                 data-testid="search-input"
                 id="search-input"
                 name="search"
                 onChange={(e) => {
                   setSearchQuery(e.target.value);
-                  // navigate(`?search=${encodeURIComponent(e.target.value)}`);
                 }}
                 value={searchQuery}
               />
             </form>
             <SearchResults
-              initial={{ height: 0 }}
-              animate={
-                debouncedSearchQuery
-                  ? {
-                      height: animationHeight,
-                    }
-                  : { height: 175 }
-              }
-              transition={{
-                duration: animationDuration,
-              }}
+              results={results.length}
+              searchQuery={debouncedSearchQuery}
             >
-              {debouncedSearchQuery === '' || results.length > 0 ? (
+              {debouncedSearchQuery !== '' && results.length > 0 ? (
                 results.map((result) => {
-                  const parsedDate = new Date(Date.parse(result.date));
-
                   return (
                     <Item data-testid="search-result" key={result.slug}>
                       <Link
                         style={{ textDecoration: `none` }}
                         onClick={() => toggleLockScroll()}
+                        // @ts-ignore
+                        onKeyPress={onEnterKey}
                         to={result.slug}
                       >
-                        <h4>{result.title}</h4>
-                        <p>{`${
-                          MONTHS[parsedDate.getMonth()]
-                        } ${parsedDate.getDate()} ${parsedDate.getFullYear()}`}</p>
+                        {result.title}
                       </Link>
                     </Item>
                   );
                 })
+              ) : debouncedSearchQuery === '' ? (
+                <>
+                  <Separator>Shortcuts</Separator>
+                  <Item data-testid="shortcut" key="search-shortcut">
+                    <div>
+                      <span>Search</span>
+                      <div>
+                        <ShortcutKey>ctrl</ShortcutKey>
+                        <ShortcutKey>k</ShortcutKey>
+                      </div>
+                    </div>
+                  </Item>
+                  <Item data-testid="shortcut" key="theme-shortcut">
+                    <div>
+                      <span>Switch Theme</span>
+                      <div>
+                        <ShortcutKey>ctrl</ShortcutKey>
+                        <ShortcutKey>t</ShortcutKey>
+                      </div>
+                    </div>
+                  </Item>
+                  <Separator>Links</Separator>
+                  <Item data-testid="link" key="twitter-social-link">
+                    <a
+                      href="https://twitter.com/MaximeHeckel"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      style={{ textDecoration: `none` }}
+                    >
+                      <TwitterIcon />
+                      <span style={{ marginLeft: '15px' }}>Twitter</span>
+                    </a>
+                  </Item>
+
+                  <Item data-testid="link" key="email-link">
+                    <a
+                      href="mailto:hello@maximeheckel.com"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      style={{ textDecoration: `none` }}
+                    >
+                      <Contact />
+                      <span style={{ marginLeft: '15px' }}>Contact</span>
+                    </a>
+                  </Item>
+                  <Item data-testid="link" key="maximeheckelcom-link">
+                    <a
+                      href="https://maximeheckel.com"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      style={{ textDecoration: `none` }}
+                    >
+                      <Portfolio />
+                      <span style={{ marginLeft: '15px' }}>Work</span>
+                    </a>
+                  </Item>
+                </>
               ) : (
                 <NoResultsWrapper>No results</NoResultsWrapper>
               )}
-              <Item data-testid="portfolio-link">
-                <a
-                  href="https://maximeheckel.com"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  style={{ textDecoration: `none` }}
-                >
-                  <div>
-                    <Logo alt="Maxime Heckel's logo" size={30} />
-                    <b>Go to portfolio</b>
-                  </div>
-                </a>
-              </Item>
-              <Item data-testid="twitter-link">
-                <a
-                  href="https://twitter.com/maximeheckel"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  style={{ textDecoration: `none` }}
-                >
-                  <div>
-                    <TwitterIcon /> <b>Follow me on Twitter</b>
-                  </div>
-                </a>
-              </Item>
             </SearchResults>
           </SearchBoxWrapper>
         </SearchBoxOverlay>
@@ -269,106 +336,122 @@ const NoResultsWrapper = styled('div')`
   display: flex;
   align-items: center;
   justify-content: center;
-  height: 50px;
-  color: ${(p) => p.theme.fontColor};
-  font-weight: 600;
+  height: 55px;
+  color: ${(p) => p.theme.bodyColor};
+  font-weight: 500;
 `;
 
-const Item = styled('li')<{}>`
-  @media (max-width: 700px) {
-    height: 90px;
+const ShortcutKey = styled('span')`
+  color: ${(p) => p.theme.colors.blue};
+  font-size: 12px;
+  border-radius: 10px;
+  padding: 8px 8px;
+  background: rgba(81, 132, 249, 0.15);
+  &:not(:last-child) {
+    margin-right: 16px;
   }
+`;
 
-  height: 75px;
+const Item = styled('li')`
+  height: 65px;
   margin-bottom: 0px;
-  padding-left: 24px;
-  padding-right: 24px;
-  color: ${(p) => p.theme.fontColor};
-  transition: ${(props) => props.theme.transitionTime / 1.7}s;
+  transition: ${(p) => p.theme.transitionTime / 1.7}s;
   list-style: none;
+  color: ${(p) => p.theme.bodyColor};
 
-  &:hover {
-    background-color: ${(p) => p.theme.overlayBackground};
-
-    h4 {
-      color: ${(p) => p.theme.colors.blue};
-    }
+  > *:not(svg) {
+    height: inherit;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 10px 25px;
+    font-size: 16px;
+    width: 100%;
   }
 
   a {
-    color: ${(props) => props.theme.fontColor};
-    height: inherit;
-    display: flex;
-    flex-direction: column;
-    align-items: start;
-    justify-content: center;
-  }
-
-  h4 {
-    margin-bottom: 0px;
-    font-weight: 500;
-  }
-
-  p {
-    font-size: 12px;
-    font-weight: 600;
-    margin-bottom: 0px;
-    color: ${(p) => p.theme.bodyColor};
+    color: unset;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
   }
 
   div {
-    display: flex;
-    align-items: center;
+    justify-content: space-between;
+  }
 
-    b {
-      margin-left: 20px;
+  &:hover {
+    a {
+      background-color: ${(p) => p.theme.overlayBackground};
+      color: ${(p) => p.theme.colors.blue};
     }
 
     svg {
-      fill: ${(p) => p.theme.colors.blue};
+      stroke: ${(p) => p.theme.colors.blue};
     }
   }
 `;
 
-const SearchResults = styled(motion.ul)<{}>`
+const Separator = styled('li')`
+  height: 30px;
+  width: 100%;
+  font-size: 14px;
+  background-color: ${(p) => p.theme.foregroundColor};
+  color: ${(p) => p.theme.bodyColor};
+  display: flex;
+  align-items: center;
+  padding-left: 25px;
+  padding-right: 25px;
+  margin-bottom: 0;
+`;
+
+const SearchResults = styled('ul')<{ results: number; searchQuery: string }>`
   @media (max-width: 700px) {
-    max-height: 300px;
+    max-height: 400px;
   }
 
   max-height: 500px;
   overflow: scroll;
   margin: 0px;
+  transition: height 0.6s ease;
+  will-change: height;
+
+  height: ${(p) =>
+    p.results > 0 ? p.results * 70 : p.searchQuery ? 70 : 400}px;
+  border-top: ${(p) =>
+    p.searchQuery ? `1px solid ${p.theme.borderColor}` : 'none'};
+}
+  
 `;
 
-const SearchBoxWrapper = styled('div')<{}>`
+const SearchBoxWrapper = styled(motion.div)<{}>`
   @media (max-width: 700px) {
     width: 100%;
     top: 0;
+    border-radius: 0px;
   }
 
   position: fixed;
   overflow: hidden;
   background: ${(p) => p.theme.backgroundColor};
   width: 600px;
-  top: 15%;
+  top: 20%;
   left: 50%;
-  transform: translate(-50%, 0%);
-  border-radius: 5px;
-  border: 1px solid ${(p) => p.theme.borderColor};
+  border-radius: 10px;
+  // border: 1px solid ${(p) => p.theme.borderColor};
   box-shadow: ${(p) => p.theme.boxShadow};
 
   form {
-    margin-bottom: 30px;
-    padding: 24px 24px 0px;
+    margin: 0px;
   }
 
   input {
     outline: none;
     background: transparent;
     border: none;
-    font-size: 25px;
     font-weight: 300;
     height: 55px;
+    padding: 0px 25px;
     width: 100%;
     color: ${(p) => p.theme.fontColor};
     ::placeholder,
@@ -393,5 +476,6 @@ const SearchBoxOverlay = styled(motion.div)<{}>`
   left: 0;
   width: 100%;
   height: 100%;
-  z-index: 50;
+  z-index: 999;
+  outline: none;
 `;

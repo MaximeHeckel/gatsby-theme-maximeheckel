@@ -1,4 +1,5 @@
 import { ThemeProvider as EmotionThemeProvider } from 'emotion-theming';
+import Mousetrap from 'mousetrap';
 import React, { Dispatch, ReactNode, SetStateAction } from 'react';
 import theme from '../theme';
 
@@ -64,6 +65,13 @@ const ThemeProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
       themeState === Theme.LIGHT ? Theme.DARK : Theme.LIGHT
     );
   };
+
+  React.useEffect(() => {
+    Mousetrap.bind(['ctrl+t'], () => toggleDark());
+    return () => {
+      Mousetrap.unbind(['ctrl+t']);
+    };
+  }, []);
 
   return (
     <EmotionThemeProvider theme={themeLoaded}>

@@ -13,7 +13,6 @@ import { LiveProvider, LiveEditor, LiveError, LivePreview } from 'react-live';
 import * as Recharts from 'recharts';
 import styled from '../../../utils/styled';
 import Button, { CopyToClipboardButton } from '../../Button';
-import Flex from '../../Flex';
 import { useTheme } from '../../../context/ThemeContext';
 import theme from '../../../theme';
 
@@ -216,10 +215,7 @@ export const CodeBlock: React.FC<ICodeBlockProps> = (props) => {
           <CodeSnippetTitle data-testid="codesnippet-title">
             {title}
           </CodeSnippetTitle>
-          <Flex>
-            {/* <CodeLanguage>{language}</CodeLanguage> */}
-            <CopyToClipboardButton text={codeString} />
-          </Flex>
+          <CopyToClipboardButton text={codeString} />
         </CodeSnippetHeader>
       ) : null}
       <Highlight
@@ -229,41 +225,43 @@ export const CodeBlock: React.FC<ICodeBlockProps> = (props) => {
         language={language}
       >
         {({ className, style, tokens, getLineProps, getTokenProps }) => (
-          <Pre title={title} className={className} style={style}>
-            {tokens.map((line, index) => {
-              const { className: lineClassName } = getLineProps({
-                className: shouldHighlightLine(index) ? 'highlight-line' : '',
-                key: index,
-                line,
-              });
+          <>
+            <Pre title={title} className={className} style={style}>
+              {tokens.map((line, index) => {
+                const { className: lineClassName } = getLineProps({
+                  className: shouldHighlightLine(index) ? 'highlight-line' : '',
+                  key: index,
+                  line,
+                });
 
-              return (
-                <Line
-                  data-testid={
-                    shouldHighlightLine(index) ? 'highlight-line' : 'line'
-                  }
-                  key={index}
-                  className={lineClassName}
-                >
-                  <LineNo data-testid="number-line">{index + 1}</LineNo>
-                  <LineContent>
-                    {line.map((token, key) => {
-                      return (
-                        <span
-                          data-testid="content-line"
-                          key={key}
-                          {...getTokenProps({
-                            key,
-                            token,
-                          })}
-                        />
-                      );
-                    })}
-                  </LineContent>
-                </Line>
-              );
-            })}
-          </Pre>
+                return (
+                  <Line
+                    data-testid={
+                      shouldHighlightLine(index) ? 'highlight-line' : 'line'
+                    }
+                    key={index}
+                    className={lineClassName}
+                  >
+                    <LineNo data-testid="number-line">{index + 1}</LineNo>
+                    <LineContent>
+                      {line.map((token, key) => {
+                        return (
+                          <span
+                            data-testid="content-line"
+                            key={key}
+                            {...getTokenProps({
+                              key,
+                              token,
+                            })}
+                          />
+                        );
+                      })}
+                    </LineContent>
+                  </Line>
+                );
+              })}
+            </Pre>
+          </>
         )}
       </Highlight>
     </CodeSnippetWrapper>
@@ -346,15 +344,10 @@ const CodeSnippetTitle = styled('p')`
   font-weight: 500;
 `;
 
-// const CodeLanguage = styled('div')`
-//   color: ${(p) => p.theme.backgroundColor};
-//   text-transform: uppercase;
-//   font-size: 14px;
-// `;
-
 const CodeSnippetHeader = styled('div')`
   @media (max-width: 500px) {
     border-radius: 0px;
+    padding: 0px 8px;
   }
 
   display: flex;
@@ -382,6 +375,7 @@ const CodeSnippetWrapper = styled('div')`
   width: 100%;
   border-radius: 4px;
   margin: 40px 0px;
+  position: relative;
 `;
 
 interface CodeSnippetWrapperProps {
