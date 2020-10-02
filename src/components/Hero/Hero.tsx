@@ -58,16 +58,16 @@ const HeroWrapper = styled.div`
   padding-top: 248px;
 `;
 
-class Hero extends React.Component<{ id?: string }> {
+class Hero extends React.Component<{ id?: string; style?: object }> {
   public static Img = HeroImg;
   public static Info = HeroInfo;
   public static Subtitle = HeroSubtitle;
   public static Title = HeroTitle;
 
   render() {
-    const { id, children } = this.props;
+    const { id, children, style } = this.props;
     return (
-      <HeroWrapper data-testid="hero" id={id}>
+      <HeroWrapper data-testid="hero" id={id} style={style}>
         {children}
       </HeroWrapper>
     );

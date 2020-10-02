@@ -56,7 +56,7 @@ const PortfolioProject: React.FC<ProjectPortfolioProps> = (props) => {
               banner={SeoBanner}
               pathname={slug + '/'}
             />
-            <Hero id="top">
+            <Hero id="top" style={{ maxWidth: '1020px' }}>
               <Hero.Title data-testid={`project-title-${title}`}>
                 {title}
               </Hero.Title>
