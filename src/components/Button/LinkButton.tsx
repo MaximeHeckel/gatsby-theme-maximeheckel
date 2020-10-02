@@ -13,6 +13,7 @@ const LinkButton = styled(motion.button)`
   display: flex;
   align-items: center;
   justify-content: center;
+  padding: 0px;
 
   > * {
     margin-left: auto;
