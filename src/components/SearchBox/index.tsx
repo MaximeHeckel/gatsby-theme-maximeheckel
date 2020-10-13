@@ -146,11 +146,13 @@ const SearchBox: React.FC<Props> = (props) => {
 
   React.useEffect(() => {
     const keyPressHandler = (e: KeyboardEvent): void => {
-      switch (e.keyCode) {
-        case 27:
-          return close();
-        default:
-          return;
+      if (show) {
+        switch (e.keyCode) {
+          case 27:
+            return close();
+          default:
+            return;
+        }
       }
     };
 
@@ -160,7 +162,7 @@ const SearchBox: React.FC<Props> = (props) => {
       document.removeEventListener('keydown', keyPressHandler);
     };
     // eslint-disable-next-line
-  }, []);
+  }, [show]);
 
   React.useEffect(() => {
     if (
