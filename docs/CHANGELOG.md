@@ -1,5 +1,12 @@
 # Gatsby-theme-maximeheckel
 
+## [0.13.5](https://github.com/MaximeHeckel/gatsby-theme-maximeheckel/compare/v0.13.4...v0.13.5) (2020-10-13)
+
+
+### Bug Fixes
+
+* **shortcut:** Fix esc key toggling lock scroll ([00ea294](https://github.com/MaximeHeckel/gatsby-theme-maximeheckel/commit/00ea294a3337abd78c85f43dda5599cd085a95e3))
+
 ## [0.13.4](https://github.com/MaximeHeckel/gatsby-theme-maximeheckel/compare/v0.13.3...v0.13.4) (2020-10-02)
 
 
