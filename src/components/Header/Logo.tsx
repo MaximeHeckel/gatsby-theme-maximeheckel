@@ -14,8 +14,6 @@ export const Logo: React.FC<HeaderLogoProps> = (props) => {
         ['data-testid']: 'header-logo',
         ['aria-label']: props['aria-label'],
         alt: props.alt,
-        // size: sticky && collapsed ? 50 : 60,
-        size: 50,
       })
     : null;
 

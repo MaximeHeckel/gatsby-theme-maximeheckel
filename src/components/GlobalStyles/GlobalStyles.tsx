@@ -6,8 +6,8 @@ const GlobalStyles: React.FC<{}> = withTheme((props) => (
   <Global
     styles={css`
       ::selection {
-        background: ${props.theme.fontColor};
-        color: ${props.theme.backgroundColor};
+        background-color: rgba(81, 132, 249, 0.15);
+        color: ${props.theme.colors.blue};
       }
 
       body {

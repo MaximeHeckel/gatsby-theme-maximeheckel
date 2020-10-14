@@ -86,7 +86,7 @@ const DefaultHeader: React.FC<MainHeaderProps> = (props) => {
             alt="Maxime Heckel's Blog logo"
             aria-label="Maxime Heckel's Blog"
           >
-            <MHLogo inverted />
+            <MHLogo />
           </Header.Logo>
           <Header.Title>{props.title}</Header.Title>
         </Flex>
