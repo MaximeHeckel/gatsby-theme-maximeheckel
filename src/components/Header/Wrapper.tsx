@@ -24,9 +24,9 @@ export const Wrapper: React.FC<HeaderWrapperProps> = (props) => {
 
   const variants = {
     open: {
-      height: shouldReduceMotion ? 60 : 120,
+      height: shouldReduceMotion ? 70 : 120,
     },
-    collapsed: { height: 60 },
+    collapsed: { height: 70 },
   };
 
   return (

@@ -44,7 +44,7 @@ const Footer: React.FC<{}> = () => (
           © {new Date().getFullYear()} Maxime Heckel —— Made in SF. Polished in
           NY.
         </div>
-        <Logo alt="Maxime Heckel's logo" inverted={true} size={50} />
+        <Logo alt="Maxime Heckel's logo" size={40} />
       </FooterContent>
     </FooterWrapper>
   </FooterBlock>
