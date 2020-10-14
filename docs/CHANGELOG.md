@@ -1,5 +1,12 @@
 # Gatsby-theme-maximeheckel
 
+# [0.14.0](https://github.com/MaximeHeckel/gatsby-theme-maximeheckel/compare/v0.13.5...v0.14.0) (2020-10-14)
+
+
+### Features
+
+* **logo:** Add new logo ([64d5909](https://github.com/MaximeHeckel/gatsby-theme-maximeheckel/commit/64d5909f57fed1d48c64ff4334b1525dd1fda936))
+
 ## [0.13.5](https://github.com/MaximeHeckel/gatsby-theme-maximeheckel/compare/v0.13.4...v0.13.5) (2020-10-13)
 
 
