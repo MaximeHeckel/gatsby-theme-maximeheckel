@@ -23,7 +23,6 @@ interface SnippetProps {
       };
     };
   };
-
   site: any;
 }
 
