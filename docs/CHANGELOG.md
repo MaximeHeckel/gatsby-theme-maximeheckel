@@ -1,5 +1,12 @@
 # Gatsby-theme-maximeheckel
 
+## [0.14.1](https://github.com/MaximeHeckel/gatsby-theme-maximeheckel/compare/v0.14.0...v0.14.1) (2020-10-22)
+
+
+### Bug Fixes
+
+* trigger release ([8acf63c](https://github.com/MaximeHeckel/gatsby-theme-maximeheckel/commit/8acf63c55f9a4da5150afd31e639d1cbe635b077))
+
 # [0.14.0](https://github.com/MaximeHeckel/gatsby-theme-maximeheckel/compare/v0.13.5...v0.14.0) (2020-10-14)
 
 
