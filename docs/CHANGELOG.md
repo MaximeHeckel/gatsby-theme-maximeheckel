@@ -1,5 +1,12 @@
 # Gatsby-theme-maximeheckel
 
+## [0.14.2](https://github.com/MaximeHeckel/gatsby-theme-maximeheckel/compare/v0.14.1...v0.14.2) (2020-10-22)
+
+
+### Bug Fixes
+
+* **header:** fix icons overflowing to the left because of title size ([ae62294](https://github.com/MaximeHeckel/gatsby-theme-maximeheckel/commit/ae62294efe8eda8b2fef0bc25895fe8b5ff8ef9b))
+
 ## [0.14.1](https://github.com/MaximeHeckel/gatsby-theme-maximeheckel/compare/v0.14.0...v0.14.1) (2020-10-22)
 
 
