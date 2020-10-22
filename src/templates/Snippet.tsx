@@ -34,7 +34,11 @@ const Snippet: React.FC<SnippetProps> = (props) => {
   const ref = React.createRef<HTMLDivElement>();
 
   return (
-    <Layout footer={false} header={true} headerProps={{ search: true }}>
+    <Layout
+      footer={false}
+      header={true}
+      headerProps={{ search: true, rss: true }}
+    >
       {(layoutProps: LayoutChildrenProps) => {
         const { site } = layoutProps;
         const parsedDate = new Date(created);
