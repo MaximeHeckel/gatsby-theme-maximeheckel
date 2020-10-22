@@ -46,6 +46,7 @@ const BlogPost: React.FC<BlogPostProps> = (props) => {
     sticky: true,
     collapsableOnScroll: true,
     search: true,
+    rss: true,
   };
 
   return (
