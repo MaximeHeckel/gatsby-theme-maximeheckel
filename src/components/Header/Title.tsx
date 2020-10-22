@@ -5,25 +5,6 @@ import styled from '../../utils/styled';
 import { HeaderContext } from './Context';
 
 export const TitleWrapper = styled.div`
-  @media (max-width: 1000px) {
-    a {
-      max-width: 500px;
-    }
-  }
-
-  @media (max-width: 800px) {
-    a {
-      max-width: 300px;
-      margin-left: 20px;
-    }
-  }
-
-  @media (max-width: 700px) {
-    h3 {
-      display: none;
-    }
-  }
-
   overflow: hidden;
   margin-left: 33px;
 
@@ -39,6 +20,24 @@ export const TitleWrapper = styled.div`
     max-width: 600px;
     white-space: nowrap;
     text-overflow: ellipsis;
+  }
+
+  @media (max-width: 1000px) {
+    a {
+      max-width: 450px;
+    }
+  }
+
+  @media (max-width: 900px) {
+    a {
+      max-width: 300px;
+    }
+  }
+
+  @media (max-width: 700px) {
+    h3 {
+      display: none;
+    }
   }
 `;
 
