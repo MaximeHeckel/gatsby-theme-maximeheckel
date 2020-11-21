@@ -11,7 +11,7 @@ export interface HeaderWrapperProps extends StyledHeaderWrapperProps {
 
 export const Wrapper: React.FC<HeaderWrapperProps> = (props) => {
   const collapsed = useScrollCounter(props.collapseOffset || 150);
-  const shouldReduceMotion = useReducedMotion();
+  //  const shouldReduceMotion = useReducedMotion();
   const shouldCollapse = props.collapsableOnScroll ? collapsed : false;
 
   const memoizedContextValue = React.useMemo(
@@ -24,7 +24,7 @@ export const Wrapper: React.FC<HeaderWrapperProps> = (props) => {
 
   const variants = {
     open: {
-      height: shouldReduceMotion ? 70 : 120,
+      height: 120, // shouldReduceMotion ? 70 : 120,
     },
     collapsed: { height: 70 },
   };
@@ -37,7 +37,7 @@ export const Wrapper: React.FC<HeaderWrapperProps> = (props) => {
         initial={'open'}
         animate={shouldCollapse ? 'collapsed' : 'open'}
         variants={variants}
-        transition={{ type: 'spring', stiffness: 80, damping: 50 }}
+        transition={{ ease: 'easeInOut', duration: 0.5 }}
       >
         <HeaderContent>{props.children}</HeaderContent>
       </HeaderWrapper>

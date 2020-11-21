@@ -64,7 +64,7 @@ export const Title: React.FC<HeaderTitleProps> = (props) => {
               initial="hide"
               variants={variants}
               animate={collapsed ? 'show' : 'hide'}
-              transition={{ type: 'spring', stiffness: 35, damping: 50 }}
+              transition={{ ease: 'easeInOut', duration: 0.5 }}
             >
               <h3>
                 <AnchorLink offset="150" href="#top">
