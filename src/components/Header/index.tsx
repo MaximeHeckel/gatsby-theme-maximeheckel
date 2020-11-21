@@ -159,7 +159,7 @@ const DefaultHeader: React.FC<MainHeaderProps> = (props) => {
             />
           ) : null}
           {props.themeSwitcher && Object.keys(theme).length > 0 ? (
-            <LightDarkSwitcher theme={theme} />
+            <LightDarkSwitcher />
           ) : null}
         </Flex>
       </Header>
