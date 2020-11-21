@@ -146,7 +146,7 @@ const DefaultHeader: React.FC<MainHeaderProps> = (props) => {
               aria-label="RSS Feed"
               title="RSS Feed"
             >
-              <LinkButton>
+              <LinkButton aria-label="RSS Feed" title="RSS Feed">
                 <RSSIcon />
               </LinkButton>
             </Link>
