@@ -1,5 +1,12 @@
 # Gatsby-theme-maximeheckel
 
+## [0.14.4](https://github.com/MaximeHeckel/gatsby-theme-maximeheckel/compare/v0.14.3...v0.14.4) (2020-11-22)
+
+
+### Bug Fixes
+
+* **webmention:** Improve animation and dedup webmentions replies ([c59de3b](https://github.com/MaximeHeckel/gatsby-theme-maximeheckel/commit/c59de3b7aa7dc319b82597a84ca5800212c38dd8))
+
 ## [0.14.3](https://github.com/MaximeHeckel/gatsby-theme-maximeheckel/compare/v0.14.2...v0.14.3) (2020-11-21)
 
 
