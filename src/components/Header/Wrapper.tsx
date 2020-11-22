@@ -1,5 +1,5 @@
 import React from 'react';
-import { motion, useReducedMotion } from 'framer-motion';
+import { motion } from 'framer-motion';
 import useScrollCounter from '../../hooks/useScrollCounter';
 import styled from '../../utils/styled';
 import { HeaderContext } from './Context';
