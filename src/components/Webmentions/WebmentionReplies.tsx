@@ -1,7 +1,29 @@
+import { motion } from 'framer-motion';
 import { OutboundLink } from 'gatsby-plugin-google-analytics';
 import React from 'react';
+import { useInView } from 'react-intersection-observer';
 import ReactTooltip from 'react-tooltip';
 import styled from '../../utils/styled';
+
+const RepliesList = styled(motion.ul)`
+  display: flex;
+  flex-wrap: wrap;
+  margin-left: 0px;
+  margin-bottom: 8px;
+  margin-top: 15px;
+  li {
+    margin-right: -10px;
+  }
+`;
+
+const Head = styled(motion.li)`
+  list-style: none;
+
+  img {
+    border-radius: 50%;
+    border: 3px solid ${(p) => p.theme.colors.blue};
+  }
+`;
 
 type Reply = {
   source: URL;
@@ -18,28 +40,65 @@ type Reply = {
   data: {
     author: {
       name: string;
-      url: URL;
+      url: string;
       photo: string;
     };
-    url: URL;
+    url: string;
   };
 };
+
 interface RepliesProps {
   replies: Reply[];
 }
 
+const list = {
+  visible: {
+    opacity: 1,
+    transition: {
+      when: 'beforeChildren',
+      staggerChildren: 0.1,
+    },
+  },
+  hidden: {
+    opacity: 0,
+    transition: {
+      when: 'afterChildren',
+    },
+  },
+};
+
+const item = {
+  visible: { opacity: 1, x: 0 },
+  hidden: { opacity: 0, x: -10 },
+  hover: { marginRight: '2px', transition: { ease: 'easeOut' } },
+};
+
 const Replies = ({ replies }: RepliesProps) => {
+  const sanitizedReplies = replies
+    .filter((reply) => reply.data.url.includes('https://twitter.com'))
+    .reduce((acc: Record<string, Reply>, item: Reply) => {
+      if (item.data?.author?.url && !acc[item.data.author.url]) {
+        acc[item.data.author.url] = item;
+        return acc;
+      }
+
+      return acc;
+    }, {});
+
   return (
     <>
-      {replies && replies.length ? (
-        <RepliesList>
-          {replies
+      {Object.values(sanitizedReplies) &&
+      Object.values(sanitizedReplies).length ? (
+        <RepliesList initial="hidden" animate="visible" variants={list}>
+          {Object.values(sanitizedReplies)
             .filter((link) => link.data.author)
             .map((link) => (
               <Head
                 key={link.id}
                 data-testid={link.id}
                 data-tip={link.activity.sentence}
+                variants={item}
+                whileHover="hover"
               >
                 <OutboundLink
                   href={link.data.author.url}
@@ -61,40 +120,13 @@ const Replies = ({ replies }: RepliesProps) => {
   );
 };
 
-const RepliesList = styled('ul')`
-  display: flex;
-  flex-wrap: wrap;
-  margin-left: 0px;
-  margin-bottom: 8px;
-  margin-top: 15px;
-  transition: ${(p) => p.theme.transitionTime}s;
-  li {
-    transition: ${(p) => p.theme.transitionTime}s;
-    margin-right: -10px;
-  }
-
-  &:hover {
-    li {
-      margin-right: 2px;
-    }
-  }
-`;
-
-const Head = styled('li')`
-  list-style: none;
-
-  img {
-    border-radius: 50%;
-    border: 2px solid ${(p) => p.theme.colors.blue};
-  }
-`;
-
 interface Props {
   title: string;
   url: string;
 }
 
 const WebmentionReplies = ({ title, url }: Props) => {
+  const [ref, inView] = useInView();
   const [page, setPage] = React.useState(0);
   const [fetchState, setFetchState] = React.useState('fetching');
 
@@ -144,12 +176,15 @@ const WebmentionReplies = ({ title, url }: Props) => {
     ...new Set(
       replies
         .filter((reply) => reply.data.author)
-        .map((reply) => reply.data.author.name)
+        .map((reply) => reply.data.author.url)
     ),
   ];
 
+  const heightRow = 77;
+  const numberOfRow = Math.ceil(replies.length / 17);
+
   return (
-    <div>
+    <div ref={ref}>
       <strong>
         <p data-testid="main-text">
           {replies.length > 0
@@ -162,7 +197,11 @@ const WebmentionReplies = ({ title, url }: Props) => {
           <br />
         </p>
       </strong>
-      <Replies replies={replies} />
+      {inView ? (
+        <Replies replies={replies} />
+      ) : (
+        <div style={{ height: heightRow * numberOfRow, width: '100%' }} />
+      )}
       <p data-testid="share-text">
         <OutboundLink
           href={`https://twitter.com/intent/tweet?text=${encodeURI(text)}`}
