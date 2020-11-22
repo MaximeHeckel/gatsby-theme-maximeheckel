@@ -1,5 +1,12 @@
 # Gatsby-theme-maximeheckel
 
+## [0.14.3](https://github.com/MaximeHeckel/gatsby-theme-maximeheckel/compare/v0.14.2...v0.14.3) (2020-11-21)
+
+
+### Bug Fixes
+
+* **a11y:** Fix missing aria label in RSS Feed button ([d8776bb](https://github.com/MaximeHeckel/gatsby-theme-maximeheckel/commit/d8776bb1acec43d0100658499423e7b40b987512))
+
 ## [0.14.2](https://github.com/MaximeHeckel/gatsby-theme-maximeheckel/compare/v0.14.1...v0.14.2) (2020-10-22)
 
 
