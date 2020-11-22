@@ -1,4 +1,5 @@
 import { cleanup, render, waitFor } from '@testing-library/react';
+import { mockAllIsIntersecting } from 'react-intersection-observer/test-utils';
 import { ThemeProvider } from 'emotion-theming';
 import React from 'react';
 import { WebmentionReplies } from '../WebmentionReplies';
@@ -54,20 +55,20 @@ afterEach(() => {
 
 describe('Webmention', () => {
   it('renders the webmention replies', async () => {
-    const { container, getByTestId, debug } = render(
+    const { container, getByTestId } = render(
       <ThemeProvider theme={theme.light}>
         <WebmentionReplies url="foo.com" title="Foo Bar" />
       </ThemeProvider>
     );
 
+    mockAllIsIntersecting(true);
+
     await waitFor(() => {
-      // console.log(debug());
       expect(getByTestId('main-text')).toBeDefined();
       expect(getByTestId('share-text')).toBeDefined();
       expect(getByTestId('main-text')).toHaveTextContent(
         'Already one awesome person liked, shared or talked about this article:'
       );
-      expect(getByTestId('785123')).toBeDefined();
       expect(
         container.querySelector(
           "[data-tip='eli 🤠 retweeted a tweet https://blog.maximeheckel.com/posts/duplicate-dependencies-npm-link/']"

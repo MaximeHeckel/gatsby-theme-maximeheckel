@@ -36,10 +36,11 @@ describe('Header', () => {
     const { queryByTestId, getByTestId } = render(
       <ThemeProvider theme={theme.light}>
         <ThemeContext.Provider value={{ dark: false, toggleDark: () => null }}>
-          <DefaultHeader themeSwitcher />
+          <DefaultHeader themeSwitcher={true} />
         </ThemeContext.Provider>
       </ThemeProvider>
     );
+
     expect(queryByTestId('header-title')).toBeNull();
     expect(getByTestId('darkmode-switch')).toBeDefined();
   });
