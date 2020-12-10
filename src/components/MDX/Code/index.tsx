@@ -1,7 +1,12 @@
 import { css } from '@emotion/core';
 import EmotionStyled from '@emotion/styled';
 import { withTheme } from 'emotion-theming';
-import { motion, useAnimation } from 'framer-motion';
+import {
+  motion,
+  useAnimation,
+  useMotionValue,
+  useTransform,
+} from 'framer-motion';
 import Highlight, {
   Prism,
   defaultProps,
@@ -120,6 +125,8 @@ export const LiveCodeBlock: React.FC<ICodeBlockProps> = withTheme((props) => {
   const scope = {
     motion,
     useAnimation,
+    useMotionValue,
+    useTransform,
     styled: EmotionStyled,
     Button,
     React,
@@ -152,14 +159,14 @@ export const LiveCodeBlock: React.FC<ICodeBlockProps> = withTheme((props) => {
         <StyledLiveCodeWrapper fullWidth>
           <StyledPreviewWrapper>
             <LivePreview />
+            <StyledErrorWrapper>
+              <LiveError />
+            </StyledErrorWrapper>
           </StyledPreviewWrapper>
           <StyledEditorWrapper>
             <LiveEditor />
           </StyledEditorWrapper>
         </StyledLiveCodeWrapper>
-        <StyledErrorWrapper>
-          <LiveError />
-        </StyledErrorWrapper>
       </LiveProvider>
     );
   }
@@ -204,7 +211,7 @@ export const CodeBlock: React.FC<ICodeBlockProps> = (props) => {
   const shouldHighlightLine = calculateLinesToHighlight(metastring);
   const title = hasTitle(metastring);
   return (
-    <CodeSnippetWrapper>
+    <CodeSnippetWrapper className="snippet">
       {title ? (
         <CodeSnippetHeader
           css={{
@@ -434,8 +441,7 @@ const StyledPreviewWrapper = styled('div')`
 `;
 
 const StyledErrorWrapper = styled('div')`
-  color: white;
-  width: 100%;
+  color: ${(p) => p.theme.bodyColor};
 
   pre {
     padding: 15px;
