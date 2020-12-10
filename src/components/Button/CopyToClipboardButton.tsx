@@ -16,7 +16,7 @@ export const CopyToClipboardButton = (props: { text: string }) => {
       opacity: isChecked ? 0 : 1,
     }),
     checked: { opacity: 0 },
-    unchecked: { stroke: '#949699', strokeWidth: 2, opacity: 1 },
+    unchecked: { stroke: '#949699', opacity: 1 },
   };
 
   const tickVariants = {
