@@ -1,5 +1,7 @@
 # Gatsby-theme-maximeheckel
 
+## [0.14.5](https://github.com/MaximeHeckel/gatsby-theme-maximeheckel/compare/v0.14.4...v0.14.5) (2020-12-10)
+
 ## [0.14.4](https://github.com/MaximeHeckel/gatsby-theme-maximeheckel/compare/v0.14.3...v0.14.4) (2020-11-22)
 
 
