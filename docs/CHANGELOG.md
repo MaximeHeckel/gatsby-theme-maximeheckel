@@ -1,5 +1,12 @@
 # Gatsby-theme-maximeheckel
 
+## [0.14.7](https://github.com/MaximeHeckel/gatsby-theme-maximeheckel/compare/v0.14.6...v0.14.7) (2020-12-15)
+
+
+### Bug Fixes
+
+* **component:** Fix overflow style in searchbox ([3b40f3c](https://github.com/MaximeHeckel/gatsby-theme-maximeheckel/commit/3b40f3cc1c922e0a6a6e47e1c6d36857842afbb2))
+
 ## [0.14.6](https://github.com/MaximeHeckel/gatsby-theme-maximeheckel/compare/v0.14.5...v0.14.6) (2020-12-15)
 
 
