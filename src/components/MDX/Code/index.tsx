@@ -143,7 +143,7 @@ export const LiveCodeBlock: React.FC<ICodeBlockProps> = withTheme((props) => {
       fontSize: '14px',
       overflowWrap: 'normal',
       position: 'relative',
-      overflow: 'scroll',
+      overflow: 'auto',
       borderRadius: '4px',
     },
   } as PrismTheme;
@@ -292,7 +292,7 @@ export const Code: React.FC<PrePropsType> = (preProps) => {
 const Pre = styled.pre`
   text-align: left;
   padding: 8px 0px;
-  overflow: scroll;
+  overflow: auto;
   border-bottom-left-radius: 4px;
   border-bottom-right-radius: 4px;
 
