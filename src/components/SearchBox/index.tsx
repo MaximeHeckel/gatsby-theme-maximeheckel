@@ -413,7 +413,7 @@ const SearchResults = styled('ul')<{ results: number; searchQuery: string }>`
   }
 
   max-height: 500px;
-  overflow: scroll;
+  overflow: auto;
   margin: 0px;
   transition: height 0.6s ease;
   will-change: height;
