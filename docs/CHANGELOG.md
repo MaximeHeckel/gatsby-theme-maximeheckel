@@ -1,5 +1,12 @@
 # Gatsby-theme-maximeheckel
 
+## [0.14.6](https://github.com/MaximeHeckel/gatsby-theme-maximeheckel/compare/v0.14.5...v0.14.6) (2020-12-15)
+
+
+### Bug Fixes
+
+* **component:** Fix scrollbar artifacts showing up in code snippet component when macOS scrollbar is always enabled ([201223b](https://github.com/MaximeHeckel/gatsby-theme-maximeheckel/commit/201223ba78721ec391a8d2144fdbb51d4f830ef9))
+
 ## [0.14.5](https://github.com/MaximeHeckel/gatsby-theme-maximeheckel/compare/v0.14.4...v0.14.5) (2020-12-10)
 
 ## [0.14.4](https://github.com/MaximeHeckel/gatsby-theme-maximeheckel/compare/v0.14.3...v0.14.4) (2020-11-22)
