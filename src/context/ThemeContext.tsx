@@ -1,4 +1,4 @@
-import { ThemeProvider as EmotionThemeProvider } from 'emotion-theming';
+// import { ThemeProvider as EmotionThemeProvider } from 'emotion-theming';
 import Mousetrap from 'mousetrap';
 import React, { Dispatch, ReactNode, SetStateAction } from 'react';
 import theme from '../theme';
@@ -59,7 +59,7 @@ const useDarkMode = (): [Theme, Dispatch<SetStateAction<Theme>>] => {
 
 const ThemeProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
   const [themeState, setThemeStateEnhanced] = useDarkMode();
-  const themeLoaded = themeState === Theme.DARK ? theme.dark : theme.light;
+  // const themeLoaded = themeState === Theme.DARK ? theme.dark : theme.light;
   const toggleDark = () => {
     setThemeStateEnhanced(
       themeState === Theme.LIGHT ? Theme.DARK : Theme.LIGHT
@@ -74,16 +74,16 @@ const ThemeProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
   }, []);
 
   return (
-    <EmotionThemeProvider theme={themeLoaded}>
-      <ThemeContext.Provider
-        value={{
-          dark: themeState === Theme.DARK,
-          toggleDark,
-        }}
-      >
-        {children}
-      </ThemeContext.Provider>
-    </EmotionThemeProvider>
+    // <EmotionThemeProvider theme={themeLoaded}>
+    <ThemeContext.Provider
+      value={{
+        dark: themeState === Theme.DARK,
+        toggleDark,
+      }}
+    >
+      {children}
+    </ThemeContext.Provider>
+    // </EmotionThemeProvider>
   );
 };
 

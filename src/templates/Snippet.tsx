@@ -82,7 +82,7 @@ const FixPadding = styled('div')`
   padding-top: 35px;
 
   p {
-    color: ${(p) => p.theme.colors.gray};
+    color: var(--maximeheckel-colors-typeface-2);
     font-size: 14px;
     font-weight: 500;
   }

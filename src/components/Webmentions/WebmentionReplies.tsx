@@ -21,7 +21,7 @@ const Head = styled(motion.li)`
 
   img {
     border-radius: 50%;
-    border: 3px solid ${(p) => p.theme.colors.blue};
+    border: 3px solid var(--maximeheckel-colors-brand);
   }
 `;
 

@@ -6,7 +6,7 @@ import { useReducedMotion, motion, useViewportScroll } from 'framer-motion';
 
 const ProgressBar = styled(motion.div)`
   width: 1px;
-  background-color: ${(props) => props.theme.fontColor};
+  background-color: var(--maximeheckel-colors-typeface-1);
   height: 100%;
 `;
 
@@ -50,7 +50,6 @@ const Wrapper = styled('div')<WrapperProps>`
     flex-direction: column;
 
     li {
-     
       list-style: none;
       font-size: 14px;
       font-weight: 500;
@@ -59,7 +58,7 @@ const Wrapper = styled('div')<WrapperProps>`
       a {
         ${(p) =>
           !p.showTableOfContents ? `cursor: none;  pointer-events: none;` : ''}
-        color: ${(props) => props.theme.fontColor};
+        color: var(--maximeheckel-colors-typeface-1);
         text-decoration: none;
       }
     }

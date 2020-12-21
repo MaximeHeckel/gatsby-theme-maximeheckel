@@ -26,19 +26,19 @@ const StyledButton = styled(motion.button)<ButtonProps>`
   font-weight: 600;
   outline: none;
   padding: 0 30px;
-  border-radius: 4px;
+  border-radius: var(--border-radius-2);
 
   ${(p) =>
     p.primary
       ? `
-      background-color: ${p.theme.colors.blue};
-      color: ${p.theme.colors.white};
+      background-color: var(--maximeheckel-colors-brand);
+      color: var(--palette-white-10);
       min-width: 150px;
 
   ${
     p.danger
       ? `
-        background-color: ${p.theme.colors.red};
+        background-color: var(--maximeheckel-colors-danger);
             `
       : ''
   }
@@ -48,8 +48,8 @@ const StyledButton = styled(motion.button)<ButtonProps>`
       ? `
           display: flex;
           align-item: center;
-          color: ${p.theme.backgroundColor};
-          background-color: ${p.theme.fontColor};
+          color: var(--maximeheckel-colors-body);
+          background-color: var(--maximeheckel-colors-typeface-0);
         `
       : ''
   }
@@ -59,7 +59,7 @@ const StyledButton = styled(motion.button)<ButtonProps>`
       ? `
       cursor: not-allowed;
       opacity: 0.5;
-      background-color: ${p.theme.bodyColor};
+      background-color: var(--maximeheckel-colors-typeface-1);
       color: #000000;
       &:hover {
         transform: none;
@@ -75,15 +75,15 @@ const StyledButton = styled(motion.button)<ButtonProps>`
     p.secondary
       ? `
       background-color: transparent;
-      color: ${p.theme.colors.blue};
-      border: 2px solid ${p.theme.colors.blue};
+      color: var(--maximeheckel-colors-brand);
+      border: 2px solid var(--maximeheckel-colors-brand);
       min-width: 150px;
 
   ${
     p.danger
       ? `
-          color: ${p.theme.colors.red};
-          border-color: ${p.theme.colors.red};
+          color: var(--maximeheckel-colors-danger);
+          border-color: var(--maximeheckel-colors-danger);
         `
       : ''
   }
@@ -93,8 +93,8 @@ const StyledButton = styled(motion.button)<ButtonProps>`
       ? `
       cursor: not-allowed;
       opacity: 0.5;
-      color: ${p.theme.bodyColor};
-      border-color: ${p.theme.bodyColor};
+      color: var(--maximeheckel-colors-typeface-1);
+      border-color: var(--maximeheckel-colors-typeface-1);
       &:hover {
         transform: none;
       }
@@ -109,7 +109,7 @@ const StyledButton = styled(motion.button)<ButtonProps>`
     p.tertiary
       ? `
       background-color: transparent;
-      color: ${p.theme.colors.blue};
+      color: var(--maximeheckel-colors-brand);
       min-width: inherited;
       padding: 0px;
 
@@ -121,7 +121,7 @@ const StyledButton = styled(motion.button)<ButtonProps>`
         left: 0;
         right: 0;
         height: 2px;
-        background-color: ${p.theme.colors.blue};
+        background-color: var(--maximeheckel-colors-brand);
         transform: scaleX(0);
         transition: transform 0.25s ease-in;
         transform-origin: right center;
@@ -136,9 +136,9 @@ const StyledButton = styled(motion.button)<ButtonProps>`
       ${
         p.danger
           ? `
-              color: ${p.theme.colors.red};
+              color: var(--maximeheckel-colors-danger);
               ::after { 
-                background-color: ${p.theme.colors.red};
+                background-color: var(--maximeheckel-colors-danger);
               }
             `
           : ''
@@ -149,9 +149,9 @@ const StyledButton = styled(motion.button)<ButtonProps>`
           ? `
               opacity: 0.5;
               cursor: not-allowed;
-              color: ${p.theme.bodyColor};
+              color: var(--maximeheckel-colors-typeface-1);
               ::after { 
-                background-color: ${p.theme.bodyColor};
+                background-color: var(--maximeheckel-colors-typeface-1);
               }
             `
           : ''
@@ -164,7 +164,7 @@ const Button = React.forwardRef(
   ({ children, ...props }: ButtonProps, ref: React.Ref<HTMLButtonElement>) => {
     return (
       <StyledButton
-        whileHover={props.tertiary ? {} : { scale: 0.85 }}
+        whileHover={props.tertiary ? {} : { scale: 1.075 }}
         transition={{ type: 'spring' }}
         ref={ref}
         {...props}

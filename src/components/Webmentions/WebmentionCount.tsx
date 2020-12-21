@@ -68,7 +68,7 @@ const WebmentionCount = ({ target }: { target: string }) => {
 
 const CountWrapper = styled(Flex)`
   p {
-    color: ${(p) => p.theme.colors.blue} !important;
+    color: var(--maximeheckel-colors-brand) !important;
     font-size: 14px;
     font-weight: 500;
   }

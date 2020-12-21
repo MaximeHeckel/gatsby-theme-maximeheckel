@@ -2,7 +2,7 @@ import { motion } from 'framer-motion';
 import styled from '../../utils/styled';
 
 const LinkButton = styled(motion.button)`
-  border-radius: 4px;
+  border-radius: var(--border-radius-1);
   width: 44px;
   height: 40px;
   cursor: pointer;
@@ -21,7 +21,7 @@ const LinkButton = styled(motion.button)`
   }
 
   &:hover {
-    background-color: ${(p) => p.theme.foregroundColor};
+    background-color: var(--maximeheckel-colors-foreground);
   }
 `;
 

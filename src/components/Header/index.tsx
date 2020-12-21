@@ -40,21 +40,21 @@ const RSSIcon = () => (
   >
     <path
       d="M4.36719 11C6.75414 11 9.04332 11.9482 10.7311 13.636C12.419 15.3239 13.3672 17.6131 13.3672 20"
-      stroke="#949699"
+      stroke="var(--maximeheckel-colors-typeface-2)"
       strokeWidth="2"
       strokeLinecap="round"
       strokeLinejoin="round"
     />
     <path
       d="M4.36719 4C8.61065 4 12.6803 5.68571 15.6809 8.68629C18.6815 11.6869 20.3672 15.7565 20.3672 20"
-      stroke="#949699"
+      stroke="var(--maximeheckel-colors-typeface-2)"
       strokeWidth="2"
       strokeLinecap="round"
       strokeLinejoin="round"
     />
     <path
       d="M5.36719 20C5.91947 20 6.36719 19.5523 6.36719 19C6.36719 18.4477 5.91947 18 5.36719 18C4.8149 18 4.36719 18.4477 4.36719 19C4.36719 19.5523 4.8149 20 5.36719 20Z"
-      stroke="#949699"
+      stroke="var(--maximeheckel-colors-typeface-2)"
       strokeWidth="2"
       strokeLinecap="round"
       strokeLinejoin="round"
@@ -64,7 +64,7 @@ const RSSIcon = () => (
 
 const TwitterLinkWrapper = styled('div')`
   svg {
-    stroke: ${(p) => p.theme.colors.blue};
+    stroke: var(--maximeheckel-colors-brand);
     fill: none;
   }
 `;

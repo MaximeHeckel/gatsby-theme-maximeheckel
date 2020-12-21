@@ -12,7 +12,7 @@ exports[`Blockquote can render a Blockquote 1`] = `
   left: calc(-50vw + 50%);
   padding-top: 40px;
   padding-bottom: 40px;
-  background: var(--maximeheckel-colors-body-1,rgba(217,230,247,0.55));
+  background: var(--maximeheckel-colors-emphasis,rgba(217,230,247,0.55));
   -webkit-backdrop-filter: blur(6px);
   backdrop-filter: blur(6px);
 }

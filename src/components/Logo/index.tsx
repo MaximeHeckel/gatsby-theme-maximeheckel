@@ -24,9 +24,9 @@ const LogoWrapper = styled('div')<LogoWrapperProps>`
   svg {
     height: ${(props) => props.size}px;
     width: ${(props) => props.size}px;
-    fill: ${(props) => props.theme.backgroundColor};
-    stroke: ${(props) => props.theme.fontColor};
-    transition: ${(props) => props.theme.transitionTime}s;
+    fill: var(--maximeheckel-colors-body);
+    stroke: var(--maximeheckel-colors-typeface-0);
+    transition: 0.5s;
     will-change: stroke, fill;
   }
 `;
