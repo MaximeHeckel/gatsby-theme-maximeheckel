@@ -1,6 +1,5 @@
 import { css } from '@emotion/core';
 import EmotionStyled from '@emotion/styled';
-import { withTheme } from 'emotion-theming';
 import {
   motion,
   useAnimation,
@@ -19,7 +18,6 @@ import * as Recharts from 'recharts';
 import styled from '../../../utils/styled';
 import Button, { CopyToClipboardButton } from '../../Button';
 import { useTheme } from '../../../context/ThemeContext';
-import theme from '../../../theme';
 
 // @ts-ignore
 (typeof global !== 'undefined' ? global : window).Prism = Prism;
@@ -117,7 +115,7 @@ export const InlineCode: React.FC<IInlineCodeProps> = (props) => {
   return <InlineCodeWrapper>{props.children}</InlineCodeWrapper>;
 };
 
-export const LiveCodeBlock: React.FC<ICodeBlockProps> = withTheme((props) => {
+export const LiveCodeBlock: React.FC<ICodeBlockProps> = (props) => {
   const { codeString, live, render } = props;
 
   const { dark } = useTheme();
@@ -133,7 +131,7 @@ export const LiveCodeBlock: React.FC<ICodeBlockProps> = withTheme((props) => {
     Recharts: { ...Recharts },
   };
 
-  const baseTheme = dark ? theme.dark.colors.prism : theme.light.colors.prism;
+  const baseTheme = dark ? prismDark : prismLight;
 
   const customTheme = {
     ...baseTheme,
@@ -144,7 +142,6 @@ export const LiveCodeBlock: React.FC<ICodeBlockProps> = withTheme((props) => {
       overflowWrap: 'normal',
       position: 'relative',
       overflow: 'auto',
-      borderRadius: '4px',
     },
   } as PrismTheme;
 
@@ -157,7 +154,7 @@ export const LiveCodeBlock: React.FC<ICodeBlockProps> = withTheme((props) => {
         noInline={true}
       >
         <StyledLiveCodeWrapper fullWidth>
-          <StyledPreviewWrapper>
+          <StyledPreviewWrapper height={600}>
             <LivePreview />
             <StyledErrorWrapper>
               <LiveError />
@@ -184,7 +181,7 @@ export const LiveCodeBlock: React.FC<ICodeBlockProps> = withTheme((props) => {
   }
 
   return null;
-});
+};
 
 interface ICodeBlockProps {
   codeString: string;
@@ -197,7 +194,7 @@ export const CodeBlock: React.FC<ICodeBlockProps> = (props) => {
 
   const { dark } = useTheme();
 
-  const baseTheme = dark ? theme.dark.colors.prism : theme.light.colors.prism;
+  const baseTheme = dark ? prismDark : prismLight;
 
   const customTheme = {
     ...baseTheme,
@@ -216,7 +213,11 @@ export const CodeBlock: React.FC<ICodeBlockProps> = (props) => {
         <CodeSnippetHeader
           css={{
             backgroundColor: customTheme.plain.backgroundColor,
-            borderBottom: `1px solid ${dark ? '#151617' : '#d8dfe8'}`,
+            borderBottom: `1px solid ${
+              dark
+                ? 'var(--palette-gray-80)'
+                : 'rgba(var(--palette-gray-10), 1)'
+            }`,
           }}
         >
           <CodeSnippetTitle data-testid="codesnippet-title">
@@ -293,15 +294,15 @@ const Pre = styled.pre`
   text-align: left;
   padding: 8px 0px;
   overflow: auto;
-  border-bottom-left-radius: 4px;
-  border-bottom-right-radius: 4px;
+  border-bottom-left-radius: var(--border-radius-2);
+  border-bottom-right-radius: var(--border-radius-2);
 
   ${(p) =>
     p.title
       ? ''
       : `
-      border-top-left-radius: 4px;
-    border-top-right-radius: 4px;
+      border-top-left-radius: var(--border-radius-2);
+    border-top-right-radius: var(--border-radius-2);
     `}
 `;
 
@@ -311,12 +312,12 @@ const Line = styled.div`
   padding: 0px 14px;
   border-left: 3px solid transparent;
   &.highlight-line {
-    background: ${(p) => p.theme.colors.prism.highlight};
-    border-color: ${(p) => p.theme.colors.prism.highlightBorder};
+    background: var(--maximeheckel-colors-emphasis);
+    border-color: var(--maximeheckel-colors-brand);
   }
 
   &:hover {
-    background-color: ${(p) => p.theme.colors.prism.highlight};
+    background-color: var(--maximeheckel-colors-emphasis);
   }
 `;
 
@@ -333,9 +334,9 @@ const LineContent = styled.span`
 `;
 
 const InlineCodeWrapper = styled('code')`
-  border-radius: 4px;
-  background-color: rgba(81, 132, 249, 0.15);
-  color: ${(p) => p.theme.colors.blue};
+  border-radius: var(--border-radius-1);
+  background-color: var(--maximeheckel-colors-emphasis);
+  color: var(--maximeheckel-colors-brand);
   padding-top: 2px;
   padding-bottom: 2px;
   padding-left: 6px;
@@ -347,7 +348,7 @@ const InlineCodeWrapper = styled('code')`
 const CodeSnippetTitle = styled('p')`
   font-size: 14px;
   margin-bottom: 0px;
-  color: #949699;
+  color: var(--maximeheckel-colors-typeface-2);
   font-weight: 500;
 `;
 
@@ -360,9 +361,8 @@ const CodeSnippetHeader = styled('div')`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  border-top-left-radius: 4px;
-  border-top-right-radius: 4px;
-  color: ${(p) => p.theme.colors.white};
+  border-top-left-radius: var(--border-radius-2);
+  border-top-right-radius: var(--border-radius-2);
   min-height: 45px;
   padding: 0px 14px;
 `;
@@ -380,7 +380,7 @@ const CodeSnippetWrapper = styled('div')`
     ${fullWidthSnipperStyle}
   }
   width: 100%;
-  border-radius: 4px;
+  border-radius: var(--border-radius-2);
   margin: 40px 0px;
   position: relative;
 `;
@@ -408,9 +408,8 @@ const StyledLiveCodeWrapper = styled('div')<CodeSnippetWrapperProps>`
         : ''}
   }
 
-  background-color: ${(p) => p.theme.foregroundColor};
   backdrop-filter: blur(6px);
-  border-radius: 5px;
+  border-radius: var(--border-radius-2);
   display: flex;
   align-items: center;
   margin: 40px 0px;
@@ -422,29 +421,231 @@ const StyledEditorWrapper = styled('div')`
   max-height: 600px;
   overflow: auto;
   margin: 0;
-  border-top-right-radius: 5px;
-  border-bottom-right-radius: 5px;
+  border-top-right-radius: var(--border-radius-2);
+  border-bottom-right-radius: var(--border-radius-2);
 
   * > textarea:focus {
     outline: none;
   }
 `;
 
-const StyledPreviewWrapper = styled('div')`
-  height: 100%;
+const StyledPreviewWrapper = styled('div')<{ height?: number }>`
   max-height: 600px;
-  min-height: 300px;
+  min-height: ${(p) => p.height || 300}px;
   flex: 40 1 0%;
   display: flex;
   align-items: center;
   justify-content: center;
+  background-color: var(--maximeheckel-colors-emphasis);
+  border-top-left-radius: var(--border-radius-2);
+  border-bottom-left-radius: var(--border-radius-2);
 `;
 
 const StyledErrorWrapper = styled('div')`
-  color: ${(p) => p.theme.bodyColor};
+  color: var(--maximeheckel-colors-typeface-1);
 
   pre {
     padding: 15px;
     margin-bottom: 0px;
   }
 `;
+
+const prismLight = {
+  plain: {
+    color: '#403f53',
+    backgroundColor: 'var(--maximeheckel-colors-foreground)',
+  },
+  styles: [
+    {
+      types: ['changed'],
+      style: {
+        color: 'rgb(162, 191, 252)',
+        fontStyle: 'italic',
+      },
+    },
+    {
+      types: ['deleted'],
+      style: {
+        color: 'rgba(239, 83, 80, 0.56)',
+        fontStyle: 'italic',
+      },
+    },
+    {
+      types: ['inserted', 'attr-name'],
+      style: {
+        color: 'rgb(72, 118, 214)',
+        fontStyle: 'italic',
+      },
+    },
+    {
+      types: ['comment'],
+      style: {
+        color: 'rgb(152, 159, 177)',
+        fontStyle: 'italic',
+      },
+    },
+    {
+      types: ['string', 'builtin', 'char', 'constant', 'url'],
+      style: {
+        color: 'rgb(72, 118, 214)',
+      },
+    },
+    {
+      types: ['variable'],
+      style: {
+        color: 'rgb(201, 103, 101)',
+      },
+    },
+    {
+      types: ['number'],
+      style: {
+        color: 'rgb(170, 9, 130)',
+      },
+    },
+    {
+      // This was manually added after the auto-generation
+      // so that punctuations are not italicised
+      types: ['punctuation'],
+      style: {
+        color: 'rgb(153, 76, 195)',
+      },
+    },
+    {
+      types: ['function', 'selector', 'doctype'],
+      style: {
+        color: 'rgb(153, 76, 195)',
+        fontStyle: 'italic',
+      },
+    },
+    {
+      types: ['class-name'],
+      style: {
+        color: 'rgb(17, 17, 17)',
+      },
+    },
+    {
+      types: ['tag'],
+      style: {
+        color: 'rgb(153, 76, 195)',
+      },
+    },
+    {
+      types: ['operator', 'property', 'keyword', 'namespace'],
+      style: {
+        color: 'rgb(12, 150, 155)',
+      },
+    },
+    {
+      types: ['boolean'],
+      style: {
+        color: 'rgb(188, 84, 84)',
+      },
+    },
+  ],
+};
+
+const prismDark = {
+  plain: {
+    color: '#d6deeb',
+    backgroundColor: 'var(--maximeheckel-colors-foreground)',
+  },
+  styles: [
+    {
+      types: ['changed'],
+      style: {
+        color: 'rgb(162, 191, 252)',
+        fontStyle: 'italic',
+      },
+    },
+    {
+      types: ['deleted'],
+      style: {
+        color: 'rgba(239, 83, 80, 0.56)',
+        fontStyle: 'italic',
+      },
+    },
+    {
+      types: ['inserted', 'attr-name'],
+      style: {
+        color: 'rgb(173, 219, 103)',
+        fontStyle: 'italic',
+      },
+    },
+    {
+      types: ['comment'],
+      style: {
+        color: 'rgb(99, 119, 119)',
+        fontStyle: 'italic',
+      },
+    },
+    {
+      types: ['string', 'url'],
+      style: {
+        color: 'rgb(173, 219, 103)',
+      },
+    },
+    {
+      types: ['variable'],
+      style: {
+        color: 'rgb(214, 222, 235)',
+      },
+    },
+    {
+      types: ['number'],
+      style: {
+        color: 'rgb(247, 140, 108)',
+      },
+    },
+    {
+      types: ['builtin', 'char', 'constant', 'function'],
+      style: {
+        color: 'rgb(130, 170, 255)',
+      },
+    },
+    {
+      // This was manually added after the auto-generation
+      // so that punctuations are not italicised
+      types: ['punctuation'],
+      style: {
+        color: 'rgb(199, 146, 234)',
+      },
+    },
+    {
+      types: ['selector', 'doctype'],
+      style: {
+        color: 'rgb(199, 146, 234)',
+        fontStyle: 'italic',
+      },
+    },
+    {
+      types: ['class-name'],
+      style: {
+        color: 'rgb(255, 203, 139)',
+      },
+    },
+    {
+      types: ['tag', 'operator', 'keyword'],
+      style: {
+        color: 'rgb(127, 219, 202)',
+      },
+    },
+    {
+      types: ['boolean'],
+      style: {
+        color: 'rgb(255, 88, 116)',
+      },
+    },
+    {
+      types: ['property'],
+      style: {
+        color: 'rgb(128, 203, 196)',
+      },
+    },
+    {
+      types: ['namespace'],
+      style: {
+        color: 'rgb(178, 204, 214)',
+      },
+    },
+  ],
+};

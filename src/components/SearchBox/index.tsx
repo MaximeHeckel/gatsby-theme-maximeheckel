@@ -1,3 +1,4 @@
+import { css } from '@emotion/core';
 import { withTheme } from 'emotion-theming';
 import FocusTrap from 'focus-trap-react';
 import { motion } from 'framer-motion';
@@ -16,7 +17,7 @@ const TwitterIcon = () => (
     viewBox="0 0 25 24"
     fill="none"
     xmlns="http://www.w3.org/2000/svg"
-    stroke="#949699"
+    stroke="var(--maximeheckel-colors-typeface-2)"
   >
     <path
       d="M23.8618 2.9995C22.9042 3.67497 21.8439 4.19161 20.7218 4.5295C20.1196 3.83701 19.3192 3.34619 18.4289 3.12342C17.5386 2.90066 16.6013 2.95669 15.7439 3.28395C14.8865 3.61121 14.1503 4.1939 13.6348 4.95321C13.1193 5.71253 12.8495 6.61183 12.8618 7.5295V8.5295C11.1044 8.57506 9.36309 8.18531 7.79283 7.39494C6.22256 6.60458 4.87213 5.43813 3.86182 3.9995C3.86182 3.9995 -0.138184 12.9995 8.86182 16.9995C6.80234 18.3975 4.34897 19.0984 1.86182 18.9995C10.8618 23.9995 21.7818 18.8949 21.7818 7.39494C21.7809 7.1164 21.8341 6.94309 21.7818 6.6695C22.8024 5.66299 23.5226 4.39221 23.8618 2.9995Z"
@@ -33,7 +34,7 @@ const Portfolio = () => (
     height="24"
     viewBox="0 0 25 24"
     xmlns="http://www.w3.org/2000/svg"
-    stroke="#949699"
+    stroke="var(--maximeheckel-colors-typeface-2)"
     fill="none"
   >
     <path
@@ -51,7 +52,7 @@ const Contact = () => (
     height="25"
     viewBox="0 0 25 25"
     xmlns="http://www.w3.org/2000/svg"
-    stroke="#949699"
+    stroke="var(--maximeheckel-colors-typeface-2)"
     fill="none"
   >
     <path
@@ -202,12 +203,14 @@ const SearchBox: React.FC<Props> = (props) => {
       <aside>
         <SearchBoxOverlay
           initial={{
-            //backdropFilter: 'blur(0px)',
-            backgroundColor: dark ? 'rgba(0,0,0,0)' : 'rgba(236, 236, 236, 0)',
+            backgroundColor: dark
+              ? 'rgba(0,0,0,0)'
+              : 'rgba(var(--palette-white-30), 0)',
           }}
           animate={{
-            //backdropFilter: 'blur(6px)',
-            backgroundColor: props.theme.overlayBackground,
+            backgroundColor: dark
+              ? 'rgba(0,0,0,0.8)'
+              : 'rgba(var(--palette-white-30), 0.8)',
           }}
           transition={{ duration: 0.8, when: 'beforeChildren' }}
           onClick={clickAway}
@@ -246,6 +249,15 @@ const SearchBox: React.FC<Props> = (props) => {
             <SearchResults
               results={results.length}
               searchQuery={debouncedSearchQuery}
+              css={css`
+                border-top: ${debouncedSearchQuery
+                  ? `1px solid ${
+                      dark
+                        ? 'var(--palette-gray-80)'
+                        : 'rgba(var(--palette-gray-10), 1)'
+                    }`
+                  : 'none'};
+              `}
             >
               {debouncedSearchQuery !== '' && results.length > 0 ? (
                 results.map((result) => {
@@ -338,15 +350,15 @@ const NoResultsWrapper = styled('div')`
   display: flex;
   align-items: center;
   justify-content: center;
-  height: 55px;
-  color: ${(p) => p.theme.bodyColor};
+  height: 65px;
+  color: var(--maximeheckel-colors-typeface-1);
   font-weight: 500;
 `;
 
 const ShortcutKey = styled('span')`
-  color: ${(p) => p.theme.colors.blue};
+  color: var(--maximeheckel-colors-brand);
   font-size: 12px;
-  border-radius: 10px;
+  border-radius: var(--border-radius-1);
   padding: 8px 8px;
   background: rgba(81, 132, 249, 0.15);
   &:not(:last-child) {
@@ -357,9 +369,9 @@ const ShortcutKey = styled('span')`
 const Item = styled('li')`
   height: 65px;
   margin-bottom: 0px;
-  transition: ${(p) => p.theme.transitionTime / 1.7}s;
+  transition: 0.25s;
   list-style: none;
-  color: ${(p) => p.theme.bodyColor};
+  color: var(--maximeheckel-colors-typeface-1);
 
   > *:not(svg) {
     height: inherit;
@@ -384,12 +396,12 @@ const Item = styled('li')`
 
   &:hover {
     a {
-      background-color: ${(p) => p.theme.overlayBackground};
-      color: ${(p) => p.theme.colors.blue};
+      background-color: var(--maximeheckel-colors-foreground);
+      color: var(--maximeheckel-colors-brand);
     }
 
     svg {
-      stroke: ${(p) => p.theme.colors.blue};
+      stroke: var(--maximeheckel-colors-brand);
     }
   }
 `;
@@ -398,8 +410,8 @@ const Separator = styled('li')`
   height: 30px;
   width: 100%;
   font-size: 14px;
-  background-color: ${(p) => p.theme.foregroundColor};
-  color: ${(p) => p.theme.bodyColor};
+  background-color: var(--maximeheckel-colors-foreground);
+  color: var(--maximeheckel-colors-typeface-1);
   display: flex;
   align-items: center;
   padding-left: 25px;
@@ -409,7 +421,7 @@ const Separator = styled('li')`
 
 const SearchResults = styled('ul')<{ results: number; searchQuery: string }>`
   @media (max-width: 700px) {
-    max-height: 400px;
+    max-height: 385px;
   }
 
   max-height: 500px;
@@ -419,9 +431,7 @@ const SearchResults = styled('ul')<{ results: number; searchQuery: string }>`
   will-change: height;
 
   height: ${(p) =>
-    p.results > 0 ? p.results * 70 : p.searchQuery ? 70 : 400}px;
-  border-top: ${(p) =>
-    p.searchQuery ? `1px solid ${p.theme.borderColor}` : 'none'};
+    p.results > 0 ? p.results * 65 : p.searchQuery ? 65 : 385}px;
 }
   
 `;
@@ -435,13 +445,12 @@ const SearchBoxWrapper = styled(motion.div)<{}>`
 
   position: fixed;
   overflow: hidden;
-  background: ${(p) => p.theme.backgroundColor};
+  background: var(--maximeheckel-colors-body);
   width: 600px;
   top: 20%;
   left: 50%;
-  border-radius: 10px;
-  // border: 1px solid ${(p) => p.theme.borderColor};
-  box-shadow: ${(p) => p.theme.boxShadow};
+  border-radius: var(--border-radius-2);
+  box-shadow: var(--maximeheckel-shadow-1);
 
   form {
     margin: 0px;
@@ -455,18 +464,18 @@ const SearchBoxWrapper = styled(motion.div)<{}>`
     height: 55px;
     padding: 0px 25px;
     width: 100%;
-    color: ${(p) => p.theme.fontColor};
+    color: var(--maximeheckel-colors-typeface-0);
     ::placeholder,
     ::-webkit-input-placeholder {
-      color: ${(p) => p.theme.bodyColor};
+      color: var(--maximeheckel-colors-typeface-1);
     }
     :-ms-input-placeholder {
-      color: ${(p) => p.theme.bodyColor};
+      color: var(--maximeheckel-colors-typeface-1);
     }
 
     ::-webkit-autofill {
       background: transparent;
-      color: ${(p) => p.theme.fontColor};
+      color: var(--maximeheckel-colors-typeface-0);
       font-size: 14px;
     }
   }

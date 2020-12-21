@@ -5,8 +5,8 @@ import styled from '../../utils/styled';
 const HR = styled.hr``;
 
 const FooterBlock = styled.div`
-  background: ${(props) => props.theme.backgroundColor};
-  transition: ${(props) => props.theme.transitionTime}s;
+  background: var(--maximeheckel-colors-body);
+  transition: 0.5s;
   height: 130px;
   width: 100%;
 `;
@@ -22,7 +22,7 @@ const FooterWrapper = styled.div`
   padding-right: 70px;
   max-width: 1020px;
   margin-top: 30px;
-  color: ${(props) => props.theme.fontColor};
+  color: var(--maximeheckel-colors-typeface-0);
   margin: 0 auto;
   a {
     color: inherit;

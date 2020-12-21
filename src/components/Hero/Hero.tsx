@@ -32,7 +32,7 @@ const HeroImg: React.FC<HeroImgProps> = (props) => (
 const HeroInfo = styled.div`
   margin-bottom: 30px;
   p {
-    color: ${(p) => p.theme.colors.gray};
+    color: var(--maximeheckel-colors-typeface-2);
     font-size: 14px;
     font-weight: 500;
   }
@@ -54,7 +54,7 @@ const HeroWrapper = styled.div`
   margin: 0 auto;
   max-width: 700px;
   align-items: center;
-  color: ${(props) => props.theme.fontColor};
+  color: var(--maximeheckel-colors-typeface-0);
   padding-top: 248px;
 `;
 
