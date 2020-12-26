@@ -1,7 +1,7 @@
 import { motion } from 'framer-motion';
 import React from 'react';
 import AnchorLink from 'react-anchor-link-smooth-scroll';
-import styled from '../../utils/styled';
+import styled from '@emotion/styled';
 import { HeaderContext } from './Context';
 
 export const TitleWrapper = styled.div`

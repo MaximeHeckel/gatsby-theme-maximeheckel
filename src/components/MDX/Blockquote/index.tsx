@@ -1,4 +1,4 @@
-import styled from '../../../utils/styled';
+import styled from '@emotion/styled';
 
 const Blockquote = styled.blockquote`
   transition: 0.5s;
@@ -10,7 +10,7 @@ const Blockquote = styled.blockquote`
   left: calc(-50vw + 50%);
   padding-top: 40px;
   padding-bottom: 40px;
-  background: var(--maximeheckel-colors-foreground);
+  background: var(--maximeheckel-colors-emphasis);
   backdrop-filter: blur(6px);
   & > p {
     max-width: 880px !important;

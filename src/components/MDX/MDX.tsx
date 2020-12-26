@@ -1,6 +1,6 @@
 import { MDXProvider } from '@mdx-js/react';
 import React from 'react';
-import styled from '../../utils/styled';
+import styled from '@emotion/styled';
 import Callout from '../Callout';
 import Pill from '../Pill';
 import { Blockquote } from './Blockquote';

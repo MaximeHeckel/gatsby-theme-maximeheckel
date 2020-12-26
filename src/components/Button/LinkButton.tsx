@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion';
-import styled from '../../utils/styled';
+import styled from '@emotion/styled';
 
 const LinkButton = styled(motion.button)`
   border-radius: var(--border-radius-1);

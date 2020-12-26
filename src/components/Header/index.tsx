@@ -6,7 +6,7 @@ import { Navigation } from './Navigation';
 import { Title } from './Title';
 import { Wrapper } from './Wrapper';
 import Flex from '../Flex';
-import styled from '../../utils/styled';
+import styled from '@emotion/styled';
 import { useTheme } from '../../context/ThemeContext';
 import MHLogo from '../Logo';
 import { LinkButton } from '../Button/LinkButton';

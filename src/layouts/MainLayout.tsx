@@ -1,9 +1,9 @@
+import styled from '@emotion/styled';
 import { graphql, useStaticQuery } from 'gatsby';
 import React from 'react';
 import Footer from '../components/Footer';
 import { DefaultHeader, MainHeaderProps } from '../components/Header';
 import { useTheme } from '../context/ThemeContext';
-import styled from '../utils/styled';
 import 'plyr/dist/plyr.css';
 
 interface LayoutProps {

@@ -1,6 +1,6 @@
 import Img, { FluidObject } from 'gatsby-image';
 import React from 'react';
-import styled from '../../utils/styled';
+import styled from '@emotion/styled';
 
 const HeroImgWrapper = styled.div`
   @media (max-width: 700px) {

@@ -1,9 +1,9 @@
+import styled from '@emotion/styled';
 import { Link } from 'gatsby';
 import React from 'react';
 import Button from '../components/Button';
 import Seo from '../components/Seo';
 import Layout, { LayoutChildrenProps } from '../layouts';
-import styled from '../utils/styled';
 
 const NotFoundPage = () => (
   <Layout>

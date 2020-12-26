@@ -1,6 +1,6 @@
 import React from 'react';
 import { HeaderContext } from './Context';
-import styled from '../../utils/styled';
+import styled from '@emotion/styled';
 
 export interface HeaderNavigationProps {}
 
