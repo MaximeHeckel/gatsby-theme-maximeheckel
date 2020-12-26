@@ -2,13 +2,13 @@
 
 exports[`Callout can render a Callout with variant danger 1`] = `
 .emotion-0 {
-  border-radius: 4px;
+  border-radius: 4px var(--border-radius-2) var(--border-radius-2) 4px;
   border-left: 3px solid;
   padding: 30px 30px;
   margin-bottom: 25px;
-  background-color: #FFEFEE;
-  border-color: #FF515A;
-  color: #2B2D3E;
+  background-color: var(--maximeheckel-colors-danger-emphasis);
+  border-color: var(--maximeheckel-colors-danger);
+  color: var(--maximeheckel-colors-typeface-0);
 }
 
 @media (max-width:600px) {
@@ -18,10 +18,6 @@ exports[`Callout can render a Callout with variant danger 1`] = `
     left: calc(-50vw + 50%);
     border-radius: 0px;
   }
-}
-
-.emotion-0 strong {
-  color: #000000!important;
 }
 
 .emotion-0 *:last-child {
@@ -41,13 +37,13 @@ exports[`Callout can render a Callout with variant danger 1`] = `
 
 exports[`Callout can render a Callout with variant info 1`] = `
 .emotion-0 {
-  border-radius: 4px;
+  border-radius: 4px var(--border-radius-2) var(--border-radius-2) 4px;
   border-left: 3px solid;
   padding: 30px 30px;
   margin-bottom: 25px;
-  background-color: #E6EDF8;
-  border-color: var(--maximeheckel-colors-brand,#336ef5);
-  color: #2B2D3E;
+  background-color: var(--maximeheckel-colors-emphasis);
+  border-color: var(--maximeheckel-colors-brand);
+  color: var(--maximeheckel-colors-typeface-0);
 }
 
 @media (max-width:600px) {
@@ -57,10 +53,6 @@ exports[`Callout can render a Callout with variant info 1`] = `
     left: calc(-50vw + 50%);
     border-radius: 0px;
   }
-}
-
-.emotion-0 strong {
-  color: #000000!important;
 }
 
 .emotion-0 *:last-child {

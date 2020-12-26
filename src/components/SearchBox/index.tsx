@@ -1,12 +1,11 @@
 import { css } from '@emotion/core';
-import { withTheme } from 'emotion-theming';
 import FocusTrap from 'focus-trap-react';
 import { motion } from 'framer-motion';
 import { Link } from 'gatsby';
 import Mousetrap from 'mousetrap';
 import React from 'react';
 import ReactDOM from 'react-dom';
-import styled, { Theme } from '../../utils/styled';
+import styled from '@emotion/styled';
 import useDebouncedValue from '../../hooks/useDebouncedValue';
 import { useTheme } from '../../context/ThemeContext';
 
@@ -203,14 +202,12 @@ const SearchBox: React.FC<Props> = (props) => {
       <aside>
         <SearchBoxOverlay
           initial={{
-            backgroundColor: dark
-              ? 'rgba(0,0,0,0)'
-              : 'rgba(var(--palette-white-30), 0)',
+            backgroundColor: dark ? 'rgba(0,0,0,0)' : 'rgba(241, 243, 247, 0)',
           }}
           animate={{
             backgroundColor: dark
               ? 'rgba(0,0,0,0.8)'
-              : 'rgba(var(--palette-white-30), 0.8)',
+              : 'rgba(241, 243, 247, 0.8)',
           }}
           transition={{ duration: 0.8, when: 'beforeChildren' }}
           onClick={clickAway}
@@ -253,8 +250,8 @@ const SearchBox: React.FC<Props> = (props) => {
                 border-top: ${debouncedSearchQuery
                   ? `1px solid ${
                       dark
-                        ? 'var(--palette-gray-80)'
-                        : 'rgba(var(--palette-gray-10), 1)'
+                        ? 'hsla(var(--palette-gray-100), 100%)'
+                        : 'hsla(var(--palette-gray-10), 100%)'
                     }`
                   : 'none'};
               `}
@@ -344,7 +341,7 @@ const SearchBox: React.FC<Props> = (props) => {
   );
 };
 
-export default withTheme(SearchBox);
+export default SearchBox;
 
 const NoResultsWrapper = styled('div')`
   display: flex;

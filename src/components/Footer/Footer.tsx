@@ -1,6 +1,6 @@
 import React from 'react';
 import Logo from '../Logo';
-import styled from '../../utils/styled';
+import styled from '@emotion/styled';
 
 const HR = styled.hr``;
 

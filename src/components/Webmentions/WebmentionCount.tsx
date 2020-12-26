@@ -1,6 +1,6 @@
 import React from 'react';
 import Flex from '../Flex';
-import styled from '../../utils/styled';
+import styled from '@emotion/styled';
 
 const initialCounts = {
   count: 0,

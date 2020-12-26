@@ -15,7 +15,7 @@ import Highlight, {
 import React from 'react';
 import { LiveProvider, LiveEditor, LiveError, LivePreview } from 'react-live';
 import * as Recharts from 'recharts';
-import styled from '../../../utils/styled';
+import styled from '@emotion/styled';
 import Button, { CopyToClipboardButton } from '../../Button';
 import { useTheme } from '../../../context/ThemeContext';
 
@@ -215,8 +215,8 @@ export const CodeBlock: React.FC<ICodeBlockProps> = (props) => {
             backgroundColor: customTheme.plain.backgroundColor,
             borderBottom: `1px solid ${
               dark
-                ? 'var(--palette-gray-80)'
-                : 'rgba(var(--palette-gray-10), 1)'
+                ? 'hsla(var(--palette-gray-90), 100%)'
+                : 'hsla(var(--palette-gray-20), 100%)'
             }`,
           }}
         >

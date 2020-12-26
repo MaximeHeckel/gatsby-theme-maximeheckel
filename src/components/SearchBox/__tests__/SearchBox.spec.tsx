@@ -1,7 +1,5 @@
-import { ThemeProvider } from 'emotion-theming';
 import { cleanup, render } from '@testing-library/react';
 import React from 'react';
-import theme from '../../../theme';
 import SearchBox from '../';
 
 afterEach(() => {
@@ -13,9 +11,7 @@ describe('SearchBox', () => {
     const location = { search: '' };
 
     const { container } = render(
-      <ThemeProvider theme={theme.light}>
-        <SearchBox onClose={jest.fn} location={location} showOverride={true} />
-      </ThemeProvider>
+      <SearchBox onClose={jest.fn} location={location} showOverride={true} />
     );
 
     expect(container.querySelector('input[name="search"]')).toBeDefined();

@@ -5,7 +5,7 @@ exports[`Pill Renders the pill component properly 1`] = `
   .emotion-0 {
   font-size: 14px;
   background: blue;
-  border-radius: 10px;
+  border-radius: var(--border-radius-1);
   height: 22px;
   display: -webkit-inline-box;
   display: -webkit-inline-flex;

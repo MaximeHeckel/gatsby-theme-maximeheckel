@@ -1,6 +1,6 @@
 import { ReactNode } from 'react';
 import { motion } from 'framer-motion';
-import styled from '../../utils/styled';
+import styled from '@emotion/styled';
 import React from 'react';
 interface ButtonProps {
   primary?: boolean;
@@ -32,7 +32,7 @@ const StyledButton = styled(motion.button)<ButtonProps>`
     p.primary
       ? `
       background-color: var(--maximeheckel-colors-brand);
-      color: var(--palette-white-10);
+      color: hsla(var(--palette-gray-00), 100%);
       min-width: 150px;
 
   ${

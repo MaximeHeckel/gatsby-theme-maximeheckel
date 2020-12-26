@@ -1,7 +1,7 @@
 import React from 'react';
 import AnchorLink from 'react-anchor-link-smooth-scroll';
 import Scrollspy from 'react-scrollspy';
-import styled from '../../utils/styled';
+import styled from '@emotion/styled';
 import { useReducedMotion, motion, useViewportScroll } from 'framer-motion';
 
 const ProgressBar = styled(motion.div)`
