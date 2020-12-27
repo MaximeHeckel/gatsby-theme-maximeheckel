@@ -1,5 +1,5 @@
 import React from 'react';
-import styled from '../../utils/styled';
+import styled from '@emotion/styled';
 
 interface PillWrapperProps {
   color: string;
@@ -8,7 +8,7 @@ interface PillWrapperProps {
 const PillWrapper = styled('span')<PillWrapperProps>`
   font-size: 14px;
   background: ${(p) => p.color};
-  border-radius: 10px;
+  border-radius: var(--border-radius-1);
   height: 22px;
   display: inline-flex;
   align-items: center;

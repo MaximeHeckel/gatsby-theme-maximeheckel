@@ -1,9 +1,7 @@
 import { cleanup, render, waitFor } from '@testing-library/react';
 import { mockAllIsIntersecting } from 'react-intersection-observer/test-utils';
-import { ThemeProvider } from 'emotion-theming';
 import React from 'react';
 import { WebmentionReplies } from '../WebmentionReplies';
-import theme from '../../../theme';
 
 beforeEach(() => {
   global.fetch = jest.fn().mockImplementation(() => {
@@ -56,9 +54,7 @@ afterEach(() => {
 describe('Webmention', () => {
   it('renders the webmention replies', async () => {
     const { container, getByTestId } = render(
-      <ThemeProvider theme={theme.light}>
-        <WebmentionReplies url="foo.com" title="Foo Bar" />
-      </ThemeProvider>
+      <WebmentionReplies url="foo.com" title="Foo Bar" />
     );
 
     mockAllIsIntersecting(true);

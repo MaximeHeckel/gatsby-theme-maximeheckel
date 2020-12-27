@@ -1,7 +1,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import useScrollCounter from '../../hooks/useScrollCounter';
-import styled from '../../utils/styled';
+import styled from '@emotion/styled';
 import { HeaderContext } from './Context';
 
 export interface HeaderWrapperProps extends StyledHeaderWrapperProps {
@@ -53,18 +53,19 @@ interface StyledHeaderWrapperProps {
 const HeaderWrapper = styled(motion.div)<StyledHeaderWrapperProps>`
   @media (max-width: 700px) {
     height: 80px !important;
-    box-shadow: ${(props) => (props.sticky ? props.theme.boxShadow : 'none')};
+    box-shadow: ${(props) =>
+      props.sticky ? 'var(--maximeheckel-shadow-1)' : 'none'};
   }
 
-  transition: background ${(props) => props.theme.transitionTime}s;
-  background: ${(props) => props.theme.backgroundColor};
+  transition: background 0.5s;
+  background: var(--maximeheckel-colors-body);
   width: 100%;
-  border-top: 6px solid ${(props) => props.theme.colors.blue};
+  border-top: 6px solid var(--maximeheckel-colors-brand);
   position: ${(props) => (props.sticky ? 'fixed' : 'inherit')};
   z-index: 999;
   ${(props) =>
     props.slim
-      ? `box-shadow: ${props.theme.boxShadow}; backdrop-filter: blur(6px); opacity: 0.88;`
+      ? `box-shadow: var(--maximeheckel-shadow-1); backdrop-filter: blur(6px); opacity: 0.88;`
       : ''}
 `;
 

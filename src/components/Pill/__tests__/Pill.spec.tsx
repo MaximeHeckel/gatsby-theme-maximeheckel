@@ -6,11 +6,6 @@ afterEach(() => {
   cleanup();
 });
 
-jest.mock('gatsby-theme-maximeheckel/src/utils/styled', () => {
-  const styled = require('@emotion/styled');
-  return styled;
-});
-
 describe('Pill', () => {
   it('Renders the pill component properly', () => {
     const { getByText, asFragment } = render(<Pill color="blue" text="test" />);

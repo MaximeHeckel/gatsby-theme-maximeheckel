@@ -65,9 +65,9 @@ const PortfolioProject: React.FC<ProjectPortfolioProps> = (props) => {
             {cover ? (
               <Hero.Img
                 imgStyle={{
-                  borderRadius: '4px',
+                  borderRadius: 'var(--border-radius-2)',
                   margin: '0 auto',
-                  maxHeight: '800px',
+                  maxHeight: '600px',
                   minHeight: '100px',
                 }}
                 fluid={cover.childImageSharp.fluid}

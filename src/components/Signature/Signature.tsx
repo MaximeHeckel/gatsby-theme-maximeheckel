@@ -1,10 +1,10 @@
 import React from 'react';
-import styled from '../../utils/styled';
+import styled from '@emotion/styled';
 import { WebmentionReplies } from '../Webmentions';
 
 const ColoredBlockWrapper = styled('div')`
-  background: ${(props) => props.theme.foregroundColor};
-  color: ${(props) => props.theme.fontColor};
+  background: var(--maximeheckel-colors-emphasis);
+  color: var(--maximeheckel-colors-typeface-0);
   position: relative;
   width: 100vw;
   padding-bottom: 50px;

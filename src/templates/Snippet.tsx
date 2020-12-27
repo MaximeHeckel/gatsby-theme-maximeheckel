@@ -1,9 +1,9 @@
+import styled from '@emotion/styled';
 import React from 'react';
 import Layout, { LayoutChildrenProps } from '../layouts';
 import MDX from '../components/MDX';
 import Seo from '../components/Seo';
 import { FluidObject } from 'gatsby-image';
-import styled from '../utils/styled';
 import { MONTHS } from '../constants';
 import Flex from '../components/Flex';
 import Pill from '../components/Pill';
@@ -82,7 +82,7 @@ const FixPadding = styled('div')`
   padding-top: 35px;
 
   p {
-    color: ${(p) => p.theme.colors.gray};
+    color: var(--maximeheckel-colors-typeface-2);
     font-size: 14px;
     font-weight: 500;
   }

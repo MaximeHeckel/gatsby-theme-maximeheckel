@@ -1,6 +1,6 @@
 import { MDXProvider } from '@mdx-js/react';
 import React from 'react';
-import styled from '../../utils/styled';
+import styled from '@emotion/styled';
 import Callout from '../Callout';
 import Pill from '../Pill';
 import { Blockquote } from './Blockquote';
@@ -55,40 +55,40 @@ const MDXBody = styled.div<MDXBody>`
   margin: 0 auto;
   max-width: ${(p) => `${p.maxWidth || 700}px`};
   padding: 20px 0px 20px 0px;
-  color: ${(props) => props.theme.bodyColor};
+  color: var(--maximeheckel-colors-typeface-1);
 
   figcaption {
     font-size: 14px;
     text-align: left;
     line-height: 1.5;
     font-weight: 500;
-    color: ${(p) => p.theme.colors.gray};
+    color: var(--maximeheckel-colors-typeface-2);
     padding-top: 10px;
   }
 
   h1 {
-    color: ${(props) => props.theme.fontColor};
+    color: var(--maximeheckel-colors-typeface-0);
   }
 
   h2 {
-    color: ${(props) => props.theme.fontColor};
-    margin-top: 3em;
+    color: var(--maximeheckel-colors-typeface-0);
+    margin-top: 2em;
   }
 
   h3 {
-    color: ${(props) => props.theme.fontColor};
-    margin-top: 3em;
+    color: var(--maximeheckel-colors-typeface-0);
+    margin-top: 2em;
   }
 
   strong {
-    color: ${(props) => props.theme.fontColor};
+    color: var(--maximeheckel-colors-typeface-0);
   }
 
   hr {
     height: 2px;
-    width: 20%;
+    width: 40%;
     margin: 50px auto;
-    background-color: #e8e8e8;
+    background-color: var(--maximeheckel-colors-typeface-0);
   }
 
   ul {
@@ -106,14 +106,14 @@ const MDXBody = styled.div<MDXBody>`
 
       &:before {
         content: counters(li, '.') '. ';
-        color: ${(props) => props.theme.colors.blue};
+        color: var(--maximeheckel-colors-brand);
         padding-right: 12px;
       }
     }
   }
 
   a {
-    color: ${(props) => props.theme.colors.blue};
+    color: var(--maximeheckel-colors-brand);
   }
 
   twitter-widget {

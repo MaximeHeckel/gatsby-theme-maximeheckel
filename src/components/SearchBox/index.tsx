@@ -1,22 +1,23 @@
-import { withTheme } from 'emotion-theming';
+import { css } from '@emotion/core';
 import FocusTrap from 'focus-trap-react';
 import { motion } from 'framer-motion';
 import { Link } from 'gatsby';
 import Mousetrap from 'mousetrap';
 import React from 'react';
 import ReactDOM from 'react-dom';
-import styled, { Theme } from '../../utils/styled';
+import styled from '@emotion/styled';
 import useDebouncedValue from '../../hooks/useDebouncedValue';
 import { useTheme } from '../../context/ThemeContext';
+import VisuallyHidden from '../VisuallyHidden';
 
 const TwitterIcon = () => (
   <svg
-    width="25"
-    height="24"
+    width="22"
+    height="22"
     viewBox="0 0 25 24"
     fill="none"
     xmlns="http://www.w3.org/2000/svg"
-    stroke="#949699"
+    stroke="var(--maximeheckel-colors-typeface-2)"
   >
     <path
       d="M23.8618 2.9995C22.9042 3.67497 21.8439 4.19161 20.7218 4.5295C20.1196 3.83701 19.3192 3.34619 18.4289 3.12342C17.5386 2.90066 16.6013 2.95669 15.7439 3.28395C14.8865 3.61121 14.1503 4.1939 13.6348 4.95321C13.1193 5.71253 12.8495 6.61183 12.8618 7.5295V8.5295C11.1044 8.57506 9.36309 8.18531 7.79283 7.39494C6.22256 6.60458 4.87213 5.43813 3.86182 3.9995C3.86182 3.9995 -0.138184 12.9995 8.86182 16.9995C6.80234 18.3975 4.34897 19.0984 1.86182 18.9995C10.8618 23.9995 21.7818 18.8949 21.7818 7.39494C21.7809 7.1164 21.8341 6.94309 21.7818 6.6695C22.8024 5.66299 23.5226 4.39221 23.8618 2.9995Z"
@@ -29,11 +30,11 @@ const TwitterIcon = () => (
 
 const Portfolio = () => (
   <svg
-    width="25"
-    height="24"
+    width="22"
+    height="22"
     viewBox="0 0 25 24"
     xmlns="http://www.w3.org/2000/svg"
-    stroke="#949699"
+    stroke="var(--maximeheckel-colors-typeface-2)"
     fill="none"
   >
     <path
@@ -47,11 +48,11 @@ const Portfolio = () => (
 
 const Contact = () => (
   <svg
-    width="25"
-    height="25"
+    width="22"
+    height="22"
     viewBox="0 0 25 25"
     xmlns="http://www.w3.org/2000/svg"
-    stroke="#949699"
+    stroke="var(--maximeheckel-colors-typeface-2)"
     fill="none"
   >
     <path
@@ -62,6 +63,36 @@ const Contact = () => (
     />
     <path
       d="M22.4355 2.73096L15.4355 22.731L11.4355 13.731L2.43555 9.73096L22.4355 2.73096Z"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    />
+  </svg>
+);
+
+const RSS = () => (
+  <svg
+    width="22"
+    height="22"
+    viewBox="0 0 25 24"
+    stroke="var(--maximeheckel-colors-typeface-2)"
+    fill="none"
+    xmlns="http://www.w3.org/2000/svg"
+  >
+    <path
+      d="M4.36719 11C6.75414 11 9.04332 11.9482 10.7311 13.636C12.419 15.3239 13.3672 17.6131 13.3672 20"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    />
+    <path
+      d="M4.36719 4C8.61065 4 12.6803 5.68571 15.6809 8.68629C18.6815 11.6869 20.3672 15.7565 20.3672 20"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    />
+    <path
+      d="M5.36719 20C5.91947 20 6.36719 19.5523 6.36719 19C6.36719 18.4477 5.91947 18 5.36719 18C4.8149 18 4.36719 18.4477 4.36719 19C4.36719 19.5523 4.8149 20 5.36719 20Z"
       strokeWidth="2"
       strokeLinecap="round"
       strokeLinejoin="round"
@@ -84,7 +115,6 @@ type Result = {
 interface Props {
   onClose?: () => void;
   showOverride?: boolean;
-  theme: Theme;
 }
 
 const toggleLockScroll = () =>
@@ -202,12 +232,12 @@ const SearchBox: React.FC<Props> = (props) => {
       <aside>
         <SearchBoxOverlay
           initial={{
-            //backdropFilter: 'blur(0px)',
-            backgroundColor: dark ? 'rgba(0,0,0,0)' : 'rgba(236, 236, 236, 0)',
+            backgroundColor: dark ? 'rgba(0,0,0,0)' : 'rgba(241, 243, 247, 0)',
           }}
           animate={{
-            //backdropFilter: 'blur(6px)',
-            backgroundColor: props.theme.overlayBackground,
+            backgroundColor: dark
+              ? 'rgba(0,0,0,0.8)'
+              : 'rgba(241, 243, 247, 0.8)',
           }}
           transition={{ duration: 0.8, when: 'beforeChildren' }}
           onClick={clickAway}
@@ -246,6 +276,15 @@ const SearchBox: React.FC<Props> = (props) => {
             <SearchResults
               results={results.length}
               searchQuery={debouncedSearchQuery}
+              css={css`
+                border-top: ${debouncedSearchQuery
+                  ? `1px solid ${
+                      dark
+                        ? 'hsla(var(--palette-gray-100), 100%)'
+                        : 'hsla(var(--palette-gray-10), 100%)'
+                    }`
+                  : 'none'};
+              `}
             >
               {debouncedSearchQuery !== '' && results.length > 0 ? (
                 results.map((result) => {
@@ -268,7 +307,7 @@ const SearchBox: React.FC<Props> = (props) => {
                   <Separator>Shortcuts</Separator>
                   <Item data-testid="shortcut" key="search-shortcut">
                     <div>
-                      <span>Search</span>
+                      <span>Command Center</span>
                       <div>
                         <ShortcutKey>ctrl</ShortcutKey>
                         <ShortcutKey>k</ShortcutKey>
@@ -294,6 +333,10 @@ const SearchBox: React.FC<Props> = (props) => {
                     >
                       <TwitterIcon />
                       <span style={{ marginLeft: '15px' }}>Twitter</span>
+                      <VisuallyHidden as="p">
+                        Link redirects to my Twitter profile page
+                        https://twitter.com/MaximeHeckel.
+                      </VisuallyHidden>
                     </a>
                   </Item>
 
@@ -306,6 +349,10 @@ const SearchBox: React.FC<Props> = (props) => {
                     >
                       <Contact />
                       <span style={{ marginLeft: '15px' }}>Contact</span>
+                      <VisuallyHidden as="p">
+                        Link opens your default mail client with my email
+                        address hello@maximeheckel.com prefilled.
+                      </VisuallyHidden>
                     </a>
                   </Item>
                   <Item data-testid="link" key="maximeheckelcom-link">
@@ -317,7 +364,25 @@ const SearchBox: React.FC<Props> = (props) => {
                     >
                       <Portfolio />
                       <span style={{ marginLeft: '15px' }}>Work</span>
+                      <VisuallyHidden as="p">
+                        Link redirects to my portfolio https://maximeheckel.com.
+                      </VisuallyHidden>
                     </a>
+                  </Item>
+                  <Item data-testid="link" key="rss-link">
+                    <Link
+                      to="/rss.xml"
+                      data-testid="rss-link"
+                      aria-label="RSS Feed"
+                      title="RSS Feed"
+                      style={{ textDecoration: `none` }}
+                    >
+                      <RSS />
+                      <span style={{ marginLeft: '15px' }}>RSS</span>
+                      <VisuallyHidden as="p">
+                        Link redirects to the rss.xml file.
+                      </VisuallyHidden>
+                    </Link>
                   </Item>
                 </>
               ) : (
@@ -332,21 +397,21 @@ const SearchBox: React.FC<Props> = (props) => {
   );
 };
 
-export default withTheme(SearchBox);
+export default SearchBox;
 
 const NoResultsWrapper = styled('div')`
   display: flex;
   align-items: center;
   justify-content: center;
-  height: 55px;
-  color: ${(p) => p.theme.bodyColor};
+  height: 65px;
+  color: var(--maximeheckel-colors-typeface-1);
   font-weight: 500;
 `;
 
 const ShortcutKey = styled('span')`
-  color: ${(p) => p.theme.colors.blue};
-  font-size: 12px;
-  border-radius: 10px;
+  color: var(--maximeheckel-colors-brand);
+  font-size: 14px;
+  border-radius: var(--border-radius-1);
   padding: 8px 8px;
   background: rgba(81, 132, 249, 0.15);
   &:not(:last-child) {
@@ -357,9 +422,9 @@ const ShortcutKey = styled('span')`
 const Item = styled('li')`
   height: 65px;
   margin-bottom: 0px;
-  transition: ${(p) => p.theme.transitionTime / 1.7}s;
+  transition: 0.25s;
   list-style: none;
-  color: ${(p) => p.theme.bodyColor};
+  color: var(--maximeheckel-colors-typeface-1);
 
   > *:not(svg) {
     height: inherit;
@@ -384,12 +449,12 @@ const Item = styled('li')`
 
   &:hover {
     a {
-      background-color: ${(p) => p.theme.overlayBackground};
-      color: ${(p) => p.theme.colors.blue};
+      background-color: var(--maximeheckel-colors-foreground);
+      color: var(--maximeheckel-colors-brand);
     }
 
     svg {
-      stroke: ${(p) => p.theme.colors.blue};
+      stroke: var(--maximeheckel-colors-brand);
     }
   }
 `;
@@ -398,8 +463,8 @@ const Separator = styled('li')`
   height: 30px;
   width: 100%;
   font-size: 14px;
-  background-color: ${(p) => p.theme.foregroundColor};
-  color: ${(p) => p.theme.bodyColor};
+  background-color: var(--maximeheckel-colors-foreground);
+  color: var(--maximeheckel-colors-typeface-1);
   display: flex;
   align-items: center;
   padding-left: 25px;
@@ -409,7 +474,7 @@ const Separator = styled('li')`
 
 const SearchResults = styled('ul')<{ results: number; searchQuery: string }>`
   @media (max-width: 700px) {
-    max-height: 400px;
+    max-height: 385px;
   }
 
   max-height: 500px;
@@ -419,9 +484,7 @@ const SearchResults = styled('ul')<{ results: number; searchQuery: string }>`
   will-change: height;
 
   height: ${(p) =>
-    p.results > 0 ? p.results * 70 : p.searchQuery ? 70 : 400}px;
-  border-top: ${(p) =>
-    p.searchQuery ? `1px solid ${p.theme.borderColor}` : 'none'};
+    p.results > 0 ? p.results * 65 : p.searchQuery ? 65 : 450}px;
 }
   
 `;
@@ -435,38 +498,37 @@ const SearchBoxWrapper = styled(motion.div)<{}>`
 
   position: fixed;
   overflow: hidden;
-  background: ${(p) => p.theme.backgroundColor};
+  background: var(--maximeheckel-colors-body);
   width: 600px;
   top: 20%;
   left: 50%;
-  border-radius: 10px;
-  // border: 1px solid ${(p) => p.theme.borderColor};
-  box-shadow: ${(p) => p.theme.boxShadow};
+  border-radius: var(--border-radius-2);
+  box-shadow: var(--maximeheckel-shadow-1);
 
   form {
     margin: 0px;
   }
 
   input {
-    outline: none;
     background: transparent;
     border: none;
     font-weight: 300;
     height: 55px;
     padding: 0px 25px;
     width: 100%;
-    color: ${(p) => p.theme.fontColor};
+    outline: none;
+    color: var(--maximeheckel-colors-typeface-0);
     ::placeholder,
     ::-webkit-input-placeholder {
-      color: ${(p) => p.theme.bodyColor};
+      color: var(--maximeheckel-colors-typeface-1);
     }
     :-ms-input-placeholder {
-      color: ${(p) => p.theme.bodyColor};
+      color: var(--maximeheckel-colors-typeface-1);
     }
 
     ::-webkit-autofill {
       background: transparent;
-      color: ${(p) => p.theme.fontColor};
+      color: var(--maximeheckel-colors-typeface-0);
       font-size: 14px;
     }
   }

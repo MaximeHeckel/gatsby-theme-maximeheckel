@@ -4,25 +4,30 @@ import React from 'react';
 
 export const CopyToClipboardButton = (props: { text: string }) => {
   const duration = 0.4;
-  const boxVariants = {
+  const svgVariants = {
     hover: (isChecked: boolean) => ({
-      scale: 1.05,
-      strokeWidth: 3,
-      opacity: isChecked ? 0 : 1,
+      scale: isChecked ? 1 : 1.05,
+      strokeWidth: isChecked ? 2 : 3,
     }),
     pressed: (isChecked: boolean) => ({
-      scale: 0.95,
-      strokeWidth: 1,
-      opacity: isChecked ? 0 : 1,
+      scale: isChecked ? 1 : 0.95,
+      strokeWidth: isChecked ? 2 : 1,
     }),
+    idle: {
+      scale: 1,
+      strokeWidth: 2,
+    },
+  };
+
+  const boxVariants = {
     checked: { opacity: 0 },
-    unchecked: { stroke: '#949699', opacity: 1 },
+    unchecked: { opacity: 1 },
   };
 
   const tickVariants = {
     pressed: (isChecked: boolean) => ({ pathLength: isChecked ? 0.85 : 0.05 }),
-    checked: { pathLength: 1 },
-    unchecked: { pathLength: 0 },
+    checked: { strokeWidth: 2, pathLength: 1 },
+    unchecked: { strokeWidth: 2, pathLength: 0 },
   };
 
   const [isChecked, setIsChecked] = React.useState(false);
@@ -54,7 +59,14 @@ export const CopyToClipboardButton = (props: { text: string }) => {
         border: none;
         height: 25px;
         cursor: ${isChecked ? 'default' : 'pointer'};
-        outline: none;
+
+        &:focus:not(:focus-visible) {
+          outline: 0;
+        }
+
+        &:focus-visible {
+          outline: 2px solid var(--maximeheckel-colors-brand);
+        }
       `}
       aria-label="Copy to clipboard"
       title="Copy to clipboard"
@@ -65,11 +77,12 @@ export const CopyToClipboardButton = (props: { text: string }) => {
       }}
     >
       <motion.svg
-        initial={false}
-        animate={isChecked ? 'checked' : 'unchecked'}
+        initial="idle"
         whileHover="hover"
         whileTap="pressed"
         transition={{ duration }}
+        variants={svgVariants}
+        custom={isChecked}
         width="25"
         height="25"
         viewBox="0 0 25 25"
@@ -78,30 +91,33 @@ export const CopyToClipboardButton = (props: { text: string }) => {
       >
         <motion.path
           d="M20.8511 9.46338H11.8511C10.7465 9.46338 9.85107 10.3588 9.85107 11.4634V20.4634C9.85107 21.5679 10.7465 22.4634 11.8511 22.4634H20.8511C21.9556 22.4634 22.8511 21.5679 22.8511 20.4634V11.4634C22.8511 10.3588 21.9556 9.46338 20.8511 9.46338Z"
-          stroke="black"
-          strokeWidth="2"
+          stroke="var(--maximeheckel-colors-typeface-2)"
           strokeLinecap="round"
           strokeLinejoin="round"
+          initial={false}
+          animate={isChecked ? 'checked' : 'unchecked'}
           variants={boxVariants}
           custom={isChecked}
           transition={{ duration }}
         />
         <motion.path
           d="M5.85107 15.4634H4.85107C4.32064 15.4634 3.81193 15.2527 3.43686 14.8776C3.06179 14.5025 2.85107 13.9938 2.85107 13.4634V4.46338C2.85107 3.93295 3.06179 3.42424 3.43686 3.04917C3.81193 2.67409 4.32064 2.46338 4.85107 2.46338H13.8511C14.3815 2.46338 14.8902 2.67409 15.2653 3.04917C15.6404 3.42424 15.8511 3.93295 15.8511 4.46338V5.46338"
-          stroke="black"
-          strokeWidth="2"
+          stroke="var(--maximeheckel-colors-typeface-2)"
           strokeLinecap="round"
           strokeLinejoin="round"
+          initial={false}
+          animate={isChecked ? 'checked' : 'unchecked'}
           variants={boxVariants}
           custom={isChecked}
           transition={{ duration }}
         />
         <motion.path
           d="M20 6L9 17L4 12"
-          stroke="#949699"
-          strokeWidth="2"
+          stroke="var(--maximeheckel-colors-typeface-2)"
           strokeLinecap="round"
           strokeLinejoin="round"
+          initial={false}
+          animate={isChecked ? 'checked' : 'unchecked'}
           variants={tickVariants}
           style={{ pathLength, opacity }}
           custom={isChecked}

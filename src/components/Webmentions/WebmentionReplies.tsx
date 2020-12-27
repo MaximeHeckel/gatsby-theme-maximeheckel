@@ -3,7 +3,7 @@ import { OutboundLink } from 'gatsby-plugin-google-analytics';
 import React from 'react';
 import { useInView } from 'react-intersection-observer';
 import ReactTooltip from 'react-tooltip';
-import styled from '../../utils/styled';
+import styled from '@emotion/styled';
 
 const RepliesList = styled(motion.ul)`
   display: flex;
@@ -21,7 +21,7 @@ const Head = styled(motion.li)`
 
   img {
     border-radius: 50%;
-    border: 3px solid ${(p) => p.theme.colors.blue};
+    border: 3px solid var(--maximeheckel-colors-brand);
   }
 `;
 

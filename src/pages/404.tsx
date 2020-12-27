@@ -1,9 +1,9 @@
+import styled from '@emotion/styled';
 import { Link } from 'gatsby';
 import React from 'react';
 import Button from '../components/Button';
 import Seo from '../components/Seo';
 import Layout, { LayoutChildrenProps } from '../layouts';
-import styled from '../utils/styled';
 
 const NotFoundPage = () => (
   <Layout>
@@ -20,7 +20,7 @@ const NotFoundPage = () => (
                 {/* eslint-disable-next-line react/no-unescaped-entities */}
                 Don't worry I got you!{' '}
                 <Link to={`/`}>
-                  <Button secondary={true}>Click here </Button>
+                  <Button tertiary={true}>Click here </Button>
                 </Link>{' '}
                 to go back home.
               </h2>
@@ -40,7 +40,7 @@ const Wrapper = styled.div`
   display: flex;
   height: calc(100vh);
   align-items: center;
-  color: ${(props) => props.theme.fontColor};
+  color: var(--maximeheckel-colors-typeface-0);
   padding: 0px 70px;
 
   @media (max-width: 700px) {

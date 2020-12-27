@@ -1,9 +1,9 @@
+import styled from '@emotion/styled';
 import { graphql, useStaticQuery } from 'gatsby';
 import React from 'react';
 import Footer from '../components/Footer';
 import { DefaultHeader, MainHeaderProps } from '../components/Header';
 import { useTheme } from '../context/ThemeContext';
-import styled from '../utils/styled';
 import 'plyr/dist/plyr.css';
 
 interface LayoutProps {
@@ -61,8 +61,8 @@ const Layout: React.FC<LayoutProps> = (props) => {
 export { Layout };
 
 const Wrapper = styled.div`
-  transition: ${(props) => props.theme.transitionTime}s;
-  background: ${(props) => props.theme.backgroundColor};
+  transition: 0.5s;
+  background: var(--maximeheckel-colors-body);
 `;
 
 const Content = styled.div`
@@ -72,5 +72,5 @@ const Content = styled.div`
   margin: 0 auto;
   max-width: 1020px;
   padding: 0px 70px 0px 70px;
-  color: ${(props) => props.theme.fontColor};
+  color: var(--maximeheckel-colors-typeface-0);
 `;

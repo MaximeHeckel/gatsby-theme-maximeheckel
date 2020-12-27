@@ -20,12 +20,21 @@ exports[`Button renders the primary button 1`] = `
   align-items: center;
   position: relative;
   font-weight: 600;
-  outline: none;
+  font-size: 18px;
   padding: 0 30px;
-  border-radius: 4px;
-  background-color: var(--maximeheckel-colors-brand,#336ef5);
-  color: #FFFFFF;
+  border-radius: var(--border-radius-1);
+  background-color: var(--maximeheckel-colors-brand);
+  color: hsla(var(--palette-gray-00),100%);
   min-width: 150px;
+}
+
+.emotion-0:focus:not(:focus-visible) {
+  outline: 0;
+}
+
+.emotion-0:focus-visible {
+  outline: 2px solid var(--maximeheckel-colors-brand);
+  background-color: var(--maximeheckel-colors-foreground);
 }
 
 <body>
@@ -59,13 +68,22 @@ exports[`Button renders the secondary button 1`] = `
   align-items: center;
   position: relative;
   font-weight: 600;
-  outline: none;
+  font-size: 18px;
   padding: 0 30px;
-  border-radius: 4px;
+  border-radius: var(--border-radius-1);
   background-color: transparent;
-  color: var(--maximeheckel-colors-brand,#336ef5);
-  border: 2px solid var(--maximeheckel-colors-brand,#336ef5);
+  color: var(--maximeheckel-colors-brand);
+  border: 2px solid var(--maximeheckel-colors-brand);
   min-width: 150px;
+}
+
+.emotion-0:focus:not(:focus-visible) {
+  outline: 0;
+}
+
+.emotion-0:focus-visible {
+  outline: 2px solid var(--maximeheckel-colors-brand);
+  background-color: var(--maximeheckel-colors-foreground);
 }
 
 <body>
@@ -99,13 +117,22 @@ exports[`Button renders the tertiary button 1`] = `
   align-items: center;
   position: relative;
   font-weight: 600;
-  outline: none;
+  font-size: 18px;
   padding: 0 30px;
-  border-radius: 4px;
+  border-radius: var(--border-radius-1);
   background-color: transparent;
-  color: var(--maximeheckel-colors-brand,#336ef5);
+  color: var(--maximeheckel-colors-brand);
   min-width: inherited;
   padding: 0px;
+}
+
+.emotion-0:focus:not(:focus-visible) {
+  outline: 0;
+}
+
+.emotion-0:focus-visible {
+  outline: 2px solid var(--maximeheckel-colors-brand);
+  background-color: var(--maximeheckel-colors-foreground);
 }
 
 .emotion-0::after {
@@ -116,7 +143,7 @@ exports[`Button renders the tertiary button 1`] = `
   left: 0;
   right: 0;
   height: 2px;
-  background-color: var(--maximeheckel-colors-brand,#336ef5);
+  background-color: var(--maximeheckel-colors-brand);
   -webkit-transform: scaleX(0);
   -ms-transform: scaleX(0);
   transform: scaleX(0);

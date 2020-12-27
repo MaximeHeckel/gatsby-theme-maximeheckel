@@ -1,14 +1,13 @@
 import { motion } from 'framer-motion';
-import styled from '../../utils/styled';
+import styled from '@emotion/styled';
 
 const LinkButton = styled(motion.button)`
-  border-radius: 4px;
+  border-radius: var(--border-radius-1);
   width: 44px;
   height: 40px;
   cursor: pointer;
   border: none;
   background-color: transparent;
-  outline: none;
   transition: 0.4s;
   display: flex;
   align-items: center;
@@ -20,8 +19,17 @@ const LinkButton = styled(motion.button)`
     margin-right: auto;
   }
 
+  &:focus:not(:focus-visible) {
+    outline: 0;
+  }
+
+  &:focus-visible {
+    outline: 2px solid var(--maximeheckel-colors-brand);
+    background-color: var(--maximeheckel-colors-foreground);
+  }
+
   &:hover {
-    background-color: ${(p) => p.theme.foregroundColor};
+    background-color: var(--maximeheckel-colors-foreground);
   }
 `;
 

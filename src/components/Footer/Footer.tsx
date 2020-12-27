@@ -1,12 +1,15 @@
 import React from 'react';
 import Logo from '../Logo';
-import styled from '../../utils/styled';
+import styled from '@emotion/styled';
 
-const HR = styled.hr``;
+const HR = styled.hr`
+  height: 2px;
+  background: var(--maximeheckel-colors-typeface-0);
+`;
 
 const FooterBlock = styled.div`
-  background: ${(props) => props.theme.backgroundColor};
-  transition: ${(props) => props.theme.transitionTime}s;
+  background: var(--maximeheckel-colors-body);
+  transition: 0.5s;
   height: 130px;
   width: 100%;
 `;
@@ -22,7 +25,8 @@ const FooterWrapper = styled.div`
   padding-right: 70px;
   max-width: 1020px;
   margin-top: 30px;
-  color: ${(props) => props.theme.fontColor};
+  color: var(--maximeheckel-colors-typeface-0);
+  font-size: 14px;
   margin: 0 auto;
   a {
     color: inherit;
@@ -40,10 +44,7 @@ const Footer: React.FC<{}> = () => (
     <FooterWrapper>
       <HR />
       <FooterContent>
-        <div>
-          © {new Date().getFullYear()} Maxime Heckel —— Made in SF. Polished in
-          NY.
-        </div>
+        <div>© {new Date().getFullYear()} Maxime Heckel —— SF/NY</div>
         <Logo alt="Maxime Heckel's logo" size={40} />
       </FooterContent>
     </FooterWrapper>

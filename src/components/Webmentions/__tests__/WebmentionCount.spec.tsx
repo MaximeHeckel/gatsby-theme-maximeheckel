@@ -1,8 +1,6 @@
 import { cleanup, render, waitFor } from '@testing-library/react';
-import { ThemeProvider } from 'emotion-theming';
 import React from 'react';
 import { WebmentionCount } from '../WebmentionCount';
-import theme from '../../../theme';
 
 beforeEach(() => {
   global.fetch = jest.fn().mockImplementation(() => {
@@ -27,11 +25,7 @@ afterEach(() => {
 
 describe('Webmention', () => {
   it('renders the webmention counts', async () => {
-    const { getByTestId } = render(
-      <ThemeProvider theme={theme.light}>
-        <WebmentionCount target="foo.com" />
-      </ThemeProvider>
-    );
+    const { getByTestId } = render(<WebmentionCount target="foo.com" />);
 
     await waitFor(() => {
       expect(getByTestId('likes')).toBeDefined();

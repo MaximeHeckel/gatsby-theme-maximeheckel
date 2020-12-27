@@ -1,6 +1,6 @@
 import Img, { FluidObject } from 'gatsby-image';
 import React from 'react';
-import styled from '../../utils/styled';
+import styled from '@emotion/styled';
 
 const HeroImgWrapper = styled.div`
   @media (max-width: 700px) {
@@ -10,7 +10,8 @@ const HeroImgWrapper = styled.div`
     width: 100vw;
   }
   max-width: 880px;
-  margin-bottom: 30px;
+  margin-top: 32px;
+  margin-bottom: 32px;
 `;
 
 interface HeroImgProps {
@@ -32,19 +33,17 @@ const HeroImg: React.FC<HeroImgProps> = (props) => (
 const HeroInfo = styled.div`
   margin-bottom: 30px;
   p {
-    color: ${(p) => p.theme.colors.gray};
+    color: var(--maximeheckel-colors-typeface-2);
     font-size: 14px;
     font-weight: 500;
   }
 `;
 
-const HeroSubtitle = styled.h3``;
-
-const HeroTitle = styled.h1`
-  @media (max-width: 700px) {
-    font-size: 36px;
-  }
+const HeroSubtitle = styled.h3`
+  color: var(--maximeheckel-colors-typeface-2);
 `;
+
+const HeroTitle = styled.h1``;
 
 const HeroWrapper = styled.div`
   @media (max-width: 700px) {
@@ -54,7 +53,7 @@ const HeroWrapper = styled.div`
   margin: 0 auto;
   max-width: 700px;
   align-items: center;
-  color: ${(props) => props.theme.fontColor};
+  color: var(--maximeheckel-colors-typeface-0);
   padding-top: 248px;
 `;
 
