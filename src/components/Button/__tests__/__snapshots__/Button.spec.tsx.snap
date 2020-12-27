@@ -20,12 +20,21 @@ exports[`Button renders the primary button 1`] = `
   align-items: center;
   position: relative;
   font-weight: 600;
-  outline: none;
+  font-size: 18px;
   padding: 0 30px;
-  border-radius: var(--border-radius-2);
+  border-radius: var(--border-radius-1);
   background-color: var(--maximeheckel-colors-brand);
   color: hsla(var(--palette-gray-00),100%);
   min-width: 150px;
+}
+
+.emotion-0:focus:not(:focus-visible) {
+  outline: 0;
+}
+
+.emotion-0:focus-visible {
+  outline: 2px solid var(--maximeheckel-colors-brand);
+  background-color: var(--maximeheckel-colors-foreground);
 }
 
 <body>
@@ -59,13 +68,22 @@ exports[`Button renders the secondary button 1`] = `
   align-items: center;
   position: relative;
   font-weight: 600;
-  outline: none;
+  font-size: 18px;
   padding: 0 30px;
-  border-radius: var(--border-radius-2);
+  border-radius: var(--border-radius-1);
   background-color: transparent;
   color: var(--maximeheckel-colors-brand);
   border: 2px solid var(--maximeheckel-colors-brand);
   min-width: 150px;
+}
+
+.emotion-0:focus:not(:focus-visible) {
+  outline: 0;
+}
+
+.emotion-0:focus-visible {
+  outline: 2px solid var(--maximeheckel-colors-brand);
+  background-color: var(--maximeheckel-colors-foreground);
 }
 
 <body>
@@ -99,13 +117,22 @@ exports[`Button renders the tertiary button 1`] = `
   align-items: center;
   position: relative;
   font-weight: 600;
-  outline: none;
+  font-size: 18px;
   padding: 0 30px;
-  border-radius: var(--border-radius-2);
+  border-radius: var(--border-radius-1);
   background-color: transparent;
   color: var(--maximeheckel-colors-brand);
   min-width: inherited;
   padding: 0px;
+}
+
+.emotion-0:focus:not(:focus-visible) {
+  outline: 0;
+}
+
+.emotion-0:focus-visible {
+  outline: 2px solid var(--maximeheckel-colors-brand);
+  background-color: var(--maximeheckel-colors-foreground);
 }
 
 .emotion-0::after {

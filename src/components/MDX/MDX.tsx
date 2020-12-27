@@ -72,12 +72,12 @@ const MDXBody = styled.div<MDXBody>`
 
   h2 {
     color: var(--maximeheckel-colors-typeface-0);
-    margin-top: 3em;
+    margin-top: 2em;
   }
 
   h3 {
     color: var(--maximeheckel-colors-typeface-0);
-    margin-top: 3em;
+    margin-top: 2em;
   }
 
   strong {

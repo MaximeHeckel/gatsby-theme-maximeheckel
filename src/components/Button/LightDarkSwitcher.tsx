@@ -1,9 +1,8 @@
 import { motion, useMotionValue, useTransform } from 'framer-motion';
 import React from 'react';
 import { useTheme } from '../../context/ThemeContext';
+import VisuallyHidden from '../VisuallyHidden';
 import { LinkButton } from './LinkButton';
-
-const noop = () => {};
 
 const LightDarkSwitcher = () => {
   const theme = useTheme();
@@ -16,9 +15,6 @@ const LightDarkSwitcher = () => {
     unchecked: {
       scale: 0,
     },
-    // hover: {
-    //   stroke: '#FEFEFE',
-    // },
   };
 
   const sunVariants = {
@@ -28,9 +24,6 @@ const LightDarkSwitcher = () => {
     unchecked: {
       scale: 1,
     },
-    // hover: {
-    //   stroke: '#2B2D3E',
-    // },
   };
 
   const isChecked = theme.dark;
@@ -44,7 +37,6 @@ const LightDarkSwitcher = () => {
     <LinkButton
       data-testid="darkmode-switch"
       tabIndex={0}
-      onKeyDown={(e) => (e.keyCode === 13 ? theme.toggleDark() : noop)}
       onClick={(e) => {
         theme.toggleDark();
         e.stopPropagation();
@@ -201,10 +193,12 @@ const LightDarkSwitcher = () => {
           style={{
             pathLength: pathLengthMoon,
             scale: scaleMoon,
-            // opacity: isChecked ? 1 : 0,
           }}
         />
       </motion.svg>
+      <VisuallyHidden as="p">
+        Toggles between light and dark mode.
+      </VisuallyHidden>
     </LinkButton>
   );
 };

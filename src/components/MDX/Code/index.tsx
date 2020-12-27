@@ -1,5 +1,5 @@
 import { css } from '@emotion/core';
-import EmotionStyled from '@emotion/styled';
+import styled from '@emotion/styled';
 import {
   motion,
   useAnimation,
@@ -15,7 +15,6 @@ import Highlight, {
 import React from 'react';
 import { LiveProvider, LiveEditor, LiveError, LivePreview } from 'react-live';
 import * as Recharts from 'recharts';
-import styled from '@emotion/styled';
 import Button, { CopyToClipboardButton } from '../../Button';
 import { useTheme } from '../../../context/ThemeContext';
 
@@ -125,7 +124,7 @@ export const LiveCodeBlock: React.FC<ICodeBlockProps> = (props) => {
     useAnimation,
     useMotionValue,
     useTransform,
-    styled: EmotionStyled,
+    styled,
     Button,
     React,
     Recharts: { ...Recharts },
@@ -139,6 +138,7 @@ export const LiveCodeBlock: React.FC<ICodeBlockProps> = (props) => {
       ...baseTheme.plain,
       fontFamily: 'Fira Code',
       fontSize: '14px',
+      lineHeight: '26px',
       overflowWrap: 'normal',
       position: 'relative',
       overflow: 'auto',
@@ -154,7 +154,7 @@ export const LiveCodeBlock: React.FC<ICodeBlockProps> = (props) => {
         noInline={true}
       >
         <StyledLiveCodeWrapper fullWidth>
-          <StyledPreviewWrapper height={600}>
+          <StyledPreviewWrapper height={600} withEditor={true}>
             <LivePreview />
             <StyledErrorWrapper>
               <LiveError />
@@ -187,6 +187,8 @@ interface ICodeBlockProps {
   codeString: string;
   language: Language;
   metastring: string | null;
+  live?: boolean;
+  render?: boolean;
 }
 
 export const CodeBlock: React.FC<ICodeBlockProps> = (props) => {
@@ -290,7 +292,7 @@ export const Code: React.FC<PrePropsType> = (preProps) => {
   }
 };
 
-const Pre = styled.pre`
+const Pre = styled.pre<{ title?: string }>`
   text-align: left;
   padding: 8px 0px;
   overflow: auto;
@@ -341,7 +343,7 @@ const InlineCodeWrapper = styled('code')`
   padding-bottom: 2px;
   padding-left: 6px;
   padding-right: 6px;
-  font-size: 1rem;
+  font-size: 16px;
   font-weight: 400 !important;
 `;
 
@@ -429,7 +431,10 @@ const StyledEditorWrapper = styled('div')`
   }
 `;
 
-const StyledPreviewWrapper = styled('div')<{ height?: number }>`
+const StyledPreviewWrapper = styled('div')<{
+  height?: number;
+  withEditor?: boolean;
+}>`
   max-height: 600px;
   min-height: ${(p) => p.height || 300}px;
   flex: 40 1 0%;
@@ -437,8 +442,15 @@ const StyledPreviewWrapper = styled('div')<{ height?: number }>`
   align-items: center;
   justify-content: center;
   background-color: var(--maximeheckel-colors-emphasis);
+  ${(p) =>
+    p.withEditor
+      ? `
   border-top-left-radius: var(--border-radius-2);
   border-bottom-left-radius: var(--border-radius-2);
+  `
+      : `
+  border-radius: var(--border-radius-2);
+  `}
 `;
 
 const StyledErrorWrapper = styled('div')`

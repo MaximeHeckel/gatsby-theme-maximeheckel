@@ -24,9 +24,18 @@ const StyledButton = styled(motion.button)<ButtonProps>`
   align-items: center;
   position: relative;
   font-weight: 600;
-  outline: none;
+  font-size: 18px;
   padding: 0 30px;
-  border-radius: var(--border-radius-2);
+  border-radius: var(--border-radius-1);
+
+  &:focus:not(:focus-visible) {
+    outline: 0;
+  }
+
+  &:focus-visible {
+    outline: 2px solid var(--maximeheckel-colors-brand);
+    background-color: var(--maximeheckel-colors-foreground);
+  }
 
   ${(p) =>
     p.primary
