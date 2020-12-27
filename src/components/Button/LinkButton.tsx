@@ -8,7 +8,6 @@ const LinkButton = styled(motion.button)`
   cursor: pointer;
   border: none;
   background-color: transparent;
-  outline: none;
   transition: 0.4s;
   display: flex;
   align-items: center;
@@ -18,6 +17,15 @@ const LinkButton = styled(motion.button)`
   > * {
     margin-left: auto;
     margin-right: auto;
+  }
+
+  &:focus:not(:focus-visible) {
+    outline: 0;
+  }
+
+  &:focus-visible {
+    outline: 2px solid var(--maximeheckel-colors-brand);
+    background-color: var(--maximeheckel-colors-foreground);
   }
 
   &:hover {

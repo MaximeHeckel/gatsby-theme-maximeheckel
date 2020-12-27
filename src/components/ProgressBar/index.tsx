@@ -61,6 +61,15 @@ const Wrapper = styled('div')<WrapperProps>`
         color: var(--maximeheckel-colors-typeface-1);
         text-decoration: none;
       }
+
+      &:focus:not(:focus-visible) {
+        outline: 0;
+      }
+
+      &:focus-visible {
+        outline: 2px solid var(--maximeheckel-colors-brand);
+        opacity: 1 !important;
+      }
     }
   }
 `;

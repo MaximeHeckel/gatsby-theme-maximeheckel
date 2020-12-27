@@ -154,7 +154,7 @@ export const LiveCodeBlock: React.FC<ICodeBlockProps> = (props) => {
         noInline={true}
       >
         <StyledLiveCodeWrapper fullWidth>
-          <StyledPreviewWrapper height={600}>
+          <StyledPreviewWrapper height={600} withEditor={true}>
             <LivePreview />
             <StyledErrorWrapper>
               <LiveError />
@@ -187,6 +187,8 @@ interface ICodeBlockProps {
   codeString: string;
   language: Language;
   metastring: string | null;
+  live?: boolean;
+  render?: boolean;
 }
 
 export const CodeBlock: React.FC<ICodeBlockProps> = (props) => {
@@ -341,7 +343,7 @@ const InlineCodeWrapper = styled('code')`
   padding-bottom: 2px;
   padding-left: 6px;
   padding-right: 6px;
-  font-size: 1rem;
+  font-size: 0.85rem;
   font-weight: 400 !important;
 `;
 
@@ -429,7 +431,10 @@ const StyledEditorWrapper = styled('div')`
   }
 `;
 
-const StyledPreviewWrapper = styled('div')<{ height?: number }>`
+const StyledPreviewWrapper = styled('div')<{
+  height?: number;
+  withEditor?: boolean;
+}>`
   max-height: 600px;
   min-height: ${(p) => p.height || 300}px;
   flex: 40 1 0%;
@@ -437,8 +442,16 @@ const StyledPreviewWrapper = styled('div')<{ height?: number }>`
   align-items: center;
   justify-content: center;
   background-color: var(--maximeheckel-colors-emphasis);
+
+  ${(p) =>
+    p.withEditor
+      ? `
   border-top-left-radius: var(--border-radius-2);
   border-bottom-left-radius: var(--border-radius-2);
+  `
+      : `
+  border-radius: var(--border-radius-2);
+  `}
 `;
 
 const StyledErrorWrapper = styled('div')`
