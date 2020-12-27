@@ -1,5 +1,12 @@
 # Gatsby-theme-maximeheckel
 
+# [0.15.0](https://github.com/MaximeHeckel/gatsby-theme-maximeheckel/compare/v0.14.7...v0.15.0) (2020-12-27)
+
+
+### Features
+
+* Add VisuallyHidden component ([44f4eb4](https://github.com/MaximeHeckel/gatsby-theme-maximeheckel/commit/44f4eb4373ecb68491a8d4b62f740a299cf2229d))
+
 ## [0.14.7](https://github.com/MaximeHeckel/gatsby-theme-maximeheckel/compare/v0.14.6...v0.14.7) (2020-12-15)
 
 
