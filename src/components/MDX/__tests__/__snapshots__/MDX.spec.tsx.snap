@@ -24,12 +24,12 @@ exports[`MDX Renders the MDX component accordingly 1`] = `
 
 .emotion-0 h2 {
   color: var(--maximeheckel-colors-typeface-0);
-  margin-top: 3em;
+  margin-top: 2em;
 }
 
 .emotion-0 h3 {
   color: var(--maximeheckel-colors-typeface-0);
-  margin-top: 3em;
+  margin-top: 2em;
 }
 
 .emotion-0 strong {

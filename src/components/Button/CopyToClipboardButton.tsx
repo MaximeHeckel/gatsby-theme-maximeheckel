@@ -59,7 +59,14 @@ export const CopyToClipboardButton = (props: { text: string }) => {
         border: none;
         height: 25px;
         cursor: ${isChecked ? 'default' : 'pointer'};
-        outline: none;
+
+        &:focus:not(:focus-visible) {
+          outline: 0;
+        }
+
+        &:focus-visible {
+          outline: 2px solid var(--maximeheckel-colors-brand);
+        }
       `}
       aria-label="Copy to clipboard"
       title="Copy to clipboard"

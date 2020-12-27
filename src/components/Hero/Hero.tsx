@@ -10,7 +10,8 @@ const HeroImgWrapper = styled.div`
     width: 100vw;
   }
   max-width: 880px;
-  margin-bottom: 30px;
+  margin-top: 32px;
+  margin-bottom: 32px;
 `;
 
 interface HeroImgProps {
@@ -38,13 +39,11 @@ const HeroInfo = styled.div`
   }
 `;
 
-const HeroSubtitle = styled.h3``;
-
-const HeroTitle = styled.h1`
-  @media (max-width: 700px) {
-    font-size: 36px;
-  }
+const HeroSubtitle = styled.h3`
+  color: var(--maximeheckel-colors-typeface-2);
 `;
+
+const HeroTitle = styled.h1``;
 
 const HeroWrapper = styled.div`
   @media (max-width: 700px) {

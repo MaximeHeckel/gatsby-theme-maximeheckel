@@ -1,26 +1,21 @@
 import { motion, useMotionValue } from 'framer-motion';
 import React from 'react';
+import VisuallyHidden from '../VisuallyHidden';
 import { LinkButton } from './LinkButton';
-
-const noop = () => {};
 
 interface Props {
   onClick: () => void;
   isSearchShown: boolean;
-  theme: { dark: boolean; toggleDark: () => void };
 }
 
 export const CommandCenterButton = (props: Props) => {
-  const { theme, isSearchShown, onClick } = props;
+  const { isSearchShown, onClick } = props;
   const duration = 0.7;
 
   const commandCenterVariants = {
     pressed: { pathLength: 0.05 },
     checked: { pathLength: 0 },
     unchecked: { pathLength: 1 },
-    // hover: {
-    //   stroke: 'var(--maximeheckel-colors-typeface-0)',
-    // },
   };
 
   const pathLength = useMotionValue(1);
@@ -29,11 +24,10 @@ export const CommandCenterButton = (props: Props) => {
     <LinkButton
       data-testid="command-center"
       tabIndex={0}
-      onKeyDown={(e) => (e.keyCode === 13 ? onClick() : noop)}
       aria-label="Show command center"
       title="Show command center"
       onClick={(e) => {
-        props.onClick();
+        onClick();
         e.stopPropagation();
       }}
       initial={false}
@@ -60,6 +54,10 @@ export const CommandCenterButton = (props: Props) => {
           style={{ pathLength }}
         />
       </motion.svg>
+      <VisuallyHidden as="p">
+        Opens a modal to allow you to quickly access links to my portfolio,
+        email as well as a search bar to search for the content of this blog.
+      </VisuallyHidden>
     </LinkButton>
   );
 };

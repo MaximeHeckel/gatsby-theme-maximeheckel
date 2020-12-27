@@ -8,11 +8,12 @@ import ReactDOM from 'react-dom';
 import styled from '@emotion/styled';
 import useDebouncedValue from '../../hooks/useDebouncedValue';
 import { useTheme } from '../../context/ThemeContext';
+import VisuallyHidden from '../VisuallyHidden';
 
 const TwitterIcon = () => (
   <svg
-    width="25"
-    height="24"
+    width="22"
+    height="22"
     viewBox="0 0 25 24"
     fill="none"
     xmlns="http://www.w3.org/2000/svg"
@@ -29,8 +30,8 @@ const TwitterIcon = () => (
 
 const Portfolio = () => (
   <svg
-    width="25"
-    height="24"
+    width="22"
+    height="22"
     viewBox="0 0 25 24"
     xmlns="http://www.w3.org/2000/svg"
     stroke="var(--maximeheckel-colors-typeface-2)"
@@ -47,8 +48,8 @@ const Portfolio = () => (
 
 const Contact = () => (
   <svg
-    width="25"
-    height="25"
+    width="22"
+    height="22"
     viewBox="0 0 25 25"
     xmlns="http://www.w3.org/2000/svg"
     stroke="var(--maximeheckel-colors-typeface-2)"
@@ -62,6 +63,36 @@ const Contact = () => (
     />
     <path
       d="M22.4355 2.73096L15.4355 22.731L11.4355 13.731L2.43555 9.73096L22.4355 2.73096Z"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    />
+  </svg>
+);
+
+const RSS = () => (
+  <svg
+    width="22"
+    height="22"
+    viewBox="0 0 25 24"
+    stroke="var(--maximeheckel-colors-typeface-2)"
+    fill="none"
+    xmlns="http://www.w3.org/2000/svg"
+  >
+    <path
+      d="M4.36719 11C6.75414 11 9.04332 11.9482 10.7311 13.636C12.419 15.3239 13.3672 17.6131 13.3672 20"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    />
+    <path
+      d="M4.36719 4C8.61065 4 12.6803 5.68571 15.6809 8.68629C18.6815 11.6869 20.3672 15.7565 20.3672 20"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    />
+    <path
+      d="M5.36719 20C5.91947 20 6.36719 19.5523 6.36719 19C6.36719 18.4477 5.91947 18 5.36719 18C4.8149 18 4.36719 18.4477 4.36719 19C4.36719 19.5523 4.8149 20 5.36719 20Z"
       strokeWidth="2"
       strokeLinecap="round"
       strokeLinejoin="round"
@@ -84,7 +115,6 @@ type Result = {
 interface Props {
   onClose?: () => void;
   showOverride?: boolean;
-  theme: Theme;
 }
 
 const toggleLockScroll = () =>
@@ -277,7 +307,7 @@ const SearchBox: React.FC<Props> = (props) => {
                   <Separator>Shortcuts</Separator>
                   <Item data-testid="shortcut" key="search-shortcut">
                     <div>
-                      <span>Search</span>
+                      <span>Command Center</span>
                       <div>
                         <ShortcutKey>ctrl</ShortcutKey>
                         <ShortcutKey>k</ShortcutKey>
@@ -303,6 +333,10 @@ const SearchBox: React.FC<Props> = (props) => {
                     >
                       <TwitterIcon />
                       <span style={{ marginLeft: '15px' }}>Twitter</span>
+                      <VisuallyHidden as="p">
+                        Link redirects to my Twitter profile page
+                        https://twitter.com/MaximeHeckel.
+                      </VisuallyHidden>
                     </a>
                   </Item>
 
@@ -315,6 +349,10 @@ const SearchBox: React.FC<Props> = (props) => {
                     >
                       <Contact />
                       <span style={{ marginLeft: '15px' }}>Contact</span>
+                      <VisuallyHidden as="p">
+                        Link opens your default mail client with my email
+                        address hello@maximeheckel.com prefilled.
+                      </VisuallyHidden>
                     </a>
                   </Item>
                   <Item data-testid="link" key="maximeheckelcom-link">
@@ -326,7 +364,25 @@ const SearchBox: React.FC<Props> = (props) => {
                     >
                       <Portfolio />
                       <span style={{ marginLeft: '15px' }}>Work</span>
+                      <VisuallyHidden as="p">
+                        Link redirects to my portfolio https://maximeheckel.com.
+                      </VisuallyHidden>
                     </a>
+                  </Item>
+                  <Item data-testid="link" key="rss-link">
+                    <Link
+                      to="/rss.xml"
+                      data-testid="rss-link"
+                      aria-label="RSS Feed"
+                      title="RSS Feed"
+                      style={{ textDecoration: `none` }}
+                    >
+                      <RSS />
+                      <span style={{ marginLeft: '15px' }}>RSS</span>
+                      <VisuallyHidden as="p">
+                        Link redirects to the rss.xml file.
+                      </VisuallyHidden>
+                    </Link>
                   </Item>
                 </>
               ) : (
@@ -354,7 +410,7 @@ const NoResultsWrapper = styled('div')`
 
 const ShortcutKey = styled('span')`
   color: var(--maximeheckel-colors-brand);
-  font-size: 12px;
+  font-size: 14px;
   border-radius: var(--border-radius-1);
   padding: 8px 8px;
   background: rgba(81, 132, 249, 0.15);
@@ -428,7 +484,7 @@ const SearchResults = styled('ul')<{ results: number; searchQuery: string }>`
   will-change: height;
 
   height: ${(p) =>
-    p.results > 0 ? p.results * 65 : p.searchQuery ? 65 : 385}px;
+    p.results > 0 ? p.results * 65 : p.searchQuery ? 65 : 450}px;
 }
   
 `;
@@ -454,13 +510,13 @@ const SearchBoxWrapper = styled(motion.div)<{}>`
   }
 
   input {
-    outline: none;
     background: transparent;
     border: none;
     font-weight: 300;
     height: 55px;
     padding: 0px 25px;
     width: 100%;
+    outline: none;
     color: var(--maximeheckel-colors-typeface-0);
     ::placeholder,
     ::-webkit-input-placeholder {
