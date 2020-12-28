@@ -1,5 +1,12 @@
 # Gatsby-theme-maximeheckel
 
+## [1.0.1](https://github.com/MaximeHeckel/gatsby-theme-maximeheckel/compare/v1.0.0...v1.0.1) (2020-12-28)
+
+
+### Bug Fixes
+
+* revert framer motion to 2.6.13 ([b4ef14c](https://github.com/MaximeHeckel/gatsby-theme-maximeheckel/commit/b4ef14cbba8a78f916762662cb3aaa31586eaf87))
+
 # [1.0.0](https://github.com/MaximeHeckel/gatsby-theme-maximeheckel/compare/v0.15.0...v1.0.0) (2020-12-28)
 
 
