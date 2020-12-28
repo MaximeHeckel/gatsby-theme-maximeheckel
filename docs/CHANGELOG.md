@@ -1,5 +1,15 @@
 # Gatsby-theme-maximeheckel
 
+# [1.0.0](https://github.com/MaximeHeckel/gatsby-theme-maximeheckel/compare/v0.15.0...v1.0.0) (2020-12-28)
+
+
+* Merge pull request #427 from MaximeHeckel/main ([6d3e7b3](https://github.com/MaximeHeckel/gatsby-theme-maximeheckel/commit/6d3e7b347b343118a938a469b6ec22bb48a7c8bb)), closes [#427](https://github.com/MaximeHeckel/gatsby-theme-maximeheckel/issues/427)
+
+
+### BREAKING CHANGES
+
+* new color palette, new font scale, js based theme deprecation
+
 # [0.15.0](https://github.com/MaximeHeckel/gatsby-theme-maximeheckel/compare/v0.14.7...v0.15.0) (2020-12-27)
 
 
