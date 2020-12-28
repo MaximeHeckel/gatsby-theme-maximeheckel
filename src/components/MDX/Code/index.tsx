@@ -1,5 +1,5 @@
 import { css } from '@emotion/core';
-import EmotionStyled from '@emotion/styled';
+import styled from '@emotion/styled';
 import {
   motion,
   useAnimation,
@@ -15,7 +15,6 @@ import Highlight, {
 import React from 'react';
 import { LiveProvider, LiveEditor, LiveError, LivePreview } from 'react-live';
 import * as Recharts from 'recharts';
-import styled from '@emotion/styled';
 import Button, { CopyToClipboardButton } from '../../Button';
 import { useTheme } from '../../../context/ThemeContext';
 
@@ -125,7 +124,7 @@ export const LiveCodeBlock: React.FC<ICodeBlockProps> = (props) => {
     useAnimation,
     useMotionValue,
     useTransform,
-    styled: EmotionStyled,
+    styled,
     Button,
     React,
     Recharts: { ...Recharts },
@@ -139,6 +138,7 @@ export const LiveCodeBlock: React.FC<ICodeBlockProps> = (props) => {
       ...baseTheme.plain,
       fontFamily: 'Fira Code',
       fontSize: '14px',
+      lineHeight: '26px',
       overflowWrap: 'normal',
       position: 'relative',
       overflow: 'auto',
@@ -292,7 +292,7 @@ export const Code: React.FC<PrePropsType> = (preProps) => {
   }
 };
 
-const Pre = styled.pre`
+const Pre = styled.pre<{ title?: string }>`
   text-align: left;
   padding: 8px 0px;
   overflow: auto;
@@ -343,7 +343,7 @@ const InlineCodeWrapper = styled('code')`
   padding-bottom: 2px;
   padding-left: 6px;
   padding-right: 6px;
-  font-size: 0.85rem;
+  font-size: 16px;
   font-weight: 400 !important;
 `;
 
@@ -442,7 +442,6 @@ const StyledPreviewWrapper = styled('div')<{
   align-items: center;
   justify-content: center;
   background-color: var(--maximeheckel-colors-emphasis);
-
   ${(p) =>
     p.withEditor
       ? `
