@@ -24,9 +24,11 @@ export const Wrapper: React.FC<HeaderWrapperProps> = (props) => {
 
   const variants = {
     open: {
-      height: 120, // shouldReduceMotion ? 70 : 120,
+      height: 120,
     },
-    collapsed: { height: 70 },
+    collapsed: (shouldCollapse: boolean) => ({
+      height: shouldCollapse ? 70 : 120,
+    }),
   };
 
   return (
@@ -34,9 +36,10 @@ export const Wrapper: React.FC<HeaderWrapperProps> = (props) => {
       <HeaderWrapper
         sticky={props.sticky}
         slim={shouldCollapse}
-        initial={'open'}
-        animate={shouldCollapse ? 'collapsed' : 'open'}
+        initial="open"
+        animate="collapsed"
         variants={variants}
+        custom={shouldCollapse}
         transition={{ ease: 'easeInOut', duration: 0.5 }}
       >
         <HeaderContent>{props.children}</HeaderContent>
@@ -73,7 +76,7 @@ const HeaderWrapper = styled(motion.div)<StyledHeaderWrapperProps>`
  *  backdrop-filter: blur(6px); opacity: 0.88;
  */
 
-const HeaderContent = styled.div`
+const HeaderContent = styled('div')`
   @media (max-width: 700px) {
     padding-left: 20px;
     padding-right: 20px;

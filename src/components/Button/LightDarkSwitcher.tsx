@@ -95,7 +95,7 @@ const LightDarkSwitcher = () => {
         data-testid="darkmode-switch"
         aria-labelledby="commandCenterTooltip"
         aria-describedby="commandCenterDesc"
-        onClick={(e) => {
+        onClick={() => {
           theme.toggleDark();
         }}
         // aria-label={theme.dark ? 'Activate light mode' : 'Activate dark mode'}
