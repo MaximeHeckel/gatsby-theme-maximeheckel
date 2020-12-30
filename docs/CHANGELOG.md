@@ -1,5 +1,17 @@
 # Gatsby-theme-maximeheckel
 
+# [1.1.0](https://github.com/MaximeHeckel/gatsby-theme-maximeheckel/compare/v1.0.1...v1.1.0) (2020-12-30)
+
+
+### Bug Fixes
+
+* Fix header not collapsing properly and hidding tooltips ([6f1bb42](https://github.com/MaximeHeckel/gatsby-theme-maximeheckel/commit/6f1bb42037fc9fd6641fb8344dda007205281dc6))
+
+
+### Features
+
+* Introduce first version of tooltip component ([a846cf0](https://github.com/MaximeHeckel/gatsby-theme-maximeheckel/commit/a846cf0e6b0786442e49c5bc8db67c3cb0e5fc27))
+
 ## [1.0.1](https://github.com/MaximeHeckel/gatsby-theme-maximeheckel/compare/v1.0.0...v1.0.1) (2020-12-28)
 
 
