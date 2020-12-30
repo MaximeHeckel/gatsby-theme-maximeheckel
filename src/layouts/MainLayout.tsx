@@ -40,7 +40,11 @@ const Layout: React.FC<LayoutProps> = (props) => {
   }, []);
 
   return (
-    <Wrapper data-testid={theme.dark ? 'darkmode' : 'lightmode'} {...rest}>
+    <Wrapper
+      tabIndex={-1}
+      data-testid={theme.dark ? 'darkmode' : 'lightmode'}
+      {...rest}
+    >
       {header ? (
         <DefaultHeader
           title={site.title}
@@ -63,6 +67,15 @@ export { Layout };
 const Wrapper = styled.div`
   transition: 0.5s;
   background: var(--maximeheckel-colors-body);
+
+  &:focus:not(:focus-visible) {
+    outline: 0;
+  }
+
+  &:focus-visible {
+    outline: 2px solid var(--maximeheckel-colors-brand);
+    background-color: var(--maximeheckel-colors-foreground);
+  }
 `;
 
 const Content = styled.div`
