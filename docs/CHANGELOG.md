@@ -1,5 +1,12 @@
 # Gatsby-theme-maximeheckel
 
+## [1.1.1](https://github.com/MaximeHeckel/gatsby-theme-maximeheckel/compare/v1.1.0...v1.1.1) (2020-12-30)
+
+
+### Bug Fixes
+
+* **a11y:** Fix wrong aria-label references in lightdarkswitcher button ([cc6768f](https://github.com/MaximeHeckel/gatsby-theme-maximeheckel/commit/cc6768fa7fdcd8498076e53f85bb7d5dde8c6a2e))
+
 # [1.1.0](https://github.com/MaximeHeckel/gatsby-theme-maximeheckel/compare/v1.0.1...v1.1.0) (2020-12-30)
 
 
