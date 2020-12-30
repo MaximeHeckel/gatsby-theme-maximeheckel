@@ -109,6 +109,13 @@ const GlobalStyles: React.FC<{}> = () => (
           color: var(--maximeheckel-colors-brand) !important;
         }
       }
+
+      span[aria-hidden='true'] {
+        display: none;
+      }
+      span[aria-hidden='false'] {
+        display: block;
+      }
     `}
   />
 );

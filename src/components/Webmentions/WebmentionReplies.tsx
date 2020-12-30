@@ -70,7 +70,6 @@ const list = {
 const item = {
   visible: { opacity: 1, x: 0 },
   hidden: { opacity: 0, x: -10 },
-  hover: { marginRight: '2px', transition: { ease: 'easeOut' } },
 };
 
 const Replies = ({ replies }: RepliesProps) => {
@@ -98,7 +97,10 @@ const Replies = ({ replies }: RepliesProps) => {
                 data-testid={link.id}
                 data-tip={link.activity.sentence}
                 variants={item}
-                whileHover="hover"
+                whileHover={{
+                  marginRight: '2px',
+                  transition: { ease: 'easeOut' },
+                }}
               >
                 <OutboundLink
                   href={link.data.author.url}
