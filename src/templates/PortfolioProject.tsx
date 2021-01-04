@@ -1,3 +1,4 @@
+import { css } from '@emotion/core';
 import { FluidObject } from 'gatsby-image';
 import React from 'react';
 import Layout, { LayoutChildrenProps } from '../layouts';
@@ -13,22 +14,23 @@ interface ProjectPortfolioProps {
       title: string;
       subtitle?: string;
       slug: string;
+      background: string;
     };
     tableOfContents?: TableOfContentType;
+
     cover: {
       childImageSharp: {
         fluid: FluidObject;
       };
     };
   };
-
   site: any;
 }
 
 const PortfolioProject: React.FC<ProjectPortfolioProps> = (props) => {
   const { pageContext } = props;
   const { frontmatter, cover, tableOfContents } = pageContext;
-  const { slug, subtitle, title } = frontmatter;
+  const { slug, subtitle, title, background } = frontmatter;
 
   const childrenWithProps = sectionize(
     props.children as React.ReactElement<any>[]
@@ -63,15 +65,26 @@ const PortfolioProject: React.FC<ProjectPortfolioProps> = (props) => {
               {subtitle ? <Hero.Subtitle>{subtitle}</Hero.Subtitle> : null}
             </Hero>
             {cover ? (
-              <Hero.Img
-                imgStyle={{
-                  borderRadius: 'var(--border-radius-2)',
-                  margin: '0 auto',
-                  maxHeight: '600px',
-                  minHeight: '100px',
-                }}
-                fluid={cover.childImageSharp.fluid}
-              />
+              <div
+                css={css`
+                  height: 500px;
+                  width: 100%;
+                  border-radius: var(--border-radius-2);
+                  background: ${background};
+                  overflow: hidden;
+                  @media (max-width: 700px) {
+                    height: 390px;
+                  }
+                `}
+              >
+                <Hero.Img
+                  css={css`
+                    margin: 0 auto;
+                    height: 100%;
+                  `}
+                  fluid={cover.childImageSharp.fluid}
+                />
+              </div>
             ) : null}
             <ProgressBar
               slim

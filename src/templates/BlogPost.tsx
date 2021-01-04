@@ -1,3 +1,4 @@
+import { css } from '@emotion/core';
 import slugify from '@sindresorhus/slugify';
 import { FluidObject } from 'gatsby-image';
 import React from 'react';
@@ -87,16 +88,18 @@ const BlogPost: React.FC<BlogPostProps> = (props) => {
                 </Flex>
               </Hero.Info>
               {cover ? (
-                <Hero.Img
-                  className="u-photo"
-                  imgStyle={{
-                    borderRadius: '4px',
-                    margin: '0 auto',
-                    maxHeight: '800px',
-                    minHeight: '100px',
-                  }}
-                  fluid={cover.childImageSharp.fluid}
-                />
+                <div
+                  css={css`
+                    border-radius: var(--border-radius-2);
+                    margin: 32px auto;
+                    overflow: hidden;
+                  `}
+                >
+                  <Hero.Img
+                    className="u-photo"
+                    fluid={cover.childImageSharp.fluid}
+                  />
+                </div>
               ) : null}
             </Hero>
             <ProgressBar
