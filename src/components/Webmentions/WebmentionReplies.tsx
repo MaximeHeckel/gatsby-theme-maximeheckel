@@ -137,7 +137,7 @@ const WebmentionReplies = ({ title, url }: Props) => {
     ...newReplies,
   ];
   const [replies, setReplies] = React.useReducer(mergeReplies, []);
-  const perPage = 100;
+  const perPage = 500;
   const text = `${title} by @MaximeHeckel ${url}`;
 
   const getMentions = React.useCallback(
