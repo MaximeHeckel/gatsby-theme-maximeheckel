@@ -1,6 +1,7 @@
 import Img, { FluidObject } from 'gatsby-image';
 import React from 'react';
 import styled from '@emotion/styled';
+import { SerializedStyles } from '@emotion/core';
 
 const HeroImgWrapper = styled.div`
   @media (max-width: 700px) {
@@ -9,15 +10,15 @@ const HeroImgWrapper = styled.div`
     position: a;
     width: 100vw;
   }
+  height: 100%;
   max-width: 880px;
-  margin-top: 32px;
-  margin-bottom: 32px;
 `;
 
 interface HeroImgProps {
+  css?: SerializedStyles;
   className?: string;
   fluid: FluidObject;
-  imgStyle: Record<string, string>;
+  imgStyle?: Record<string, string>;
 }
 
 const HeroImg: React.FC<HeroImgProps> = (props) => (

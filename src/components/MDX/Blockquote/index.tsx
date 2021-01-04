@@ -1,6 +1,7 @@
 import styled from '@emotion/styled';
+import React from 'react';
 
-const Blockquote = styled.blockquote`
+const StyledBlockquote = styled('blockquote')`
   transition: 0.5s;
   margin: 30px 0px;
   color: var(--maximeheckel-colors-typeface-0);
@@ -23,5 +24,7 @@ const Blockquote = styled.blockquote`
     font-weight: 400;
   }
 `;
+
+const Blockquote: React.FC = (props) => <StyledBlockquote {...props} />;
 
 export { Blockquote };
