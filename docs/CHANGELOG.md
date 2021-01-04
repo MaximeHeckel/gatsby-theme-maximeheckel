@@ -1,5 +1,12 @@
 # Gatsby-theme-maximeheckel
 
+# [1.2.0](https://github.com/MaximeHeckel/gatsby-theme-maximeheckel/compare/v1.1.1...v1.2.0) (2021-01-04)
+
+
+### Features
+
+* Update portfolio project template ([16a96d6](https://github.com/MaximeHeckel/gatsby-theme-maximeheckel/commit/16a96d640f7d1bf6da6be9eeb6c1b692d8b6542d))
+
 ## [1.1.1](https://github.com/MaximeHeckel/gatsby-theme-maximeheckel/compare/v1.1.0...v1.1.1) (2020-12-30)
 
 
