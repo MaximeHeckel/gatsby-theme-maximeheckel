@@ -7,6 +7,7 @@ const GlobalStyles: React.FC<{}> = () => (
       :root {
         // Base Hue for main colors (body and branding)
         --base-hue: 222;
+        --base-saturation: 89;
 
         // Color Gray
         --base-gray: var(--base-hue), 8%;
@@ -25,7 +26,7 @@ const GlobalStyles: React.FC<{}> = () => (
         --palette-gray-100: var(--base-gray), 5%;
 
         // Color Blue
-        --base-blue: var(--base-hue), 89%;
+        --base-blue: var(--base-hue), calc(var(--base-saturation) * 1%);
         --palette-blue-10: var(--base-blue), 95%;
         --palette-blue-20: var(--base-blue), 85%;
         --palette-blue-30: var(--base-blue), 75%;
