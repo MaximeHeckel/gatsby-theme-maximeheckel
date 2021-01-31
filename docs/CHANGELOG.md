@@ -1,5 +1,12 @@
 # Gatsby-theme-maximeheckel
 
+## [1.2.1](https://github.com/MaximeHeckel/gatsby-theme-maximeheckel/compare/v1.2.0...v1.2.1) (2021-01-31)
+
+
+### Bug Fixes
+
+* **theme:** Ensure arrow svg used in li responds to theme changes ([b99e799](https://github.com/MaximeHeckel/gatsby-theme-maximeheckel/commit/b99e799f543f1d802cdfdc76cf6d62c29c1c0b7b))
+
 # [1.2.0](https://github.com/MaximeHeckel/gatsby-theme-maximeheckel/compare/v1.1.1...v1.2.0) (2021-01-04)
 
 
