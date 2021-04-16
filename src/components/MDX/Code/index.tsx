@@ -5,6 +5,8 @@ import {
   useAnimation,
   useMotionValue,
   useTransform,
+  AnimatePresence,
+  AnimateSharedLayout,
 } from 'framer-motion';
 import Highlight, {
   Prism,
@@ -16,7 +18,9 @@ import React from 'react';
 import { LiveProvider, LiveEditor, LiveError, LivePreview } from 'react-live';
 import * as Recharts from 'recharts';
 import Button, { CopyToClipboardButton } from '../../Button';
+import { LinkButton } from '../../Button/LinkButton';
 import { useTheme } from '../../../context/ThemeContext';
+import Pill from '../Pill';
 
 // @ts-ignore
 (typeof global !== 'undefined' ? global : window).Prism = Prism;
@@ -124,9 +128,13 @@ export const LiveCodeBlock: React.FC<ICodeBlockProps> = (props) => {
     useAnimation,
     useMotionValue,
     useTransform,
+    AnimatePresence,
+    AnimateSharedLayout,
     styled,
     Button,
+    LinkButton,
     React,
+    Pill: Pill,
     Recharts: { ...Recharts },
   };
 
