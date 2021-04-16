@@ -1,5 +1,12 @@
 # Gatsby-theme-maximeheckel
 
+## [1.2.2](https://github.com/MaximeHeckel/gatsby-theme-maximeheckel/compare/v1.2.1...v1.2.2) (2021-04-16)
+
+
+### Bug Fixes
+
+* Add missing components for new blog post ([dcbbe6a](https://github.com/MaximeHeckel/gatsby-theme-maximeheckel/commit/dcbbe6a198600429a606383132d85e28ca4c6eba))
+
 ## [1.2.1](https://github.com/MaximeHeckel/gatsby-theme-maximeheckel/compare/v1.2.0...v1.2.1) (2021-01-31)
 
 
