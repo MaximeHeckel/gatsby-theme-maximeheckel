@@ -1,0 +1,83 @@
+version: 2
+updates:
+- package-ecosystem: npm
+  directory: "/"
+  schedule:
+    interval: weekly
+    time: "13:00"
+  open-pull-requests-limit: 10
+  target-branch: main
+  labels:
+  - dependencies
+  versioning-strategy: increase
+  ignore:
+  - dependency-name: "@typescript-eslint/parser"
+    versions:
+    - 4.14.0
+    - 4.14.1
+    - 4.14.2
+    - 4.15.0
+    - 4.15.1
+    - 4.15.2
+    - 4.16.1
+    - 4.17.0
+    - 4.18.0
+    - 4.19.0
+    - 4.20.0
+    - 4.21.0
+  - dependency-name: gatsby-image
+    versions:
+    - 2.10.0
+    - 2.11.0
+    - 3.0.0
+    - 3.1.0
+    - 3.2.0
+  - dependency-name: gatsby-plugin-mdx
+    versions:
+    - 1.10.0
+    - 1.10.1
+    - 1.9.0
+    - 2.0.1
+    - 2.1.0
+    - 2.2.0
+  - dependency-name: gatsby
+    versions:
+    - 2.31.1
+    - 2.32.11
+    - 2.32.3
+    - 2.32.4
+    - 2.32.8
+    - 3.1.2
+  - dependency-name: gatsby-plugin-sharp
+    versions:
+    - 2.13.1
+    - 2.13.4
+    - 2.14.1
+    - 2.14.3
+  - dependency-name: gatsby-remark-images
+    versions:
+    - 3.10.0
+    - 3.11.0
+    - 3.11.1
+  - dependency-name: gatsby-remark-autolink-headers
+    versions:
+    - 2.10.0
+    - 2.11.0
+  - dependency-name: npm
+    versions:
+    - 6.14.11
+  - dependency-name: react-error-boundary
+    versions:
+    - 3.1.0
+  - dependency-name: prismjs
+    versions:
+    - 1.21.0
+  - dependency-name: "@types/react-helmet"
+    versions:
+    - 6.1.0
+  - dependency-name: elliptic
+    versions:
+    - 6.5.3
+  commit-message:
+    prefix: chore
+    include: scope
